@@ -17,11 +17,13 @@ import digitalCanteenSSM.po.MUserItems;
 import digitalCanteenSSM.po.Role;
 import digitalCanteenSSM.po.User;
 import digitalCanteenSSM.po.UserItems;
+import digitalCanteenSSM.po.WindowItems;
 import digitalCanteenSSM.service.CampusPresetService;
 import digitalCanteenSSM.service.CanteenPresetService;
 import digitalCanteenSSM.service.RoleService;
 import digitalCanteenSSM.service.UploadFileService;
 import digitalCanteenSSM.service.UserService;
+import digitalCanteenSSM.service.WindowPresetService;
 import digitalCanteenSSM.util.CheckMobile;
 
 @Controller
@@ -30,6 +32,8 @@ public class UserController {
 	private CampusPresetService campusPresetService;
 	@Autowired
 	private CanteenPresetService canteenPresetService;
+	@Autowired
+	private WindowPresetService windowPresetService;
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -86,11 +90,15 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/userHomepage")
-	public ModelAndView userHomePage(HttpSession session, HttpServletRequest request){
+	public ModelAndView userHomePage(Integer wndCantID,HttpSession session, HttpServletRequest request) throws Exception{
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
 		UserItems userItems = (UserItems)session.getAttribute("userItems");
+		modelAndView.addObject("userItems",userItems);
+		modelAndView.addObject("campusList",campusPresetService.findAllCampuses());
+		modelAndView.addObject("canteenItemsList",canteenPresetService.findAllCanteens());
+		modelAndView.addObject("windowItemsList",windowPresetService.findWindowsInCanteen(wndCantID));
 		
 		modelAndView.setViewName("/WEB-INF/jsp/userHomePage.jsp");
 		return modelAndView;
