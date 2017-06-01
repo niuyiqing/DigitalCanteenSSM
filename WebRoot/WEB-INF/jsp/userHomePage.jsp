@@ -143,7 +143,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <tr>
                                         <td style='vertical-align: middle;text-align: center;'>${item.campusName }</td>
                                         <td style='vertical-align: middle;text-align: center;'>${item.cantName }</td>
-                                        <td style='vertical-align: middle;text-align: center;'>${item.wndName }</td>
+                                        <td style='vertical-align: middle;text-align: center;'>
+                                        	<a href="userWindowContents.action?wndID=${item.wndID}" class="btn btn-info">${item.wndName }</a>
+                                        </td>
                                         <td style='vertical-align: middle;text-align: center;'>${item.wndAddr}</td>
                                         <td style='vertical-align: middle;text-align: center;'>${item.wndPriceRange}</td>
                                         <td style='vertical-align: middle;text-align: center;'>${item.wndSaleHours}</td>

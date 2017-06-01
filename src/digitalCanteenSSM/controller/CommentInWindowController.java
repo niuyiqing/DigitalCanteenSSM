@@ -35,7 +35,7 @@ public class CommentInWindowController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		//wndID
-		wndID = 3;
+		/*wndID = 3;*/
 		List<CommentItems> commentItemsList = commentService.findAllCommentsInWindow(wndID);
 		modelAndView.addObject("commentItemsList",commentItemsList);
 		modelAndView.addObject("windowItems",windowPresetService.findWindowById(wndID));

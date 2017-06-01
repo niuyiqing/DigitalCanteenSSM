@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import digitalCanteenSSM.po.DishItems;
 import digitalCanteenSSM.po.MUserItems;
 import digitalCanteenSSM.po.Role;
 import digitalCanteenSSM.po.User;
@@ -20,6 +21,7 @@ import digitalCanteenSSM.po.UserItems;
 import digitalCanteenSSM.po.WindowItems;
 import digitalCanteenSSM.service.CampusPresetService;
 import digitalCanteenSSM.service.CanteenPresetService;
+import digitalCanteenSSM.service.DishManagementService;
 import digitalCanteenSSM.service.RoleService;
 import digitalCanteenSSM.service.UploadFileService;
 import digitalCanteenSSM.service.UserService;
@@ -34,6 +36,8 @@ public class UserController {
 	private CanteenPresetService canteenPresetService;
 	@Autowired
 	private WindowPresetService windowPresetService;
+	@Autowired
+	private DishManagementService dishManagementService;
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -101,6 +105,20 @@ public class UserController {
 		modelAndView.addObject("windowItemsList",windowPresetService.findWindowsInCanteen(wndCantID));
 		
 		modelAndView.setViewName("/WEB-INF/jsp/userHomePage.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/userWindowContents")
+	public ModelAndView userWindowContents(Integer wndID) throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		WindowItems windowItems = windowPresetService.findWindowById(wndID);
+		/*List<DishItems> dishItemsList = dishManagementService.findDishesInWindow(wndID);*/
+		modelAndView.addObject("windowItems",windowPresetService.findWindowById(wndID));
+		modelAndView.addObject("dishItemsList",dishManagementService.findDishesInWindow(wndID));
+		modelAndView.setViewName("/WEB-INF/jsp/userWindowContents.jsp");
+		
 		return modelAndView;
 	}
 }
