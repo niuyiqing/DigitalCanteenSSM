@@ -10,6 +10,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 
 <html>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<head>
+    <meta charset="utf-8">
+    <title>outputExcel</title>
+    <meta name="viewport" content="width=device-width, 
+                                     initial-scale=0.3, 
+                                     maximum-scale=1.0, 
+                                     user-scalable=true">
+    <meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+
+	<!--自定义-->		
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/my-custom.css">
+	<link rel="stylesheet" href="css/qunit-1.11.0.css">
+	<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<!--日历控件-->	
+	<link rel="stylesheet" type="text/css" media="all" href="css/daterangepicker-bs3.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="css/daterangepicker-1.3.7.css" />
+    <script src="js/moment.js"></script>
+    <script src="js/daterangepicker-1.3.7.js"></script>
+
+</head>
+	<%@ include file="publicjsp/backgroundMenu.jsp" %>
+<body>
+	<script type="text/javascript">
+
+	function exportExcel(){
+		/* document.listFrom.action="campusRecordExportToExcel.action";
+    	document.listFrom.submit();	 */
+    	$.ajax({
+			type:'post',
+			url:'${pageContext.request.contextPath}/campusRecordExportToExcel.action',
+			contentType:'application/x-www-form-urlencoded',
+			//发送的是key/value，接收的是json
+			data:{beginTime:$('#beginTime'),endTime:$('#endTime')},
+			//回调函数:返回json结果
+			success:function(data){
+					alert("导出成功！");
+=======
+=======
+>>>>>>> 0e821405ff2befbc75cac361fa0b71c90c885ef6
 	<head>
 	    <meta charset="utf-8">
 	    <title>导出记录</title>
@@ -49,6 +94,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					//发送的是key/value，接收的是json
 					data:{beginTime:$('#beginTime'),endTime:$('#endTime')},				
 				});*/
+<<<<<<< HEAD
+>>>>>>> origin
+=======
+>>>>>>> 0e821405ff2befbc75cac361fa0b71c90c885ef6
 			}
 		
 			function findCampusRecord(){
