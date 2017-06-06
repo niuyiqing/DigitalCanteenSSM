@@ -10,6 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html >
     <head>
+    	<base href="<%=basePath%>">
         <meta charset="utf-8">    	
     	<title>菜品录入</title>
         <meta http-equiv="pragma" content="no-cache" />
@@ -20,10 +21,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="format-detection" content="telephone=no">
-        
+        <script src="js/jquery-2.1.1.min.js"></script>
         <script src="js/modernizr.custom.js"></script>
-    	<script src="js/jquery-2.1.1.min.js"></script>
+    	
     	<script src="js/bootstrap.min.js"></script>
+
+    	<!-- jQuery支撑 -->
+        <script src="js/jquery.form.js"></script>
+	    <script src="js/custom.jquery.form.js"></script>
+	    <script src="js/jquery.validate.js"></script>
     	<!--  <script src="js/jquery.mobile-1.4.3.min.js"></script>  -->
     	<!--日历控件-->	
 		<link rel="stylesheet" type="text/css" media="all" href="css/daterangepicker-bs3.css" />
@@ -74,11 +80,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	document.importDishForm.submit(); 
 	    	}
 	    	
-	    	//点击导入以前日期已录入的菜品
+	    	//导入以前日期已录入的菜品的验证
 	    	function getDishInImportDate(){
 	    		document.importDishForm.action="getDishInImportDate.action";
-            	document.importDishForm.submit(); 
+            	jquerySubByFId('importDishForm', getDishInImportDate_callback, null, "json");
 	    	}
+	    	function getDishInImportDate_callback(data){
+	    		//成功
+	    		if(data.resultInfo.type == '1'){
+	    			window.location.href = "importDish.action?recordID="+data.resultInfo.recordID;
+	    		}else if(data.resultInfo.type == '0'){
+	    			alert(data.resultInfo.message);
+	    		}
+	    	}
+
 	    	
 	    	function checkBoxSelect(dishID){
 	    		var checkbox = document.getElementById(dishID);	
@@ -103,12 +118,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         			checkflag=false;
     			}
     		}
+
+    		//早餐 中餐 晚餐 全天供应 选择
+			$(document).ready(function(){
+				//下拉框触发读取数据库
+	    		$("#dishDate").change(function() { 
+					document.importDishForm.action = "chooseDishInDate.action";
+            		document.importDishForm.submit();
+				});
+									    			    
+				$("#searchin").click(function() {
+				 	  var txt=$("#search").val();
+				 	 //获取radio选中的值
+				 	 // var val=$('input:radio[name="dishDateFlag"]:checked').val();
+					  if($.trim(txt)!=""){	
+				        $("table tr:not('#theader')").hide().filter(":contains('"+txt+"')").show();
+				      }else{
+				        $("table tr:not('#theader')").css("background","#fff").show();
+				      }
+	    		});			
+			
+    		}); 
+
+    		//设置时间档下拉框默认显示
+    		function myinitiation() {		
+				var dishDate = document.getElementById("dishDate");
+				var dishDateVal=$("#dishdate").val();
+
+			    for(i = 0; i<=dishDate.length; i++){
+			         var v = dishDate.options[i].value;
+			        if(dishDate.options[i].value == dishDateVal){
+			            dishDate.options[i].selected = true;
+			        }
+			    }	
+			}
+
+			//保存已经勾选的记录
+			function dishDateSubmit(){
+				document.importDishForm.action = "importHandle.action";
+				jquerySubByFId('importDishForm', dishDateSubmit_callback, null, "json");
+			}
+			function dishDateSubmit_callback(data){
+				alert(data.resultInfo.message);
+			}
 	    </script>
 
 	    <script src="././My97DatePicker/WdatePicker.js"></script>
     </head>
   
-    <body>
+    <body onload="myinitiation()">
         <div class="container">
 		     <div class="mp-pusher" id="mp-pusher">
 		      <%@ include file="publicjsp/canteennavindex.jsp" %> 
@@ -123,15 +181,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<p style="width:100%;height:100%;vertical-align:middle;font-size:27px">菜品录入</p>
 						</div> 
 				    	<div class="container-fluid" style="color:#000;padding:0 0; ">	
-				    		<div class="newcustom" style="margin-top:69px;padding-left:5%">
-			    				<div class="row" style="padding-top:16px;font-size: 1.3rem">
-			 						<div class="col-xs-4">
+				    		<div class="newcustom" style="margin-top:69px;<!-- padding-left:5% -->">
+			    				<div class="row" style="padding-top:16px;font-size: 1.2rem">
+			 						<div class="col-xs-4" style="padding-right:0px">
 								   		<label>所属校区：</label>${muserItems.campusName}
 								   	</div>
-								   	<div class="col-xs-4">
+								   	<div class="col-xs-4" style="padding-right:0px">
 								   		<label>所属食堂：</label>${muserItems.cantName}
 								   	</div>
-								   	<div class="col-xs-4">
+								   	<div class="col-xs-4" style="padding-right:0px">
 								   		<label>管理员：</label>${muserItems.muserName}
 								   	</div>
 								</div>
@@ -139,12 +197,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    			
 				    			
 					    		    <!-- 所有菜品显示列表 -->
-			                    <form role="form" name="importDishForm" method="post" enctype="multipart/form-data" >
+			                    <form role="form" name="importDishForm" id="importDishForm" method="post" enctype="multipart/form-data"  >
 					                     
 				    	                <input type="hidden" name = "muserSubmitDate" >
 				    	                <div class="row" style="padding-top:16px">
 					    	                <div class="form-group" >
-					    	                    <div class="col-xs-3" style="padding-top:12px;font-size: 1.4rem">
+					    	                    <div class="col-xs-3" style="padding-top:12px;padding-right:0px;font-size: 1.3rem">
 					    	                     <b>导入记录：</b>
 					    	                    </div>
 					    	                    <div class="col-xs-6" >
@@ -155,17 +213,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    	                	    </div>			    	                	
 				    	            	    </div>
 			    	            	    </div>
-				    	            	<div style="padding-top:10px;font-size:1.3rem">
+				    	            	<div style="padding-top:10px;padding-left:8px;font-size:1.3rem">
 				    	            	    <p class="help-block">通过选择日期来导入某一天的菜品录入记录</p>
+				    	            	    <!-- replenishFlag此处用于标记页面是属于录入、补录还是修改页面 -->
+    	                					<input type="hidden" name="replenishFlag" value="0"></input>
 				    	            	</div>
+				    	            	<div class="row" style="padding-top:16px">
+				    	            	    <div class="form-group">
+					    	                	<div class="col-xs-3" style="padding-left:0px;padding-right:0px">
+					    	                		<input type="hidden" name="dishdate" id="dishdate" value="${dishDate}">
+						                        	<select name="dishDate" id="dishDate" class="form-control">
+						                        	    <option value="早餐">早餐</option>
+						                        	    <option value="中餐">中餐</option>
+						                        	    <option value="晚餐">晚餐</option>
+						                        	    <option value="全天供应">全天供应</option>
+						                        	</select>
+					    	                	</div>
+					    	                	<div class="col-xs-6">
+					    	                		<input type="text" name="search" id="search" style="height:34px">
+						                			
+					    	                	</div>
+					    	                	<div class="col-xs-3">
+					    	                		<input type="button" class="btn btn-primary" value="搜索" name="searchin" id="searchin">
+					    	                	</div>
+					    	                </div>
+					    	            </div>  
 			    	                	<div class="row" style="padding:0 0px;"> 
 				                       		<div class="form-group">
 				                            	<div class="item-wrap">
+				                            		<!-- 传递记录表编号 -->
+		                	                        <input type="hidden" name="recordID" value="${recordID }">
 					                            	<c:forEach items="${dishItemsList }" var="item" varStatus="status">
 				                                    	<div class="item clearfix">
-						                    	    		<c:choose>
-							                	        		<c:when test="${item.dishInState == '待审核'}"></c:when>
-							                	    			<c:otherwise>
+						                    	    		
 							                	    				<div class="txt-item" style=" margin-right:0px; margin-left:5px;padding-top:5px">
 									                	    		    <table  width=100% >							               	       
 										                	    			<tr>
@@ -173,7 +253,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										                	    					<input type="checkbox" name="dishIDList" id="${item.dishID }" value="${item.dishID }" />									                	   					
 										                	    				</td>
 								                	    				        <c:choose >
-										                	    					<c:when test="${dishDetailInDateList == null }">	
+										                	    					<c:when test="${dishDetailInDateList == null }">
+
 										                	    					</c:when>
 										                	    					<c:otherwise>
 										                	    						<c:forEach items="${dishDetailInDateList }" var="itemInDate">
@@ -198,22 +279,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										                	    			   	<td style='vertical-align: middle;'>${item.dishDate } ${item.dishSale }</td> 
 										                	    			</tr>
 										                	    			<tr>						  
-										                	    			   	<td style='vertical-align: middle;color:#29C192;font-size:1.5em'>￥${item.dishPrice }</td>
+										                	    			   	<td style='vertical-align: middle;color:#29C192;font-size:1.5em' colspan=2>￥${item.dishPrice }</td>
 										                	    			   	<td style='vertical-align: middle;'><fmt:formatDate value="${item.dishInDate}" pattern="yyyy-MM-dd" /></td>
-										                	    			   	<td style='vertical-align: middle;'>${item.dishInState }</td> 
+										                	    			   	
 									                	    				</tr>
 								                	    				</table>
 								                	    			</div>
 									                	    		<a class="delect-btn">删除</a>
-						                	    				</c:otherwise>
-							                	    		</c:choose>
+						                	    			
 							                	    	</div>
 						                	    	</c:forEach>						                              					  	
 							        			</div>
 						            		</div>  
 						        		</div> 
 							        <div class="form-group" style="padding-top:5px" align="center">
-			    	                	<input type="button" class="btn btn-primary" value="提交" onClick=getNowFormatDate()> 
+			    	                	<input type="button" class="btn btn-primary" value="保存" onClick=dishDateSubmit()> 
 			    	            	</div>
 			    	            	 					  				    	                	 				   	           	
 		                    	</form>
