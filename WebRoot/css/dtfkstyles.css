@@ -23,7 +23,7 @@ body :-moz-placeholder {
   opacity: 1;
   font-weight: 300;
 }
-body ::-moz-placeholder {
+body ::-moz-placeh older {
   /* Mozilla Firefox 19+ */
   font-family: 'Source Sans Pro', sans-serif;
   color: white;
