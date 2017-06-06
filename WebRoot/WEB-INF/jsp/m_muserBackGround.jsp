@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    														<c:set var="status" value="setted" scope="page"/>
 	    													</c:if>	    										
 	    												</c:forEach>
-	    												<a style="font-size:15px;" href="muserBackGround.action?recordCantID=${item_canteen.cantID }">
+	    												<a style="font-size:15px;" href="muserBackground.action?recordCantID=${item_canteen.cantID }">
 	    													<c:if test="${status == 'setted' }">
 	    														${item_canteen.cantName}
 	    													</c:if>

@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             
                         <div class="content clearfix">
                             <!-- 菜品添加 -->
-                            <form role="form" name="dishInsertForm" action="insertDish.action" method="post" enctype="multipart/form-data">
+                            <form  role="form" name="dishInsertForm" action="insertDish.action" method="post">                       
                                 <div class="newcustom" style="margin-top:69px;padding-left:5%">           	            
                                     <div class="form-group">
                                         <div class="row">
@@ -157,23 +157,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             </select>
                                         </div>
                                     </div>
-                                    <br>
-                                    <div class="form-group row">
-                                        <label class="col-xs-4 control-label style1">菜品图片上传</label>
-                                        <div class="col-xs-7">
-                                            <a href="javascript:;" class="file" style="font-size:15px">选择文件
-                                            <input type="file" name="dishPhotoFile"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <br>    
-                                    <div class="form-group row">
-                                        <label class="col-xs-4 control-label style1">菜品添加日期</label>
-                                        <div class="col-xs-7">
-                                            <input type="text" name ="dishInDate" placeholder="请点击此处选择菜品录入日期" class="Wdate form-control"  onClick="WdatePicker()"> 
-                                        </div>
-                                    </div>
-                                    <br> 
+                                    <br>                                                                   
                                     <div class="form-group row">
                                         <label class="col-xs-4 control-label style1">菜品价格</label>
                                         <div class="col-xs-7">   
@@ -202,45 +186,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                     <br>
                                     <div class="form-group row">
-                                        <label class="col-xs-4 control-label style1">菜品质量</label>
-                                        <div class="col-xs-7">
-                                            <select name="dishQuality" class="form-control">
-                                                <option value="优" selected="selected">优</option>
-                                                <option value="良">良</option>
-                                                <option value="中">中</option>
-                                                <option value="差">差</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <br> 
-                                    <div class="form-group row">
-                                        <label class="col-xs-4 control-label style1">菜品录入状态</label>
-                                        <div class="col-xs-7">   
-                                            <input type="text" class="form-control" name="dishInState" value="审核通过" readonly="readonly">
-                                        </div>
-                                    </div>
-                                    <br>    
-                                    <div class="form-group row">
                                         <label class="col-xs-4 control-label style1">菜品销售状态</label>
-                                        <div class="col-xs-7">
+                                        <div class="col-xs-7"> 
                                             <select name="dishSale" class="form-control">
                                                 <option value="在售" selected="selected">在售</option>
-                                                <option value="未售">未售</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <br>
                                     <div class="form-group row">
                                         <label class="col-xs-4 control-label style1">菜品销售时间</label>
                                         <div class="col-xs-7">
                                             <select name="dishDate" class="form-control">
-                                                <option value="早上" selected="selected">早上</option>
-                                                <option value="中午">中午</option>
-                                                <option value="晚上">晚上</option>
+                                                <option value="早餐" selected="selected">早餐</option>
+                                                <option value="正餐">正餐</option>
+                                                <option value="全天供应">全天供应</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <br>
+                                    
+                                    <br> 
+                                    
+                                                                    
                                     <div class="form-group">
                                         <div align="center" style="position:relative;top:2px;">
                                             <input type="submit" class="btn btn-primary" value="添加菜品" onClick="return check(dishInsertForm)">

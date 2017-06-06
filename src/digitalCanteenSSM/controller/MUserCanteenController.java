@@ -67,7 +67,6 @@ public class MUserCanteenController {
 		
 		List<Record> dishRecordList = recordService.findRecordInCanteen(muserItems.getCantID());
 		PageInfo<Record> pagehelper = new PageInfo<Record>(dishRecordList);
-
 		modelAndView.addObject("muserItems",muserItems);
 		modelAndView.addObject("pagehelper", pagehelper);
 		
