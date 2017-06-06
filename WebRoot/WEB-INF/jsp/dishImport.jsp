@@ -246,7 +246,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                	    		</c:choose>
 		                	    	 	<td style='vertical-align: middle;text-align: center;'>${item.campusName }</td>
 		                	    	   	<td style='vertical-align: middle;text-align: center;'>${item.cantName }</td>
-		                	    	   	<td style='vertical-align: middle;text-align: center;'>${item.wndName }</td>
+		                	    	   	<td style='vertical-align: middle;text-align: center;'>${item.wndName }</td>`
 		                	    	   	<td style='vertical-align: middle;text-align: center;'>${item.dishName }</td>
 		                	    	   	<td style='vertical-align: middle;text-align: center;'>${item.dishTypeName }</td>		                	    			   	
 		                	    	   	<td style='vertical-align: middle;text-align: center;'>
