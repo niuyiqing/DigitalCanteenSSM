@@ -17,7 +17,7 @@
 										</li>
 
 										<li >
-											<a  href="#" data-ajax="false" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">广告推送管理</a>									
+											<a  href="adManagement.action" data-ajax="false" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">广告推送管理</a>									
 										</li>
 									</ul>
 								</div>
@@ -52,7 +52,7 @@
 									<h2 class="icon icon-calendar" style="padding: 1em 1em 1em 4.5em;font-size:17px;background:rgba(41,193,146,0.95)">操作日志</h2>
 									<ul>
 										<li >
-											<a data-ajax="false" href="#" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">日志查看</a>
+											<a data-ajax="false" href="${pageContext.request.contextPath }/loginfo.action" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">日志查看</a>
 										</li>
 									</ul>
 								</div>
