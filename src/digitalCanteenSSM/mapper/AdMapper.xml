@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace命名空间，作用就是对sql进行分类化管理，理解sql隔离 注意：使用mapper代理方法开发，namespace有特殊重要的作用，namespace等于mapper接口地址 -->
+<mapper namespace="digitalCanteenSSM.mapper.AdMapper">
+	
+	<!-- 查询所有的广告的信息,以降序排列(后录入的排在前面) -->
+	<select id="findAllAd" resultType="Ad">
+		SELECT * 
+		FROM ctad
+		ORDER BY AdID DESC
+	</select>
+	
+	<!-- 根据AdID查询该广告信息 -->
+	<select id="findAdById"  parameterType="Integer" resultType="Ad">
+		SELECT * 
+		FROM ctad
+		WHERE ctad.AdID=#{adID}		
+	</select>
+	
+	<!-- 根据AdName查询该广告信息 -->
+	<select id="findAdByName"  parameterType="String" resultType="Ad">
+		SELECT * 
+		FROM ctad 
+		WHERE ctad.AdName=#{adName}		
+	</select>
+	
+	<!-- 根据AdName查询该广告信息 -->
+	<select id="findAdByPhoto"  parameterType="String" resultType="Ad">
+		SELECT * 
+		FROM ctad 
+		WHERE ctad.AdPhoto=#{adPhoto}		
+	</select>
+	
+	<!-- 根据AdID更新广告信息 -->
+	<select id="updateAdById"  parameterType="Ad">
+		UPDATE ctad 
+		SET ctad.AdDishID= #{adDishID}
+			ctad.AdWndID= #{adWndID} 
+			ctad.AdName= #{adName} 
+			ctad.AdPhoto= #{adPhoto}  
+			ctad.AdExp= #{adExp}
+			ctad.AdStartDate= #{adStartDate} 
+			ctad.AdEndDate= #{adEndDate} 
+			ctad.AdState= #{adState}  
+			ctad.AdDiscount= #{adDiscount} 
+			ctad.AdFinalPrice= #{adFinalPrice} 
+			ctad.AdNote= #{adNote}
+		WHERE ctad.AdID=#{adID};		
+	</select>
+	
+	<!-- 根据AdID删除广告信息 -->
+	<select id="deleteAdById"  parameterType="Integer">
+		Delete from ctad 
+		where ctad.AdID=#{adID}
+	</select>
+	
+	<!-- 添加广告信息 -->
+	<select id="insertAd"  parameterType="Ad">
+		Insert into ctad (
+		ctad.AdDishID,ctad.AdWndID,
+		ctad.AdName,ctad.AdPhoto,
+		ctad.AdExp,ctad.AdStartDate,
+		ctad.AdEndDate,ctad.AdState,
+		ctad.AdDiscount,ctad.AdFinalPrice,
+		ctad.AdNote) 
+		values (#{adDishID},
+		#{adWndID},#{adName},
+		#{adPhoto},#{adExp},
+		#{adStartDate},#{adEndDate},
+		#{adState},#{adDiscount},
+		#{adFinalPrice},#{adNote})
+	</select>
+	
+</mapper>

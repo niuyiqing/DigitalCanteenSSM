@@ -28,6 +28,7 @@ import com.github.pagehelper.PageInfo;
 import digitalCanteenSSM.po.Campus;
 import digitalCanteenSSM.po.CanteenItems;
 import digitalCanteenSSM.po.DishItems;
+import digitalCanteenSSM.po.Log;
 import digitalCanteenSSM.po.MUser;
 import digitalCanteenSSM.po.MUserItems;
 import digitalCanteenSSM.po.Record;
@@ -37,6 +38,7 @@ import digitalCanteenSSM.service.CampusPresetService;
 import digitalCanteenSSM.service.CanteenPresetService;
 import digitalCanteenSSM.service.DetailService;
 import digitalCanteenSSM.service.DishExportToExcelService;
+import digitalCanteenSSM.service.LogService;
 import digitalCanteenSSM.service.MUserService;
 import digitalCanteenSSM.service.RecordService;
 import digitalCanteenSSM.service.RoleService;
@@ -60,7 +62,8 @@ public class MUserBackgroundController {
 	private DishExportToExcelService dishExportToExcelService;
 	@Autowired
 	private DetailService detailService;
-
+	@Autowired
+	private LogService logService;
 	
 	@RequestMapping("/backgroundHomepage")
 	public String backgroundHomepage(HttpSession session) throws Exception{
@@ -433,5 +436,35 @@ public class MUserBackgroundController {
 			recordItemsList.addAll(detailService.findRecordAndDetailDish(record.getRecordID()));
 		}
 		dishExportToExcelService.writeExcel(recordItemsList, canteenList, response, timeInFileName);
+	}
+	
+	//查看操作日志
+	@RequestMapping ("/loginfo")
+	public ModelAndView loginfo( HttpSession session, HttpServletRequest request) throws Exception{
+		
+		String pageNum = request.getParameter("pageNum");
+		String pageSize = request.getParameter("pageSize");
+		int num = 1;
+		int size = 10;
+		if (pageNum != null && !"".equals(pageNum)) {
+			num = Integer.parseInt(pageNum);
+		}
+		if (pageSize != null && !"".equals(pageSize)) {
+			size = Integer.parseInt(pageSize);
+		}
+		
+		//配置pagehelper的排序及分页
+		String sortString = "id.desc";
+		Order.formString(sortString);
+		PageHelper.startPage(num, size);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		List<Log> logList = logService.findAllLog();
+		PageInfo<Log> pagehelper = new PageInfo<Log>(logList);
+		
+		modelAndView.addObject("pagehelper", pagehelper);
+		modelAndView.setViewName("/WEB-INF/jsp/muserLogInfo.jsp");
+		return modelAndView;
 	}
 }

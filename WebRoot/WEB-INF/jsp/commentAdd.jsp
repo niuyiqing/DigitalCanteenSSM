@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div class="row">
                             <form class="form-horizontal" role="form" name="commentInsertForm" method="post">
                                 <input name="cmtWndID" type="hidden" value="${windowItems.wndID }">
-								<input name="cmtUserID" type="hidden" value="${userItems }">
+								<input name="cmtUserID" type="hidden" value="${userItems.userID }">
 								<input name="cmtDate" type="hidden" value="${cmtDate }">
                                 <div class="form-group">                                       	                        	        
                                     <label class="col-sm-2 control-label">总分</label>

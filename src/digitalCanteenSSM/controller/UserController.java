@@ -1,5 +1,6 @@
 package digitalCanteenSSM.controller;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,15 +14,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import digitalCanteenSSM.po.Ad;
+import digitalCanteenSSM.po.Dish;
+import digitalCanteenSSM.po.DishItems;
 import digitalCanteenSSM.po.MUserItems;
 import digitalCanteenSSM.po.Role;
 import digitalCanteenSSM.po.User;
 import digitalCanteenSSM.po.UserItems;
+import digitalCanteenSSM.po.Window;
+import digitalCanteenSSM.po.WindowItems;
+import digitalCanteenSSM.service.AdService;
 import digitalCanteenSSM.service.CampusPresetService;
 import digitalCanteenSSM.service.CanteenPresetService;
+import digitalCanteenSSM.service.DishManagementService;
 import digitalCanteenSSM.service.RoleService;
 import digitalCanteenSSM.service.UploadFileService;
 import digitalCanteenSSM.service.UserService;
+import digitalCanteenSSM.service.WindowPresetService;
 import digitalCanteenSSM.util.CheckMobile;
 
 @Controller
@@ -31,11 +40,17 @@ public class UserController {
 	@Autowired
 	private CanteenPresetService canteenPresetService;
 	@Autowired
+	private WindowPresetService windowPresetService;
+	@Autowired
+	private DishManagementService dishManagementService;
+	@Autowired
 	private UserService userService;
 	@Autowired
 	private UploadFileService uploadFileService;
 	@Autowired
 	private RoleService roleService;
+	@Autowired
+	private AdService adService;
 	
 	@RequestMapping("/userRegisterPage")
 	public ModelAndView userRegisterPage() throws Exception{
@@ -86,13 +101,104 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/userHomepage")
-	public ModelAndView userHomePage(HttpSession session, HttpServletRequest request){
+	public ModelAndView userHomePage(Integer cantCampusID,Integer wndCantID,HttpSession session, HttpServletRequest request) throws Exception{
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
 		UserItems userItems = (UserItems)session.getAttribute("userItems");
 		
+		//第一次进入时读取数据库中校区和食堂ID来读取档口，页面选择其他校区或食堂后将此时的写入userItems，根据选择的来重新读取档口
+		if(cantCampusID != null || wndCantID != null){
+			userItems.setUserCampusID(cantCampusID);
+			userItems.setUserCantID(wndCantID);
+		}
+		modelAndView.addObject("userItems",userItems);
+		modelAndView.addObject("campusList",campusPresetService.findAllCampuses());
+		modelAndView.addObject("canteenItemsList",canteenPresetService.findAllCanteens());
+		modelAndView.addObject("windowItemsList",windowPresetService.findWindowsInCanteen(userItems.getUserCantID()));
+		modelAndView.addObject("canteenItemsInCampus",canteenPresetService.findCanteenByCampus(userItems.getUserCampusID()));
+		List<Ad> ad = adService.findAllAd();
+		modelAndView.addObject("adList", adService.findAllAd());
+		
 		modelAndView.setViewName("/WEB-INF/jsp/userHomePage.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/userWindowContents")
+	public ModelAndView userWindowContents(Integer wndID,HttpSession session, HttpServletRequest request) throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		session.setAttribute("wndID", wndID);
+		WindowItems windowItems = windowPresetService.findWindowById(wndID);
+		/*List<DishItems> dishItemsList = dishManagementService.findDishesInWindow(wndID);*/
+		modelAndView.addObject("windowItems",windowPresetService.findWindowById(wndID));
+		modelAndView.addObject("dishItemsList",dishManagementService.findDishesInWindow(wndID));
+		modelAndView.setViewName("/WEB-INF/jsp/userWindowContents.jsp");
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/userInfo")
+	public ModelAndView userInfo(HttpSession session, HttpServletRequest request) throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		UserItems userItems = (UserItems)session.getAttribute("userItems");
+		modelAndView.addObject("userItems",userItems);
+		modelAndView.addObject("campusList",campusPresetService.findAllCampuses());
+		modelAndView.addObject("canteenItemsList",canteenPresetService.findAllCanteens());
+		modelAndView.addObject("canteenItemsInCampus",canteenPresetService.findCanteenByCampus(userItems.getUserCampusID()));
+		modelAndView.setViewName("/WEB-INF/jsp/userInfo.jsp");
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/userModify")
+	public ModelAndView userModifyForm(User user,HttpSession session, HttpServletRequest request) throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		userService.updateUser(user);
+		UserItems userItems = userService.findUserByName(user.getUserName());
+		session.setAttribute("userItems", userItems);
+		modelAndView.addObject("campusList",campusPresetService.findAllCampuses());
+		modelAndView.addObject("canteenItemsList",canteenPresetService.findAllCanteens());
+		modelAndView.addObject("canteenItemsInCampus",canteenPresetService.findCanteenByCampus(user.getUserCampusID()));
+		modelAndView.setViewName("/WEB-INF/jsp/userInfo.jsp");
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/userQueryAll")
+	public ModelAndView userQueryAll(String queryName,HttpSession session, HttpServletRequest request) throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		List<DishItems> dishItemsList = new ArrayList<DishItems>();
+		List<WindowItems> windowItemsList = new ArrayList<WindowItems>();
+		
+		if(queryName != null){
+			dishItemsList = userService.findDishByFuzzyName(queryName);
+			windowItemsList = userService.findWindowByFuzzyName(queryName);			
+		}	
+		modelAndView.addObject("dishItemsList",dishItemsList);
+		modelAndView.addObject("windowItemsList",windowItemsList);
+		
+		modelAndView.setViewName("/WEB-INF/jsp/userQueryAll.jsp");
+		
+		return modelAndView;
+	}
+	
+	
+	@RequestMapping(value="/userDishInfo")
+	public ModelAndView userDishInfo(Integer dishID,HttpSession session, HttpServletRequest request) throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		DishItems dishItems = dishManagementService.findDishById(dishID);
+		modelAndView.addObject("dishItems",dishItems);
+		
+		modelAndView.setViewName("/WEB-INF/jsp/userDishInfo.jsp");
+		
 		return modelAndView;
 	}
 }

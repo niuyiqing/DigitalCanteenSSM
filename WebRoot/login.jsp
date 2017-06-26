@@ -37,8 +37,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <input type="text" placeholder="用户名" name="userName">
                   <input type="password" placeholder="密码" name="password">
                   <button type="submit" id="login-button">登录</button>
-    	          </form>
-                <a href="#">注册账户</a>
+                  <br/><br/>
+                  <a href="${pageContext.request.contextPath}/userRegisterPage.action">注册</a>
+    	          </form>             
               </div>
               <ul class="bg-bubbles">
                 <li></li>
