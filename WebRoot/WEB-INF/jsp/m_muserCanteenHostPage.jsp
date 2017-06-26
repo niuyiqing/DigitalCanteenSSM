@@ -33,6 +33,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" type="text/css" media="all" href="css/daterangepicker-1.3.7.css" />
 	    <script src="js/moment.js"></script>
 	    <script src="js/daterangepicker-1.3.7.js"></script>
+	    <!--自定义-->      
+       <link rel="stylesheet" href="css/my-custom.css"> 
+        <!--分页控件--> 
+        <link rel="stylesheet" href="css/qunit-1.11.0.css"> 
 	    
     	<link rel="stylesheet" href="css/m_bootstrap.min.css"/>
     	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
@@ -90,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                	<div class="newcustom" style="margin-top:69px">
 		                    <form role="form" name="muserCanteenForm" action="canteenRecordExportToExcel.action" method="post" >
 		                          <div class="row">
-		                    	       <div  class="form-group col-xs-7" style="position:relative;top:2px;">
+		                    	       <div  class="form-group col-xs-8" style=" position:relative; top:2px;">
 		                    	       					
 									         <div class="input-group" style="width: 240px; margin-left: 12px;">
 									              <input type="text" class="form-control date-picker" id="dateTimeRange" style="border:1px solid #ccc;border-radius:5px;-webkit-appearance: none;"/>
@@ -101,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									    		  <input type="hidden" name="endTime" id="endTime"  />								    
 											</div>													
 									  </div>
-								      <div  class="col-xs-4" style="position:relative;left:30px;">
+								      <div  class="col-xs-2" style=" position:relative; left:35px;">
 									        <button onclick="exportExcelInCanteen()" class="btn btn-primary">导出</button>
 								      </div>														
 				                      <!-- 食堂管理员 -->
@@ -115,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                              <c:forEach items="${pagehelper.list }" var="item" >
 											  	<div  id="view" class="item clearfix">										    									        									        
 												    <div class="txt-item">
-												      <table onclick="location.href='modifyRecordDetailDish.action?recordID=${item.recordID}';">
+												      <table onclick="location.href='findRecordDetailDish.action?recordID=${item.recordID}';">
 												           <tr><td style="width:80%"><p class="name">${item.recordCampusName } ${item.recordCantName }</p></td><td style="width:80%"><p class="name">${item.recordMUserName }</p></td></tr>
 												           <tr><td><p class="txt"><fmt:formatDate value="${item.recordDate}" pattern="yyyy-MM-dd" /></p></td><td><p class="txt"> ${item.recordSubmitState }</p></td></tr>
 												      </table>										      
@@ -125,7 +129,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											</c:forEach>										  	
 									    </div>
 						         </div>  
-						    </div> 					  
+						    </div>
+						    <div>
+                                <div class="message">
+                                    <p class="text-center">
+                                        共<b>${pagehelper.total}</b>条记录，当前显示第&nbsp;<b>${pagehelper.pageNum}/${pagehelper.pages}</b>&nbsp;页
+                                    </p>
+                                </div>
+                                <div style="text-align:center;">
+                                    <ul class="pagination">
+                                        <c:if test="${!pagehelper.isFirstPage}">                                        
+                                            <li>
+                                                <a data-ajax="false" href="muserCanteenHostPage.action?pageNum=${pagehelper.prePage}&pageSize=${pagehelper.pageSize}">上一页</a>
+                                            </li>
+                                        </c:if>
+    
+                                        <c:forEach items="${pagehelper.navigatepageNums}" var="navigatepageNum">    
+    
+                                            <c:if test="${navigatepageNum==pagehelper.pageNum}">
+                                                <li class="active">
+                                                    <a data-ajax="false" href="muserCanteenHostPage.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
+                                                </li>
+                                            </c:if>
+    
+                                            <c:if test="${navigatepageNum!=pagehelper.pageNum}">
+                                                <li>
+                                                    <a data-ajax="false" href="muserCanteenHostPage.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
+                                                </li>
+                                            </c:if>
+    
+                                        </c:forEach>
+    
+                                        <c:if test="${!pagehelper.isLastPage}">
+                                            <li>
+                                                <a data-ajax="false" href="muserCanteenHostPage.action?pageNum=${pagehelper.nextPage}&pageSize=${pagehelper.pageSize}">下一页</a>
+                                            </li>
+                                        </c:if>
+                                    </ul>
+                                </div>
+                            </div>  					  
 				        </form>
 				    </div> 			             
 	             </div>	                 	

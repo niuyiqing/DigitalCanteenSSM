@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <head>
         <base href="<%=basePath%>">
         <title>菜品录入详情</title>
-        <meta http-equiv="pragma" content="no-cache" />
+	    <meta http-equiv="pragma" content="no-cache" />
         <meta http-equiv="cache-control" content="no-cache" />
         <meta http-equiv="expires" content="0">
         <meta charset="utf-8">   
@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div class="codrops-header" style="background:#29C192;">
                             <div class="back-container">
                                 <button class="btn btn-link btn-lg" >
-                                    <a style="color:#fff" class="icon icon-arrow-left" data-ajax="false" href="${pageContext.request.contextPath }/muserCanteenHostPage.action"></a>
+                                    <a style="color:#fff" class="icon icon-arrow-left" data-ajax="false" href="muserBackground.action?recordCantID=${record.recordCantID}"></a>
                                 </button>    
                             </div>
                             <p style="width:100%;height:100%;font-size:27px">菜品录入详情</p>  

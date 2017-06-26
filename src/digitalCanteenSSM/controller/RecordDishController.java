@@ -123,6 +123,7 @@ public class RecordDishController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		MUserItems muserItems = (MUserItems)session.getAttribute("muserItems");
+		List<DishItems> dishItemsList = dishManagementService.findDishInCanteen(muserItems.getCantID());
 		modelAndView.addObject("muserItems", muserItems);
 		modelAndView.addObject("recordID", recordID);
 		modelAndView.addObject("dishDetailList", detailService.findDetailDish(recordID));

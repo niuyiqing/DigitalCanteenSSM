@@ -56,10 +56,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <script src="././My97DatePicker/WdatePicker.js"></script>
     </head>
     <body>
-    <!-- <div class="container"> -->
-        <!-- <div class="mp-pusher" id="mp-pusher"> -->             
-            <!-- <div class="scroller" style="background:#EEEEEE"> -->
-                <!-- <div class="scroller-inner"> -->
+    <div class="container"> 
+         <div class="mp-pusher" id="mp-pusher">             
+             <div class="scroller" style="background:#EEEEEE"> 
+                <div class="scroller-inner"> 
                     <div class="codrops-header" style="background:#29C192;">
                         <div class="back-container">
                             <button class="btn btn-link btn-lg" >
@@ -72,8 +72,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class=" newcustom" style="margin-top:77px" >
                         <form  name = "dishUpdateForm" class="form-horizontal" role="form" action="modifyDishSave.action" method="post" enctype="multipart/form-data">
                             <input name="dishID" type="hidden" value="${dishItems.dishID }">
+                            <input name="dishPhoto" type="hidden" value="${dishItems.dishPhoto}">
                             <div class="row form-group">
-                                <label class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left;padding-left:8%; line-height:34px;">档口</label>
+                                <label class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left;padding-left:4%; line-height:34px;">档口</label>
                                     <div class="col-xs-7">
                                         <select name="dishWndID" class="form-control select select-primary mrs mbm">
                                             <c:forEach items="${windowItemsList }" var="item" >
@@ -91,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </div>
                             <br>
                             <div class="row form-group">
-                                <label  class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left;padding-left:8%; line-height:34px;">菜品类型</label>
+                                <label  class="col-xs-4 control-label" style="color:black;font-size:14px;height:34px; text-align:left;padding-left:4%; line-height:34px;">菜品类型</label>
                                     <div class="col-xs-7">
                                     <select name="dishTypeID" class="form-control select select-primary mrs mbm">
                                         <c:forEach items="${dishTypeList }" var="item" >
@@ -109,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </div>
                             <br>
                             <div class="row form-group"> 
-                                <label class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left; padding-left:8%;line-height:34px;">菜品</label>
+                                <label class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left; padding-left:4%;line-height:34px;">菜品名称</label>
                                     <div class="col-xs-7">
                                     <select name="dishName" class="form-control select select-primary mrs mbm">
                                         <c:forEach items="${dishPresetList }" var="item" >
@@ -125,29 +126,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </select>
                                     </div>
                             </div>
-                            <br>
-                            <div class="row form-group">
-                                <label class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left;padding-left:8%; line-height:34px;">菜品图片</label>
-                                <div class="col-xs-7">
-                                    <c:if test="${dishItems.dishPhoto != null }">
-                                        <img src="/upload/pic/${dishItems.dishPhoto }" height="80" width="80"/>
-                                        <br>
-                                    </c:if>
-                                    <a href="javascript:;" class="file" style="font-size:15px;">选择文件
-                                    <input type="file" name="dishPhotoFile"/>
-                                    </a>
-                                </div>
-                            </div>  
+                            
                             <br>
                             <div class="row form-group"> 
-                                <label class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left; padding-left:8%;line-height:34px;">菜品价格</label>
+                                <label class="col-xs-4 control-label" style="color:black;font-size:14px;height:34px; text-align:left; padding-left:4%;line-height:34px;">菜品价格</label>
                                 <div class="col-xs-7">
                                     <input type="text" class="form-control" placeholder="请在此输入菜品价格" name="dishPrice" value="${dishItems.dishPrice }">
                                 </div>
                             </div>
                             <br>
                             <div class="row form-group">
-                                <label class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left; padding-left:8%;line-height:34px;">菜品日期</label>
+                                <label class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left; padding-left:4%;line-height:34px;">菜品日期</label>
                                 <div class="col-xs-7">
                                     <fmt:formatDate value="${dishItems.dishInDate}" pattern="yyyy-MM-dd" var="theFormattedDate"/> 
                                     <input type="text" name ="dishInDate" value="${theFormattedDate}" class="Wdate form-control"  onClick="WdatePicker()">
@@ -155,7 +144,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </div>                         
                             <br>
                             <div class="row form-group">
-                                <label  class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left;padding-left:8%; line-height:34px;">菜品推荐</label>
+                                <label  class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left;padding-left:4%; line-height:34px;">菜品推荐</label>
                                     <div class="col-xs-7">
                                     <select name="dishRecmd" class="form-control select select-primary mrs mbm">
                                         <c:choose>
@@ -173,7 +162,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </div>
                             <br>
                             <div class="row form-group">
-                                <label class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left; padding-left:8%;line-height:34px;">菜品留样</label>  
+                                <label class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left; padding-left:4%;line-height:34px;">菜品留样</label>  
                                 <div class="col-xs-7">
                                     <select name="dishKeep" class="form-control select select-primary mrs mbm">
                                         <c:choose>
@@ -190,67 +179,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </div>
                             </div>
                             <br>
-                            <div class="row form-group">  
-                                <label class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left; padding-left:8%;line-height:34px;">菜品质量</label>
-                                <div class="col-xs-7">
-                                    <select name="dishQuality" class="form-control select select-primary mrs mbm">
-                                        <c:choose>
-                                            <c:when test="${dishItems.dishQuality == '优' }">
-                                                <option value="优" selected="selected">优</option>
-                                                <option value="良">良</option>
-                                                <option value="中">中</option>
-                                                <option value="差">差</option>
-                                            </c:when>
-                                            <c:when test="${dishItems.dishQuality == '良' }">
-                                                <option value="优">优</option>
-                                                <option value="良" selected="selected">良</option>
-                                                <option value="中">中</option>
-                                                <option value="差">差</option>
-                                            </c:when>
-                                            <c:when test="${dishItems.dishQuality == '中' }">
-                                                <option value="优">优</option>
-                                                <option value="良">良</option>
-                                                <option value="中" selected="selected">中</option>
-                                                <option value="差">差</option>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <option value="优">优</option>
-                                                <option value="良">良</option>
-                                                <option value="中">中</option>
-                                                <option value="差" selected="selected">差</option>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </select>
-                                </div>    
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left; padding-left:8%;line-height:34px;">菜品录入状态</label>
-                                <div class="col-xs-7">
-                                    <input type="text" class="form-control" name="dishInState" value="${dishItems.dishInState }" readonly="readonly">
-                                </div>
-                            </div>
-                            <br>
+                          
                             <div class="row form-group">
-                                <label class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left; padding-left:8%;line-height:34px;">菜品销售状态</label>
+                                <label class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left; padding-left:4%;line-height:34px;">菜品销售状态</label>
                                 <div class="col-xs-7">
-                                    <select name="dishSale" class="form-control select select-primary mrs mbm">
-                                        <c:choose>
-                                            <c:when test="${dishItems.dishSale ==  '在售' }">
-                                                <option value="在售" selected="selected">在售</option>
-                                                <option value="未售">未售</option>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <option value="在售">在售</option>
-                                                <option value="未售" selected="selected">未售</option>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </select>
+                                    <input type="text" name="dishSale" class="form-control" value="${dishItems.dishSale}" readonly="readonly">
                                 </div>
                             </div>
                             <br>
                             <div class="row form-group">       
-                                <label class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left; padding-left:8%;line-height:34px;">菜品销售时间</label> 
+                                <label class="col-xs-4 control-label" style="color:black;font-size:15px;height:34px; text-align:left; padding-left:4%;line-height:34px;">菜品销售时间</label> 
                                 <div class="col-xs-7">
                                     <select name="dishDate" class="form-control select select-primary mrs mbm">
                                         <c:choose>
@@ -273,17 +211,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </select> 
                                 </div> 
                             </div>
-                            <br>
-                            
+                            <br>                           
                             <div align="center">
                                 <input type="submit" class="btn btn-primary" value="保存" onClick="return check(dishInsertForm)">
                             </div>
                         </form>
                     </div>
-                <!-- </div> -->
-            <!-- </div> -->
-        <!-- </div> -->
-    <!-- </div> -->
+                </div> 
+             </div> 
+         </div> 
+    </div> 
     <script src="js/classie.js"></script>
     <script src="js/mlpushmenu.js"></script>
     <script>
