@@ -35,6 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </head>
   
     <body>
+    	<%@ include file="publicjsp/userWindowInfo.jsp" %>
     	<div class="container-fluid">	
     		<div class="panel panel-default">
 

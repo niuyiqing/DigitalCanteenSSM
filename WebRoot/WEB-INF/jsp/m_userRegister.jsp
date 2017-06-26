@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		      </select>
                 </div>
             </div>
-    		<br>
+    		<br>                                
             <br>
             <div align="center">
     		  <input type="submit" value="注册" onclick="return checkForm(registerForm)" class="btn btn-block" style="width:80%;background:#72dbc8;color:#fff;font-size:18px">
