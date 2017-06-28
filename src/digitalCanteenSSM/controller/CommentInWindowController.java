@@ -51,20 +51,25 @@ public class CommentInWindowController {
 	
 	//后台管理员选择要查询评论的窗口
 	@RequestMapping("/commentSelectWindow")
-	public ModelAndView commentSelectWindow() throws Exception{
+	public ModelAndView commentSelectWindow(HttpSession session) throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		
 		modelAndView.addObject("campusList", campusPresetService.findAllCampuses());
 		modelAndView.addObject("canteenItemsList",canteenPresetService.findAllCanteens());
 		modelAndView.addObject("windowItemsList",windowPresetService.findAllWindows());
 		
-		modelAndView.setViewName("/WEB-INF/jsp/commentMUserInquire.jsp");
+		if(session.getAttribute("ua").equals("pc")){
+			modelAndView.setViewName("/WEB-INF/jsp/commentMUserInquire.jsp");
+		}else{
+			modelAndView.setViewName("/WEB-INF/jsp/m_commentMUserInquire.jsp");
+		}
+
 		return modelAndView;
 	}
 		
 	//后台管理员查询一个档口下的评论
 	@RequestMapping("/commentMUserInquire")
-	public ModelAndView commentMUserInquire(Integer wndID) throws Exception{
+	public ModelAndView commentMUserInquire(Integer wndID,HttpSession session) throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		
 		modelAndView.addObject("campusList", campusPresetService.findAllCampuses());
@@ -75,7 +80,12 @@ public class CommentInWindowController {
 		modelAndView.addObject("commentItemsList",commentItemsList);
 		modelAndView.addObject("windowItems",windowPresetService.findWindowById(wndID));
 		
-		modelAndView.setViewName("/WEB-INF/jsp/commentMUserInquire.jsp");
+		if(session.getAttribute("ua").equals("pc")){
+			modelAndView.setViewName("/WEB-INF/jsp/commentMUserInquire.jsp");
+		}else{
+			modelAndView.setViewName("/WEB-INF/jsp/m_commentMUserInquire.jsp");
+		}
+
 		return modelAndView;
 	}
 	
@@ -119,7 +129,7 @@ public class CommentInWindowController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
-		cmtGood=1;
+		
 		Comment comment = commentService.findCommentByID(cmtID);
 		int cmtGoodNum = comment.getCmtGoodNum();
 		cmtGoodNum += cmtGood;
@@ -132,7 +142,7 @@ public class CommentInWindowController {
 	
 	//删除评论
 	@RequestMapping("/deleteCommentById")
-	public ModelAndView deleteCommentById(Integer cmtID,Integer wndID) throws Exception{
+	public ModelAndView deleteCommentById(Integer cmtID,Integer wndID,HttpSession session) throws Exception{
 		
 		ModelAndView modelAndView = new ModelAndView();
 		commentService.deleteCommentById(cmtID);
@@ -143,8 +153,12 @@ public class CommentInWindowController {
 		modelAndView.addObject("commentItemsList",commentService.findAllCommentsInWindow(wndID));
 		modelAndView.addObject("windowItems",windowPresetService.findWindowById(wndID));
 		
-		modelAndView.setViewName("/WEB-INF/jsp/commentMUserInquire.jsp");
-		
+		if(session.getAttribute("ua").equals("pc")){
+			modelAndView.setViewName("/WEB-INF/jsp/commentMUserInquire.jsp");
+		}else{
+			modelAndView.setViewName("/WEB-INF/jsp/m_commentMUserInquire.jsp");
+		}
+
 		return modelAndView;
 	}
 }

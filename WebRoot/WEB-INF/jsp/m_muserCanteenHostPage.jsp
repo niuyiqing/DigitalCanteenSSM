@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <script src="js/moment.js"></script>
 	    <script src="js/daterangepicker-1.3.7.js"></script>
 	    <!--自定义-->      
-       <link rel="stylesheet" href="css/my-custom.css"> 
+        <link rel="stylesheet" href="css/my-custom.css"> 
         <!--分页控件--> 
         <link rel="stylesheet" href="css/qunit-1.11.0.css"> 
 	    
@@ -114,9 +114,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                      <input type="hidden" name = "muserID" value="${muserItems.cantID }" >
 			                    </div>		                
 			                    <div class="row" style="padding:0 0px;"> 
-			                         <div class="form-group">
-			                              <div class="item-wrap">
-				                              <c:forEach items="${pagehelper.list }" var="item" >
+			                        <div class="form-group">
+			                            <div class="item-wrap">
+				                            <c:forEach items="${pagehelper.list }" var="item" >
 											  	<div  id="view" class="item clearfix">										    									        									        
 												    <div class="txt-item">
 												      <table onclick="location.href='findRecordDetailDish.action?recordID=${item.recordID}';">
@@ -125,11 +125,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												      </table>										      
 												    </div>	 																    									        								  	
 											  	<a href="deleteRecord.action?recordID=${item.recordID}" data-role="button" data-ajax="false" class="delect-btn" target="_top" style="padding-top:28px;">删除</a>										   
-											  </div>
+											    </div>
 											</c:forEach>										  	
 									    </div>
-						         </div>  
-						    </div>
+						         	</div>  
+						    	</div>
 						    <div>
                                 <div class="message">
                                     <p class="text-center">
