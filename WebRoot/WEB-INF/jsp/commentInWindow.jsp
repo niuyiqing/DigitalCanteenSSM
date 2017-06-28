@@ -66,6 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     								<th style='text-align: center;'>评论人头像</th>
     								<th style='text-align: center;'>评论分</th>
     								<th style='text-align: center;'>评论时间</th>
+    								<th style='text-align: center;'>点赞</th>
     								<th style='text-align: center;'>评论点赞数</th>
     								<th style='text-align: center;'>评论内容</th>
     							</tr>
@@ -73,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     						
     						<tbody>
     							<c:forEach items="${commentItemsList }" var="item" >					    			 
-									<tr>
+									<tr>									
 									 	<td style='vertical-align: middle;text-align: center;'>${item.userName }</td>
 									 	<td style='vertical-align: middle;text-align: center;'>
 										   	<c:if test="${item.userPhoto != null }">
@@ -82,7 +83,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				   						</td>
 									   	<td style='vertical-align: middle;text-align: center;'>${item.cmtScore }</td>
 									   	<td style='vertical-align: middle;text-align: center;'><fmt:formatDate value="${item.cmtDate}" pattern="yyyy-MM-dd" /></td> 
-									   	<td style='vertical-align: middle;text-align: center;'><a href="updateCmtGoodNum.action?cmtID=${item.cmtID}">${item.cmtGoodNum}</a></td>
+									   	<td style='vertical-align: middle;text-align: center;'><a href="updateCmtGoodNum.action?cmtID=${item.cmtID}&cmtGood=${cmtGood} " >点赞</a></td>
+									   	<td style='vertical-align: middle;text-align: center;'>${item.cmtGoodNum}</a></td>
 									   	<td style='vertical-align: middle;text-align: center;'>${item.cmtContent }</td>									 
 									</tr>
 								</c:forEach>
