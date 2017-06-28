@@ -169,25 +169,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <ul class="pagination">
                                         <c:if test="${!pagehelper.isFirstPage}">                    
                                             <li>
-                                              <a href="findAllDishPreset.action?pageNum=${pagehelper.prePage}&pageSize=${pagehelper.pageSize}">上一页</a>
+                                              <a href="findAllWindows.action?pageNum=${pagehelper.prePage}&pageSize=${pagehelper.pageSize}">上一页</a>
                                             </li>
                                         </c:if>
                                         <c:forEach items="${pagehelper.navigatepageNums}" var="navigatepageNum">  
                                             <c:if test="${navigatepageNum==pagehelper.pageNum}">
                                               <li class="active">
-                                                <a href="findAllDishPreset.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
+                                                <a href="findAllWindows.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
                                               </li>
                                             </c:if>
 
                                             <c:if test="${navigatepageNum!=pagehelper.pageNum}">
                                               <li>
-                                                <a href="findAllDishPreset.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
+                                                <a href="findAllWindows.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
                                               </li>
                                             </c:if>
                                         </c:forEach>
                                         <c:if test="${!pagehelper.isLastPage}">
                                             <li>
-                                              <a href="findAllDishPreset.action?pageNum=${pagehelper.lastPage}&pageSize=${pagehelper.pageSize}">下一页</a>
+                                              <a href="findAllWindows.action?pageNum=${pagehelper.nextPage}&pageSize=${pagehelper.pageSize}">下一页</a>
                                             </li>
                                         </c:if>
                                     </ul>
