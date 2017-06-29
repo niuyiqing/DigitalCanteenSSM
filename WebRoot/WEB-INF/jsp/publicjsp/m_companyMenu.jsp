@@ -5,10 +5,10 @@
 				<h2  style="font-size:18px; background:#29C192">饮食公司管理系统</h2>
 				<ul>
 				    <li >
-						<a class="icon icon-shouye_shouye" data-ajax="false" href="${pageContext.request.contextPath }/companyHomepage.action" style="font-size:17px">首页</a>
+						<a class="icon icon-shouyeshouye" data-ajax="false" href="${pageContext.request.contextPath }/companyHomepage.action" style="font-size:17px">首页</a>
 					</li>
 					<li >
-						<a class="icon icon-7" data-ajax="false" href="${pageContext.request.contextPath }/takeOffShelfPage.action" style="font-size:17px">菜品下架</a>
+						<a class="icon icon-xiajia" data-ajax="false" href="${pageContext.request.contextPath }/takeOffShelfPage.action" style="font-size:17px">菜品下架</a>
 					</li>
 				</ul>
 			</div>

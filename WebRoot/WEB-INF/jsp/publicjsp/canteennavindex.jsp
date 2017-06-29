@@ -27,7 +27,7 @@
 			<h2  style="font-size:18px; background:#29C192">食堂管理系统</h2>
 			<ul>
 			    <li >
-					<a class="icon icon-shouye_shouye" data-ajax="false" href="${pageContext.request.contextPath }/muserCanteenHostPage.action" style="font-size:17px">首页</a>
+					<a class="icon icon-shouyeshouye" data-ajax="false" href="${pageContext.request.contextPath }/muserCanteenHostPage.action" style="font-size:17px">首页</a>
 				</li>
 				<li >
 					<a class="icon icon-luru" data-ajax="false" href="javascript:void(0)" onclick="dishImport()" style="font-size:17px">菜品录入</a>
