@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="scroller-inner">
                         <div class="codrops-header" style="background:rgba(0,0,0,0);" >
                             <div class="back-container">
-                                <button class="btn btn-link btn-lg" ><a style="color:#fff" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a></button>
+                                <button class="btn btn-link btn-lg" ><a style="color:#29C192" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a></button>
                             </div> 
                         </div>
     	                <div class="container-fluid" style="padding:0 0px;">

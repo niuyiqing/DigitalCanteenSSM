@@ -20,8 +20,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="format-detection" content="telephone=no">
         <link rel="stylesheet" href="css/m_bootstrap.min.css"/>
-        <link rel="stylesheet" type="text/css" href="css/component.css" />
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/icons.css" />
+        <link rel="stylesheet" type="text/css" href="css/component.css" />
     </head>
   
     <body>
@@ -66,13 +68,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }
         </script>
     
-    <div class="codrops-header" style="background:#29C192;">
+    <div class="codrops-header" style="background:rgba(0,0,0,0);">
             <div class="back-container">
-              <button class="btn btn-link btn-lg" ><a style="color:#fff" class="icon icon-arrow-left" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a></button>
+              <button class="btn btn-link btn-lg" ><a style="color:#29C192" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a></button>
             </div>  
-            <p style="width:100%;height:100%;font-size:27px">我的信息</p>
+            <p style="padding-top:7px;width:100%;height:100%;font-size:22px;color:black">我的信息</p>
     </div>  
-    <div class="content clearfix" style="margin-top:20%">
+    <div class="content clearfix" style="margin-top:20%">s
         <form name="userModifyForm" method="post" enctype="multipart/form-data" action="userModify.action" role="form">
             <input name="userID" type="hidden" value="${userItems.userID }">
             <input name="userRoleID" type="hidden" value="${userItems.userRoleID }">
