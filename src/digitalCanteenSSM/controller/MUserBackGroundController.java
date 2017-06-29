@@ -464,7 +464,11 @@ public class MUserBackgroundController {
 		PageInfo<Log> pagehelper = new PageInfo<Log>(logList);
 		
 		modelAndView.addObject("pagehelper", pagehelper);
-		modelAndView.setViewName("/WEB-INF/jsp/muserLogInfo.jsp");
+		if(session.getAttribute("ua").equals("pc")){
+			modelAndView.setViewName("WEB-INF/jsp/muserLogInfo.jsp");
+		}else{
+			modelAndView.setViewName("WEB-INF/jsp/m_muserLogInfo.jsp");
+		}
 		return modelAndView;
 	}
 }
