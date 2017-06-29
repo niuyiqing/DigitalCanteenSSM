@@ -163,8 +163,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				<form role="form" name="commentForm" enctype="multipart/form-data">
 						<input name="wndID" type="hidden" value="${windowItems.wndID }">
 						<div class="row" style="font-size:18px;margin-top:8px;margin-bottom:10px;align:center">
-						   		${windowItems.cantName}
-						   		${windowItems.wndName}
+                                &nbsp &nbsp &nbsp
+						   		${windowItems.cantName}&nbsp
+						   		${windowItems.wndName}&nbsp
 						   		${windowItems.wndScore}分
 						</div>
 						<br>
@@ -177,21 +178,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <div class="txt-item" style=" margin-right:0px; margin-left:5px;padding-top:5px;padding-bottom: 5px;">
                                             <table width=85%>					    			 
 									            <tr>
-									 	            <td style='vertical-align: middle;text-align: center;font-size:1.5em' >${item.userName }</td>
+                                                    <td style='vertical-align: middle;text-align: center;' rowspan=3>
+                                                        <c:if test="${item.userPhoto != null }">
+                                                            <img src="/upload/pic/${item.userPhoto }" class="center-block" height="80" width="80" style="border-radius:50%"/>
+                                                        </c:if>
+                                                    </td>
+									 	            <td style='vertical-align: middle;text-align: left;font-size:1.5em' >${item.userName }</td>
 									   	            <td style='vertical-align: middle;text-align: left;'>${item.cmtScore }分</td>
 									   	            <td style='vertical-align: middle;text-align: center;'>${item.cmtGoodNum}次赞</td>
                                                     <td style='vertical-align: middle;text-align: center;'><fmt:formatDate value="${item.cmtDate}" pattern="yyyy-MM-dd" /></td> 
 									            </tr>
                                                 <tr>
-                                                    <td style='vertical-align: middle;text-align: center;' rowspan=2>
-                                                        <c:if test="${item.userPhoto != null }">
-                                                            <img src="/upload/pic/${item.userPhoto }" class="center-block" height="80" width="80"/>
-                                                        </c:if>
-                                                    </td>
-                                                    <td style='vertical-align: middle;text-align: left;' colspan=3>${item.cmtContent }</td>
+                                                    <td style='vertical-align: middle;text-align: left;' colspan=4>${item.cmtContent }</td>
                                                 </tr>
                                                 <tr>
-                                                    <td style='vertical-align: middle;text-align: left;font-size:1.3em' colspan=3><a href="deleteCommentById.action?cmtID=${item.cmtID}&wndID=${item.cmtWndID}" style="color:#e23f47">删除</a></td>
+                                                    <td style='vertical-align: middle;text-align: left;font-size:1.3em' colspan=4><a href="deleteCommentById.action?cmtID=${item.cmtID}&wndID=${item.cmtWndID}" style="color:#e23f47">删除</a></td>
                                                 </tr>
                                             </table>
                                         </div>
