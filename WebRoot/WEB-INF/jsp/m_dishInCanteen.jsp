@@ -53,12 +53,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	        <div class="scroller" style="background:#EEEEEE">
                     <div class="scroller-inner">
            		        <div class="codrops-header" style="background:#29C192">
-	        	                <div id="trigger" class="burger-container">
-    							    <span class="burger-bun-top"></span>
-    							    <span class="burger-filling"></span>
-    							    <span class="burger-bun-bot"></span>
-						        </div>					
-						        <p style="width:100%;height:100%;vertical-align:middle;font-size:27px">食堂菜品</p>
+        	                <div id="trigger" class="burger-container">
+							    <span class="burger-bun-top"></span>
+							    <span class="burger-filling"></span>
+							    <span class="burger-bun-bot"></span>
+					        </div>					
+						    <p style="width:100%;height:100%;vertical-align:middle;font-size:27px">食堂菜品</p>
 				        </div> 								
             	        <div class="container-fluid" style="color:#000;padding:0 0;">
                             <div class="newcustom" style="margin-top:69px;">
@@ -76,83 +76,83 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <a data-ajax="false" href="addDish.action" class="btn btn-primary">菜品上架</a>
                     <br><br>
                                 <form role="form" name="dishForm" enctype="multipart/form-data">
-            					   <input name="dishID" type="hidden" value="${dishItems.dishID }">		                
+            					    <input name="dishID" type="hidden" value="${dishItems.dishID }">		                
             	                    <div class="row" style="padding:0 0px;"> 
         	                            <div class="form-group">
         	                                <div class="item-wrap">
         	                                    <c:forEach items="${pagehelper.list }" var="item">
         	                                        <div class="item clearfix">   				                	    		
-            				                	    		    <div class="txt-item" style=" margin-right:0px; margin-left:5px;padding-top:5px">
-            				                	    		        <table  width=100% onclick="location.href='modifyDish.action?dishID=${item.dishID}&dishWndID=${item.wndID}&wndCantID=${item.cantID}';">							               	    		   
-            				                	    			        <tr>					 				                	    				
-            				                	    			            <td style='vertical-align: left;text-align: center;min-width: 100px;' rowspan=3>
-                    				                	    				   	<c:if test="${item.dishPhoto != null }">
-                    				                	       						<img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="100"/>
-                    				                	       					</c:if>
-            				                   	    				        </td>						               	    			 	
-            				                	    			   	        <td style='vertical-align: middle;text-align: center;font-size:1.2em; width: 100%;' >${item.dishName }</td>
-            				                	    			   	        <td style='vertical-align: left;min-width: 100px;'>${item.dishTypeName }</td>						                	   	
-            				                	    			        </tr>
-            				                	    			        <tr>							               	    		   
-            				                	    			   	        <td style='vertical-align: middle;text-align: center;font-size:0.8em; width: 100%;'>[${item.wndName }]</td>
-            				                	    			   	        <td style='vertical-align: left;min-width: 100px;'>${item.dishDate } ${item.dishSale }</td> 
-            				                	    			        </tr>
-            				                	    			        <tr>						  
-            				                	    			   	        <td style='vertical-align: middle;text-align: center;color:#29C192;font-size:1.5em; width: 100%;'>￥${item.dishPrice }</td>
-            				                	    			   	        <td style='vertical-align: middle;min-width: 100px;'><fmt:formatDate value="${item.dishInDate}" pattern="yyyy-MM-dd" /></td>
-            				                	    			   	         
-            				                	    			        </tr>
-            				                	    			    </table>
-            				                	    		    </div>
-            				                	    		    <a href="deleteDishById.action?dishID=${item.dishID}" data-role="button" data-ajax="false" class="delect-btn" target="_top">删除</a>
+    				                	    		    <div class="txt-item" style=" margin-right:0px; margin-left:5px;padding-top:5px">
+    				                	    		        <table  width=100% onclick="location.href='modifyDish.action?dishID=${item.dishID}&dishWndID=${item.wndID}&wndCantID=${item.cantID}';">							               	    		   
+    				                	    			        <tr>					 				                	    				
+    				                	    			            <td style='vertical-align: left;text-align: center;min-width: 100px;' rowspan=3>
+            				                	    				   	<c:if test="${item.dishPhoto != null }">
+            				                	       						<img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="100"/>
+            				                	       					</c:if>
+    				                   	    				        </td>						               	    			 	
+    				                	    			   	        <td style='vertical-align: middle;text-align: center;font-size:1.2em; width: 100%;' >${item.dishName }</td>
+    				                	    			   	        <td style='vertical-align: left;min-width: 100px;'>${item.dishTypeName }</td>						                	   	
+    				                	    			        </tr>
+    				                	    			        <tr>							               	    		   
+    				                	    			   	        <td style='vertical-align: middle;text-align: center;font-size:0.8em; width: 100%;'>[${item.wndName }]</td>
+    				                	    			   	        <td style='vertical-align: left;min-width: 100px;'>${item.dishDate } ${item.dishSale }</td> 
+    				                	    			        </tr>
+    				                	    			        <tr>						  
+    				                	    			   	        <td style='vertical-align: middle;text-align: center;color:#29C192;font-size:1.5em; width: 100%;'>￥${item.dishPrice }</td>
+    				                	    			   	        <td style='vertical-align: middle;min-width: 100px;'><fmt:formatDate value="${item.dishInDate}" pattern="yyyy-MM-dd" /></td>
+    				                	    			   	         
+    				                	    			        </tr>
+    				                	    			    </table>
+    				                	    		    </div>
+    				                	    		    <a href="deleteDishById.action?dishID=${item.dishID}" data-role="button" data-ajax="false" class="delect-btn" target="_top">删除</a>
             				                	    		
         				                	        </div>
         				                	    </c:forEach>       				                                         					 	
         							        </div>
         				                </div>  
         				            </div> 
+                                    
                                     <div>
+                                        <div class="message">
+                                            <p class="text-center">
+                                                <br>
+                                                <br>
+                                                <br>
+                                                共<b>${pagehelper.total}</b>条记录，当前显示第&nbsp;<b>${pagehelper.pageNum}/${pagehelper.pages}</b>&nbsp;页
+                                            </p>
+                                        </div>
+                                        <div style="text-align:center;">
+                                            <ul class="pagination">
+                                                <c:if test="${!pagehelper.isFirstPage}">                                        
+                                                    <li>
+                                                        <a data-ajax="false" href="findDishInCanteen.action?pageNum=${pagehelper.prePage}&pageSize=${pagehelper.pageSize}">上一页</a>
+                                                    </li>
+                                                </c:if>
 
-                            <div class="message">
-                                <p class="text-center">
-                                    <br>
-                                    <br>
-                                    <br>
-                                    共<b>${pagehelper.total}</b>条记录，当前显示第&nbsp;<b>${pagehelper.pageNum}/${pagehelper.pages}</b>&nbsp;页
-                                </p>
-                            </div>
-                            <div style="text-align:center;">
-                                <ul class="pagination">
-                                    <c:if test="${!pagehelper.isFirstPage}">                                        
-                                        <li>
-                                            <a data-ajax="false" href="findDishInCanteen.action?pageNum=${pagehelper.prePage}&pageSize=${pagehelper.pageSize}">上一页</a>
-                                        </li>
-                                    </c:if>
+                                                <c:forEach items="${pagehelper.navigatepageNums}" var="navigatepageNum">    
 
-                                    <c:forEach items="${pagehelper.navigatepageNums}" var="navigatepageNum">    
+                                                    <c:if test="${navigatepageNum==pagehelper.pageNum}">
+                                                        <li class="active">
+                                                            <a data-ajax="false" href="findDishInCanteen.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
+                                                        </li>
+                                                    </c:if>
 
-                                        <c:if test="${navigatepageNum==pagehelper.pageNum}">
-                                            <li class="active">
-                                                <a data-ajax="false" href="findDishInCanteen.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
-                                            </li>
-                                        </c:if>
+                                                    <c:if test="${navigatepageNum!=pagehelper.pageNum}">
+                                                        <li>
+                                                            <a data-ajax="false" href="findDishInCanteen.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
+                                                        </li>
+                                                    </c:if>
 
-                                        <c:if test="${navigatepageNum!=pagehelper.pageNum}">
-                                            <li>
-                                                <a data-ajax="false" href="findDishInCanteen.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
-                                            </li>
-                                        </c:if>
+                                                </c:forEach>
 
-                                    </c:forEach>
-
-                                    <c:if test="${!pagehelper.isLastPage}">
-                                        <li>
-                                            <a data-ajax="false" href="findDishInCanteen.action?pageNum=${pagehelper.nextPage}&pageSize=${pagehelper.pageSize}">下一页</a>
-                                        </li>
-                                    </c:if>
-                                </ul>
-                            </div>
-                        </div>				  
+                                                <c:if test="${!pagehelper.isLastPage}">
+                                                    <li>
+                                                        <a data-ajax="false" href="findDishInCanteen.action?pageNum=${pagehelper.nextPage}&pageSize=${pagehelper.pageSize}">下一页</a>
+                                                    </li>
+                                                </c:if>
+                                            </ul>
+                                        </div>
+                                    </div>				  
         		                </form>
                             </div> 			             
             	        </div>	                 	
