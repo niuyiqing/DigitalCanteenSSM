@@ -82,30 +82,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	                                <div class="item-wrap">
         	                                    <c:forEach items="${pagehelper.list }" var="item">
         	                                        <div class="item clearfix">   				                	    		
-    				                	    		    <div class="txt-item" style=" margin-right:0px; margin-left:5px;padding-top:5px">
-    				                	    		        <table  width=100% onclick="location.href='modifyDish.action?dishID=${item.dishID}&dishWndID=${item.wndID}&wndCantID=${item.cantID}';">							               	    		   
-    				                	    			        <tr>					 				                	    				
-    				                	    			            <td style='vertical-align: left;text-align: center;min-width: 100px;' rowspan=3>
-            				                	    				   	<c:if test="${item.dishPhoto != null }">
-            				                	       						<img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="100"/>
-            				                	       					</c:if>
-    				                   	    				        </td>						               	    			 	
-    				                	    			   	        <td style='vertical-align: middle;text-align: center;font-size:1.2em; width: 100%;' >${item.dishName }</td>
-    				                	    			   	        <td style='vertical-align: left;min-width: 100px;'>${item.dishTypeName }</td>						                	   	
-    				                	    			        </tr>
-    				                	    			        <tr>							               	    		   
-    				                	    			   	        <td style='vertical-align: middle;text-align: center;font-size:0.8em; width: 100%;'>[${item.wndName }]</td>
-    				                	    			   	        <td style='vertical-align: left;min-width: 100px;'>${item.dishDate } ${item.dishSale }</td> 
-    				                	    			        </tr>
-    				                	    			        <tr>						  
-    				                	    			   	        <td style='vertical-align: middle;text-align: center;color:#29C192;font-size:1.5em; width: 100%;'>￥${item.dishPrice }</td>
-    				                	    			   	        <td style='vertical-align: middle;min-width: 100px;'><fmt:formatDate value="${item.dishInDate}" pattern="yyyy-MM-dd" /></td>
-    				                	    			   	         
-    				                	    			        </tr>
-    				                	    			    </table>
-    				                	    		    </div>
-    				                	    		    <a href="deleteDishById.action?dishID=${item.dishID}" data-role="button" data-ajax="false" class="delect-btn" target="_top">删除</a>
-            				                	    		
+            				                	    		    <div class="txt-item" style=" margin-right:0px; margin-left:5px;padding-top:5px">
+            				                	    		        <table  width=100% onclick="location.href='modifyDish.action?dishID=${item.dishID}&dishWndID=${item.wndID}&wndCantID=${item.cantID}';">							               	    		   
+            				                	    			        <tr>					 				                	    				
+            				                	    			            <td style='vertical-align: left;text-align: center;min-width: 100px;' rowspan=3>
+                    				                	    				   	<c:if test="${item.dishPhoto != null }">
+                    				                	       						<img src="/upload/pic/${item.dishPhoto }" class="center-block" height="100" width="100" />
+                    				                	       					</c:if>
+            				                   	    				        </td>						               	    			 	
+            				                	    			   	        <td style='vertical-align: middle;text-align: center;font-size:1.2em; width: 100%;' >${item.dishName }</td>
+            				                	    			   	        <td style='vertical-align: left;min-width: 100px;'>${item.dishTypeName }</td>						                	   	
+            				                	    			        </tr>
+            				                	    			        <tr>							               	    		   
+            				                	    			   	        <td style='vertical-align: middle;text-align: center;font-size:0.8em; width: 100%;'>[${item.wndName }]</td>
+            				                	    			   	        <td style='vertical-align: left;min-width: 100px;'>${item.dishDate } ${item.dishSale }</td> 
+            				                	    			        </tr>
+            				                	    			        <tr>						  
+            				                	    			   	        <td style='vertical-align: middle;text-align: center;color:#29C192;font-size:1.5em; width: 100%;'>￥${item.dishPrice }</td>
+            				                	    			   	        <td style='vertical-align: middle;min-width: 100px;'><fmt:formatDate value="${item.dishInDate}" pattern="yyyy-MM-dd" /></td>
+            				                	    			   	         
+            				                	    			        </tr>
+            				                	    			    </table>
+            				                	    		    </div>
+            				                	    		    <a href="deleteDishById.action?dishID=${item.dishID}" data-role="button" data-ajax="false" class="delect-btn" target="_top">删除</a>            				                	    		
         				                	        </div>
         				                	    </c:forEach>       				                                         					 	
         							        </div>

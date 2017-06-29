@@ -173,7 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 	</div>
                                     <div class="form-group">
                                     	<label class="col-xs-3 control-label style1">所属食堂</label>
-                                    	<div class="col-xs-8">    
+                                    	<div class="col-xs-9">    
    	                        	        	
 	                        		    	<select name="wndCantID" class="form-control"  onchange="findWindowsInCanteen()">  	     
 	                        		    		<c:forEach items="${canteenItemsInCampus }" var="item" >
@@ -200,10 +200,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						                	    <div class="txt-item">
 								                    <table width=100% height=84px onclick="location.href='userWindowContents.action?wndID=${item.wndID}';" >
 											            <tr>
-							                                <td style="width:50%;padding-left:12px">
+							                                <td style="width:60%;padding-left:12px;font-size:1.5em">
 							                                    <p class="name">${item.wndName }</p>
 							                                </td>
-							                                <td style="width:50%">
+							                                <td style="width:40%">
 							                                   <p class="name">${item.wndAddr}</p>
 							                                </td>
 							                            </tr>
