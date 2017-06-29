@@ -4,7 +4,7 @@
 			<h2  style="font-size:18px; background:#29C192">用户系统</h2>
 			<ul>
 			    <li >
-					<a class="icon icon-shouye_shouye" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action" style="font-size:17px">首页</a>
+					<a class="icon icon-shouyeshouye" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action" style="font-size:17px">首页</a>
 				</li>
 				<li >
 					<a class="icon icon-shezhi" data-ajax="false" href="#" style="font-size:17px">设置</a>
