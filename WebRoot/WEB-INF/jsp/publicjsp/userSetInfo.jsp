@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <nav id="mp-menu" class="mp-menu">
 		<div class="mp-level">
-			<h2  style="font-size:18px; background:#29C192">用户系统</h2>
+			<h2  style="color:white;font-size:20px; background:#29C192">用户系统</h2>
 			<ul>
 			    <li >
 					<a class="icon icon-shouyeshouye" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action" style="font-size:17px">首页</a>
