@@ -2,6 +2,8 @@ package digitalCanteenSSM.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,15 +26,18 @@ public class AdController {
 	private UploadFileService uploadFileService;
 	
 	@RequestMapping("/adManagement")
-	public ModelAndView adManagement() throws Exception{
+	public ModelAndView adManagement(HttpSession session) throws Exception{
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
 		List<Ad> adList = adService.findAllAd();
 		modelAndView.addObject("adList", adList);
-		
-		modelAndView.setViewName("/WEB-INF/jsp/adManagement.jsp");		
-		
+				
+		if(session.getAttribute("ua").equals("pc")){
+			modelAndView.setViewName("/WEB-INF/jsp/adManagement.jsp");
+		}else{
+			modelAndView.setViewName("/WEB-INF/jsp/m_adManagement.jsp");
+		}
 		return modelAndView;
 	}
 	

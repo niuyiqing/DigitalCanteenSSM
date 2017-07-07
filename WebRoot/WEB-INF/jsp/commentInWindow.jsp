@@ -29,6 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <link rel="stylesheet" type="text/css" href="css/icons.css" />
         <link rel="stylesheet" type="text/css" href="css/component.css" />
         <link rel="stylesheet" type="text/css" href="css/leftDelete.css"  />
+        <link rel="stylesheet" type="text/css" href="css/handlike.css">
     </head>
   
 <body>
@@ -36,40 +37,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="mp-pusher" id="mp-pusher">
                 <div class="scroller" style="background:#EEEEEE">
                     <div class="scroller-inner">
-                        <div class="codrops-header" style="background:rgba(0,0,0,0);" >
+                        <div class="codrops-header" style="background:#29C192;" >
                             <div class="back-container">
-                                <button class="btn btn-link btn-lg" ><a style="color:#29C192" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a></button>
-                            </div> 
+                                <button class="btn btn-link btn-lg" ><a style="color:#ffffff" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a></button>
+                            </div>
+                            <p style="padding-top:7px;width:100%;height:100%;font-size:22px;color:white">${windowItems.wndName }(${windowItems.campusName }&nbsp${windowItems.cantName })</p> 
                         </div>
+                        
+                        <div class="row" style="color:white;background:#29C192;padding:16px 0px 16px 0px;font-size: 1.5rem;margin-top:65px">
+                            <div class="col-xs-3" style="padding-right:0px;text-align:center;border-right:solid 1px white">
+                                <a style="color:white;" data-ajax="false" href="${pageContext.request.contextPath }/userWindowContents.action?wndID=${windowItems.wndID}">菜品</a>
+                            </div>
+                            <div class="col-xs-5" style="padding-right:0px;text-align:center;border-right:solid 1px white">
+                                <a style="color:white;" data-ajax="false" href="${pageContext.request.contextPath }/findAllCommentInWindow.action?wndID=${windowItems.wndID}">评价(${windowItems.wndScore }分)</a>
+                            </div>
+                            <div class="col-xs-4" style="padding-right:0px;text-align:center">
+                                <a style="color:white;" data-ajax="false" href="addCommentInWindow.action?wndID=${windowItems.wndID}">我要评价</a>
+                            </div>
+                        </div>
+                        <br>
+                    
                         <div class="container-fluid" style="padding:0 0px;">
-                            <div class="row" style="color:black;padding:16px 0px 16px 0px;font-size: 1.6rem;margin-top:12%">
-                                <div class="col-xs-2" style="padding-right:0px">
-                                    ${windowItems.campusName }
-                                </div>
-                                <div class="col-xs-3" style="padding-right:0px">
-                                    ${windowItems.cantName }
-                                </div>
-                                <div class="col-xs-3" style="padding-right:0px">
-                                    ${windowItems.wndName }
-                                </div>   
-                                <div class="col-xs-3" style="padding-right:0px">
-                                <label >评分：</label>${windowItems.wndScore }
-                                </div>
-                            </div>
-                            <div class="row" style="color:black;padding:16px 0px 16px 0px;font-size: 1.4rem;">
-                                <div class="col-xs-4" style="padding-right:0px;text-align:center">
-                                    <a data-ajax="false" href="${pageContext.request.contextPath }/userWindowContents.action?wndID=${windowItems.wndID}">菜品</a>
-                                </div>
-                                <div class="col-xs-4" style="padding-right:0px;text-align:center">
-                                    <a data-ajax="false" href="${pageContext.request.contextPath }/findAllCommentInWindow.action?wndID=${windowItems.wndID}">评价</a>
-                                </div>
-                                <div class="col-xs-4" style="padding-right:0px;text-align:center">
-                                    <a data-ajax="false" href="addCommentInWindow.action?wndID=${windowItems.wndID}">我要评价</a>
-                                </div>
-                            </div>
-                            <br>
-
-                            <div class="item-wrap" style="margin-top:10px">
+                            <div class="item-wrap" >
                                 <form role="form" name="commentForm" enctype="multipart/form-data">
                                 <input name="wndID" type="hidden" value="${windowItems.wndID }">
                         
@@ -95,7 +84,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                     <td style='vertical-align: middle;text-align: left;' colspan=4>${item.cmtContent }</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td style='vertical-align: middle;text-align: left;font-size:1.3em' colspan=4><a href="updateCmtGoodNum.action?cmtID=${item.cmtID}&cmtGood=${cmtGood} " >点赞</a></td>
+                                                                    <td id="praise" class="praise" colspan=4><!-- <a href="updateCmtGoodNum.action?cmtID=${item.cmtID}&cmtGood=${cmtGood} "> -->
+                                                                        <!-- <span id="praise" class="praise"> --><img src="images/zan.png" id="praise-img"/>
+                                                                        <!-- </span> --><!-- </a> -->
+                                                                    </td>
                                                                 </tr>
                                                             </table>
                                                         </div>
@@ -107,9 +99,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </form>
                             </div>
                         </div>
-                   </div>
+                    </div>
                 </div>
             </div>
         </div>
+    <script>
+        /* @author:Romey
+         * 动态点赞
+         * 此效果包含css3，部分浏览器不兼容（如：IE10以下的版本）
+        */
+        $(function(){
+            $("#praise").click(function(){
+                var praise_img = $("#praise-img");
+                var text_box = $("#add-num");
+                var praise_txt = $("#praise-txt");
+                var num=parseInt(praise_txt.text());
+                if(praise_img.attr("src") == ("images/yizan.png")){
+                    $(this).html("<img src='images/zan.png' id='praise-img' class='animation'/>");
+                    praise_txt.removeClass("hover");
+                    text_box.show().html("<em class='add-animation'>-1</em>");
+                    $(".add-animation").removeClass("hover");
+                    num -=1;
+                    praise_txt.text(num)
+                }else{
+                    $(this).html("<img src='images/yizan.png' id='praise-img' class='animation'/>");
+                    praise_txt.addClass("hover");
+                    text_box.show().html("<em class='add-animation'>+1</em>");
+                    $(".add-animation").addClass("hover");
+                    num +=1;
+                    praise_txt.text(num)
+                }
+            });
+        })
+    </script>   
     </body>
 </html>
