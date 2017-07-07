@@ -77,7 +77,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </div>
                                 <div>
                                     <div class="message">
-                                        <p class="text-center">
+                                        <p class="text-center" style="color:#272822">
+                                            <br>
+                                            <br>
+                                            <br>
                                             共<b>${pagehelper.total}</b>条记录，当前显示第&nbsp;<b>${pagehelper.pageNum}/${pagehelper.pages}</b>&nbsp;页
                                         </p>
                                     </div>
