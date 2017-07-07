@@ -29,12 +29,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/icons.css" />
         <link rel="stylesheet" type="text/css" href="css/component.css" />
+        <!-- 星星评论 -->
+        <link type="text/css" rel="stylesheet" href="demo/css/normalize.css">
+        <!--  <link type="text/css" rel="stylesheet" href="demo/css/common.css"> -->
+        <link type="text/css" rel="stylesheet" href="demo/css/pygments.css">
+        <link type="text/css" rel="stylesheet" href="demo/css/demo.css">
+        <script type="text/javascript" src="lib/jquery.raty.min.js"></script>
+         
     </head>
     
     <body>
   	    <script type="text/javascript">
   	    	/* 得到系统格式化的日期 */
 	    	function insertCommentInWindow(form) {
+	    	   /*  var txt=$("#function-hint").val();
+	    	    document.getElementById('test').value=txt; */
 	    	    document.commentInsertForm.action="insertCommentInWindow.action";
             	document.commentInsertForm.submit(); 
 	    	}
@@ -54,10 +63,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<input name="cmtUserID" type="hidden" value="${userItems.userID }">
 								<input name="cmtDate" type="hidden" value="${cmtDate }">
                                 <div class="row">                                       	                        	        
-                                    <div class="col-xs-3 control-label" style="color:black;padding-top:5%">打分</div>
-                                    <div class="col-xs-9">    
+                                    <div class="col-xs-3 control-label" style="color:black;padding-top:5%">评分</div>
+                                   <!--  <div class="col-xs-9">    
                             	        <input type="text" class="form-control" name="cmtScore">
-                                    </div>
+                                    </div> -->
+                                    <div class="demo col-xs-9">
+						                  <div id="function-demo" class="target-demo" style="margin-top: 16px"></div>
+						                <div id="function-hint" class="hint" style="margin-top: 16px"></div>
+						               <!--  <input type="text" class="form-control" name="cmtScore" id="test"> -->
+						                  
+						             </div>
                                 </div>    
                                 <div class="row">       
                                     <div class="col-xs-3 control-label" style="color:black;padding-top:5%">评论内容</div>
@@ -72,6 +87,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </div>
                             </form>                        	                        
                         </div>    
-                    </div>   
+                    </div> 
+ <!--  评分 -->                  
+  <script type="text/javascript">
+
+    $(function() {
+
+      $.fn.raty.defaults.path = 'lib/img';
+
+      $('#default-demo').raty();
+
+     $('#function-demo').raty({
+        path      : 'demo/img',
+        cancelOff : 'cancel-off-big.png',
+        cancelOn  : 'cancel-on-big.png',
+        size      : 36,
+        starHalf  : 'star-half-big.png',
+        starOff   : 'star-off-big.png',
+        starOn    : 'star-on-big.png',
+        target    : '#function-hint',
+        cancel    : true,
+        targetKeep: true,
+        precision : true,
+       
+      });
+
+    
+
+    });
+   
+
+  </script>  
     </body>
 </html>
