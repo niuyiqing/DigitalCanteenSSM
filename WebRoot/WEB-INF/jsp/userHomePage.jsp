@@ -117,24 +117,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                		<!-- First Slide -->
 	                		<div class="item active">
 	                		    <!-- Slide Background -->
-	                		    <img src="images/slide4.jpeg" alt="Bootstrap Touch Slider"  class="slide-image"/>
+	                		    <!-- <img src="images/slide4.jpeg" alt="Bootstrap Touch Slider"  class="slide-image"/> -->
+	                		    <img src="/upload/pic/${adList[0].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image"/>
 	                		</div>
 	                		<!-- End of Slide -->
 
 	                		<!-- Second Slide -->
 	                		<div class="item">
 	                		    <!-- Slide Background -->
-	                		    <img src="images/slide5.jpg" alt="Bootstrap Touch Slider"  class="slide-image"/>
+	                		    <img src="/upload/pic/${adList[1].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image"/>
 	                		</div>
 	                		<!-- End of Slide -->
 
 	                		<!-- Third Slide -->
 	                		<div class="item">
 	                		    <!-- Slide Background -->
-	                		    <img src="images/slide6.jpg" alt="Bootstrap Touch Slider"  class="slide-image"/>
+	                		    <img src="/upload/pic/${adList[2].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image"/>
 	                		</div>
 	                		<!-- End of Slide -->
 
+	                		<!-- Second Slide -->
+	                		<div class="item">
+	                		    <!-- Slide Background -->
+	                		    <img src="/upload/pic/${adList[3].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image"/>
+	                		</div>
+	                		<!-- End of Slide -->
 	            			</div><!-- End of Wrapper For Slides -->
 
 	            			<!-- Left Control -->

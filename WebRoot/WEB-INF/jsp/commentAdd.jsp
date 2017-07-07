@@ -40,11 +40,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	}
   	    </script>
   	    
-        <div class="codrops-header" style="background:rgba(0,0,0,0);">
+        <div class="codrops-header" style="background:#29C192;">
             <div class="back-container">
-              <button class="btn btn-link btn-lg" ><a style="color:#29C192" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userWindowContents.action?wndID=${windowItems.wndID}"></a></button>
+              <button class="btn btn-link btn-lg" ><a style="color:#ffffff" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userWindowContents.action?wndID=${windowItems.wndID}"></a></button>
             </div>  
-            <p style="padding-top:7px;width:100%;height:100%;font-size:22px;color:black">${windowItems.wndName }(${windowItems.cantName })</p>
+            <p style="padding-top:7px;width:100%;height:100%;font-size:22px;color:white">${windowItems.wndName }(${windowItems.cantName })</p>
         </div>
 
                     <div class=" newcustom" style="margin-top:77px" >
