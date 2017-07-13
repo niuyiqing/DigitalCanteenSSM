@@ -173,7 +173,55 @@ public class DishManagementController {
 		return modelAndView;
 	}
 	
-	//录入菜品的重复检测
+	
+	//后台录入审核(工作人员发出录入菜品请求时需要后台审核通过)
+	@RequestMapping ("/dishImportCheck")
+	public ModelAndView dishImportCheck(HttpSession session, HttpServletRequest request) throws Exception{
+		String pageNum = request.getParameter("pageNum");
+		String pageSize = request.getParameter("pageSize");
+		int num = 1;
+		//菜品信息带有图片，所以一页只放五个元素
+		int size = 5;
+		if (pageNum != null && !"".equals(pageNum)) {
+			num = Integer.parseInt(pageNum);
+		}
+		if (pageSize != null && !"".equals(pageSize)) {
+			size = Integer.parseInt(pageSize);
+		}
+		
+		//配置pagehelper的排序及分页
+		String sortString = "id.desc";
+		Order.formString(sortString);
+		PageHelper.startPage(num, size);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		MUserItems muserItems = (MUserItems)session.getAttribute("muserItems");
+		List<Record> recordList = recordService.findRecordCheck();
+		PageInfo<Record> pagehelper = new PageInfo<Record>(recordList);
+		
+		modelAndView.addObject("pagehelper", pagehelper);
+		modelAndView.addObject("muserItems",muserItems);	
+		if(session.getAttribute("ua").equals("pc")){
+			modelAndView.setViewName("/WEB-INF/jsp/dishImportCheck.jsp");
+		}else{
+			modelAndView.setViewName("/WEB-INF/jsp/m_dishImportCheck.jsp");
+		}	
+		return modelAndView;
+	}
+    //后台审核是否通过
+	@RequestMapping("/checkif")
+	public String checkif(HttpSession session, int recordCheck,int recordID, HttpServletRequest request) throws Exception{
+				
+		Record record = new Record();
+		record.setRecordID(recordID);
+		record.setRecordCheck(recordCheck);
+		recordService.updateRecordCheck(record);		
+		
+		return "forward:dishImportCheck.action";
+	}
+	
+	//录入菜品的重复检测  ——录入请求（工作人员要录入菜品时向后台发送请求）
 	@RequestMapping("/importRepeatCheck")
 	public @ResponseBody SubmitResultInfo importRepeatCheck(HttpSession session) throws Exception{
 		
@@ -197,6 +245,7 @@ public class DishManagementController {
 		record.setRecordDate(date);
 		record.setRecordSubmitState("已提交");
 		record.setReplenishFlag(0);
+		record.setRecordCheck(1); //表明 向后台申请录入菜品
 		
 		//到数据库中用食堂和日期信息查询今日是否已经生成过记录表，
 		//如果没有生成，则生成一个新表；否则跳转到修改页面
@@ -225,7 +274,7 @@ public class DishManagementController {
 			resultInfo.setMessage("今日已生成过记录表");
 			resultInfo.setType(ResultInfo.TYPE_RESULT_INFO);			
 		}
-		
+		//请等待后台审核
 		SubmitResultInfo submitResultInfo = new SubmitResultInfo(resultInfo);		
 		return submitResultInfo;
 	}

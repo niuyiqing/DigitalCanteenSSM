@@ -78,4 +78,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from ctmuser 
 		where ctmuser.MUserID=#{muserID}
 	</select>
+	
+	<!-- 查询所有分配了工作人员的食堂 -->
+	<select id="findMUser" resultType="MUserItems">
+		SELECT * 
+		FROM ctmuser,ctcant,ctcampus,ctrole
+		WHERE ctmuser.MUserCantID = ctcant.CantID and 
+			ctmuser.MUserCampusID = ctcampus.CampusID and
+			ctmuser.MUserRoleID = ctrole.RoleID
+		GROUP BY MUserCantID
+	</select>
 </mapper>

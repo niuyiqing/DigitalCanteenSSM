@@ -180,13 +180,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									            <tr>
                                                     <td style='vertical-align: middle;text-align: center;' rowspan=3>
                                                         <c:if test="${item.userPhoto != null }">
-                                                            <img src="/upload/pic/${item.userPhoto }" class="center-block" height="80" width="80" style="border-radius:50%"/>
+                                                            <img src="/upload/pic/${item.userPhoto }" class="center-block" height="60" width="60" style="border-radius:50%;margin-left:0;margin-right:-20px"/>
                                                         </c:if>
                                                     </td>
 									 	            <td style='vertical-align: middle;text-align: left;font-size:1.5em' >${item.userName }</td>
 									   	            <td style='vertical-align: middle;text-align: left;'>${item.cmtScore }分</td>
 									   	            <td style='vertical-align: middle;text-align: center;'>${item.cmtGoodNum}次赞</td>
-                                                    <td style='vertical-align: middle;text-align: center;'><fmt:formatDate value="${item.cmtDate}" pattern="yyyy-MM-dd" /></td> 
+                                                    <td style='vertical-align: middle;text-align: left;'><fmt:formatDate value="${item.cmtDate}" pattern="yyyy-MM-dd" /></td> 
 									            </tr>
                                                 <tr>
                                                     <td style='vertical-align: middle;text-align: left;' colspan=4>${item.cmtContent }</td>

@@ -125,19 +125,14 @@ public class CommentInWindowController {
 	
 	//点赞数
 	@RequestMapping("/updateCmtGoodNum")
-	public ModelAndView updateCmtGoodNum(Integer cmtID,Integer cmtGood) throws Exception{
-		
-		ModelAndView modelAndView = new ModelAndView();
-		
+	public String updateCmtGoodNum(Integer cmtID,Integer cmtGood) throws Exception{
+			
 		
 		Comment comment = commentService.findCommentByID(cmtID);
-		int cmtGoodNum = comment.getCmtGoodNum();
-		cmtGoodNum += cmtGood;
-		comment.setCmtGoodNum(cmtGoodNum);
+		comment.setCmtGoodNum(cmtGood);
 		commentService.updateCommentGoodNum(comment);
 		
-		modelAndView.setViewName("findAllCommentInWindow.action");
-		return modelAndView;
+		return null;
 	}
 	
 	//删除评论

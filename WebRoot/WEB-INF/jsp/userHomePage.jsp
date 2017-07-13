@@ -30,8 +30,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<link rel="stylesheet" type="text/css" href="css/demo.css" />
     	<link rel="stylesheet" type="text/css" href="css/icons.css" />
     	<link rel="stylesheet" type="text/css" href="css/component.css" /> 
-        <link rel="stylesheet" href="css/bootstrap-touch-slider.css"  media="all">
-
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-touch-slider.css">
+        <!-- 轮播图大小自适应 -->
+        <script type="text/javascript" src="js/jqthumb.js"></script>
+		<script>
+		function DrawImage(hotimg)
+		{
+		   $(hotimg).jqthumb({
+		   classname      : 'jqthumb',
+		            width          : '100%',
+		            height         : '300px',
+		            position       : { y: '50%', x: '50%'},
+		            zoom           : '1',
+		            method         : 'auto',
+		   });
+		}
+		</script>
         <script>
         	/* 在校区选择之后得到该校区之下的食堂选择框
         		objValue：校区的ID值
@@ -109,6 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            			    <li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
 	            			    <li data-target="#bootstrap-touch-slider" data-slide-to="1"></li>
 	            			    <li data-target="#bootstrap-touch-slider" data-slide-to="2"></li>
+	            			    <li data-target="#bootstrap-touch-slider" data-slide-to="3"></li>
 	            			</ol>
 
 	            			<!-- Wrapper For Slides -->
@@ -118,28 +133,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                		<div class="item active">
 	                		    <!-- Slide Background -->
 	                		    <!-- <img src="images/slide4.jpeg" alt="Bootstrap Touch Slider"  class="slide-image"/> -->
-	                		    <img src="/upload/pic/${adList[0].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image"/>
+	                		    <img src="/upload/pic/${adList[0].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image" onload="DrawImage(this)"/>
 	                		</div>
 	                		<!-- End of Slide -->
 
 	                		<!-- Second Slide -->
 	                		<div class="item">
 	                		    <!-- Slide Background -->
-	                		    <img src="/upload/pic/${adList[1].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image"/>
+	                		    <img src="/upload/pic/${adList[1].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image" onload="DrawImage(this)"/>
 	                		</div>
 	                		<!-- End of Slide -->
 
 	                		<!-- Third Slide -->
 	                		<div class="item">
 	                		    <!-- Slide Background -->
-	                		    <img src="/upload/pic/${adList[2].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image"/>
+	                		    <img src="/upload/pic/${adList[2].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image" onload="DrawImage(this)"/>
 	                		</div>
 	                		<!-- End of Slide -->
 
 	                		<!-- Second Slide -->
 	                		<div class="item">
 	                		    <!-- Slide Background -->
-	                		    <img src="/upload/pic/${adList[3].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image"/>
+	                		    <img src="/upload/pic/${adList[3].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image" onload="DrawImage(this)"/>
 	                		</div>
 	                		<!-- End of Slide -->
 	            			</div><!-- End of Wrapper For Slides -->
@@ -161,9 +176,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    				<div class="newcustom">						                		
                         	<div class="row">
                             	<form class="form-horizontal" role="form" name="windowInCanteenForm" method="post">
-                            		<div class="form-group">      
-                            			<label class="col-xs-3 control-label style1">所属校区</label>
-                                		<div class="col-xs-9">    
+                            		<div class="form-group" >      
+                            			<label class="col-xs-3 control-label style1" >所属校区</label>
+                                		<div class="col-xs-8">    
                                     		
 	                        	        		<select name="cantCampusID" class="form-control" onchange="getCanteen(this.value)">    <c:forEach items="${campusList }" var="item" >
 										   			<c:choose>
@@ -178,9 +193,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                        	        		</select>
                                 		</div>                                   
                                 	</div>
-                                    <div class="form-group">
+                                    <div class="form-group" >
                                     	<label class="col-xs-3 control-label style1">所属食堂</label>
-                                    	<div class="col-xs-9">    
+                                    	<div class="col-xs-8">    
    	                        	        	
 	                        		    	<select name="wndCantID" class="form-control"  onchange="findWindowsInCanteen()">  	     
 	                        		    		<c:forEach items="${canteenItemsInCampus }" var="item" >

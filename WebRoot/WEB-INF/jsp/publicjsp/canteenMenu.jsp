@@ -15,9 +15,9 @@
         //否则跳转到录入页面
         if(data.resultInfo.type == '3'){
             //window.location.href = "modifyRecordDetailDish.action?recordID=" + data.resultInfo.recordID;
-            window.location.href = "importDish.action?recordID=" + data.resultInfo.recordID;
+            //window.location.href = "importDish.action?recordID=" + data.resultInfo.recordID;
         }else if(data.resultInfo.type == '1'){
-            window.location.href = "importDish.action?recordID=" + data.resultInfo.recordID;
+           // window.location.href = "importDish.action?recordID=" + data.resultInfo.recordID;
         }
     }
 </script>

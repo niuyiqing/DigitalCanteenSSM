@@ -26,5 +26,10 @@ public interface RecordService {
 	public void deleteRecord(Record record) throws Exception;
 
 	public void insertRecord(Record record) throws Exception;
+	
+	//录入审核标志位
+	public List<Record> findRecordCheck() throws Exception;
+	
+	public void updateRecordCheck(Record record) throws Exception;
 
 }
