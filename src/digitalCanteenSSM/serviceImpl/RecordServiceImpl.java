@@ -76,6 +76,18 @@ public class RecordServiceImpl implements RecordService{
 		return recordMapper.findRecordInCanteen(recordCantID);
 	}
 
+	@Override
+	public List<Record> findRecordCheck() throws Exception {
+
+		return recordMapper.findRecordCheck();
+	}
+
+	@Override
+	public void updateRecordCheck(Record record) throws Exception {
+		
+		recordMapper.updateRecordCheck(record);
+	}
+
 
 
 	

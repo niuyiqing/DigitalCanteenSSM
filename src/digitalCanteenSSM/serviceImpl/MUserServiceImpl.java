@@ -60,6 +60,12 @@ public class MUserServiceImpl implements MUserService{
 		muserMapper.deleteMUserById(muserID);
 	}
 
+	@Override
+	public List<MUserItems> findMUser() throws Exception {
+		
+		return muserMapper.findMUser();
+	}
+
 	
 
 	

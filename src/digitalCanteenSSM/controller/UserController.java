@@ -35,6 +35,9 @@ import digitalCanteenSSM.util.CheckMobile;
 
 @Controller
 public class UserController {
+
+	private static final  String picturePath = "E:\\webproject\\upload\\picture\\";
+	
 	@Autowired
 	private CampusPresetService campusPresetService;
 	@Autowired
@@ -154,10 +157,13 @@ public class UserController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/userModify")
-	public ModelAndView userModifyForm(User user,HttpSession session, HttpServletRequest request) throws Exception{
+	@RequestMapping(value="/userModify",method= RequestMethod.POST)
+	public ModelAndView userModifyForm(User user,MultipartFile userPhotoFile,HttpSession session, HttpServletRequest request) throws Exception{
 		
 		ModelAndView modelAndView = new ModelAndView();
+		
+		String userPhoto=uploadFileService.uploadFile(userPhotoFile, picturePath);		
+		user.setUserPhoto(userPhoto);
 		
 		userService.updateUser(user);
 		UserItems userItems = userService.findUserByName(user.getUserName());
