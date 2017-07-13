@@ -15,7 +15,9 @@
 										<li >
 											<a  href="${pageContext.request.contextPath }/recordExportToExcel.action" data-ajax="false" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">菜品导出</a>
 										</li>
-
+										<li >
+											<a  href="${pageContext.request.contextPath }/dishImportCheck.action" data-ajax="false" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">录入审核</a>									
+										</li>
 										<li >
 											<a  href="adManagement.action" data-ajax="false" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">广告推送管理</a>									
 										</li>

@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <link rel="stylesheet" type="text/css" href="css/icons.css" />
         <link rel="stylesheet" type="text/css" href="css/component.css" />
         <link rel="stylesheet" type="text/css" href="css/leftDelete.css"  />
-        <link rel="stylesheet" type="text/css" href="css/handlike.css">
+        <link rel="stylesheet" type="text/css" href="css/taoxinzan.css"  />
     </head>
   
 <body>
@@ -72,22 +72,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                 <tr>
                                                                     <td style='vertical-align: middle;text-align: center;' rowspan=3>
                                                                         <c:if test="${item.userPhoto != null }">
-                                                                            <img src="/upload/pic/${item.userPhoto }" class="center-block" height="80" width="80" style="border-radius:50%"/>
+                                                                            <img src="/upload/pic/${item.userPhoto }" class="center-block" height="60" width="60" style="border-radius:50%;margin-left:0;margin-right:-20px"/>
                                                                         </c:if>
                                                                     </td>
                                                                     <td style='vertical-align: middle;text-align: left;font-size:1.5em' >${item.userName }</td>
-                                                                    <td style='vertical-align: middle;text-align: left;'>${item.cmtScore }分</td>
-                                                                    <td style='vertical-align: middle;text-align: center;'>${item.cmtGoodNum}次赞</td>
-                                                                    <td style='vertical-align: middle;text-align: center;'><fmt:formatDate value="${item.cmtDate}" pattern="yyyy-MM-dd" /></td> 
+                                                                    <td style='vertical-align: middle;text-align: left;'>${item.cmtScore }分</td>                                                                   
+                                                                    <td style='vertical-align: middle;text-align: left;'><fmt:formatDate value="${item.cmtDate}" pattern="yyyy-MM-dd" /></td> 
                                                                 </tr>
                                                                 <tr>
-                                                                    <td style='vertical-align: middle;text-align: left;' colspan=4>${item.cmtContent }</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td id="praise" class="praise" colspan=4><!-- <a href="updateCmtGoodNum.action?cmtID=${item.cmtID}&cmtGood=${cmtGood} "> -->
-                                                                        <!-- <span id="praise" class="praise"> --><img src="images/zan.png" id="praise-img"/>
-                                                                        <!-- </span> --><!-- </a> -->
+                                                                    <td class="zan" colspan=3><!-- <a href="updateCmtGoodNum.action?cmtID=${item.cmtID}&cmtGood=${cmtGood} "> -->
+                                                                        <span>${item.cmtGoodNum}</span>
+                                                                        <input id = "cmtID"  value = "${item.cmtID}"  name = "cmtID"  type = "hidden">
+                                                                        <!-- </a> -->
                                                                     </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style='vertical-align: middle;text-align: left;' colspan=3>${item.cmtContent }</td>
                                                                 </tr>
                                                             </table>
                                                         </div>
@@ -102,35 +102,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                 </div>
             </div>
-        </div>
-    <script>
-        /* @author:Romey
-         * 动态点赞
-         * 此效果包含css3，部分浏览器不兼容（如：IE10以下的版本）
-        */
-        $(function(){
-            $("#praise").click(function(){
-                var praise_img = $("#praise-img");
-                var text_box = $("#add-num");
-                var praise_txt = $("#praise-txt");
-                var num=parseInt(praise_txt.text());
-                if(praise_img.attr("src") == ("images/yizan.png")){
-                    $(this).html("<img src='images/zan.png' id='praise-img' class='animation'/>");
-                    praise_txt.removeClass("hover");
-                    text_box.show().html("<em class='add-animation'>-1</em>");
-                    $(".add-animation").removeClass("hover");
-                    num -=1;
-                    praise_txt.text(num)
-                }else{
-                    $(this).html("<img src='images/yizan.png' id='praise-img' class='animation'/>");
-                    praise_txt.addClass("hover");
-                    text_box.show().html("<em class='add-animation'>+1</em>");
-                    $(".add-animation").addClass("hover");
-                    num +=1;
-                    praise_txt.text(num)
-                }
-            });
-        })
-    </script>   
+        </div> 
     </body>
+    
+ <script>
+    
+    $(".zan").click(function () {
+        $(this).toggleClass("zan1");
+        var classname=$(this).attr("class");
+        var zan_num=parseInt($('>span',this).text());
+        var cmtID = document.getElementById("cmtID").value;
+        if(classname == "zan zan1"){
+            zan_num +=1;
+            $.get("updateCmtGoodNum.action?cmtID="+cmtID+"&cmtGood="+zan_num,function(data,status){
+                      //点赞成功！
+    	    });
+            $('>span',this).text(zan_num);
+            
+        }else if(classname== "zan"){
+            zan_num -=1;
+            $('>span',this).text(zan_num);
+        }
+    })
+    
+ </script>
 </html>

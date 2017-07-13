@@ -16,6 +16,7 @@ public class Record {
 	private int replenishFlag;		//用于标记Record属于录入还是补录
 	private Date replenishDate;		//补录日期
 	private String replenishState;	//审核状态
+	private int recordCheck;//录入标志位 默认为0
 	
 	public int getRecordID() {
 		return recordID;
@@ -89,6 +90,12 @@ public class Record {
 	}
 	public void setRecordDate(Date recordDate) {
 		this.recordDate = recordDate;
+	}
+	public int getRecordCheck() {
+		return recordCheck;
+	}
+	public void setRecordCheck(int recordCheck) {
+		this.recordCheck = recordCheck;
 	}
 	
 }

@@ -1,0 +1,31 @@
+﻿.zan,.zan1{width:20px;height:20px;position:relative;/* relative(相对定位) 对象不可层叠、不脱离文档流，参考自身静态位置通过 top,bottom,left,right 定位，并且可以通过z-index进行层次分级 */
+}
+/* after 伪元素在元素之前添加内容*/
+.zan:before,.zan1:before{
+content:" ";
+border-radius:15px 15px 0 0;/* 正方形的内切圆的半径等于正方形边长的一半 */
+width:10px; height:15px;/* 长方形 */
+background:#b2aeae;
+-moz-transform: rotate(-48deg);/* 逆时针旋转45°*/
+-ms-transform: rotate(-48deg);
+-o-transform: rotate(-48deg);
+-webkit-transform: rotate(-48deg);
+position:absolute;/* absolute(绝对定位) 脱离文档流，通过 top,bottom,left,right 定位 */
+left:23px;
+margin-top:5px }
+
+/* after 伪元素在元素之后添加内容*/
+.zan:after,.zan1:after{
+content:" ";
+width:10px; height:15px;
+background:#b2aeae;
+border-radius:15px 15px 0 0;
+-moz-transform: rotate(48deg);
+-ms-transform: rotate(48deg);
+-o-transform: rotate(48deg);
+-webkit-transform: rotate(48deg); 
+position:absolute;
+left:28px;top:0px;margin-top: 5px
+}
+.zan1:before,.zan1:after{background:#29C192;}
+span{font-size:20px;/*line-height:35px;*/}

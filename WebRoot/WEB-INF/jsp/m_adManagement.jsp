@@ -86,12 +86,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<input type="button" class="btn btn-primary btn-wide" value="添加推送" onclick="insertAd()">								
 							</div>
 						</form>							
-					</div>													
-					
+					</div>																		
 				</div>
 
 				<div class="panel panel-default">
-
 					<div class="panel panel-heading">
 						<h4 class="panel-title">已有推送</h4>
 					</div>
