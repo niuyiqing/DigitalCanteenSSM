@@ -31,6 +31,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <link rel="stylesheet" type="text/css" href="css/component.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery.raty.css"/>
         <script src="js/jquery.raty.js"></script>
+        <!-- iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 -->
+        <script>  
+        if(('standalone' in window.navigator)&&window.navigator.standalone){  
+                var noddy,remotes=false;  
+                document.addEventListener('click',function(event){  
+                        noddy=event.target;  
+                        while(noddy.nodeName!=='A'&&noddy.nodeName!=='HTML') noddy=noddy.parentNode;  
+                        if('href' in noddy&&noddy.href.indexOf('http')!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){  
+                                event.preventDefault();  
+                                document.location.href=noddy.href;  
+                        }  
+                },false);  
+        }  
+        </script>   
     </head>
     
     <body>
@@ -73,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </div>                         
                                 <div class="form-group">    
                                     <div align="center">                        	       
-                            	        <input type="submit" class="btn btn-primary btn-wide" value="发布" onclick="insertCommentInWindow()">
+                            	        <input type="submit" class="btn btn-block" style="margin-top:20px;margin-bottom:15px;width:80%;background:#72dbc8;color:#fff;font-size:18px" value="发布" onclick="insertCommentInWindow()">
                                     </div>
                                 </div>
                             </form>                        	                        

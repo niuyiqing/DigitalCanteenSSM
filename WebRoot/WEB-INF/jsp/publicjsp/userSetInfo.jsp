@@ -6,15 +6,15 @@
 			    <li >
 					<a class="icon icon-shouyeshouye" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action" style="font-size:17px">首页</a>
 				</li>
-				<li >
+				<!-- <li >
 					<a class="icon icon-shezhi" data-ajax="false" href="#" style="font-size:17px">设置</a>
-				</li>
-				<li >
+				</li> -->
+				<!-- <li >
 					<a class="icon icon-fankui" data-ajax="false" href="#" style="font-size:17px">反馈</a>
-				</li>
-				<li >
+				</li> -->
+				<!-- <li >
 					<a class="icon icon-guanyu" data-ajax="false" href="#" style="font-size:17px">关于</a>
-				</li>
+				</li> -->
 				<li >
 					<a class="icon icon-wode" data-ajax="false" href="${pageContext.request.contextPath }/userInfo.action?userID=${userItems.userID}" style="font-size:17px">我的</a>
 				</li>

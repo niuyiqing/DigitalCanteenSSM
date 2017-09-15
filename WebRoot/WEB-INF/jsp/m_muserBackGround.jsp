@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui" />
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta name="format-detection" content="telephone=no">
         
         <script src="js/modernizr.custom.js"></script>
@@ -29,7 +29,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
     	<link rel="stylesheet" type="text/css" href="css/demo.css" />
     	<link rel="stylesheet" type="text/css" href="css/icons.css" />
-    	<link rel="stylesheet" type="text/css" href="css/component.css" />   
+    	<link rel="stylesheet" type="text/css" href="css/component.css" />
+    	<script>  
+		if(('standalone' in window.navigator)&&window.navigator.standalone){  
+		        var noddy,remotes=false;  
+		        document.addEventListener('click',function(event){  
+		                noddy=event.target;  
+		                while(noddy.nodeName!=='A'&&noddy.nodeName!=='HTML') noddy=noddy.parentNode;  
+		                if('href' in noddy&&noddy.href.indexOf('http')!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){  
+		                        event.preventDefault();  
+		                        document.location.href=noddy.href;  
+		                }  
+		        },false);  
+		}  
+		</script>     
     </head>
   
     <body>

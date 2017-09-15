@@ -29,6 +29,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/icons.css" />
         <link rel="stylesheet" type="text/css" href="css/component.css" />
+        <!-- iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 -->
+        <script>  
+        if(('standalone' in window.navigator)&&window.navigator.standalone){  
+                var noddy,remotes=false;  
+                document.addEventListener('click',function(event){  
+                        noddy=event.target;  
+                        while(noddy.nodeName!=='A'&&noddy.nodeName!=='HTML') noddy=noddy.parentNode;  
+                        if('href' in noddy&&noddy.href.indexOf('http')!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){  
+                                event.preventDefault();  
+                                document.location.href=noddy.href;  
+                        }  
+                },false);  
+        }  
+        </script>
     </head> 
     <body>
         <script>

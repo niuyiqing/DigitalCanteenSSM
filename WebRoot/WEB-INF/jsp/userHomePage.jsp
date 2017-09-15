@@ -31,21 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<link rel="stylesheet" type="text/css" href="css/icons.css" />
     	<link rel="stylesheet" type="text/css" href="css/component.css" /> 
         <link rel="stylesheet" type="text/css" href="css/bootstrap-touch-slider.css">
-        <!-- 轮播图大小自适应 -->
-        <script type="text/javascript" src="js/jqthumb.js"></script>
-		<script>
-		function DrawImage(hotimg)
-		{
-		   $(hotimg).jqthumb({
-		   classname      : 'jqthumb',
-		            width          : '100%',
-		            height         : '300px',
-		            position       : { y: '50%', x: '50%'},
-		            zoom           : '1',
-		            method         : 'auto',
-		   });
-		}
-		</script>
+        
         <script>
         	/* 在校区选择之后得到该校区之下的食堂选择框
         		objValue：校区的ID值
@@ -89,7 +75,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		document.userQueryForm.action="userQueryAll.action";
 	    		document.userQueryForm.submit();
     		}
-  	    </script>   
+  	    </script>
+  	    <!-- iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 -->
+        <script>  
+        if(('standalone' in window.navigator)&&window.navigator.standalone){  
+                var noddy,remotes=false;  
+                document.addEventListener('click',function(event){  
+                        noddy=event.target;  
+                        while(noddy.nodeName!=='A'&&noddy.nodeName!=='HTML') noddy=noddy.parentNode;  
+                        if('href' in noddy&&noddy.href.indexOf('http')!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){  
+                                event.preventDefault();  
+                                document.location.href=noddy.href;  
+                        }  
+                },false);  
+        }  
+        </script>   
     </head>
     
 <body>
@@ -177,7 +177,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         	<div class="row">
                             	<form class="form-horizontal" role="form" name="windowInCanteenForm" method="post">
                             		<div class="form-group" >      
-                            			<label class="col-xs-3 control-label style1" >所属校区</label>
+                            			<label class="col-xs-3 control-label style1" >选择校区</label>
                                 		<div class="col-xs-8">    
                                     		
 	                        	        		<select name="cantCampusID" class="form-control" onchange="getCanteen(this.value)">    <c:forEach items="${campusList }" var="item" >
@@ -194,7 +194,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 		</div>                                   
                                 	</div>
                                     <div class="form-group" >
-                                    	<label class="col-xs-3 control-label style1">所属食堂</label>
+                                    	<label class="col-xs-3 control-label style1">选择食堂</label>
                                     	<div class="col-xs-8">    
    	                        	        	
 	                        		    	<select name="wndCantID" class="form-control"  onchange="findWindowsInCanteen()">  	     
@@ -222,7 +222,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						                	    <div class="txt-item">
 								                    <table width=100% height=84px onclick="location.href='userWindowContents.action?wndID=${item.wndID}';" >
 											            <tr>
-							                                <td style="width:60%;padding-left:12px;font-size:1.5em">
+							                                <td style="width:60%;padding-left:12px;font-size:1.5em;font-weight:500">
 							                                    <p class="name">${item.wndName }</p>
 							                                </td>
 							                                <td style="width:40%">
@@ -240,9 +240,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							                            <tr>
 							                                <td style="padding-left:12px">
 							                                    <p class="txt">${item.wndDescription}</p>
-							                                </td>
-							                                <td>
-							                                    <p class="txt"> 备注：${item.wndNote}</p>
 							                                </td>
 							                            </tr>
 							                        </table>
@@ -267,5 +264,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript">
         $('#bootstrap-touch-slider').bsTouchSlider();
     </script>
+    <!-- 轮播图大小自适应 -->
+        <script type="text/javascript" src="js/jqthumb.js"></script>
+		<script>
+		function DrawImage(hotimg)
+		{
+		   $(hotimg).jqthumb({
+		   classname      : 'jqthumb',
+		            width          : '100%',
+		            height         : '200px',
+		            position       : { y: '50%', x: '50%'},
+		            zoom           : '1',
+		            method         : 'auto',
+		   });
+		}
+		</script>
 </body>
 </html>
