@@ -170,7 +170,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </div>
                             </div> 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">菜品销售状态</label>
+                                <label class="col-sm-2 control-label">销售状态</label>
                                 <div class="col-sm-9"> 
                                     <select name="dishSale" class="form-control">
                                         <option value="在售" selected="selected">在售</option>
@@ -178,7 +178,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">菜品销售时间</label>
+                                <label class="col-sm-2 control-label">销售时间</label>
                                 <div class="col-sm-9">
                                     <select name="dishDate" class="form-control">
                                         <option value="早餐" selected="selected">早餐</option>

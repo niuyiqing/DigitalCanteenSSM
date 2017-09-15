@@ -14,10 +14,17 @@
         //如果消息类型为INFO（3），说明已经生成过记录表，跳转到修改页面
         //否则跳转到录入页面
         if(data.resultInfo.type == '3'){
+        	 alert(data.resultInfo.message);
             //window.location.href = "modifyRecordDetailDish.action?recordID=" + data.resultInfo.recordID;
             //window.location.href = "importDish.action?recordID=" + data.resultInfo.recordID;
         }else if(data.resultInfo.type == '1'){
-           // window.location.href = "importDish.action?recordID=" + data.resultInfo.recordID;
+       	     alert(data.resultInfo.message);
+       	     if(data.resultInfo.messageCode == 22){
+       	     
+       	     }else if(data.resultInfo.messageCode == 11){
+       	     	window.location.href = "importDish.action?recordID=" + data.resultInfo.recordID;
+       	     }
+            
         }
     }
 </script>
@@ -39,10 +46,6 @@
 
             <li>
                 <a href="javascript:void(0)" onclick="dishImport()"><FONT style="FONT-FAMILY:黑体">菜品录入</FONT></a>
-            </li>
-
-            <li>
-                <a href="${pageContext.request.contextPath }/importReplenishDish.action"><FONT style="FONT-FAMILY:黑体">菜品补录</FONT></a>
             </li>
 
         	<li class="dropdown">

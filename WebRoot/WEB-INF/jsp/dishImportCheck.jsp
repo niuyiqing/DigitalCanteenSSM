@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <ul class="pagination">
                                         <c:if test="${!pagehelper.isFirstPage}">                                        
                                             <li>
-                                                <a href="findRecordInCampus.action?campusID=${campusID}&pageNum=${pagehelper.prePage}&pageSize=${pagehelper.pageSize}">上一页</a>
+                                                <a href="dishImportCheck.action?pageNum=${pagehelper.prePage}&pageSize=${pagehelper.pageSize}">上一页</a>
                                             </li>
                                         </c:if>
     
@@ -92,13 +92,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
                                             <c:if test="${navigatepageNum==pagehelper.pageNum}">
                                                 <li class="active">
-                                                    <a href="findRecordInCampus.action?campusID=${campusID}&pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
+                                                    <a href="dishImportCheck.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
                                                 </li>
                                             </c:if>
     
                                             <c:if test="${navigatepageNum!=pagehelper.pageNum}">
                                                 <li>
-                                                    <a href="findRecordInCampus.action?campusID=${campusID}&pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
+                                                    <a href="dishImportCheck.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
                                                 </li>
                                             </c:if>
     
@@ -106,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
                                         <c:if test="${!pagehelper.isLastPage}">
                                             <li>
-                                                <a href="findRecordInCampus.action?campusID=${campusID}&pageNum=${pagehelper.nextPage}&pageSize=${pagehelper.pageSize}">下一页</a>
+                                                <a href="dishImportCheck.action?pageNum=${pagehelper.nextPage}&pageSize=${pagehelper.pageSize}">下一页</a>
                                             </li>
                                         </c:if>
                                     </ul>

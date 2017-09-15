@@ -29,6 +29,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <link rel="stylesheet" type="text/css" href="css/icons.css" />
         <link rel="stylesheet" type="text/css" href="css/component.css" />
         <link rel="stylesheet" type="text/css" href="css/leftDelete.css"  />
+        <!-- iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 -->
+        <script>  
+        if(('standalone' in window.navigator)&&window.navigator.standalone){  
+                var noddy,remotes=false;  
+                document.addEventListener('click',function(event){  
+                        noddy=event.target;  
+                        while(noddy.nodeName!=='A'&&noddy.nodeName!=='HTML') noddy=noddy.parentNode;  
+                        if('href' in noddy&&noddy.href.indexOf('http')!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){  
+                                event.preventDefault();  
+                                document.location.href=noddy.href;  
+                        }  
+                },false);  
+        }  
+        </script>   
     </head>
   
     <body>
@@ -48,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <a style="color:white;" data-ajax="false" href="${pageContext.request.contextPath }/userWindowContents.action?wndID=${windowItems.wndID}">菜品</a>
                             </div>
                             <div class="col-xs-5" style="padding-right:0px;text-align:center;border-right:solid 1px white">
-                                <a style="color:white;" data-ajax="false" href="${pageContext.request.contextPath }/findAllCommentInWindow.action?wndID=${windowItems.wndID}">评价(${windowItems.wndScore }分)</a>
+                                <a style="color:white;" data-ajax="false" href="${pageContext.request.contextPath }/findAllCommentInWindow.action?wndID=${windowItems.wndID}">评价(<fmt:formatNumber value="${windowItems.wndScore}" pattern="#.00" type="number"/>分)</a>
                             </div>
                             <div class="col-xs-4" style="padding-right:0px;text-align:center">
                                 <a style="color:white;" data-ajax="false" href="addCommentInWindow.action?wndID=${windowItems.wndID}">我要评价</a>
@@ -67,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				                    	            <tr>    							 		
     				                    		           	<td style='vertical-align: middle;text-align: center;' rowspan=3 width="30%">
     				                    	                 	<c:if test="${item.dishPhoto != null }">												   	
-    			   	     	   	       	           		            <img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="80"/>
+    			   	     	   	       	           		            <img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%"/>
     			   	     	   	       	           	        </c:if>
     		   		     	   	       	                    </td>
                                                             <td style='vertical-align: middle;text-align: left;font-size:1.5em;padding-left:12px;padding-top:3px' colspan=2>${item.dishName }</td>

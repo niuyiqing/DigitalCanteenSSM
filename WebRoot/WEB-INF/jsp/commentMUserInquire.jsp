@@ -115,7 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<div class="panel panel-default">			
 
                 <div class="panel-heading">
-                    <h3 class="panel-title">预置档口</h3>
+                    <h3 class="panel-title">档口评论</h3>
                 </div>
 
                 <div class="panel-body">
@@ -160,15 +160,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				<!-- 显示在一个食堂中的所有菜品 -->
     				<form role="form" name="commentForm" enctype="multipart/form-data">
 						<input name="wndID" type="hidden" value="${windowItems.wndID }">
-						<div class="row">
-	 						<div class="col-sm-2">
+						
+						<c:if test="${windowItems.cantName != null }">
+	   						<div class="row">
+	 						<div class="col-sm-1">
 						   		${windowItems.cantName}
+						   	</div>
+						   	<div class="col-sm-2">
 						   		${windowItems.wndName}
 						   	</div>
 						   	<div class="col-sm-1">
-						   		${windowItems.wndScore}分
+						   		<fmt:formatNumber value="${windowItems.wndScore}" pattern="#.00" type="number"/>分
 						   	</div>
 						</div>
+	   					</c:if>	
 						<br>
     					<table class="table table-striped table-bordered table-hover table-responsive text-center">
     						<thead>

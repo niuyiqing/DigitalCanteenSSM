@@ -1,7 +1,9 @@
 package digitalCanteenSSM.controller;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletResponse;  
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -15,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 
 
 import digitalCanteenSSM.po.MUser;
@@ -33,12 +36,13 @@ public class LoginController {
 	@Autowired
 	private UserService userService;
 	
+	@SuppressWarnings("unused")//测试cookie时用的
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(String userName, String password, HttpServletRequest request, HttpSession session) throws Exception{
+	public String login(String userName, String password,String isLogin, HttpServletRequest request,HttpServletResponse response, HttpSession session) throws Exception{
 
+		Cookie[] cook = request.getCookies();//测试cookie时用的
 		UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
 		Subject currentUser = SecurityUtils.getSubject();
-		
 		try{
 			currentUser.login(token);
 		}catch(UnknownAccountException uae){
@@ -68,13 +72,29 @@ public class LoginController {
 		}catch(Exception e){
 			e.printStackTrace();
 		}	
-		
+				
 		//判断登录用户的类型，跳转到不同的页面
 		if(currentUser.isAuthenticated()){
-			
+
+			String name = userName;
+			String pwd = password;
+		    String flag = request.getParameter("isLogin");
+			if ("y".equals(flag)) {
+	             //创建两个Cookie对象
+	             Cookie nameCookie = new Cookie("userName", name);
+	             nameCookie.setPath("/");
+	             //设置Cookie的有效期为3天
+	             nameCookie.setMaxAge(60 * 60 * 24 * 3);
+	             Cookie pwdCookie = new Cookie("password", pwd);
+	             pwdCookie.setPath("/");
+	             pwdCookie.setMaxAge(60 * 60 * 24 * 3);
+	             response.addCookie(nameCookie);
+	             response.addCookie(pwdCookie);
+	         }
+
+			cook = request.getCookies();//测试cookie时用的 
 			MUserItems	mUserItems = mUserService.findMUserInfoByName(userName);
-			UserItems userItems = userService.findUserByName(userName);
-			
+			UserItems userItems = userService.findUserByName(userName);						
 			if(mUserItems == null && "user".equals(userItems.getRoleName())){
 				
 				session.setAttribute("userItems", userItems);
@@ -110,7 +130,7 @@ public class LoginController {
 				//TODO: 用户页面跳转
 				return "forward:guestHomePage.action";
 			}
-			
+		
 		}else{
 			token.clear();
 			return "login.jsp";
@@ -118,10 +138,24 @@ public class LoginController {
 	}
 	
 	@RequestMapping("/logout")
-	public String logout(HttpSession session){
+	public String logout(HttpSession session,HttpServletRequest request,HttpServletResponse response){
 
+		Cookie[] cookies = request.getCookies();  
+        for (Cookie cookie : cookies) {  
+            if (cookie.getName().equals("userName")) {  
+                cookie.setValue("");
+                cookie.setPath("/");
+                cookie.setMaxAge(0);// 立即销毁cookie  
+                response.addCookie(cookie);  
+            }else if (cookie.getName().equals("password")){
+            	cookie.setValue("");
+            	cookie.setPath("/");
+                cookie.setMaxAge(0);// 立即销毁cookie   
+                response.addCookie(cookie);  
+            }
+        }
+        cookies = request.getCookies();//测试cookie时用的  
 		SecurityUtils.getSubject().logout();
-		
 		return "login.jsp";
 	}
 }
