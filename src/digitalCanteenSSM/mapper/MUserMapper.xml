@@ -88,4 +88,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			ctmuser.MUserRoleID = ctrole.RoleID
 		GROUP BY MUserCantID
 	</select>
+	
+	<select id="findMUserStyle"  resultType="MUserItems">
+		SELECT * 
+		FROM ctmuser,ctcant,ctcampus,ctrole
+		WHERE ctmuser.MUserCantID = ctcant.CantID AND 
+			  ctmuser.MUserCampusID = ctcampus.CampusID AND
+			  ctmuser.MUserRoleID = ctrole.RoleID AND
+			  ctcant.CantTypeID = 4 AND
+			  ctmuser.MUserRoleID = 3
+		ORDER BY RoleID, CampusID, CantID
+	</select>
 </mapper>

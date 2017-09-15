@@ -43,13 +43,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-sm-1">
+                        <div class="col-sm-2">
                             <label>所属校区：</label>${muserItems.campusName}
                         </div>
-                        <div class="col-sm-1">
+                        <div class="col-sm-2">
                             <label>所属食堂：</label>${muserItems.cantName}
                         </div>
-                        <div class="col-sm-1">
+                        <div class="col-sm-2">
                             <label>管理员：</label>${muserItems.muserName}
                         </div>
                     </div>

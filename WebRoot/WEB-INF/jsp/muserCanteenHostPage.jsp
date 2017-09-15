@@ -65,11 +65,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="panel panel-default">
 
                 <div class="panel-heading">
-                    <h3 class="panel-title"><b>${muserItems.cantName }</b>  菜品录入记录</h3>
+                    <h3 class="panel-title">
+	                    <div class="col-xs-1">
+	                        <label>${muserItems.cantName }</label>
+	                    </div>
+                   	 菜品录入记录</h3>                 
                 </div> 	
                 <div class="panel-body">
                     <form role="form" name="muserCanteenForm" action="canteenRecordExportToExcel.action" method="post">
-                    	<div  class="form-group col-sm-2">						
+                    	<div  class="form-group col-sm-3">						
 							<div class="input-group" style="width: 240px; margin-left: 0px;">
 							    <input type="text" class="form-control date-picker" id="dateTimeRange"/>
 							    <span class="input-group-addon">

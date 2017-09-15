@@ -72,10 +72,14 @@ public class DishExportToExcelServiceImpl implements DishExportToExcelService{
             cell.setCellStyle(style);
             
             cell = row.createCell(4);
-            cell.setCellValue("菜品时间档");
+            cell.setCellValue("菜品价格");
             cell.setCellStyle(style);
             
             cell = row.createCell(5);
+            cell.setCellValue("菜品时间档");
+            cell.setCellStyle(style);
+            
+            cell = row.createCell(6);
             cell.setCellValue("是否留样");
             cell.setCellStyle(style);
             
@@ -90,8 +94,9 @@ public class DishExportToExcelServiceImpl implements DishExportToExcelService{
                     row.createCell(1).setCellValue(formatter.format(recordItems.getRecordDate()));
                     row.createCell(2).setCellValue(recordItems.getRecordMUserName());
                     row.createCell(3).setCellValue(recordItems.getDetailDishName());
-                    row.createCell(4).setCellValue(recordItems.getDetailDishDate());
-                    row.createCell(5).setCellValue(recordItems.getDetailDishKeep());
+                    row.createCell(4).setCellValue(recordItems.getDetailDishPrice());
+                    row.createCell(5).setCellValue(recordItems.getDetailDishDate());
+                    row.createCell(6).setCellValue(recordItems.getDetailDishKeep());
             	}
             }
         }       

@@ -35,7 +35,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link rel="stylesheet" type="text/css" media="all" href="css/daterangepicker-bs3.css" />
 		<link rel="stylesheet" type="text/css" media="all" href="css/daterangepicker-1.3.7.css" />
 	    <script src="js/moment.js"></script>
-	    <script src="js/daterangepicker-1.3.7.js"></script>		
+	    <script src="js/daterangepicker-1.3.7.js"></script>
+	    <!-- iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 -->
+        <script>  
+		if(('standalone' in window.navigator)&&window.navigator.standalone){  
+		        var noddy,remotes=false;  
+		        document.addEventListener('click',function(event){  
+		                noddy=event.target;  
+		                while(noddy.nodeName!=='A'&&noddy.nodeName!=='HTML') noddy=noddy.parentNode;  
+		                if('href' in noddy&&noddy.href.indexOf('http')!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){  
+		                        event.preventDefault();  
+		                        document.location.href=noddy.href;  
+		                }  
+		        },false);  
+		}  
+		</script>		
     </head>
   
     <body>

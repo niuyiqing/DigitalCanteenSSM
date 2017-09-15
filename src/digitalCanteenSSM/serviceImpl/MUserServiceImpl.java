@@ -66,6 +66,12 @@ public class MUserServiceImpl implements MUserService{
 		return muserMapper.findMUser();
 	}
 
+	@Override
+	public List<MUserItems> findMUserStyle() throws Exception {
+		
+		return muserMapper.findMUserStyle();
+	}	
+	
 	
 
 	

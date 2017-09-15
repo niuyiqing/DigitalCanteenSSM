@@ -32,7 +32,6 @@ public class MyTimerTask {
 	@Autowired
 	private DetailService detailService;
 	
-
 	@Scheduled(cron="59 59 23  * * ? ") 
     public void myTask() throws ParseException{
 		
@@ -51,7 +50,8 @@ public class MyTimerTask {
 		
 		List<MUserItems> muserItems;
 		try {
-			muserItems = mUserService.findAllMUser();
+			//muserItems = mUserService.findAllMUser();
+			muserItems = mUserService.findMUserStyle();
 			for(int i = 0; i < muserItems.size(); i++){
 				Record record = new Record(); 
 				record.setRecordCampusID(muserItems.get(i).getCampusID());

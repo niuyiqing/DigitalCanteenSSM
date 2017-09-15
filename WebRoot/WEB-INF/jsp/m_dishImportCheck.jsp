@@ -32,7 +32,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <script src="js/jquery-1.10.1.min.js"></script>       
         <script src="js/jquery.form.js"></script>
 	    <script src="js/custom.jquery.form.js"></script>
-	    <script src="js/jquery.validate.js"></script>        
+	    <script src="js/jquery.validate.js"></script>
+        <!-- iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 -->
+        <script>  
+        if(('standalone' in window.navigator)&&window.navigator.standalone){  
+                var noddy,remotes=false;  
+                document.addEventListener('click',function(event){  
+                        noddy=event.target;  
+                        while(noddy.nodeName!=='A'&&noddy.nodeName!=='HTML') noddy=noddy.parentNode;  
+                        if('href' in noddy&&noddy.href.indexOf('http')!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){  
+                                event.preventDefault();  
+                                document.location.href=noddy.href;  
+                        }  
+                },false);  
+        }  
+        </script>        
 
 </head>
 <body>
@@ -86,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <ul class="pagination">
                                         <c:if test="${!pagehelper.isFirstPage}">                                        
                                             <li>
-                                                <a href="findRecordInCampus.action?campusID=${campusID}&pageNum=${pagehelper.prePage}&pageSize=${pagehelper.pageSize}">上一页</a>
+                                                <a href="dishImportCheck.action?pageNum=${pagehelper.prePage}&pageSize=${pagehelper.pageSize}">上一页</a>
                                             </li>
                                         </c:if>
     
@@ -94,13 +108,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
                                             <c:if test="${navigatepageNum==pagehelper.pageNum}">
                                                 <li class="active">
-                                                    <a href="findRecordInCampus.action?campusID=${campusID}&pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
+                                                    <a href="dishImportCheck.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
                                                 </li>
                                             </c:if>
     
                                             <c:if test="${navigatepageNum!=pagehelper.pageNum}">
                                                 <li>
-                                                    <a href="findRecordInCampus.action?campusID=${campusID}&pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
+                                                    <a href="dishImportCheck.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
                                                 </li>
                                             </c:if>
     
@@ -108,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
                                         <c:if test="${!pagehelper.isLastPage}">
                                             <li>
-                                                <a href="findRecordInCampus.action?campusID=${campusID}&pageNum=${pagehelper.nextPage}&pageSize=${pagehelper.pageSize}">下一页</a>
+                                                <a href="dishImportCheck.action?pageNum=${pagehelper.nextPage}&pageSize=${pagehelper.pageSize}">下一页</a>
                                             </li>
                                         </c:if>
                                     </ul>

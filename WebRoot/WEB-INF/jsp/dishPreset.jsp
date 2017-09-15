@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>								
 							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label">菜品图片上传</label>
+								<label class="col-sm-2 control-label">图片上传：</label>
                                 <div class="col-sm-9">
                                     <input type="file" name="dishPhotoFile"/>
                                 </div>

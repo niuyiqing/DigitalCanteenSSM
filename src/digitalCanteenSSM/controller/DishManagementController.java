@@ -21,6 +21,7 @@ import com.github.pagehelper.PageInfo;
 
 import digitalCanteenSSM.exception.ResultInfo;
 import digitalCanteenSSM.exception.SubmitResultInfo;
+import digitalCanteenSSM.po.CanteenItems;
 import digitalCanteenSSM.po.Detail;
 import digitalCanteenSSM.po.Dish;
 import digitalCanteenSSM.po.DishItems;
@@ -227,12 +228,14 @@ public class DishManagementController {
 		
 		ResultInfo resultInfo = new ResultInfo();
 		
+		MUserItems muserItems = (MUserItems)session.getAttribute("muserItems");
+		//首先判断是花样食堂还是自营食堂
+		CanteenItems canteenItems = canteenPresetService.findCanteenById(muserItems.getCantID());
+		
 		//取得当前时间并格式化,用来记入记录表中
 		SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");  
 		String dateString=simpleDateFormat.format(new Date());
 		Date date=simpleDateFormat.parse(dateString);
-		
-		MUserItems muserItems = (MUserItems)session.getAttribute("muserItems");
 		
 		//新建一个record，填入操作人相关的字段信息以及时间，由于是当日录入，补录标志设置为0
 		Record record = new Record(); 
@@ -245,7 +248,16 @@ public class DishManagementController {
 		record.setRecordDate(date);
 		record.setRecordSubmitState("已提交");
 		record.setReplenishFlag(0);
-		record.setRecordCheck(1); //表明 向后台申请录入菜品
+
+		if(canteenItems.getCantTypeName().equals("花样食堂")){
+			record.setRecordCheck(1); //表明 向后台申请录入菜品				
+			resultInfo.setMessage("申请成功！请等待后台审核");
+			resultInfo.setMessageCode(22);
+		}else if(canteenItems.getCantTypeName().equals("自营食堂")){				
+			record.setRecordCheck(0);
+			resultInfo.setMessage("今日记录表创建成功！请开始录入");
+			resultInfo.setMessageCode(11);
+		}
 		
 		//到数据库中用食堂和日期信息查询今日是否已经生成过记录表，
 		//如果没有生成，则生成一个新表；否则跳转到修改页面
@@ -256,7 +268,7 @@ public class DishManagementController {
 			int recordid= recordService.findRecordID(record);
 			
 			resultInfo.setRecordID(recordid);
-			resultInfo.setMessage("今日记录表创建成功");
+			
 			resultInfo.setType(ResultInfo.TYPE_RESULT_SUCCESS);
 			
 			//记录添加记录表的log
