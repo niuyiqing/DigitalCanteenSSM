@@ -3,9 +3,11 @@
 <%@ page import="java.util.*"%>
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page import="java.text.*"%>      <!-- 引入< %和% >需添加这一项 -->
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+		
 %>
 
 <!DOCTYPE html>
@@ -34,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <script src="js/moment.js"></script>
 	    <script src="js/daterangepicker-1.3.7.js"></script>
 	    <!--自定义-->      
-       <link rel="stylesheet" href="css/my-custom.css"> 
+        <link rel="stylesheet" href="css/my-custom.css"> 
         <!--分页控件--> 
         <link rel="stylesheet" href="css/qunit-1.11.0.css"> 
 	    
@@ -48,11 +50,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<!-- 日期控件导入 -->
 
         <script language="javascript" type="text/javascript" src="././My97DatePicker/WdatePicker.js"></script> 
-        
+        <!-- iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 -->
+        <script>  
+		if(('standalone' in window.navigator)&&window.navigator.standalone){  
+		        var noddy,remotes=false;  
+		        document.addEventListener('click',function(event){  
+		                noddy=event.target;  
+		                while(noddy.nodeName!=='A'&&noddy.nodeName!=='HTML') noddy=noddy.parentNode;  
+		                if('href' in noddy&&noddy.href.indexOf('http')!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){  
+		                        event.preventDefault();  
+		                        document.location.href=noddy.href;  
+		                }  
+		        },false);  
+		}  
+		</script>
   	</head>
-  
+  	
   	<body>
-  		
+ 		
 		<script type="text/javascript">
 
 		function exportExcelInCanteen(){
@@ -73,8 +88,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		
 		</script>
-		
-		
+		<%
+			SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+			String dateStr = dateformat.format(System.currentTimeMillis());
+		%>
  <div class="container" data-role="page">
      <div class="mp-pusher" id="mp-pusher">
       <%@ include file="publicjsp/canteennavindex.jsp" %> 
@@ -112,27 +129,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				                      <input type="hidden" name = "campusID" value="${muserItems.campusID }" >
 				                      <input type="hidden" name = "cantID" value="${muserItems.cantID }" >
 				                      <input type="hidden" name = "muserID" value="${muserItems.cantID }" >
-			                    </div>		                
-			                    <div class="row" style="padding:0 0px;"> 
-			                         <div class="form-group">
-			                              <div class="item-wrap">
-				                              <c:forEach items="${pagehelper.list }" var="item" >
-											  	<div  id="view" class="item clearfix">										    									        									        
-												    <div class="txt-item">
-												      <table onclick="location.href='findRecordDetailDish.action?recordID=${item.recordID}';">
-												           <tr><td style="width:80%"><p class="name">${item.recordCampusName } ${item.recordCantName }</p></td><td style="width:80%"><p class="name">${item.recordMUserName }</p></td></tr>
-												           <tr><td><p class="txt"><fmt:formatDate value="${item.recordDate}" pattern="yyyy-MM-dd" /></p></td><td><p class="txt"> ${item.recordSubmitState }</p></td></tr>
-												      </table>										      
-												    </div>	 																    									        								  	
-											  	<a href="deleteRecord.action?recordID=${item.recordID}" data-role="button" data-ajax="false" class="delect-btn" target="_top" style="padding-top:28px;">删除</a>										   
-											  </div>
-											</c:forEach>										  	
-									    </div>
-						         </div>  
-						    </div>
+			                    </div>	
+			                    	
+			                    <c:set var="nowDate" value="<%=dateStr%>"></c:set>  
+			                                    
+				                <div class="row" style="padding:0 0px;"> 
+				                    <div class="form-group">
+				                    
+				                        <div class="item-wrap">
+				                        <c:forEach items="${pagehelper.list }" var="item" >
+				                          
+				                          <!-- 将这个修改按照删除的形式：即右滑呼出，跳到到importDish。aciton,开始录入，花样食堂只有申请之后才能录入，自营食堂只有当天才能录入 -->
+				                            <c:set var="recordDate">
+					        					<fmt:formatDate value="${item.recordDate}" pattern="yyyy-MM-dd" />
+					        				</c:set>        				          	
+									  		<div  id="view" class="item clearfix">										    									        									        
+											    <div class="txt-item">
+											      <table onclick="location.href='findRecordDetailDish.action?recordID=${item.recordID}';">						      
+											      	
+											           <tr><td style="width:80%"><p class="name">${item.recordCampusName } ${item.recordCantName }</p></td><td style="width:80%"><p class="name">${item.recordMUserName }</p></td></tr>
+											           <tr><td><p class="txt"><fmt:formatDate value="${item.recordDate}" pattern="yyyy-MM-dd" /></p></td><td><p class="txt"> ${item.recordSubmitState }</p></td></tr>
+											      		
+											      </table>										      
+											    </div>	 																    									        								  	
+									  			<a href="deleteRecord.action?recordID=${item.recordID}" data-role="button" data-ajax="false" class="delectrecord-btn" target="_top" style="padding-top:28px;">删除</a>
+									  			<c:if test="${recordDate eq nowDate}">
+									  				<a href="importDish.action?recordID=${item.recordID}" data-role="button" data-ajax="false" class="modifyrecord-btn" target="_top" style="padding-top:28px;">修改</a>
+									    		</c:if>
+									    	</div>
+										</c:forEach>										  	
+							    		</div>
+				         			</div>  
+				    			</div>
 						    <div>
                                 <div class="message">
-                                    <p class="text-center">
+                                    <p class="text-center" style="color:#272822">
+                                        <br>
+                                        <br>
+                                        <br>
                                         共<b>${pagehelper.total}</b>条记录，当前显示第&nbsp;<b>${pagehelper.pageNum}/${pagehelper.pages}</b>&nbsp;页
                                     </p>
                                 </div>

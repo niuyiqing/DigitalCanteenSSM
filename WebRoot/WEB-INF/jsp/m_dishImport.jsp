@@ -164,6 +164,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    </script>
 
 	    <script src="././My97DatePicker/WdatePicker.js"></script>
+	    <!-- iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 -->
+        <script>  
+		if(('standalone' in window.navigator)&&window.navigator.standalone){  
+		        var noddy,remotes=false;  
+		        document.addEventListener('click',function(event){  
+		                noddy=event.target;  
+		                while(noddy.nodeName!=='A'&&noddy.nodeName!=='HTML') noddy=noddy.parentNode;  
+		                if('href' in noddy&&noddy.href.indexOf('http')!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){  
+		                        event.preventDefault();  
+		                        document.location.href=noddy.href;  
+		                }  
+		        },false);  
+		}  
+		</script>
     </head>
   
     <body onload="myinitiation()">
@@ -268,7 +282,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										                	    				</c:choose>	
 										                	    				<td style='vertical-align: left;text-align: center;' rowspan=3>
 										                	    				   	<c:if test="${item.dishPhoto != null }">
-										                	       						<img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="100"/>
+										                	       						<img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="100" style="border-radius:5%"/>
 										                	       					</c:if>
 										                   	    				</td>						               	    		 	
 										                	    			   	<td style='vertical-align: middle;font-size:1.2em' colspan=2>${item.dishName }</td>

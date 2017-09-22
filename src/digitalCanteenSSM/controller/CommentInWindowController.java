@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import digitalCanteenSSM.po.Comment;
 import digitalCanteenSSM.po.CommentItems;
+import digitalCanteenSSM.po.MUserItems;
+import digitalCanteenSSM.po.UserItems;
 import digitalCanteenSSM.po.Window;
 import digitalCanteenSSM.service.CampusPresetService;
 import digitalCanteenSSM.service.CanteenPresetService;
@@ -31,11 +36,11 @@ public class CommentInWindowController {
 	
 	//查找一个档口下的所有评论
 	@RequestMapping("/findAllCommentInWindow")
-	public ModelAndView findAllCommentInWindow(Integer wndID) throws Exception{
+	public ModelAndView findAllCommentInWindow(HttpServletRequest request, HttpSession session) throws Exception{
 		
 		ModelAndView modelAndView = new ModelAndView();
-		//wndID
-		wndID = 3;
+		
+		Integer wndID = (Integer)session.getAttribute("wndID");
 		List<CommentItems> commentItemsList = commentService.findAllCommentsInWindow(wndID);
 		modelAndView.addObject("commentItemsList",commentItemsList);
 		modelAndView.addObject("windowItems",windowPresetService.findWindowById(wndID));
@@ -46,20 +51,25 @@ public class CommentInWindowController {
 	
 	//后台管理员选择要查询评论的窗口
 	@RequestMapping("/commentSelectWindow")
-	public ModelAndView commentSelectWindow() throws Exception{
+	public ModelAndView commentSelectWindow(HttpSession session) throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		
 		modelAndView.addObject("campusList", campusPresetService.findAllCampuses());
 		modelAndView.addObject("canteenItemsList",canteenPresetService.findAllCanteens());
 		modelAndView.addObject("windowItemsList",windowPresetService.findAllWindows());
 		
-		modelAndView.setViewName("/WEB-INF/jsp/commentMUserInquire.jsp");
+		if(session.getAttribute("ua").equals("pc")){
+			modelAndView.setViewName("/WEB-INF/jsp/commentMUserInquire.jsp");
+		}else{
+			modelAndView.setViewName("/WEB-INF/jsp/m_commentMUserInquire.jsp");
+		}
+
 		return modelAndView;
 	}
 		
 	//后台管理员查询一个档口下的评论
 	@RequestMapping("/commentMUserInquire")
-	public ModelAndView commentMUserInquire(Integer wndID) throws Exception{
+	public ModelAndView commentMUserInquire(Integer wndID,HttpSession session) throws Exception{
 		ModelAndView modelAndView = new ModelAndView();
 		
 		modelAndView.addObject("campusList", campusPresetService.findAllCampuses());
@@ -70,20 +80,24 @@ public class CommentInWindowController {
 		modelAndView.addObject("commentItemsList",commentItemsList);
 		modelAndView.addObject("windowItems",windowPresetService.findWindowById(wndID));
 		
-		modelAndView.setViewName("/WEB-INF/jsp/commentMUserInquire.jsp");
+		if(session.getAttribute("ua").equals("pc")){
+			modelAndView.setViewName("/WEB-INF/jsp/commentMUserInquire.jsp");
+		}else{
+			modelAndView.setViewName("/WEB-INF/jsp/m_commentMUserInquire.jsp");
+		}
+
 		return modelAndView;
 	}
 	
 	//转向添加评论页
 	@RequestMapping("/addCommentInWindow")
-	public ModelAndView addCommentInWindow(Integer wndID) throws Exception{
+	public ModelAndView addCommentInWindow(Integer wndID,HttpSession session, HttpServletRequest request) throws Exception{
 		
 		ModelAndView modelAndView = new ModelAndView();
-		//userID
-		int userID = 2;
 		
+		UserItems userItems = (UserItems)session.getAttribute("userItems");
 		modelAndView.addObject("windowItems",windowPresetService.findWindowById(wndID));
-		modelAndView.addObject("userItems",userID);
+		modelAndView.addObject("userItems",userItems);
 		modelAndView.setViewName("/WEB-INF/jsp/commentAdd.jsp");
 		
 		return modelAndView;
@@ -111,24 +125,19 @@ public class CommentInWindowController {
 	
 	//点赞数
 	@RequestMapping("/updateCmtGoodNum")
-	public ModelAndView updateCmtGoodNum(Integer cmtID,Integer cmtGood) throws Exception{
+	public String updateCmtGoodNum(Integer cmtID,Integer cmtGood) throws Exception{
+			
 		
-		ModelAndView modelAndView = new ModelAndView();
-		
-		cmtGood=1;
 		Comment comment = commentService.findCommentByID(cmtID);
-		int cmtGoodNum = comment.getCmtGoodNum();
-		cmtGoodNum += cmtGood;
-		comment.setCmtGoodNum(cmtGoodNum);
+		comment.setCmtGoodNum(cmtGood);
 		commentService.updateCommentGoodNum(comment);
 		
-		modelAndView.setViewName("findAllCommentInWindow.action");
-		return modelAndView;
+		return null;
 	}
 	
 	//删除评论
 	@RequestMapping("/deleteCommentById")
-	public ModelAndView deleteCommentById(Integer cmtID,Integer wndID) throws Exception{
+	public ModelAndView deleteCommentById(Integer cmtID,Integer wndID,HttpSession session) throws Exception{
 		
 		ModelAndView modelAndView = new ModelAndView();
 		commentService.deleteCommentById(cmtID);
@@ -139,8 +148,12 @@ public class CommentInWindowController {
 		modelAndView.addObject("commentItemsList",commentService.findAllCommentsInWindow(wndID));
 		modelAndView.addObject("windowItems",windowPresetService.findWindowById(wndID));
 		
-		modelAndView.setViewName("/WEB-INF/jsp/commentMUserInquire.jsp");
-		
+		if(session.getAttribute("ua").equals("pc")){
+			modelAndView.setViewName("/WEB-INF/jsp/commentMUserInquire.jsp");
+		}else{
+			modelAndView.setViewName("/WEB-INF/jsp/m_commentMUserInquire.jsp");
+		}
+
 		return modelAndView;
 	}
 }

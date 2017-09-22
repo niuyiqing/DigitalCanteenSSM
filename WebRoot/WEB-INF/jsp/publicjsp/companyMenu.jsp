@@ -4,17 +4,17 @@
 	<div class="navbar-all">
 
 		<div class="navbar-header">		
-        	<a class="navbar-brand" href="${pageContext.request.contextPath }/companyHomepage.action"><FONT style="FONT-FAMILY:楷体">饮食公司管理系统</FONT></a>
+        	<a  class="navbar-brand" href="${pageContext.request.contextPath }/companyHomepage.action"><FONT style="FONT-FAMILY:楷体">饮食公司管理系统</FONT></a>
         </div>
 
         <ul class="nav navbar-nav">
 
         	<li>
-                <a href="${pageContext.request.contextPath }/companyHomepage.action"><FONT style="FONT-FAMILY:黑体">首页</FONT></a>
+                <a  href="${pageContext.request.contextPath }/companyHomepage.action"><FONT style="FONT-FAMILY:黑体">首页</FONT></a>
             </li>
 
             <li>
-                <a href="${pageContext.request.contextPath }/takeOffShelfPage.action"><FONT style="FONT-FAMILY:黑体">菜品下架</FONT></a>
+                <a  href="${pageContext.request.contextPath }/takeOffShelfPage.action"><FONT style="FONT-FAMILY:黑体">菜品下架</FONT></a>
             </li>
 
         </ul>

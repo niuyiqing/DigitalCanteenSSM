@@ -21,6 +21,7 @@ import com.github.pagehelper.PageInfo;
 
 import digitalCanteenSSM.exception.ResultInfo;
 import digitalCanteenSSM.exception.SubmitResultInfo;
+import digitalCanteenSSM.po.CanteenItems;
 import digitalCanteenSSM.po.Detail;
 import digitalCanteenSSM.po.Dish;
 import digitalCanteenSSM.po.DishItems;
@@ -173,18 +174,68 @@ public class DishManagementController {
 		return modelAndView;
 	}
 	
-	//录入菜品的重复检测
+	
+	//后台录入审核(工作人员发出录入菜品请求时需要后台审核通过)
+	@RequestMapping ("/dishImportCheck")
+	public ModelAndView dishImportCheck(HttpSession session, HttpServletRequest request) throws Exception{
+		String pageNum = request.getParameter("pageNum");
+		String pageSize = request.getParameter("pageSize");
+		int num = 1;
+		//菜品信息带有图片，所以一页只放五个元素
+		int size = 5;
+		if (pageNum != null && !"".equals(pageNum)) {
+			num = Integer.parseInt(pageNum);
+		}
+		if (pageSize != null && !"".equals(pageSize)) {
+			size = Integer.parseInt(pageSize);
+		}
+		
+		//配置pagehelper的排序及分页
+		String sortString = "id.desc";
+		Order.formString(sortString);
+		PageHelper.startPage(num, size);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		MUserItems muserItems = (MUserItems)session.getAttribute("muserItems");
+		List<Record> recordList = recordService.findRecordCheck();
+		PageInfo<Record> pagehelper = new PageInfo<Record>(recordList);
+		
+		modelAndView.addObject("pagehelper", pagehelper);
+		modelAndView.addObject("muserItems",muserItems);	
+		if(session.getAttribute("ua").equals("pc")){
+			modelAndView.setViewName("/WEB-INF/jsp/dishImportCheck.jsp");
+		}else{
+			modelAndView.setViewName("/WEB-INF/jsp/m_dishImportCheck.jsp");
+		}	
+		return modelAndView;
+	}
+    //后台审核是否通过
+	@RequestMapping("/checkif")
+	public String checkif(HttpSession session, int recordCheck,int recordID, HttpServletRequest request) throws Exception{
+				
+		Record record = new Record();
+		record.setRecordID(recordID);
+		record.setRecordCheck(recordCheck);
+		recordService.updateRecordCheck(record);		
+		
+		return "forward:dishImportCheck.action";
+	}
+	
+	//录入菜品的重复检测  ——录入请求（工作人员要录入菜品时向后台发送请求）
 	@RequestMapping("/importRepeatCheck")
 	public @ResponseBody SubmitResultInfo importRepeatCheck(HttpSession session) throws Exception{
 		
 		ResultInfo resultInfo = new ResultInfo();
 		
+		MUserItems muserItems = (MUserItems)session.getAttribute("muserItems");
+		//首先判断是花样食堂还是自营食堂
+		CanteenItems canteenItems = canteenPresetService.findCanteenById(muserItems.getCantID());
+		
 		//取得当前时间并格式化,用来记入记录表中
 		SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");  
 		String dateString=simpleDateFormat.format(new Date());
 		Date date=simpleDateFormat.parse(dateString);
-		
-		MUserItems muserItems = (MUserItems)session.getAttribute("muserItems");
 		
 		//新建一个record，填入操作人相关的字段信息以及时间，由于是当日录入，补录标志设置为0
 		Record record = new Record(); 
@@ -197,6 +248,16 @@ public class DishManagementController {
 		record.setRecordDate(date);
 		record.setRecordSubmitState("已提交");
 		record.setReplenishFlag(0);
+
+		if(canteenItems.getCantTypeName().equals("花样食堂")){
+			record.setRecordCheck(1); //表明 向后台申请录入菜品				
+			resultInfo.setMessage("申请成功！请等待后台审核");
+			resultInfo.setMessageCode(22);
+		}else if(canteenItems.getCantTypeName().equals("自营食堂")){				
+			record.setRecordCheck(0);
+			resultInfo.setMessage("今日记录表创建成功！请开始录入");
+			resultInfo.setMessageCode(11);
+		}
 		
 		//到数据库中用食堂和日期信息查询今日是否已经生成过记录表，
 		//如果没有生成，则生成一个新表；否则跳转到修改页面
@@ -207,7 +268,7 @@ public class DishManagementController {
 			int recordid= recordService.findRecordID(record);
 			
 			resultInfo.setRecordID(recordid);
-			resultInfo.setMessage("今日记录表创建成功");
+			
 			resultInfo.setType(ResultInfo.TYPE_RESULT_SUCCESS);
 			
 			//记录添加记录表的log
@@ -225,7 +286,7 @@ public class DishManagementController {
 			resultInfo.setMessage("今日已生成过记录表");
 			resultInfo.setType(ResultInfo.TYPE_RESULT_INFO);			
 		}
-		
+		//请等待后台审核
 		SubmitResultInfo submitResultInfo = new SubmitResultInfo(resultInfo);		
 		return submitResultInfo;
 	}

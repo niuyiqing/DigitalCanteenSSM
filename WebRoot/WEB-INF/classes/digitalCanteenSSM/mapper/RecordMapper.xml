@@ -18,6 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * 
 		FROM ctrecord
 		WHERE ctrecord.RecordCantID = #{recordCantID } 
+		AND ctrecord.`RecordCheck` = 0
 		ORDER BY RecordDate DESC
 	</select>
 	
@@ -82,10 +83,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		Insert into ctrecord (ctrecord.RecordCampusID,ctrecord.RecordCantID,
 		ctrecord.RecordCampusName,ctrecord.RecordCantName,
 		ctrecord.RecordMUserID,ctrecord.RecordMUserName,
-		ctrecord.RecordDate,ctrecord.RecordSubmitState) 
+		ctrecord.RecordDate,ctrecord.RecordSubmitState,
+		ctrecord.RecordCheck) 
 		values (#{recordCampusID},#{recordCantID},
 		#{recordCampusName},#{recordCantName},
 		#{recordMUserID},#{recordMUserName},
-		#{recordDate},#{recordSubmitState})	
+		#{recordDate},#{recordSubmitState},
+		#{recordCheck})	
 	</select>
+	<!-- 录入审核标志位 -->
+	<select id="findRecordCheck" resultType="Record">
+		SELECT *
+		FROM ctrecord
+		WHERE ctrecord.RecordCheck = 1
+	</select>
+	
+	<select id="updateRecordCheck"  parameterType="Record" >
+		UPDATE ctrecord 
+		SET ctrecord.RecordCheck=#{recordCheck}	
+		WHERE ctrecord.RecordID = #{recordID}	
+	</select>
+	
 </mapper>

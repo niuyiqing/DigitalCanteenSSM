@@ -43,7 +43,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<link rel="stylesheet" type="text/css" href="css/demo.css" />
     	<link rel="stylesheet" type="text/css" href="css/icons.css" />
     	<link rel="stylesheet" type="text/css" href="css/component.css" />
-    	<link rel="stylesheet" type="text/css" href="css/leftDelete.css"  />  
+    	<link rel="stylesheet" type="text/css" href="css/leftDelete.css"  />
+        <!-- iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 -->
+        <script>  
+        if(('standalone' in window.navigator)&&window.navigator.standalone){  
+                var noddy,remotes=false;  
+                document.addEventListener('click',function(event){  
+                        noddy=event.target;  
+                        while(noddy.nodeName!=='A'&&noddy.nodeName!=='HTML') noddy=noddy.parentNode;  
+                        if('href' in noddy&&noddy.href.indexOf('http')!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){  
+                                event.preventDefault();  
+                                document.location.href=noddy.href;  
+                        }  
+                },false);  
+        }  
+        </script>  
     </head>
   
     <body>
@@ -53,12 +67,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	        <div class="scroller" style="background:#EEEEEE">
                     <div class="scroller-inner">
            		        <div class="codrops-header" style="background:#29C192">
-	        	                <div id="trigger" class="burger-container">
-    							    <span class="burger-bun-top"></span>
-    							    <span class="burger-filling"></span>
-    							    <span class="burger-bun-bot"></span>
-						        </div>					
-						        <p style="width:100%;height:100%;vertical-align:middle;font-size:27px">食堂菜品</p>
+        	                <div id="trigger" class="burger-container">
+							    <span class="burger-bun-top"></span>
+							    <span class="burger-filling"></span>
+							    <span class="burger-bun-bot"></span>
+					        </div>					
+						    <p style="width:100%;height:100%;vertical-align:middle;font-size:27px">食堂菜品</p>
 				        </div> 								
             	        <div class="container-fluid" style="color:#000;padding:0 0;">
                             <div class="newcustom" style="margin-top:69px;">
@@ -76,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <a data-ajax="false" href="addDish.action" class="btn btn-primary">菜品上架</a>
                     <br><br>
                                 <form role="form" name="dishForm" enctype="multipart/form-data">
-            					   <input name="dishID" type="hidden" value="${dishItems.dishID }">		                
+            					    <input name="dishID" type="hidden" value="${dishItems.dishID }">		                
             	                    <div class="row" style="padding:0 0px;"> 
         	                            <div class="form-group">
         	                                <div class="item-wrap">
@@ -87,7 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             				                	    			        <tr>					 				                	    				
             				                	    			            <td style='vertical-align: left;text-align: center;min-width: 100px;' rowspan=3>
                     				                	    				   	<c:if test="${item.dishPhoto != null }">
-                    				                	       						<img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="100"/>
+                    				                	       						<img src="/upload/pic/${item.dishPhoto }" class="center-block" height="100" width="100" style="border-radius:5%"/>
                     				                	       					</c:if>
             				                   	    				        </td>						               	    			 	
             				                	    			   	        <td style='vertical-align: middle;text-align: center;font-size:1.2em; width: 100%;' >${item.dishName }</td>
@@ -104,55 +118,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             				                	    			        </tr>
             				                	    			    </table>
             				                	    		    </div>
-            				                	    		    <a href="deleteDishById.action?dishID=${item.dishID}" data-role="button" data-ajax="false" class="delect-btn" target="_top">删除</a>
-            				                	    		
+            				                	    		    <a href="deleteDishById.action?dishID=${item.dishID}" data-role="button" data-ajax="false" class="delect-btn" target="_top">删除</a>            				                	    		
         				                	        </div>
         				                	    </c:forEach>       				                                         					 	
         							        </div>
         				                </div>  
         				            </div> 
+                                    
                                     <div>
+                                        <div class="message">
+                                            <p class="text-center" style="color:#272822">
+                                                <br>
+                                                <br>
+                                                <br>
+                                                共<b>${pagehelper.total}</b>条记录，当前显示第&nbsp;<b>${pagehelper.pageNum}/${pagehelper.pages}</b>&nbsp;页
+                                            </p>
+                                        </div>
+                                        <div style="text-align:center;">
+                                            <ul class="pagination">
+                                                <c:if test="${!pagehelper.isFirstPage}">                                        
+                                                    <li>
+                                                        <a data-ajax="false" href="findDishInCanteen.action?pageNum=${pagehelper.prePage}&pageSize=${pagehelper.pageSize}">上一页</a>
+                                                    </li>
+                                                </c:if>
 
-                            <div class="message">
-                                <p class="text-center">
-                                    <br>
-                                    <br>
-                                    <br>
-                                    共<b>${pagehelper.total}</b>条记录，当前显示第&nbsp;<b>${pagehelper.pageNum}/${pagehelper.pages}</b>&nbsp;页
-                                </p>
-                            </div>
-                            <div style="text-align:center;">
-                                <ul class="pagination">
-                                    <c:if test="${!pagehelper.isFirstPage}">                                        
-                                        <li>
-                                            <a data-ajax="false" href="findDishInCanteen.action?pageNum=${pagehelper.prePage}&pageSize=${pagehelper.pageSize}">上一页</a>
-                                        </li>
-                                    </c:if>
+                                                <c:forEach items="${pagehelper.navigatepageNums}" var="navigatepageNum">    
 
-                                    <c:forEach items="${pagehelper.navigatepageNums}" var="navigatepageNum">    
+                                                    <c:if test="${navigatepageNum==pagehelper.pageNum}">
+                                                        <li class="active">
+                                                            <a data-ajax="false" href="findDishInCanteen.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
+                                                        </li>
+                                                    </c:if>
 
-                                        <c:if test="${navigatepageNum==pagehelper.pageNum}">
-                                            <li class="active">
-                                                <a data-ajax="false" href="findDishInCanteen.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
-                                            </li>
-                                        </c:if>
+                                                    <c:if test="${navigatepageNum!=pagehelper.pageNum}">
+                                                        <li>
+                                                            <a data-ajax="false" href="findDishInCanteen.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
+                                                        </li>
+                                                    </c:if>
 
-                                        <c:if test="${navigatepageNum!=pagehelper.pageNum}">
-                                            <li>
-                                                <a data-ajax="false" href="findDishInCanteen.action?pageNum=${navigatepageNum}&pageSize=${pagehelper.pageSize}">${navigatepageNum}</a>
-                                            </li>
-                                        </c:if>
+                                                </c:forEach>
 
-                                    </c:forEach>
-
-                                    <c:if test="${!pagehelper.isLastPage}">
-                                        <li>
-                                            <a data-ajax="false" href="findDishInCanteen.action?pageNum=${pagehelper.nextPage}&pageSize=${pagehelper.pageSize}">下一页</a>
-                                        </li>
-                                    </c:if>
-                                </ul>
-                            </div>
-                        </div>				  
+                                                <c:if test="${!pagehelper.isLastPage}">
+                                                    <li>
+                                                        <a data-ajax="false" href="findDishInCanteen.action?pageNum=${pagehelper.nextPage}&pageSize=${pagehelper.pageSize}">下一页</a>
+                                                    </li>
+                                                </c:if>
+                                            </ul>
+                                        </div>
+                                    </div>				  
         		                </form>
                             </div> 			             
             	        </div>	                 	

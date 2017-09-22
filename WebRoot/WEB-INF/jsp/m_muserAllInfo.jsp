@@ -30,6 +30,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <link rel="stylesheet" type="text/css" href="css/icons.css" />
         <link rel="stylesheet" type="text/css" href="css/component.css" />
         <link rel="stylesheet" type="text/css" href="css/leftDelete.css"  />
+        <!-- iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 -->
+        <script>  
+        if(('standalone' in window.navigator)&&window.navigator.standalone){  
+                var noddy,remotes=false;  
+                document.addEventListener('click',function(event){  
+                        noddy=event.target;  
+                        while(noddy.nodeName!=='A'&&noddy.nodeName!=='HTML') noddy=noddy.parentNode;  
+                        if('href' in noddy&&noddy.href.indexOf('http')!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){  
+                                event.preventDefault();  
+                                document.location.href=noddy.href;  
+                        }  
+                },false);  
+        }  
+        </script>
     </head>
   
     <body>
@@ -59,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                    	    	            <tr>
 	                	        	            	<td style='vertical-align: middle;text-align: center;' rowspan=2>
 	                		    	               		<c:if test="${item.muserPhoto != null }">
-	                		    	               			<img src="/upload/pic/${item.muserPhoto }" class="center-block" height="60" width="60"/>
+	                		    	               			<img src="/upload/pic/${item.muserPhoto }" class="center-block" height="60" width="60" style="border-radius:50%"/>
 	                		    	               		</c:if>
 	                		    	               	</td>
                                                     <td style='vertical-align: middle;font-size:1.5em'>${item.muserName }</td>

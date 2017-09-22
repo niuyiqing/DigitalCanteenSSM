@@ -48,11 +48,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             window.location.href="findAllCampuses.action";
         }
     </script>
+    <!-- iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 -->
+    <script>  
+    if(('standalone' in window.navigator)&&window.navigator.standalone){  
+            var noddy,remotes=false;  
+            document.addEventListener('click',function(event){  
+                    noddy=event.target;  
+                    while(noddy.nodeName!=='A'&&noddy.nodeName!=='HTML') noddy=noddy.parentNode;  
+                    if('href' in noddy&&noddy.href.indexOf('http')!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){  
+                            event.preventDefault();  
+                            document.location.href=noddy.href;  
+                    }  
+            },false);  
+    }  
+    </script>
   </head>
   <body>
       <div class="codrops-header" style="background:#29C192;">
             <div class="back-container">
-              <button class="btn btn-link btn-lg" ><a style="color:#fff" class="icon icon-arrow-left" data-ajax="false" href="${pageContext.request.contextPath }/campusPreset.action"></a></button>
+              <button class="btn btn-link btn-lg" ><a style="color:#fff" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/campusPreset.action"></a></button>
             </div>  
             <p style="width:100%;height:100%;font-size:27px">修改校区</p>
       </div>

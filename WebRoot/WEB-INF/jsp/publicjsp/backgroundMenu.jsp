@@ -18,7 +18,9 @@
                 <ul class="dropdown-menu">                    
                     <li><a href="${pageContext.request.contextPath }/recordExportToExcel.action">菜品导出</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">广告推送管理</a></li>                    
+                    <li><a href="${pageContext.request.contextPath }/dishImportCheck.action">录入审核</a></li>
+                    <li class="divider"></li>
+                    <li><a href="adManagement.action">广告推送管理</a></li>                    
                 </ul>
             </li>
   			<li class="dropdown">
@@ -58,7 +60,7 @@
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">日志查看</a></li>
+                    <li><a href="${pageContext.request.contextPath }/loginfo.action">日志查看</a></li>
                 </ul>
             </li>
             <li class="dropdown">

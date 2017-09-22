@@ -2,10 +2,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
    
+   
+   
+		
+						    	
 <!-- 一个食堂下的所有菜品录入记录 -->
-
-       <c:forEach items="${pagehelper.list }" var="item">
-      
+<%-- 
+        <c:forEach items="${pagehelper.list }" var="item">      
             <div class="row">
                 <div  style="color:#000000;font-size:16px;">
                    <div style="position:relative;top:5px;left:5px;">
@@ -22,8 +25,8 @@
 	        	      <a href="deleteRecord.action?recordID=${item.recordID}" class="btn btn-default">删除</a>
                </div>                                      
             </div>
-             <hr>
-            </c:forEach>
+            <hr>
+        </c:forEach> --%>
 
 
 
