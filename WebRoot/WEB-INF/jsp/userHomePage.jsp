@@ -113,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</form>
 
     		   			   			
-    			<!-- 所属校区，所属试探，食堂下的档口 --> 		
+    			<!-- 所属校区，所属食堂，食堂下的档口 --> 		
 				<div class="content clearfix" >
 					<div class="container-fluid" style="color:#000;padding:0 0px;">
 						<div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="3000">
