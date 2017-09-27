@@ -154,6 +154,8 @@ public class UserController {
 						CanteenItems canteenItems = iterator_canteenItems.next();
 						//将选中的第一个校区的第一个食堂数据传到用户首页
 						modelAndView.addObject("canteenItems", canteenItems);
+						//将该食堂的档口列表传到用户首页
+						modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(canteenItems.getCantID()));
 						//将该校区下的食堂列表传到用户首页
 						modelAndView.addObject("canteenItemsList", canteenItemsList);
 						break;
@@ -168,6 +170,8 @@ public class UserController {
 				CanteenItems canteenItems = iterator_canteenItems.next();
 				//将该校区的第一个食堂数据传到用户首页
 				modelAndView.addObject("canteenItems", canteenItems);
+				//将该食堂的档口列表传到用户首页
+				modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(canteenItems.getCantID()));
 				//将该校区下的食堂列表传到用户首页
 				modelAndView.addObject("canteenItemsList", canteenItemsList);
 			}
@@ -175,6 +179,8 @@ public class UserController {
 		}else if(campusID != null && cantID != null){	//有校区和食堂信息，返回该食堂档口信息
 			
 			modelAndView.addObject("canteenItems", canteenPresetService.findCanteenById(cantID));
+			//将该食堂的档口列表传到用户首页
+			modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(cantID));
 			//直接根据campusID查找校区下的食堂列表
 			modelAndView.addObject("canteenItemsList", canteenPresetService.findCanteenByCampus(campusID));
 			
@@ -183,6 +189,8 @@ public class UserController {
 			//然后利用该档口所属的校区编号查找该校区下所有档口，传给用户首页
 			CanteenItems canteenItems = canteenPresetService.findCanteenById(cantID);
 			modelAndView.addObject("canteenItems", canteenItems);
+			//将该食堂的档口列表传到用户首页
+			modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(canteenItems.getCantID()));
 			modelAndView.addObject("canteenItemsList", canteenPresetService.findCanteenByCampus(canteenItems.getCampusID()));
 		}
 		
