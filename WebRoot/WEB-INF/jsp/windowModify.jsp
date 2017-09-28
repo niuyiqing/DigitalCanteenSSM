@@ -89,7 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" name = "windowUpdateForm" action="modifyWindowSave.action" method="post">
+                        <form class="form-horizontal" role="form" name = "windowUpdateForm" action="modifyWindowSave.action" method="post" enctype="multipart/form-data">
                         	<div class="form-group">
                                 <input name="wndID" type="hidden" value="${windowItems.wndID }">
                         	    <!-- 选择食堂所属校区 -->
@@ -134,6 +134,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         	        <input type="text" class="form-control" name="wndName" value="${windowItems.wndName }">
                                 </div>
                             </div> 
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">档口图片：</label>
+                                <div class="col-sm-9">
+                                    <c:if test="${windowItems.wndPhoto != null }">
+                                        <img src="/upload/pic/${windowItems.wndPhoto }" height="100" width="120"/>
+                                    </c:if>
+                                    <br><br>
+                                    <input type="file" name="wndPhotoFile"/>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">档口位置</label>
                                 <div class="col-sm-9"> 

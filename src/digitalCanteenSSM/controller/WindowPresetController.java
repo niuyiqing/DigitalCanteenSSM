@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.github.miemiedev.mybatis.paginator.domain.Order;
@@ -18,6 +19,7 @@ import digitalCanteenSSM.po.Window;
 import digitalCanteenSSM.po.WindowItems;
 import digitalCanteenSSM.service.CampusPresetService;
 import digitalCanteenSSM.service.CanteenPresetService;
+import digitalCanteenSSM.service.UploadFileService;
 import digitalCanteenSSM.service.WindowPresetService;
 
 
@@ -30,6 +32,8 @@ public class WindowPresetController {
 	private CanteenPresetService canteenPresetService;
 	@Autowired
 	private WindowPresetService windowPresetService;
+	@Autowired
+	private UploadFileService uploadFileService;
 	
 	//档口预置页面
 	//添加档口按钮与已添加档口显示
@@ -49,7 +53,7 @@ public class WindowPresetController {
 		String pageNum = request.getParameter("pageNum");
 		String pageSize = request.getParameter("pageSize");
 		int num = 1;
-		int size = 10;
+		int size = 5;
 		if (pageNum != null && !"".equals(pageNum)) {
 			num = Integer.parseInt(pageNum);
 		}
@@ -69,7 +73,7 @@ public class WindowPresetController {
 		
 		modelAndView.addObject("campusList",campusPresetService.findAllCampuses());
 		modelAndView.addObject("canteenItemsList",canteenPresetService.findAllCanteens());
-		modelAndView.addObject("pagehelper", pagehelper);	
+		modelAndView.addObject("pagehelper", pagehelper);
 		
 		if(session.getAttribute("ua").equals("pc")){
 			modelAndView.setViewName("/WEB-INF/jsp/windowPreset.jsp");
@@ -109,9 +113,18 @@ public class WindowPresetController {
 	
 	//修改档口：修改之后保存并跳转到档口预置页面
 	@RequestMapping ("/modifyWindowSave")	
-	public String modifyWindowSave(WindowItems windowItems) throws Exception{
+	public String modifyWindowSave(WindowItems windowItems, MultipartFile wndPhotoFile) throws Exception{
 		
 		if(findWindowByName(windowItems) == null || findWindowByName(windowItems).getWndID() == windowItems.getWndID()){
+			
+			String wndphoto = uploadFileService.uploadFile(wndPhotoFile, DishManagementController.getPicturepath());
+			//未改变图片则用原来的
+			if(wndphoto == null){
+				windowItems.setWndPhoto(windowPresetService.findWindowById(windowItems.getWndID()).getWndPhoto());
+			}else{
+				windowItems.setWndPhoto(wndphoto);
+			}
+			
 			windowPresetService.updateWindow(windowItems);
 		}	
 		
@@ -135,11 +148,19 @@ public class WindowPresetController {
 		
 	//插入新档口信息
 	@RequestMapping ("/insertWindow")
-	public String insertWindow(WindowItems windowItems) throws Exception{
+	public String insertWindow(WindowItems windowItems, MultipartFile wndPhotoFile) throws Exception{
 				
 		if(findWindowByName(windowItems) == null){
+			String wndphoto = uploadFileService.uploadFile(wndPhotoFile, DishManagementController.getPicturepath());
+			//未输入图片则使用默认的
+			if(wndphoto == null){
+				windowItems.setWndPhoto(DishManagementController.getWndDefaultpicturepath());
+			}else{
+				windowItems.setWndPhoto(wndphoto);
+			}
+			
 			windowPresetService.insertWindow(windowItems);
-		}	
+		}
 		
 		return "forward:windowPreset.action";	
 	}
