@@ -138,6 +138,7 @@ public class UserController {
 		List<Campus> campusList = campusPresetService.findAllCampuses();
 		
 		modelAndView.addObject("campusList", campusList);
+		modelAndView.addObject("adList", adService.findAllAd());
 		
 		//如果第一次进入这个函数，查询第一个校区的第一个食堂作为默认食堂
 		//以后则根据参数返回食堂和档口列表
