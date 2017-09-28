@@ -40,6 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE ctwnd 
 		SET ctwnd.WndCantID= #{wndCantID},
 			ctwnd.WndName= #{wndName}, 
+			ctwnd.WndPhoto = #{wndPhoto},
 			ctwnd.WndAddr= #{wndAddr}, 
 			ctwnd.WndPriceRange= #{wndPriceRange}, 
 			ctwnd.WndSaleHours= #{wndSaleHours},  
@@ -58,12 +59,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 添加档口信息 -->
 	<select id="insertWindow"  parameterType="Window">
 		Insert into ctwnd (ctwnd.WndCantID,
-		ctwnd.WndName,ctwnd.WndAddr,
+		ctwnd.WndName,ctwnd.WndPhoto,ctwnd.WndAddr,
 		ctwnd.WndPriceRange,ctwnd.WndSaleHours,
 		ctwnd.WndPayment,ctwnd.WndDescription,
 		ctwnd.WndNote) 
 		values (#{wndCantID},
-		#{wndName},#{wndAddr},
+		#{wndName},#{wndPhoto},#{wndAddr},
 		#{wndPriceRange},#{wndSaleHours},
 		#{wndPayment},#{wndDescription},
 		#{wndNote})

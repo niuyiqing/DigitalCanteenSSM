@@ -4,6 +4,7 @@ public class Window {
 	private int    wndID          = 0;
 	private int    wndCantID      = 0;
 	private String wndName        = "";
+	private String wndPhoto       = "";
 	private String wndAddr        = "";
 	private String wndPriceRange  = "";		
 	private String wndSaleHours   = "";		
@@ -29,6 +30,12 @@ public class Window {
 	}
 	public void setWndName(String wndName) {
 		this.wndName = wndName;
+	}
+	public String getWndPhoto() {
+		return wndPhoto;
+	}
+	public void setWndPhoto(String wndPhoto) {
+		this.wndPhoto = wndPhoto;
 	}
 	public String getWndAddr() {
 		return wndAddr;

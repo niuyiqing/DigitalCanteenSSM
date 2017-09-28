@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	    </script>
   	    
         <div class="container-fluid">
-            <div class="container col-sm-6 col-sm-offset-3">
+            <div class="container col-sm-8 col-sm-offset-2">
                 <div class="panel panel-default">
 
                     <div class="panel-heading">
@@ -89,7 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                     <div class="panel-body">
                         <div class="row">
-                            <form class="form-horizontal" role="form" name="windowInsertForm" action="insertWindow.action" method="post">
+                            <form class="form-horizontal" role="form" name="windowInsertForm" action="insertWindow.action" method="post" enctype="multipart/form-data">
                             	<div class="form-group">                                                                          
                                     <label class="col-sm-2 control-label">所属校区</label>
                                     <div class="col-sm-9">    
@@ -116,7 +116,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <div class="col-sm-9">    
                             	        <input type="text" class="form-control" name="wndName">
                                     </div>
-                                </div>    
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">档口图片：</label>
+                                    <div class="col-sm-9">
+                                        <input type="file" name="wndPhotoFile"/>
+                                    </div>
+                                </div>  
                                 <div class="form-group">       
                                     <label class="col-sm-2 control-label">档口位置</label>
                                     <div class="col-sm-9 ">    
@@ -177,6 +183,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <th style='text-align: center;'>校区名称</th>
                                     <th style='text-align: center;'>食堂名称</th>
                                     <th style='text-align: center;'>档口名称</th>
+                                    <th style='text-align: center;'>档口图片</th>
                                     <th style='text-align: center;'>档口位置</th>
                                     <th style='text-align: center;'>价格范围</th>
                                     <th style='text-align: center;'>营业时间段</th>
@@ -193,6 +200,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <td style='vertical-align: middle;text-align: center;'>${item.campusName }</td>
                                         <td style='vertical-align: middle;text-align: center;'>${item.cantName }</td>
                                         <td style='vertical-align: middle;text-align: center;'>${item.wndName }</td>
+                                        <td style='vertical-align: middle;text-align: center;'>
+                                            <c:if test="${item.wndPhoto != null }">
+                                                <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="100" width="120"/>
+                                            </c:if>
+                                        </td>
                                         <td style='vertical-align: middle;text-align: center;'>${item.wndAddr}</td>
                                         <td style='vertical-align: middle;text-align: center;'>${item.wndPriceRange}</td>
                                         <td style='vertical-align: middle;text-align: center;'>${item.wndSaleHours}</td>
