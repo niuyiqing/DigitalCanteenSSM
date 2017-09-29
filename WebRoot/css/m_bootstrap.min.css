@@ -5129,7 +5129,8 @@ textarea.input-group-sm>.input-group-btn>.btn {
 }
 
 .nav-pills>li {
-	float: left
+	float: left;
+	height: 30px;
 }
 
 .nav-pills>li>a {

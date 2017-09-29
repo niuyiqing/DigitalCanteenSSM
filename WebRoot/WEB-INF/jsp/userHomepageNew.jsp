@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                 </div>
 
-                                <div class="newcustom">
+                                <div class="newcustom" style="margin-top: 10px;">
                                     <table  width=100%>                                                        
                                         <tr>
                                             <td style='vertical-align: middle' onclick="location.href='findAllCampuses.action';">
@@ -119,23 +119,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <td style='vertical-align: middle;text-align: center;font-size:1.5em' height="30px">莘子苑酒店推荐</td>
                                         </tr>
                                     </table>
-                                    
-                                    <div style="position:relative;height:30px;margin-top: 10px;">
+                                </div>
+                                <div class="newcustom" style="margin-top: 10px;">    
+                                    <div style="position:relative;height:50px;padding-top: 20px;background-color: #f79076;">
                                         <ul class="nav nav-pills">
                                             <c:forEach items="${campusList }" var="item" >
-                                                <li style="color:#F00;font-size:18px;"><a href="userHomepage.action?campusID=${item.campusID}">${item.campusName }</a><li>
+                                                <c:choose >
+                                                    <c:when test="${item.campusID eq campus.campusID}">
+                                                        <li style="font-size:18px;"><a style="background-color: #f2e2de;" href="userHomepage.action?campusID=${item.campusID}">${item.campusName }</a><li>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <li style="font-size:18px;"><a style="color:white;" href="userHomepage.action?campusID=${item.campusID}">${item.campusName }</a><li>
+                                                    </c:otherwise>
+                                                </c:choose>
                                             </c:forEach>
                                         </ul>
                                     </div>
-                                    <div style="position:relative;height:30px;margin-top: 10px;">
+                                    <div style="position:relative;height:70px;padding-top: 20px;">
                                         <ul class="nav nav-pills">
                                             <c:forEach items="${canteenItemsList }" var="item" >
                                                 <c:choose >
                                                     <c:when test="${item.cantID eq canteenItems.cantID}">
-                                                        <li style="color:red;font-size:18px;"><a href="userHomepage.action?cantID=${item.cantID}">${item.cantName }</a><li>
+                                                        <li style="font-size:18px;"><a style="background-color: #f2e2de;" href="userHomepage.action?cantID=${item.cantID}">${item.cantName }</a><li>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <li style="color:#F00;font-size:18px;"><a href="userHomepage.action?cantID=${item.cantID}">${item.cantName }</a><li>
+                                                        <li style="font-size:18px;"><a href="userHomepage.action?cantID=${item.cantID}">${item.cantName }</a><li>
                                                     </c:otherwise>
                                                 </c:choose>
                                             </c:forEach>
