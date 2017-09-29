@@ -164,7 +164,6 @@ public class UserController {
 				}
 			}
 		}else if(campusID != null && cantID == null){	//有校区信息，查找该校区下的默认食堂及其档口信息
-			
 			List<CanteenItems> canteenItemsList = canteenPresetService.findCanteenByCampus(campusID);
 			if(!canteenItemsList.isEmpty()){
 				Iterator<CanteenItems> iterator_canteenItems = canteenItemsList.iterator();
