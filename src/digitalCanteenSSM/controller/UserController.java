@@ -164,7 +164,6 @@ public class UserController {
 				}
 			}
 		}else if(campusID != null && cantID == null){	//有校区信息，查找该校区下的默认食堂及其档口信息
-			Campus campus = campusPresetService.findCampusById(campusID);
 			List<CanteenItems> canteenItemsList = canteenPresetService.findCanteenByCampus(campusID);
 			if(!canteenItemsList.isEmpty()){
 				Iterator<CanteenItems> iterator_canteenItems = canteenItemsList.iterator();
@@ -175,7 +174,6 @@ public class UserController {
 				modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(canteenItems.getCantID()));
 				//将该校区下的食堂列表传到用户首页
 				modelAndView.addObject("canteenItemsList", canteenItemsList);
-				modelAndView.addObject("campus", campus);
 			}
 			
 		}else if(campusID != null && cantID != null){	//有校区和食堂信息，返回该食堂档口信息
