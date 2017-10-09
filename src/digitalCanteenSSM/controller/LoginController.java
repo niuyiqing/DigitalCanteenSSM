@@ -141,7 +141,7 @@ public class LoginController {
 	public String logout(HttpSession session,HttpServletRequest request,HttpServletResponse response){
 
 		Cookie[] cookies = request.getCookies();  
-        for (Cookie cookie : cookies) {  
+        for (Cookie cookie : cookies) {
             if (cookie.getName().equals("userName")) {  
                 cookie.setValue("");
                 cookie.setPath("/");

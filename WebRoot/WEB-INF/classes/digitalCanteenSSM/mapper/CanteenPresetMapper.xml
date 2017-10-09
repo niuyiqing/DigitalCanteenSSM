@@ -14,6 +14,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY CantCampusID DESC, CantID DESC
 	</select>
 	
+	<!-- 查询所有的花样食堂，按校区和食堂ID降序排列 -->
+	<select id="findAllFancyCanteens" resultType="CanteenItems">
+		SELECT *
+		FROM ctcant,ctcampus,ctcanttype
+		WHERE ctcant.cantCampusID = ctcampus.campusID and ctcant.CantTypeID=ctcanttype.CantTypeID and ctcanttype.CantTypeName='花样食堂'
+		ORDER BY CantCampusID DESC, CantID DESC
+	</select>
+	
+	<!-- 按校区查询花样食堂 -->
+	<select id="findFancyCanteensByCampus" parameterType="int" resultType="CanteenItems">
+		SELECT *
+		FROM ctcant,ctcampus,ctcanttype
+		WHERE ctcant.CantCampusID=#{cantCampusID} and ctcant.cantCampusID = ctcampus.campusID and ctcant.CantTypeID=ctcanttype.CantTypeID and ctcanttype.CantTypeName='花样食堂'
+		ORDER BY CantID DESC
+	</select>
+	
+	<!-- 查询所有的中餐（自营）食堂，按校区和食堂ID降序排列 -->
+	<select id="findAllChineseCanteens" resultType="CanteenItems">
+		SELECT *
+		FROM ctcant,ctcampus,ctcanttype
+		WHERE ctcant.cantCampusID = ctcampus.campusID and ctcant.CantTypeID=ctcanttype.CantTypeID and ctcanttype.CantTypeName='自营食堂'
+		ORDER BY CantCampusID DESC, CantID DESC
+	</select>
+	
+	<!-- 按校区查询中餐（自营）食堂 -->
+	<select id="findChineseCanteensByCampus" parameterType="int" resultType="CanteenItems">
+		SELECT *
+		FROM ctcant,ctcampus,ctcanttype
+		WHERE ctcant.CantCampusID=#{cantCampusID} and ctcant.cantCampusID = ctcampus.campusID and ctcant.CantTypeID=ctcanttype.CantTypeID and ctcanttype.CantTypeName='自营食堂'
+		ORDER BY CantID DESC
+	</select>
+	
 	<!-- 根据CanteenID查询该食堂信息 -->
 	<select id="findCanteenById"  parameterType="int" resultType="CanteenItems">
 		SELECT * 
