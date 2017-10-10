@@ -27,6 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<script src="js/bootstrap-touch-slider.js"></script>
 
     	<link rel="stylesheet" href="css/m_bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/footnav.css" />
     	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
     	<link rel="stylesheet" type="text/css" href="css/demo.css" />
     	<link rel="stylesheet" type="text/css" href="css/icons.css" />
@@ -57,12 +58,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="scroller-inner">
                         <form class="form-horizontal" role="form" name="userQueryForm" method="post">
                             <div class="codrops-header" style="background:rgba(0,0,0,0);" >
-                                <div id="trigger" class="burger-container" style="margin-bottom: -8px;">                    
+                                <!-- <div id="trigger" class="burger-container" style="margin-bottom: -8px;">                    
                                     <span class="burger-bun-top"></span>
                                     <span class="burger-filling"></span>
                                     <span class="burger-bun-bot"></span>
-                                </div> 
-                                <input  type="text"  placeholder="请输入菜品名或档口名" id="queryName" name="queryName" style="background:rgba(255,255,255,0.8);width:170px;height:35px;color:#000">                  
+                                </div> --> 
+                                <input  type="text"  placeholder="请输入菜品名或档口名" id="queryName" name="queryName" style="background:rgba(255,255,255,0.8);width:70%;height:35px;color:#000">                  
                                 <input  type="button" value="查询"  class="btn btn-primary btn-wide" onclick="userQueryAll()">
                             </div>                                                                          
                         </form>
@@ -125,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <ul class="nav nav-pills">
                                             <c:forEach items="${campusList }" var="item" >
                                                 <c:choose >
-                                                    <c:when test="${item.campusID eq campus.campusID}">
+                                                    <c:when test="${item.campusID eq canteenItems.cantCampusID}">
                                                         <li style="font-size:18px;"><a style="background-color: #f2e2de;" href="userHomepage.action?campusID=${item.campusID}">${item.campusName }</a><li>
                                                     </c:when>
                                                     <c:otherwise>
@@ -184,12 +185,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 </c:forEach>                                                                            
                                             </div>
                                         </div>  
-                                    </div> 
-    			<!-- 牛怡青 牛怡青 牛怡青 牛怡青 牛怡青 牛怡青 牛怡青 牛怡青 牛怡青 牛怡青 牛怡青 -->
-    			<!-- 牛怡青 牛怡青 牛怡青 牛怡青 牛怡青 牛怡青 牛怡青 牛怡青 牛怡青 牛怡青 牛怡青 -->
-    			
-    			<!-- 后台传递过来的元素有：campusList，canteenItems，windowsList，canteenItemsList -->
-    			<!-- 分别是所有校区列表，选中的食堂，选中食堂的所有档口列表，该校区所有食堂列表 -->
+                                    </div>    			
+    			                    <!-- 后台传递过来的元素有：campusList，canteenItems，windowsList，canteenItemsList -->
+    			                    <!-- 分别是所有校区列表，选中的食堂，选中食堂的所有档口列表，该校区所有食堂列表 -->
                                 </div>
                             </div>
                         </div>
@@ -197,6 +195,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
     		</div>
     	</div>
+        <div class="footnav">
+            <ul>
+                <li>
+                    <a href="#"><span>首页</span></a>
+                </li>
+                <li style="position:relative;">
+                    <a href="#"><span>附近</span></a>
+                </li>
+                <li>
+                    <a href="#"><span>订单</span></a>
+                </li>
+                <li>
+                    <a href="#"><span>我的</span></a>
+                </li>
+            </ul>
+        </div>
         <script src="js/classie.js"></script>
         <script src="js/mlpushmenu.js"></script>
         <script>new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );</script>
