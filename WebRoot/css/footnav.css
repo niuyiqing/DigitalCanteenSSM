@@ -1,0 +1,26 @@
+﻿.footnav {
+    background: #29C192;
+    padding: 10px 0 6px 0;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.footnav ul {
+    height: 0px;
+}
+.footnav ul li {
+    float: left;
+    width: 25%;
+    text-align: center;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+.footnav ul li span {
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    line-height: 22px;
+}
