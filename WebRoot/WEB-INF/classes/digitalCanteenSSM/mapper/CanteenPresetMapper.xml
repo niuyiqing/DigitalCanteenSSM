@@ -38,6 +38,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY CantCampusID DESC, CantID DESC
 	</select>
 	
+	<!-- 查询名星食堂 -->
+	<select id="findStarCanteens" resulttype="CanteenItems">
+		SELECT * 
+		FROM ctcant,ctcampus,ctcanttype
+		WHERE ctcant.starCant=1 and ctcant.cantCampusID = ctcampus.campusID and ctcant.CantTypeID=ctcanttype.CantTypeID
+		ORDER BY CantCampusID DESC, CantID DESC
+	</select>
+	
 	<!-- 按校区查询中餐（自营）食堂 -->
 	<select id="findChineseCanteensByCampus" parameterType="int" resultType="CanteenItems">
 		SELECT *
@@ -83,8 +91,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			ctcant.CantName= #{cantName}, 
 			ctcant.CantTypeID=#{cantTypeID},
 			ctcant.CantAddr= #{cantAddr}, 
-			ctcant.CantDescription= #{cantDescription}  
-		WHERE ctcant.CantID=#{cantID}		
+			ctcant.CantDescription= #{cantDescription}
+			ctcant.StarCant=#{starCant}
+		WHERE ctcant.CantID=#{cantID}
 	</select>
 	
 	<!-- 根据CanteenID删除食堂信息 -->
@@ -97,10 +106,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="insertCanteen"  parameterType="Canteen">
 		Insert into ctcant (
 			ctcant.CantCampusID,ctcant.CantName,ctcant.CantTypeID,
-			ctcant.CantAddr,ctcant.CantDescription) 
+			ctcant.CantAddr,ctcant.CantDescription,ctcant.StarCant) 
 		values (
 			#{cantCampusID},#{cantName},#{cantTypeID},
-			#{cantAddr},#{cantDescription})
+			#{cantAddr},#{cantDescription},#{starCant})
 	</select>
 	
 </mapper>

@@ -18,6 +18,8 @@ public interface CanteenPresetService {
 	
 	public List<CanteenItems> findChineseCanteensByCampus() throws Exception;
 	
+	public List<CanteenItems> findStarCanteens() throws Exception;
+	
 	public CanteenItems findCanteenById(int cantID) throws Exception;
 	
 	public CanteenItems findCanteenByName(CanteenItems canteenItems) throws Exception;

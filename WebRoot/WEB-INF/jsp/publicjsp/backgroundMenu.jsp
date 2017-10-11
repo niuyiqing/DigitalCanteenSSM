@@ -20,7 +20,7 @@
                     <li class="divider"></li>
                     <li><a href="${pageContext.request.contextPath }/dishImportCheck.action">录入审核</a></li>
                     <li class="divider"></li>
-                    <li><a href="adManagement.action">广告推送管理</a></li>                    
+                    <li><a href="adManagement.action">广告推送管理</a></li>
                 </ul>
             </li>
   			<li class="dropdown">

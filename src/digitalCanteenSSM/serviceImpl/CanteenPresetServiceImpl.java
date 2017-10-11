@@ -42,6 +42,11 @@ public class CanteenPresetServiceImpl implements CanteenPresetService{
 	public List<CanteenItems> findChineseCanteensByCampus() throws Exception{
 		return canteenPresetMapper.findChineseCanteensByCampus();
 	}
+	
+	@Override
+	public List<CanteenItems> findStarCanteens() throws Exception{
+		return canteenPresetMapper.findStarCanteens();
+	}
 
 	@Override
 	public CanteenItems findCanteenById(int cantID) throws Exception {
