@@ -9,12 +9,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.github.miemiedev.mybatis.paginator.domain.Order;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
+import digitalCanteenSSM.exception.ResultInfo;
+import digitalCanteenSSM.exception.SubmitResultInfo;
 import digitalCanteenSSM.po.Canteen;
 import digitalCanteenSSM.po.CanteenItems;
 import digitalCanteenSSM.service.CampusPresetService;
@@ -141,5 +144,38 @@ public class CanteenPresetController {
 		
 		return "forward:canteenPreset.action";	
 	}
+	
+	//设置名星食堂
+	@RequestMapping("/selectStarCanteens")
+	public ModelAndView selectStarCanteens(HttpSession session) throws Exception{
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("canteenItemsList", canteenPresetService.findAllCanteens());
+		modelAndView.addObject("starCanteensList", canteenPresetService.findStarCanteens());
+		
+		if(session.getAttribute("ua").equals("pc")){
+			modelAndView.setViewName("/WEB-INF/jsp/selectStarCanteens.jsp");
+		}else{
+			modelAndView.setViewName("/WEB-INF/jsp/m_selectStarCanteens.jsp");
+		}
+		
+		return modelAndView;
+	}
 
+	//保存名星食堂
+	@RequestMapping("/saveStarCanteens")
+	public @ResponseBody SubmitResultInfo saveStarCanteens(Integer[] cantIDList)throws Exception{
+		//传递给页面的参数
+		ResultInfo resultInfo = new ResultInfo();
+		resultInfo.setType(ResultInfo.TYPE_RESULT_FAIL);
+		
+		//清除之前保存的名星食堂标志
+		
+		//写入新的名星食堂标志
+		
+		resultInfo.setType(ResultInfo.TYPE_RESULT_SUCCESS);
+		
+		SubmitResultInfo submitResultInfo = new SubmitResultInfo(resultInfo);		
+		return submitResultInfo;
+	}
 }

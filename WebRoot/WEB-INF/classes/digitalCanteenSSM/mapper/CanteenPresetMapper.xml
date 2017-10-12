@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 查询名星食堂 -->
-	<select id="findStarCanteens" resulttype="CanteenItems">
+	<select id="findStarCanteens" resultType="CanteenItems">
 		SELECT * 
 		FROM ctcant,ctcampus,ctcanttype
 		WHERE ctcant.starCant=1 and ctcant.cantCampusID = ctcampus.campusID and ctcant.CantTypeID=ctcanttype.CantTypeID

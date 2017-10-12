@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 					<div class="panel-body">
 						
-						<form class="form-horizontal" role="form" action="insetDishPreset.action" method="post" enctype="multipart/form-data">
+						<form class="form-horizontal" role="form" action="insertDishPreset.action" method="post" enctype="multipart/form-data">
 							<div class="form-group">																	
 								<label class="col-sm-2 control-label">菜品名称：</label>
 								<div class="col-sm-9">	

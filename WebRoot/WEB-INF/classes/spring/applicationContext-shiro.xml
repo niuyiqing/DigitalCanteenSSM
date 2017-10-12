@@ -101,7 +101,7 @@
                 /modifyDishPreset.action              = roles[super]
                 /modifyDishPresetSave.action          = roles[super]
                 /deleteDishPresetById.action          = roles[super]
-                /insetDishPreset.action               = roles[super]
+                /insertDishPreset.action               = roles[super]
 
                 /dishTypePreset.action                = roles[super]
                 /findAllDishType.action               = roles[super]

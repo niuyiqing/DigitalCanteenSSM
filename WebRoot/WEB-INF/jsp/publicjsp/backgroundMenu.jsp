@@ -64,6 +64,20 @@
                 </ul>
             </li>
 
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <FONT style="FONT-FAMILY:黑体">推荐管理</FONT>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">名星食堂</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">人气中餐</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">人气风味</a></li>
+                </ul>
+            </li>
+
             <!-- 去掉评论管理
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
