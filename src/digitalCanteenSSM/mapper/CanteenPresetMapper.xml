@@ -91,7 +91,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			ctcant.CantName= #{cantName}, 
 			ctcant.CantTypeID=#{cantTypeID},
 			ctcant.CantAddr= #{cantAddr}, 
-			ctcant.CantDescription= #{cantDescription}
+			ctcant.CantDescription= #{cantDescription},
 			ctcant.StarCant=#{starCant}
 		WHERE ctcant.CantID=#{cantID}
 	</select>

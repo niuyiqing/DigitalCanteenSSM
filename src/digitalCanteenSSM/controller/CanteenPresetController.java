@@ -140,7 +140,7 @@ public class CanteenPresetController {
 		
 		if(findCanteenByName(canteenItems) == null){
 			canteenPresetService.insertCanteen(canteenItems);
-		}	
+		}
 		
 		return "forward:canteenPreset.action";	
 	}
@@ -167,13 +167,28 @@ public class CanteenPresetController {
 	public @ResponseBody SubmitResultInfo saveStarCanteens(Integer[] cantIDList)throws Exception{
 		//传递给页面的参数
 		ResultInfo resultInfo = new ResultInfo();
-		resultInfo.setType(ResultInfo.TYPE_RESULT_FAIL);
+		resultInfo.setType(ResultInfo.TYPE_RESULT_SUCCESS);
 		
 		//清除之前保存的名星食堂标志
-		
+		List<CanteenItems> starCanteensList = canteenPresetService.findStarCanteens();
+		for(CanteenItems starItem : starCanteensList){
+			starItem.setStarCant(0);
+			canteenPresetService.updateCanteen(starItem);
+		}
 		//写入新的名星食堂标志
+		CanteenItems starCanteen = new CanteenItems();
 		
-		resultInfo.setType(ResultInfo.TYPE_RESULT_SUCCESS);
+		if(cantIDList != null){
+			for(Integer i: cantIDList){
+				starCanteen = canteenPresetService.findCanteenById(i);
+				starCanteen.setStarCant(1);
+				
+				canteenPresetService.updateCanteen(starCanteen);
+			}
+			resultInfo.setMessage("成功设定【"+cantIDList.length+"】个名星食堂");
+		}else{
+			resultInfo.setMessage("名星食堂列表已清空");
+		}
 		
 		SubmitResultInfo submitResultInfo = new SubmitResultInfo(resultInfo);		
 		return submitResultInfo;

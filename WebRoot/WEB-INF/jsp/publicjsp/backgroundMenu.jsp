@@ -70,7 +70,7 @@
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">名星食堂</a></li>
+                    <li><a href="${pageContext.request.contextPath }/selectStarCanteens.action">名星食堂</a></li>
                     <li class="divider"></li>
                     <li><a href="#">人气中餐</a></li>
                     <li class="divider"></li>

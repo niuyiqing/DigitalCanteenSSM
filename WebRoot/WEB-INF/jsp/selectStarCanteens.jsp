@@ -1,10 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
 <!DOCTYPE html>
 <html>
   	<head>
@@ -32,6 +32,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--bootstrap-->    
         <script src="js/bootstrap.min.js"></script>
 
+        <!-- jQuery支撑 -->
+        <script src="js/jquery.form.js"></script>
+        <script src="js/custom.jquery.form.js"></script>
+        <script src="js/jquery.validate.js"></script>
+
         <script>
             var checkflag=false;
             function getAllCanteensSelect(name){
@@ -58,9 +63,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }
 
             function starCanteensSubmit(){
+                document.starCanteensForm.action = "saveStarCanteens.action";
                 jquerySubByFId('starCanteensForm', starCanteensSubmit_callback, null, "json");
             }
-            function starCanteensSubmit_callback(){
+            function starCanteensSubmit_callback(data){
                 alert(data.resultInfo.message);
             }
         </script>
@@ -77,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
     
                     <div class="panel-body">
-                        <form role="form" name="starCanteensForm" method="post" action="saveStarCanteens.action">
+                        <form role="form" name="starCanteensForm" id="starCanteensForm" method="post" action="saveStarCanteens.action">
                             <table  class="table table-striped table-bordered table-hover table-responsive text-center">
                                 <thead>
                                     <tr>
