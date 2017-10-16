@@ -135,13 +135,13 @@ public class DishPresetController {
 	}
 	
 	//添加新的预置菜品
-	@RequestMapping("/insetDishPreset")
-	public String insetDishPreset(DishPreset dishPreset, MultipartFile dishPhotoFile) throws Exception{
+	@RequestMapping("/insertDishPreset")
+	public String insertDishPreset(DishPreset dishPreset, MultipartFile dishPhotoFile) throws Exception{
 		
 		if(findDishPresetByName(dishPreset.getDishPresetName()) == null){
 			String dishphoto = uploadFileService.uploadFile(dishPhotoFile, DishManagementController.getPicturepath());
 			//未输入图片则使用默认的
-			if( dishphoto== null){			
+			if( dishphoto== null){
 				dishPreset.setDishPresetPhoto(DishManagementController.getDefaultpicturepath());
 			}
 			else{
@@ -152,5 +152,6 @@ public class DishPresetController {
 		
 		return "forward:dishPreset.action";
 	}
-		
+
+	
 }

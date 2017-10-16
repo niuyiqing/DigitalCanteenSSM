@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						    </div>
 
                 <div class="content clearfix">
-		            <form action="insetDishPreset.action" method="post" enctype="multipart/form-data">
+		            <form action="insertDishPreset.action" method="post" enctype="multipart/form-data">
 			<!-- 添加预置菜品-->
                 <div class=" newcustom" style="margin-top:77px" >
 			           <div class="form-group" >
