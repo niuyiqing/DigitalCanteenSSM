@@ -8,6 +8,7 @@
 }
 .footnav ul {
     height: 0px;
+    padding-left: 0px;
 }
 .footnav ul li {
     float: left;
@@ -22,5 +23,31 @@
     color: #fff;
     font-size: 14px;
     font-family: "微软雅黑";
-    line-height: 22px;
+    line-height: 30px;
+}
+
+.campusnav {
+    background: #f79076;
+    height:50px;
+    padding: 10px 0 6px 0;
+    width: 100%;
+    left: 0;
+}
+.campusnav ul {
+    height: 0px;
+    padding-left: 0px;
+}
+.campusnav ul li {
+    float: left;
+    width: 25%;
+    text-align: center;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+.campusnav ul li span {
+    display: block;
+    font-size: 18px;
+    font-family: "微软雅黑";
+    line-height: 30px;
 }
