@@ -181,8 +181,8 @@ public class UserController {
 			modelAndView.addObject("canteenItems", canteenPresetService.findCanteenById(cantID));
 			//将该食堂的档口列表传到用户首页
 			modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(cantID));
-			//直接根据campusID查找校区下的食堂列表
-			modelAndView.addObject("canteenItemsList", canteenPresetService.findCanteenByCampus(campusID));
+			//查找校区下的食堂列表
+			modelAndView.addObject("canteenItemsList", canteenPresetService.findCanteenByCampus(canteenPresetService.findCanteenById(cantID).getCampusID()));
 			
 		}else{	//只有食堂信息，反推校区信息
 			//首先根据cantID在数据库中查找到相应档口信息

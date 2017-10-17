@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="scroller" style="background:#EEEEEE">
                     <div class="scroller-inner">
                         <form class="form-horizontal" role="form" name="userQueryForm" method="post">
-                            <div class="codrops-header" style="background:rgba(0,0,0,0);" >
+                            <div class="codrops-header" style="background:rgba(0,0,0,0);top:18px" >
                                 <!-- <div id="trigger" class="burger-container" style="margin-bottom: -8px;">                    
                                     <span class="burger-bun-top"></span>
                                     <span class="burger-filling"></span>

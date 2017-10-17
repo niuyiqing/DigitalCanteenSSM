@@ -20,7 +20,7 @@
                     <li class="divider"></li>
                     <li><a href="${pageContext.request.contextPath }/dishImportCheck.action">录入审核</a></li>
                     <li class="divider"></li>
-                    <li><a href="adManagement.action">广告推送管理</a></li>                    
+                    <li><a href="adManagement.action">广告推送管理</a></li>
                 </ul>
             </li>
   			<li class="dropdown">
@@ -63,6 +63,22 @@
                     <li><a href="${pageContext.request.contextPath }/loginfo.action">日志查看</a></li>
                 </ul>
             </li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <FONT style="FONT-FAMILY:黑体">推荐管理</FONT>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="${pageContext.request.contextPath }/selectStarCanteens.action">名星食堂</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">人气中餐</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">人气风味</a></li>
+                </ul>
+            </li>
+
+            <!-- 去掉评论管理
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <FONT style="FONT-FAMILY:黑体">评论管理</FONT>
@@ -72,6 +88,7 @@
                     <li><a href="${pageContext.request.contextPath }/commentSelectWindow.action">评论查看</a></li>
                 </ul>
             </li>
+          -->
   		</ul>
   			
   		<div class="collapse navbar-collapse" id="example-navbar-collapse">

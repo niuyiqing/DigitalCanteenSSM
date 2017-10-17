@@ -102,20 +102,20 @@ public class LoginController {
 				return "forward:userHomepage.action";					
 			}else if("canteen".equals(mUserItems.getRoleName())){
 
-					/*
-					*MUserService的mapper中findMUserByName查询限定了
-					*用户所属校区和食堂的ID，用于查询食堂和饮食公司
-					*这一级别的用户
-					*findMUserInfoByName查询没有限定校区和食堂的ID，
-					*用于查询后台管理员用户
-					*所以这里对于食堂管理员额外使用了一次findMUserByName
-					*查询，不然获取不到校区和食堂信息
-					*/
-					MUser mUser = new MUser();
-					mUser.setMuserName(mUserItems.getMuserName());
-					mUserItems = mUserService.findMUserByName(mUser);
-					session.setAttribute("muserItems", mUserItems);
-					return "forward:muserCanteenHostPage.action";
+				/*
+				*MUserService的mapper中findMUserByName查询限定了
+				*用户所属校区和食堂的ID，用于查询食堂和饮食公司
+				*这一级别的用户
+				*findMUserInfoByName查询没有限定校区和食堂的ID，
+				*用于查询后台管理员用户
+				*所以这里对于食堂管理员额外使用了一次findMUserByName
+				*查询，不然获取不到校区和食堂信息
+				*/
+				MUser mUser = new MUser();
+				mUser.setMuserName(mUserItems.getMuserName());
+				mUserItems = mUserService.findMUserByName(mUser);
+				session.setAttribute("muserItems", mUserItems);
+				return "forward:muserCanteenHostPage.action";
 				
 			}else if("super".equals(mUserItems.getRoleName())){	
 				
@@ -141,7 +141,7 @@ public class LoginController {
 	public String logout(HttpSession session,HttpServletRequest request,HttpServletResponse response){
 
 		Cookie[] cookies = request.getCookies();  
-        for (Cookie cookie : cookies) {  
+        for (Cookie cookie : cookies) {
             if (cookie.getName().equals("userName")) {  
                 cookie.setValue("");
                 cookie.setPath("/");

@@ -66,7 +66,7 @@
         	注意：对于相似的资源，需要将anon的设置放在authc前面，anon才会生效，因为Shiro是从上往下匹配URL的，匹配成功便不再匹配了
         -->
         <property name="filterChainDefinitions">
-            <value>
+            <value>          	
                 /campusPreset.action                  = roles[super]
                 /findAllCampuses.action               = roles[super]
                 /findCampusById.action                = roles[super]
@@ -84,6 +84,8 @@
                 /modifyCanteenSave.action             = roles[super]
                 /deleteCanteenById.action             = roles[super]
                 /insertCanteen.action                 = roles[super]
+                /selectStarCanteens.action			  = roles[super]
+                /saveStarCanteens.action			  = roles[super]
          
                 /canteenTypePreset.action             = roles[super]
                 /findAllCanteenType.action            = roles[super]
@@ -101,7 +103,7 @@
                 /modifyDishPreset.action              = roles[super]
                 /modifyDishPresetSave.action          = roles[super]
                 /deleteDishPresetById.action          = roles[super]
-                /insetDishPreset.action               = roles[super]
+                /insertDishPreset.action               = roles[super]
 
                 /dishTypePreset.action                = roles[super]
                 /findAllDishType.action               = roles[super]
