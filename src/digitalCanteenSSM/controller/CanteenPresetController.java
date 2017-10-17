@@ -193,4 +193,15 @@ public class CanteenPresetController {
 		SubmitResultInfo submitResultInfo = new SubmitResultInfo(resultInfo);		
 		return submitResultInfo;
 	}
+	
+	//用户端名星食堂页面
+	@RequestMapping("/starCanteensPage")
+	public ModelAndView starCanteensPage() throws Exception{
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("starCanteensList", canteenPresetService.findStarCanteens());
+		modelAndView.setViewName("/WEB-INF/jsp/m_starCanteensPage.jsp");
+		
+		return modelAndView;
+	}
 }
