@@ -60,6 +60,18 @@
 								</div>
 							</li>
 							<li >
+								<a class="icon icon-renyuanguanli" data-ajax="false" href="#" style="font-size:17px">推荐管理</a>
+								<div class="mp-level">
+									<h2 class="icon icon-renyuanguanli" style="padding: 1em 1em 1em 4.5em;font-size:17px;background:rgba(41,193,146,0.95)">推荐管理</h2>
+									<ul>
+										<li><a href="${pageContext.request.contextPath }/selectStarCanteens.action" data-ajax="false" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">名星食堂</a></li>
+										<li><a href="#" data-ajax="false" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">人气中餐</a></li>
+										<li><a href="#" data-ajax="false" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">人气风味</a></li>
+									</ul>
+								</div>
+							</li>
+							<!-- 去掉评论管理
+							<li >
 								<a class="icon icon-pinglunguanli" href="#" style="font-size:17px">评论管理</a>
 								<div class="mp-level">
 									<h2 class="icon icon-pinglunguanli" style="padding: 1em 1em 1em 4.5em;font-size:17px;background:rgba(41,193,146,0.95)">评论管理</h2>
@@ -69,7 +81,8 @@
 										</li>
 									</ul>
 								</div>
-							</li>
+							</li> 
+						-->
 						</ul>
 					</div>
 					<button style="position:absolute;left:20px;bottom:10%;border:none"><a class="icon icon-zhuxiao" data-ajax="false" href="${pageContext.request.contextPath }/logout.action"><span style="font-size:15px;color:#000000;">注销</span></a></button>

@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui" />        
         <meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta name="format-detection" content="telephone=no">
 		
         <script src="js/modernizr.custom.js"></script>
@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="scroller" style="background:#EEEEEE">
                     <div class="scroller-inner">
                         <form class="form-horizontal" role="form" name="userQueryForm" method="post">
-                            <div class="codrops-header" style="background:rgba(0,0,0,0);" >
+                            <div class="codrops-header" style="background:rgba(0,0,0,0);top:18px" >
                                 <!-- <div id="trigger" class="burger-container" style="margin-bottom: -8px;">                    
                                     <span class="burger-bun-top"></span>
                                     <span class="burger-filling"></span>
@@ -122,15 +122,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </table>
                                 </div>
                                 <div class="newcustom" style="margin-top: 10px;">    
-                                    <div style="position:relative;height:50px;padding-top: 20px;background-color: #f79076;">
-                                        <ul class="nav nav-pills">
+                                    <div class="campusnav">
+                                        <ul>
                                             <c:forEach items="${campusList }" var="item" >
                                                 <c:choose >
                                                     <c:when test="${item.campusID eq canteenItems.cantCampusID}">
-                                                        <li style="font-size:18px;"><a style="background-color: #f2e2de;" href="userHomepage.action?campusID=${item.campusID}">${item.campusName }</a><li>
+                                                        <li ><a style="color: black;" href="userHomepage.action?campusID=${item.campusID}"><span>${item.campusName }</span></a><li>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <li style="font-size:18px;"><a style="color:white;" href="userHomepage.action?campusID=${item.campusID}">${item.campusName }</a><li>
+                                                        <li ><a style="color:white;" href="userHomepage.action?campusID=${item.campusID}"><span>${item.campusName }</span></a><li>
                                                     </c:otherwise>
                                                 </c:choose>
                                             </c:forEach>
@@ -141,7 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <c:forEach items="${canteenItemsList }" var="item" >
                                                 <c:choose >
                                                     <c:when test="${item.cantID eq canteenItems.cantID}">
-                                                        <li style="font-size:18px;"><a style="background-color: #f2e2de;" href="userHomepage.action?cantID=${item.cantID}">${item.cantName }</a><li>
+                                                        <li style="font-size:18px;"><a style="color: #f79076;" href="userHomepage.action?cantID=${item.cantID}">${item.cantName }</a><li>
                                                     </c:when>
                                                     <c:otherwise>
                                                         <li style="font-size:18px;"><a href="userHomepage.action?cantID=${item.cantID}">${item.cantName }</a><li>
@@ -198,16 +198,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="footnav">
             <ul>
                 <li>
-                    <a href="#"><span>首页</span></a>
+                    <a href="userHomepage.action"><span>首页</span></a>
                 </li>
                 <li style="position:relative;">
-                    <a href="#"><span>附近</span></a>
+                    <span>附近</span>
                 </li>
                 <li>
-                    <a href="#"><span>订单</span></a>
+                    <span>订单</span>
                 </li>
                 <li>
-                    <a href="#"><span>我的</span></a>
+                    <span>我的</span>
                 </li>
             </ul>
         </div>
