@@ -82,12 +82,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	          <form action="${pageContext.request.contextPath}/login.action" id="myForm" method="post">
                   <input type="text" placeholder="用户名" name="userName" id="userName" value="<%=userName%>">
                   <input type="password" placeholder="密码" name="password" value="<%=password%>">
+                  
                   <div class="holder">                    
                       记住密码<input type="checkbox" value="y" name="isLogin" id="checkbox-10-2" checked /><label for="checkbox-10-2"></label>                    
-                  </div>
+                  </div> 
+                  
                   <button type="submit" id="login-button">登录</button>
                   <br/><br/>
-                  <a href="${pageContext.request.contextPath}/userRegisterPage.action">注册</a>
+                  <!-- <a href="${pageContext.request.contextPath}/userRegisterPage.action">注册</a> -->
     	          </form>             
               </div>
               <ul class="bg-bubbles">
