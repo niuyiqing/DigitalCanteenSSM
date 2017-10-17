@@ -156,16 +156,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <c:forEach items="${windowsList }" var="item">
                                                     <div id="view" class="item clearfix">                                                   
                                                         <div class="txt-item">
-                                                            <table width=100% height=84px onclick="location.href='userWindowContents.action?wndID=${item.wndID}';" >
-                                                                <tr>
-                                                                    <td style="width:60%;padding-left:12px;font-size:1.5em;font-weight:500">
+                                                            <table width=100% onclick="location.href='userWindowContents.action?wndID=${item.wndID}';" >
+                                                                <tr style="height:30px">
+                                                                    <td rowspan=3>
+                                                                        <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="90" width="90"/>
+                                                                    </td>
+                                                                    <td style="width:75%;padding-left:12px;font-size:1.5em;font-weight:500">
                                                                         <p class="name">${item.wndName }</p>
                                                                     </td>
-                                                                    <td style="width:40%">
+                                                                    <td style="width:25%">
                                                                        <p class="name">${item.wndAddr}</p>
                                                                     </td>
                                                                 </tr>
-                                                                <tr>
+                                                                <tr style="height:30px">
                                                                     <td style="padding-left:12px">
                                                                         <p class="txt">￥${item.wndPriceRange}&nbsp &nbsp支持${item.wndPayment}</p>
                                                                     </td>
@@ -173,7 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                         <p class="txt"> ${item.wndSaleHours}营业</p>
                                                                     </td>
                                                                 </tr>
-                                                                <tr>
+                                                                <tr style="height:30px">
                                                                     <td style="padding-left:12px">
                                                                         <p class="txt">${item.wndDescription}</p>
                                                                     </td>
