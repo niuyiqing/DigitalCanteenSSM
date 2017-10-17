@@ -96,7 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div class="newcustom" style="margin-top: 10px;">
                                     <table  width=100%>                                                        
                                         <tr>
-                                            <td style='vertical-align: middle' onclick="location.href='findAllCampuses.action';">
+                                            <td style='vertical-align: middle' >
                                                 <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="140" style="border-radius:3%;">
                                             </td>                                                           
                                             <td style='vertical-align: middle' >
@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <td style='vertical-align: middle;text-align: center;font-size:1.5em' height="30px">实惠中餐</td>
                                         </tr>
                                         <tr>                          
-                                            <td style='vertical-align: middle' >
+                                            <td style='vertical-align: middle' onclick="location.href='starCanteensPage.action';">
                                                 <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="140" style="border-radius:3%;">
                                             </td>
                                             <td style='vertical-align: middle' >
