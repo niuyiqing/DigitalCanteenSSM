@@ -3,20 +3,21 @@ package digitalCanteenSSM.po;
 import java.util.Date;
 
 public class Dish {
-	private int     dishID      = 0;
-	private int     dishWndID   = 0;
-	private int     dishTypeID  = 0;
-	private String  dishName    = ""; 
-	private String  dishPrice   = "";
-	private String  dishPhoto   = "";
-	private String  dishDate    = "";
-	private String dishRecmd   = "";     
-	private String dishKeep    = "";     
-	private String  dishSale    = "";        
-	private Date  dishInDate  = null;
-	private String  dishNote    = "";
-	private String dishDelete  = "";
+	private int    dishID          = 0;
+	private int    dishWndID       = 0;
+	private int    dishTypeID      = 0;
+	private String dishName        = ""; 
+	private String dishPrice   	   = "";
+	private String dishPhoto       = "";
+	private String dishDate    	   = "";
+	private String dishRecmd       = "";     
+	private String dishKeep        = "";     
+	private String dishSale        = "";        
+	private Date   dishInDate      = null;
+	private String dishNote        = "";
+	private String dishDelete      = "";
 	private String dishSubmitState = "";
+	private int    starDish        = 0;
 	
 	public int getDishID() {
 		return dishID;
@@ -104,6 +105,12 @@ public class Dish {
 	}
 	public void setDishNote(String dishNote) {
 		this.dishNote = dishNote;
+	}
+	public int getStarDish() {
+		return starDish;
+	}
+	public void setStarDish(int starDish) {
+		this.starDish = starDish;
 	}
 	
 }

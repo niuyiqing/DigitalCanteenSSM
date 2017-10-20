@@ -16,6 +16,14 @@ public interface DishManagementMapper {
 	
 	public DishItems findDishByName(DishItems dishItems) throws Exception;
 	
+	public List<DishItems> findDishesInFancyCanteens() throws Exception;
+	
+	public List<DishItems> findStarFancyDishes() throws Exception;
+	
+	public List<DishItems> findDishesInChineseCanteens() throws Exception;
+	
+	public List<DishItems> findStarChineseDishes() throws Exception;
+	
 	public List<DishItems> findApplyDish(String dishInState) throws Exception;
 	
 	public DishItems findDishById(Integer dishID) throws Exception;
