@@ -595,7 +595,7 @@ public class DishManagementController {
 		return modelAndView;
 	}
 	
-	//添加已预置的菜品
+	//添加已预置的菜品(菜品上架)
 	@RequestMapping ("/addDish")
 	public ModelAndView addDish(HttpSession session) throws Exception{
 		
@@ -742,6 +742,7 @@ public class DishManagementController {
 				
 				dishItems.setDishPhoto(dishPresetService.findDishPresetByName(dishItems.getDishName()).getDishPresetPhoto());
 				dishItems.setDishInDate(date);
+				dishItems.setStarDish(0);
 				
 				dishManagementService.insertDish(dishItems);
 				
@@ -782,6 +783,24 @@ public class DishManagementController {
 		modelAndView.addObject("muserItems",muserItems);
 		
 		modelAndView.setViewName("findDishInCanteen.action");
+		
+		return modelAndView;
+	}
+	
+	//后台设置人气风味美食
+	@RequestMapping("/selectStarFancyDishes")
+	public ModelAndView selectStarFancyDishes(HttpSession session) throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("fancyDishesList", dishManagementService.findDishesInFancyCanteens());
+		modelAndView.addObject("starFancyDishesList", dishManagementService.findStarFancyDishes());
+		
+		if(session.getAttribute("ua").equals("pc")){
+			modelAndView.setViewName("/WEB-INF/jsp/selectStarFancyDishes.jsp");
+		}else{
+			modelAndView.setViewName("/WEB-INF/jsp/m_selectStarFancyDishes.jsp");
+		}
 		
 		return modelAndView;
 	}

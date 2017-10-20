@@ -32,22 +32,88 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         		ctcant.CantCampusID=ctcampus.campusID and
         		ctdish.DishTypeID=ctdishtype.DishTypeID and
         		ctcant.CantID=#{cantID}
-		ORDER BY CampusID,CantID,WndID,DishID DESC
+		ORDER BY CampusID, CantID, WndID, DishID DESC
 	</select>
 	
 	<!-- 查询一个校区下的所有菜品 -->
 	<select id="findDishInCampus" parameterType="Integer" resultType="DishItems">
+		SELECT ctdish.*, ctwnd.wndID, ctwnd.wndName,
+				ctcant.cantID, ctcant.cantName, ctcant.cantCampusID,
+				ctcampus.campusID, ctcampus.campusName,
+				ctdishtype.DishTypeID, ctdishtype.DishTypeName
+		FROM ctdish,ctwnd,ctcant,ctcampus,ctdishtype
+        WHERE   ctdish.DishWndID    = ctwnd.WndID and  
+        		ctwnd.WndCantID     = ctcant.CantID and 
+        		ctcant.CantCampusID = ctcampus.CampusID and
+        		ctdish.DishTypeID   = ctdishtype.DishTypeID and
+        		ctcampus.CampusID   = #{campusID}
+		ORDER BY CampusID, CantID, WndID, DishID DESC
+	</select>
+	
+	<!-- 查询所有花样食堂的菜品 -->
+	<select id="findDishesInFancyCanteens" resultType="DishItems">
 		SELECT ctdish.*, ctwnd.wndID,ctwnd.wndName,
 				ctcant.cantID,ctcant.CantName, ctcant.cantCampusID,
 				ctcampus.campusID,ctcampus.CampusName,
 				ctdishtype.DishTypeID,ctdishtype.DishTypeName
-		FROM ctdish,ctwnd,ctcant,ctcampus,ctdishtype
-        WHERE   ctdish.DishWndID = ctwnd.WndID and  
+		FROM ctdish,ctwnd,ctcant,ctcampus,ctdishtype,ctcanttype
+        WHERE ctdish.DishWndID = ctwnd.WndID and  
         		ctwnd.WndCantID = ctcant.cantID and 
         		ctcant.CantCampusID=ctcampus.campusID and
         		ctdish.DishTypeID=ctdishtype.DishTypeID and
-        		ctcampus.CampusID=#{campusID}
-		ORDER BY CampusID,CantID,WndID,DishID DESC
+                ctcant.CantTypeID = ctcanttype.CantTypeID and
+                ctcanttype.CantTypeName = '花样食堂'
+		ORDER BY CantID, WndID, DishID DESC
+	</select>
+	
+	<!-- 查询人气花样菜品 -->
+	<select id="findStarFancyDishes" resultType="DishItems">
+		SELECT ctdish.*, ctwnd.wndID,ctwnd.wndName,
+				ctcant.cantID,ctcant.CantName, ctcant.cantCampusID,
+				ctcampus.campusID,ctcampus.CampusName,
+				ctdishtype.DishTypeID,ctdishtype.DishTypeName
+		FROM ctdish,ctwnd,ctcant,ctcampus,ctdishtype,ctcanttype
+        WHERE ctdish.DishWndID = ctwnd.WndID and  
+        		ctwnd.WndCantID = ctcant.cantID and 
+        		ctcant.CantCampusID=ctcampus.campusID and
+        		ctdish.DishTypeID=ctdishtype.DishTypeID and
+                ctcant.CantTypeID = ctcanttype.CantTypeID and
+                ctcanttype.CantTypeName = '花样食堂' and
+                ctdish.StarDish = 1
+		ORDER BY CantID, WndID, DishID DESC
+	</select>
+	
+	<!-- 查询所有自营(中餐)食堂的菜品 -->
+	<select id="findDishesInChineseCanteens" resultType="DishItems">
+		SELECT ctdish.*, ctwnd.wndID,ctwnd.wndName,
+				ctcant.cantID,ctcant.CantName, ctcant.cantCampusID,
+				ctcampus.campusID,ctcampus.CampusName,
+				ctdishtype.DishTypeID,ctdishtype.DishTypeName
+		FROM ctdish,ctwnd,ctcant,ctcampus,ctdishtype,ctcanttype
+        WHERE ctdish.DishWndID = ctwnd.WndID and  
+        		ctwnd.WndCantID = ctcant.cantID and 
+        		ctcant.CantCampusID=ctcampus.campusID and
+        		ctdish.DishTypeID=ctdishtype.DishTypeID and
+                ctcant.CantTypeID = ctcanttype.CantTypeID and
+                ctcanttype.CantTypeName = '自营食堂'
+		ORDER BY CantID, WndID, DishID DESC
+	</select>
+	
+	<!-- 查询人气自营(中餐)菜品 -->
+	<select id="findStarChineseDishes" resultType="DishItems">
+		SELECT ctdish.*, ctwnd.wndID,ctwnd.wndName,
+				ctcant.cantID,ctcant.CantName, ctcant.cantCampusID,
+				ctcampus.campusID,ctcampus.CampusName,
+				ctdishtype.DishTypeID,ctdishtype.DishTypeName
+		FROM ctdish,ctwnd,ctcant,ctcampus,ctdishtype,ctcanttype
+        WHERE ctdish.DishWndID = ctwnd.WndID and  
+        		ctwnd.WndCantID = ctcant.cantID and 
+        		ctcant.CantCampusID=ctcampus.campusID and
+        		ctdish.DishTypeID=ctdishtype.DishTypeID and
+                ctcant.CantTypeID = ctcanttype.CantTypeID and
+                ctcanttype.CantTypeName = '自营食堂' and
+                ctdish.StarDish = 1
+		ORDER BY CantID, WndID, DishID DESC
 	</select>
 	
 	<!-- 查询出所有的新菜申请的菜品 -->
@@ -109,7 +175,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			ctdish.DishSale= #{dishSale}, 
 			ctdish.DishInDate= #{dishInDate},  
 			ctdish.DishNote= #{dishNote},
-			ctdish.DishDelete= #{dishDelete} 
+			ctdish.DishDelete= #{dishDelete}, 
+			ctdish.StarDish=#{starDish}
 		WHERE ctdish.DishID=#{dishID}		
 	</select>
 	
@@ -126,13 +193,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ctdish.DishRecmd,ctdish.DishKeep, 		
 		ctdish.DishSale,
 		ctdish.DishInDate,
-		ctdish.DishNote,ctdish.DishDelete) 
+		ctdish.DishNote,ctdish.DishDelete,
+		ctdish.StarDish) 
 		values (#{dishWndID},#{dishTypeID},#{dishName},#{dishPhoto},
 		#{dishPrice},#{dishDate},	
 		#{dishRecmd},#{dishKeep},	
 		#{dishSale},
 		#{dishInDate},
-		#{dishNote},#{dishDelete})
+		#{dishNote},#{dishDelete},
+		#{starDish})
 	</select>
 	
 	<!-- 根据食堂和时间档信息查询菜品-->
