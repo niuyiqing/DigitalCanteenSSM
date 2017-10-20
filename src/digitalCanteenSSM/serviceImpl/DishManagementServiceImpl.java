@@ -22,15 +22,37 @@ public class DishManagementServiceImpl implements DishManagementService {
 		
 		return dishManagementMapper.findAllDishes();
 	}
+	
 	@Override
 	public List<DishItems> findDishInCanteen(Integer cantID) throws Exception{
 		
 		return dishManagementMapper.findDishInCanteen(cantID);
 	}
+	
 	@Override
 	public List<DishItems> findDishInCampus(Integer campusID) throws Exception{
 		
 		return dishManagementMapper.findDishInCampus(campusID);
+	}
+	
+	@Override
+	public List<DishItems> findDishesInFancyCanteens() throws Exception{
+		return dishManagementMapper.findDishesInFancyCanteens();
+	}
+	
+	@Override
+	public List<DishItems> findStarFancyDishes() throws Exception{
+		return dishManagementMapper.findStarFancyDishes();
+	}
+	
+	@Override
+	public List<DishItems> findDishesInChineseCanteens() throws Exception{
+		return dishManagementMapper.findDishesInChineseCanteens();
+	}
+	
+	@Override
+	public List<DishItems> findStarChineseDishes() throws Exception{
+		return dishManagementMapper.findStarFancyDishes();
 	}
 	
 	@Override

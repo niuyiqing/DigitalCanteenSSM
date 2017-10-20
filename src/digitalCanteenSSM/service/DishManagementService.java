@@ -13,6 +13,14 @@ public interface DishManagementService {
 	
 	public List<DishItems> findDishInCampus(Integer campusID) throws Exception;
 	
+	public List<DishItems> findDishesInFancyCanteens() throws Exception;
+	
+	public List<DishItems> findStarFancyDishes() throws Exception;
+	
+	public List<DishItems> findDishesInChineseCanteens() throws Exception;
+	
+	public List<DishItems> findStarChineseDishes() throws Exception;
+	
 	public List<DishItems> findApplyDish(String dishInState) throws Exception;
 	
 	public DishItems findDishById(Integer dishID) throws Exception;

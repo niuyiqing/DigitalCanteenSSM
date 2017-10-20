@@ -204,6 +204,4 @@ public class CanteenPresetController {
 		
 		return modelAndView;
 	}
-	
-	//后台设置风味人气美食
 }
