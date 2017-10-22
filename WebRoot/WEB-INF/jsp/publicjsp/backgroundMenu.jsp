@@ -74,7 +74,7 @@
                     <li class="divider"></li>
                     <li><a href="#">人气中餐</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">人气风味</a></li>
+                    <li><a href="${pageContext.request.contextPath }/selectStarFancyDishes.action">人气风味</a></li>
                 </ul>
             </li>
 

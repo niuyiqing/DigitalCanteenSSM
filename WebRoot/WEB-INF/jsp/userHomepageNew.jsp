@@ -97,10 +97,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <table  width=100%>                                                        
                                         <tr>
                                             <td style='vertical-align: middle' >
-                                                <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="140" style="border-radius:3%;">
+                                                <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="90%" style="border-radius:3%;">
                                             </td>                                                           
                                             <td style='vertical-align: middle' >
-                                                <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="140" style="border-radius:3%;">
+                                                <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="90%" style="border-radius:3%;">
                                             </td>                                             
                                         </tr>
                                         <tr>                                                           
@@ -109,10 +109,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </tr>
                                         <tr>                          
                                             <td style='vertical-align: middle' onclick="location.href='starCanteensPage.action';">
-                                                <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="140" style="border-radius:3%;">
+                                                <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="90%" style="border-radius:3%;">
                                             </td>
                                             <td style='vertical-align: middle' >
-                                                <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="140" style="border-radius:3%;">
+                                                <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="90%" style="border-radius:3%;">
                                             </td>
                                         </tr>
                                         <tr>                          
