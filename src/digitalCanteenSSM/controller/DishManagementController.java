@@ -804,4 +804,22 @@ public class DishManagementController {
 		
 		return modelAndView;
 	}
+	
+	//后台设置人气中餐美食
+	@RequestMapping("/selectStarChineseDishes")
+	public ModelAndView selectStarChineseDishes(HttpSession session) throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("chineseDishesList", dishManagementService.findDishesInChineseCanteens());
+		modelAndView.addObject("starChineseDishesList", dishManagementService.findStarChineseDishes());
+		
+		if(session.getAttribute("ua").equals("pc")){
+			modelAndView.setViewName("/WEB-INF/jsp/selectStarChineseDishes.jsp");
+		}else{
+			modelAndView.setViewName("/WEB-INF/jsp/m_selectStarChineseDishes.jsp");
+		}
+		
+		return modelAndView;
+	}
 }

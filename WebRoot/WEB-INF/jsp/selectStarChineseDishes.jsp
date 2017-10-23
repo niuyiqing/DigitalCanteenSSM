@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<head>
 	    <base href="<%=basePath%>">
 	    
-	    <title>人气风味菜品管理</title>
+	    <title>人气中餐菜品管理</title>
 	    
 		<meta name="viewport" content="width=device-width, 
 		                                initial-scale=0.3, 
@@ -61,11 +61,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 checkbox.checked=true;
             }
 
-            function starFancyDishesSubmit(){
-                document.starFancyDishesForm.action = "saveStarFancyDishes.action";
-                jquerySubByFId('starFancyDishesForm', starFancyDishesSubmit_callback, null, "json");
+            function starChineseDishesSubmit(){
+                document.starChineseDishesForm.action = "saveStarChineseDishes.action";
+                jquerySubByFId('starChineseDishesForm', starChineseDishesSubmit_callback, null, "json");
             }
-            function starFancyDishesSubmit_callback(data){
+            function starChineseDishesSubmit_callback(data){
                 alert(data.resultInfo.message);
             }
 
@@ -90,11 +90,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="container col-sm-6 col-sm-offset-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">人气风味菜品管理</h3>
+                        <h3 class="panel-title">人气中餐菜品管理</h3>
                     </div>
 
                     <div class="panel-body">
-                        <form role="form" name="starFancyDishesForm" id="starFancyDishesForm" method="post" action="saveStarFancyDishes.action">
+                        <form role="form" name="starChineseDishesForm" id="starChineseDishesForm" method="post" action="saveStarChineseDishes.action">
                             <div class="form-group">
                             	<div>
     	                			<input type="text" name="search" id="search">
@@ -110,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${fancyDishesList }" var="item">
+                                    <c:forEach items="${chineseDishesList }" var="item">
                                         <tr>
                                             <td style='vertical-align: middle;text-align: center;'>
                                                 <input type="checkbox" name="dishIDList" id="${item.dishID }" value="${item.dishID }" />
@@ -118,10 +118,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                                             <!-- 自动勾选已选为名星食堂的食堂 -->
                                             <c:choose >
-                                                <c:when test="${starFancyDishesList == null }">
+                                                <c:when test="${starChineseDishesList == null }">
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <c:forEach items="${starFancyDishesList }" var="itemstar">
+                                                    <c:forEach items="${starChineseDishesList }" var="itemstar">
                                                         <c:choose>
                                                             <c:when test="${itemstar.dishID == item.dishID }">
                                                                 <script> checkBoxSelect("${item.dishID}");</script>     
@@ -138,7 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </table>
 
                             <div class="form-group">
-                                <input type="button" class="btn btn-primary" value="保存" onClick=starFancyDishesSubmit()>
+                                <input type="button" class="btn btn-primary" value="保存" onClick=starChineseDishesSubmit()>
                                 <a href="${pageContext.request.contextPath }/backgroundHomepage.action" class="btn btn-primary">返回首页</a>
                             </div>
                         </form>

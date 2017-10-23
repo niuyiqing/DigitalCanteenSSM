@@ -118,14 +118,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				});
 									    			    
 				$("#searchin").click(function() {
-				 	  var txt=$("#search").val();
-				 	 //获取radio选中的值
-				 	 // var val=$('input:radio[name="dishDateFlag"]:checked').val();
-					  if($.trim(txt)!=""){	
+				 	var txt=$("#search").val();
+				 	//获取radio选中的值
+				 	// var val=$('input:radio[name="dishDateFlag"]:checked').val();
+					if($.trim(txt)!=""){	
 				        $("table tr:not('#theader')").hide().filter(":contains('"+txt+"')").show();
-				      }else{
+				    }else{
 				        $("table tr:not('#theader')").css("background","#fff").show();
-				      }
+				    }
 	    		});			
 			
     		}); 
