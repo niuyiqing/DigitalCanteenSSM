@@ -131,7 +131,7 @@ public class UserController {
 	}
 	*/
 	@RequestMapping(value="/userHomepage")
-	public ModelAndView userHomepage(HttpSession session,Integer campusID, Integer cantID) throws Exception{
+	public ModelAndView userHomepage(HttpSession session, Integer campusID, Integer cantID) throws Exception{
 		
 		ModelAndView modelAndView = new ModelAndView();
 		

@@ -314,7 +314,7 @@ public class DishManagementController {
 		//新建detail对象，填入recordID和时间档标志位1（早餐）
 		Detail detail = new Detail();
 		detail.setDetailRecordID(recordID);
-		detail.setDetailDishDateFlag(1);	//1代表早餐
+		detail.setDetailDishDateFlag(1);	//1代表早餐，默认进入录入界面先显示早餐的菜品
 		
 		modelAndView.addObject("recordID",recordID);			//传递记录表编号, 后面用于和detail表关联
 		modelAndView.addObject("recordDate",recordDate);

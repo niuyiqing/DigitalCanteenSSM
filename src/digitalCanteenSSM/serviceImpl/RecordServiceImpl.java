@@ -88,11 +88,13 @@ public class RecordServiceImpl implements RecordService{
 		recordMapper.updateRecordCheck(record);
 	}
 
+	@Override
+	public Record findLatestRecordInCanteen(Integer cantID) throws Exception{
+		
+		return recordMapper.findLatestRecordInCanteen(cantID);
+		
+	}
 
-
-	
-	
-	
 }
 
 

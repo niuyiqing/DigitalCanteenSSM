@@ -31,5 +31,7 @@ public interface RecordService {
 	public List<Record> findRecordCheck() throws Exception;
 	
 	public void updateRecordCheck(Record record) throws Exception;
+	
+	public Record findLatestRecordInCanteen(Integer cantID) throws Exception;
 
 }
