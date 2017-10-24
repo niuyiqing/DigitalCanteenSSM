@@ -52,7 +52,7 @@ public class DishManagementServiceImpl implements DishManagementService {
 	
 	@Override
 	public List<DishItems> findStarChineseDishes() throws Exception{
-		return dishManagementMapper.findStarFancyDishes();
+		return dishManagementMapper.findStarChineseDishes();
 	}
 	
 	@Override
