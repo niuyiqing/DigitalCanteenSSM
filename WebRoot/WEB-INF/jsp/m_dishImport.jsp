@@ -282,7 +282,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										                	    				</c:choose>	
 										                	    				<td style='vertical-align: left;text-align: center;' rowspan=3>
 										                	    				   	<c:if test="${item.dishPhoto != null }">
-										                	       						<img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="100" style="border-radius:5%"/>
+										                	       						<img src="/upload/pic/${item.dishPhoto }" class="center-block" height="100" width="100" style="border-radius:5%"/>
 										                	       					</c:if>
 										                   	    				</td>						               	    		 	
 										                	    			   	<td style='vertical-align: middle;font-size:1.2em' colspan=2>${item.dishName }</td>

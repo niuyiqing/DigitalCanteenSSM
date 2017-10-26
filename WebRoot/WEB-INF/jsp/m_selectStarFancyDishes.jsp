@@ -7,12 +7,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <!DOCTYPE html>
 <html>
-  	<head>
-	    <base href="<%=basePath%>">
-	    
-	    <title>名星食堂管理</title>
-	    
-		<meta http-equiv="pragma" content="no-cache" />
+    <head>
+        <base href="<%=basePath%>">
+        
+        <title>人气风味菜品管理</title>
+        
+        <meta http-equiv="pragma" content="no-cache" />
         <meta http-equiv="cache-control" content="no-cache" />
         <meta http-equiv="expires" content="0">   
         <meta charset="utf-8">
@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
         <script>
             var checkflag=false;
-            function getAllCanteensSelect(name){
+            function getAllDishesSelect(name){
                 var allvalue = document.getElementsByName(name);
                 
                 if(checkflag==false){
@@ -57,16 +57,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 }
             }
 
-            function checkBoxSelect(cantID){
-                var checkbox = document.getElementById(cantID); 
+            function checkBoxSelect(dishID){
+                var checkbox = document.getElementById(dishID); 
                 checkbox.checked=true;
             }
 
-            function starCanteensSubmit(){
-                document.starCanteensForm.action = "saveStarCanteens.action";
-                jquerySubByFId('starCanteensForm', starCanteensSubmit_callback, null, "json");
+            function starFancyDishesSubmit(){
+                document.starFancyDishesForm.action = "saveStarFancyDishes.action";
+                jquerySubByFId('starFancyDishesForm', starFancyDishesSubmit_callback, null, "json");
             }
-            function starCanteensSubmit_callback(data){
+            function starFancyDishesSubmit_callback(data){
                 alert(data.resultInfo.message);
             }
         </script>
@@ -84,57 +84,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 },false);  
         }  
         </script>
-  	</head>
+    </head>
   
-  	<body>
+    <body>
         <div class="codrops-header" style="background:#29C192;">
             <div class="back-container">
                 <button class="btn btn-link btn-lg" style="padding-top:4px">
                     <a style="color:#fff" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/backgroundHomepage.action"></a>
                 </button>    
             </div>
-            <p style="width:100%;height:100%;font-size:27px">名星食堂管理</p>  
+            <p style="width:100%;height:100%;font-size:27px">人气风味菜品管理</p>  
         </div>
-        <form role="form" name="starCanteensForm" id="starCanteensForm" method="post" action="saveStarCanteens.action">
+        <form role="form" name="starFancyDishesForm" id="starFancyDishesForm" method="post" action="saveStarFancyDishes.action">
             <div class=" newcustom" style="padding-top:63px;" >
                 <table  class="table table-striped table-bordered table-condensed">
                     <thead>
                         <tr style="background:#29C192;text-align:center;color:white;font-size:18px">
                             <th>选择</th>
-                            <th>校区名称</th>
-                            <th>食堂名称</th>
+                            <th>风味菜品</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${canteenItemsList }" var="item">
+                        <c:forEach items="${fancyDishesList }" var="item">
                             <tr align="center" style="color:black;font-size:15px">
                                 <td>
-                                    <input type="checkbox" name="cantIDList" id="${item.cantID }" value="${item.cantID }" />
+                                    <input type="checkbox" name="dishIDList" id="${item.dishID }" value="${item.dishID }" />
                                 </td>
                                 <!-- 自动勾选已选为名星食堂的食堂 -->
                                 <c:choose >
-                                    <c:when test="${starCanteensList == null }">
+                                    <c:when test="${starFancyDishesList == null }">
                                     </c:when>
                                     <c:otherwise>
-                                        <c:forEach items="${starCanteensList }" var="itemstar">
+                                        <c:forEach items="${starFancyDishesList }" var="itemstar">
                                             <c:choose>
-                                                <c:when test="${itemstar.cantID == item.cantID }">
-                                                    <script> checkBoxSelect("${item.cantID}");</script>     
+                                                <c:when test="${itemstar.dishID == item.dishID }">
+                                                    <script> checkBoxSelect("${item.dishID}");</script>     
                                                 </c:when>
                                             </c:choose>
                                         </c:forEach>
                                     </c:otherwise>
                                 </c:choose>
-                                <td >${item.campusName }</td>
-                                <td >${item.cantName }</td>
+                                <td >${item.dishName }</td>
                             </tr>
                         </c:forEach>
                     </tbody>
                 </table>
                 <div class="form-group" align="center">
-                    <input type="button" style="width:80%" class="btn btn-primary btn-wide" value="保存" onClick="starCanteensSubmit()">
+                    <input type="button" style="width:80%" class="btn btn-primary btn-wide" value="保存" onClick="starFancyDishesSubmit()">
                 </div>
             </div>
         </form>
-  	</body>
+    </body>
 </html>

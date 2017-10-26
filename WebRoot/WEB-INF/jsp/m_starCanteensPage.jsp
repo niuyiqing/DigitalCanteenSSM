@@ -52,14 +52,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<body>
   		<div class="codrops-header" style="background:rgba(0,0,0,0);">
             <div class="back-container">
-                <button class="btn btn-link btn-lg" style="padding-top:4px">
+                <button class="btn btn-link btn-lg">
                     <a style="color:#fff" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a>
                 </button>    
             </div>
-            <p style="width:100%;height:100%;font-size:27px">名星食堂</p>  
+            <p style="padding-top:7px;width:100%;height:100%;font-size:27px">名星食堂</p>  
         </div>
         <div >
-        	<img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" onload="DrawImage(this)">
+        	<img src="/upload/pic/3.jpg" class="center-block" width="100%">
         </div>
         <c:forEach items="${starCanteensList }" var="item">
         	<div class="newcustom" style="margin-top: 10px;">
@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	        <tr>
         	        	<td style='vertical-align: middle;text-align: center;font-size:1.5em;color:black;width:20%'>${item.cantName }</td>
         	            <td style='vertical-align: middle;width:50%' >
-        	                <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="140" style="border-radius:3%;">
+        	                <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="160" style="border-radius:3%;">
         	            </td>                                                                                                       
         	        </tr>
         	    </table>
@@ -92,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
     <!-- 后台传送名星食堂列表starCanteensList到本页面，如果starCanteensList为空，显示提示语“暂无名星食堂” -->
-    <!-- 轮播图大小自适应 -->
+    <!-- 轮播图大小自适应 
             <script type="text/javascript" src="js/jqthumb.js"></script>
             <script>
             function DrawImage(hotimg)
@@ -106,6 +106,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         method         : 'auto',
                });
             }
-            </script>
+            </script>   -->
   	</body>
 </html>
