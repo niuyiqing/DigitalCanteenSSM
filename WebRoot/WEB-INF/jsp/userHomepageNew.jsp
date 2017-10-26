@@ -194,8 +194,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             </div>
                                         </div>  
                                     </div>    			
-    			                    <!-- 后台传递过来的元素有：campusList，canteenItems，windowsList，canteenItemsList -->
-    			                    <!-- 分别是所有校区列表，选中的食堂，选中食堂的所有档口列表，该校区所有食堂列表 -->
                                 </div>
                             </div>
                         </div>

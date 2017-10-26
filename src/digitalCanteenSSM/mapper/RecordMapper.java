@@ -31,4 +31,6 @@ public interface RecordMapper {
 	
 	public void updateRecordCheck(Record record) throws Exception;
 	
+	public Record findLatestRecordInCanteen(Integer cantID) throws Exception;
+	
 }

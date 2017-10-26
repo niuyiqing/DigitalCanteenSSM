@@ -105,6 +105,7 @@ public class DishPresetController {
 		
 		if(dishPresetService.findDishPresetByName(dishPreset.getDishPresetName()) == null || 
 		   dishPresetService.findDishPresetByName(dishPreset.getDishPresetName()).getDishPresetID() == dishPreset.getDishPresetID()){
+			
 			String dishphoto=uploadFileService.uploadFile(dishPhotoFile, DishManagementController.getPicturepath());
 			//未改变图片则用原来的
 			if( dishphoto != null){

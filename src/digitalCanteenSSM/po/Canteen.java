@@ -7,7 +7,8 @@ public class Canteen {
 	private String cantName        = "";
 	private String cantAddr        = "";
 	private String cantDescription = "";	
-	private String cantNote        = "";
+	private String cantPhoto       = "";
+	private String cantNote        = "";	
 	private int starCant           = 0;	//名星食堂标志，默认为0（非名星食堂）
 	
 	public int getCantID() {
@@ -45,6 +46,12 @@ public class Canteen {
 	}
 	public void setCantDescription(String cantDescription) {
 		this.cantDescription = cantDescription;
+	}
+	public String getCantPhoto() {
+		return cantPhoto;
+	}
+	public void setCantPhoto(String cantPhoto) {
+		this.cantPhoto = cantPhoto;
 	}
 	public String getCantNote() {
 		return cantNote;

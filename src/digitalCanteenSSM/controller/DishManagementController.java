@@ -49,6 +49,7 @@ public class DishManagementController {
 	private static final  String defaultPicturePath     = "default.jpg";
 	private static final  String defaultUserPicturePath = "user-default.jpg";
 	private static final  String defaultWndPicturePath  = "wnd-default.jpg";
+	private static final  String defaultCantPicturePath = "cant-default.jpg";
 	@Autowired
 	private WindowPresetService windowPresetService;
 	@Autowired
@@ -83,6 +84,10 @@ public class DishManagementController {
 	
 	public static String getWndDefaultpicturepath(){
 		return defaultWndPicturePath;
+	}
+	
+	public static String getCantDefaultpicturepath(){
+		return defaultCantPicturePath;
 	}
 
 	//菜品管理页面
@@ -314,7 +319,7 @@ public class DishManagementController {
 		//新建detail对象，填入recordID和时间档标志位1（早餐）
 		Detail detail = new Detail();
 		detail.setDetailRecordID(recordID);
-		detail.setDetailDishDateFlag(1);	//1代表早餐
+		detail.setDetailDishDateFlag(1);	//1代表早餐，默认进入录入界面先显示早餐的菜品
 		
 		modelAndView.addObject("recordID",recordID);			//传递记录表编号, 后面用于和detail表关联
 		modelAndView.addObject("recordDate",recordDate);
@@ -804,4 +809,88 @@ public class DishManagementController {
 		
 		return modelAndView;
 	}
+	
+	//后台保存人气风味美食
+	@RequestMapping("/saveStarFancyDishes")
+	public @ResponseBody SubmitResultInfo saveStarFancyDishes(Integer[] dishIDList) throws Exception{
+		//传递给页面的参数
+		ResultInfo resultInfo = new ResultInfo();
+		resultInfo.setType(ResultInfo.TYPE_RESULT_SUCCESS);
+		
+		//清除之前保存的名星风味美食标志
+		List<DishItems> starFancyDishesList = dishManagementService.findStarFancyDishes();
+		for(DishItems starItem : starFancyDishesList){
+			starItem.setStarDish(0);
+			dishManagementService.updateDish(starItem);
+		}
+		
+		//写入新的名星风味美食
+		if(dishIDList != null){
+			DishItems starDish = new DishItems();
+			
+			for(Integer i : dishIDList){
+				starDish = dishManagementService.findDishById(i);
+				starDish.setStarDish(1);
+				
+				dishManagementService.updateDish(starDish);
+			}
+			resultInfo.setMessage("成功设定【" + dishIDList.length + "】个人气风味美食");
+		}else{
+			resultInfo.setMessage("人气风味美食列表已清空");
+		}
+		
+		SubmitResultInfo submitResultInfo = new SubmitResultInfo(resultInfo);		
+		return submitResultInfo;
+	}
+	
+	//后台设置人气中餐美食
+	@RequestMapping("/selectStarChineseDishes")
+	public ModelAndView selectStarChineseDishes(HttpSession session) throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("chineseDishesList", dishManagementService.findDishesInChineseCanteens());
+		modelAndView.addObject("starChineseDishesList", dishManagementService.findStarChineseDishes());
+		
+		if(session.getAttribute("ua").equals("pc")){
+			modelAndView.setViewName("/WEB-INF/jsp/selectStarChineseDishes.jsp");
+		}else{
+			modelAndView.setViewName("/WEB-INF/jsp/m_selectStarChineseDishes.jsp");
+		}
+		
+		return modelAndView;
+	}
+	
+	//后台保存人气中餐美食
+		@RequestMapping("/saveStarChineseDishes")
+		public @ResponseBody SubmitResultInfo saveStarChineseDishes(Integer[] dishIDList) throws Exception{
+			//传递给页面的参数
+			ResultInfo resultInfo = new ResultInfo();
+			resultInfo.setType(ResultInfo.TYPE_RESULT_SUCCESS);
+			
+			//清除之前保存的人气中餐美食标志
+			List<DishItems> starChineseDishesList = dishManagementService.findStarChineseDishes();
+			for(DishItems starItem : starChineseDishesList){
+				starItem.setStarDish(0);
+				dishManagementService.updateDish(starItem);
+			}
+			
+			//写入新的人气中餐美食
+			if(dishIDList != null){
+				DishItems starDish = new DishItems();
+				
+				for(Integer i : dishIDList){
+					starDish = dishManagementService.findDishById(i);
+					starDish.setStarDish(1);
+					
+					dishManagementService.updateDish(starDish);
+				}
+				resultInfo.setMessage("成功设定【" + dishIDList.length + "】个人气中餐美食");
+			}else{
+				resultInfo.setMessage("人气中餐美食列表已清空");
+			}
+			
+			SubmitResultInfo submitResultInfo = new SubmitResultInfo(resultInfo);		
+			return submitResultInfo;
+		}
 }

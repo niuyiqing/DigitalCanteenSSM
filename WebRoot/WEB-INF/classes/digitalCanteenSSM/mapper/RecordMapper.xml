@@ -71,7 +71,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE ctrecord.RecordCantName=#{recordCantName} and ctrecord.RecordDate = #{recordDate}
 	</select>
 	
-	
 	<!-- 根据RecordID删除该记录信息 -->
 	<select id="deleteRecord"  parameterType="Record" >
 		DELETE	FROM ctrecord 
@@ -102,6 +101,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE ctrecord 
 		SET ctrecord.RecordCheck=#{recordCheck}	
 		WHERE ctrecord.RecordID = #{recordID}	
+	</select>
+	
+	<select id="findLatestRecordInCanteen" parameterType="Integer" resultType="Record">
+		SELECT * 
+		FROM ctrecord 
+		WHERE
+		ctrecord.RecordCantID = #{cantID} and
+		ctrecord.RecordCheck = 0
+		ORDER by RecordID DESC
+		LIMIT 1
 	</select>
 	
 </mapper>

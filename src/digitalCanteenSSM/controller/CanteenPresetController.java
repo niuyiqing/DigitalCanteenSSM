@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.github.miemiedev.mybatis.paginator.domain.Order;
@@ -23,6 +24,7 @@ import digitalCanteenSSM.po.CanteenItems;
 import digitalCanteenSSM.service.CampusPresetService;
 import digitalCanteenSSM.service.CanteenPresetService;
 import digitalCanteenSSM.service.CanteenTypePresetService;
+import digitalCanteenSSM.service.UploadFileService;
 
 @Controller
 public class CanteenPresetController {
@@ -33,6 +35,8 @@ public class CanteenPresetController {
 	private CanteenPresetService canteenPresetService;
 	@Autowired
 	private CanteenTypePresetService canteenTypePresetService;
+	@Autowired
+	private UploadFileService uploadFileService;
 	
 	//食堂预置页面
 	//添加食堂按钮与已添加食堂显示
@@ -52,7 +56,7 @@ public class CanteenPresetController {
 		String pageNum = request.getParameter("pageNum");
 		String pageSize = request.getParameter("pageSize");
 		int num = 1;
-		int size = 10;
+		int size = 5;
 		if (pageNum != null && !"".equals(pageNum)) {
 			num = Integer.parseInt(pageNum);
 		}
@@ -116,9 +120,18 @@ public class CanteenPresetController {
 	
 	//修改食堂：修改之后保存并跳转到食堂预置页面
 	@RequestMapping ("/modifyCanteenSave")	
-	public String modifyCanteenSave(CanteenItems canteenItems) throws Exception{
+	public String modifyCanteenSave(CanteenItems canteenItems, MultipartFile cantPhotoFile) throws Exception{
 		
 		if(findCanteenByName(canteenItems) == null || findCanteenByName(canteenItems).getCantID() == canteenItems.getCantID()){
+			
+			String cantphoto = uploadFileService.uploadFile(cantPhotoFile, DishManagementController.getPicturepath());
+			
+			if( cantphoto != null){
+				canteenItems.setCantPhoto(cantphoto);
+			}else{
+				canteenItems.setCantPhoto(canteenPresetService.findCanteenById(canteenItems.getCantID()).getCantPhoto());
+			}
+			
 			canteenPresetService.updateCanteen(canteenItems);
 		}	
 		
@@ -136,9 +149,21 @@ public class CanteenPresetController {
 		
 	//插入新食堂信息
 	@RequestMapping ("/insertCanteen")
-	public String insertCanteen(CanteenItems canteenItems) throws Exception{
+	public String insertCanteen(CanteenItems canteenItems, MultipartFile cantPhotoFile) throws Exception{
 		
 		if(findCanteenByName(canteenItems) == null){
+			
+			String cantphoto = uploadFileService.uploadFile(cantPhotoFile, DishManagementController.getPicturepath());
+			
+			if( cantphoto== null){
+				
+				canteenItems.setCantPhoto(DishManagementController.getCantDefaultpicturepath());
+				
+			}else{
+				
+				canteenItems.setCantPhoto(cantphoto);
+			}
+			
 			canteenPresetService.insertCanteen(canteenItems);
 		}
 		

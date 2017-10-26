@@ -72,7 +72,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="${pageContext.request.contextPath }/selectStarCanteens.action">名星食堂</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">人气中餐</a></li>
+                    <li><a href="${pageContext.request.contextPath }/selectStarChineseDishes.action">人气中餐</a></li>
                     <li class="divider"></li>
                     <li><a href="${pageContext.request.contextPath }/selectStarFancyDishes.action">人气风味</a></li>
                 </ul>
