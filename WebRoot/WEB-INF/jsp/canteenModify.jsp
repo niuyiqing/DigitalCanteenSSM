@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
 
                     <div class="panel-body">
-    					<form class="form-horizontal" role="form" name="updateCanteen" method="post" action="modifyCanteenSave.action">
+    					<form class="form-horizontal" role="form" name="updateCanteen" method="post" action="modifyCanteenSave.action" enctype="multipart/form-data">
     						<input name="cantID" type="hidden" value="${canteenItems.cantID }">
     						<div class="form-group">                                                                   
                                 <label class="col-sm-2 control-label">食堂所属校区</label>
@@ -81,6 +81,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     								<input name="cantName" class="form-control" type="text" value="${canteenItems.cantName }">
     							</div>    							
     						</div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">食堂图片</label>
+                                <div class="col-sm-9">
+                                    <c:if test="${canteenItems.cantPhoto != null }">
+                                        <img src="/upload/pic/${canteenItems.cantPhoto }" height="100" width="120"/>
+                                    </c:if>
+                                    <br><br>
+                                    <input type="file" name="cantPhotoFile"/>
+                                </div>
+                            </div>
     						<div class="form-group">
                                 <div class="col-sm-2 col-sm-offset-5">
     							    <input type="submit" class="btn btn-primary" value="保存">

@@ -103,6 +103,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			ctcant.CantTypeID=#{cantTypeID},
 			ctcant.CantAddr= #{cantAddr}, 
 			ctcant.CantDescription= #{cantDescription},
+			ctcant.CantPhoto=#{cantPhoto},
 			ctcant.StarCant=#{starCant}
 		WHERE ctcant.CantID=#{cantID}
 	</select>
@@ -117,10 +118,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="insertCanteen"  parameterType="Canteen">
 		Insert into ctcant (
 			ctcant.CantCampusID,ctcant.CantName,ctcant.CantTypeID,
-			ctcant.CantAddr,ctcant.CantDescription,ctcant.StarCant) 
+			ctcant.CantAddr,ctcant.CantDescription,ctcant.CantPhoto,ctcant.StarCant) 
 		values (
 			#{cantCampusID},#{cantName},#{cantTypeID},
-			#{cantAddr},#{cantDescription},#{starCant})
+			#{cantAddr},#{cantDescription},#{cantPhoto},#{starCant})
 	</select>
 	
 </mapper>
