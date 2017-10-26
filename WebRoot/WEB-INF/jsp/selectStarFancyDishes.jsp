@@ -138,7 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </table>
 
                             <div class="form-group">
-                                <input type="button" class="btn btn-primary" value="保存" onClick=starFancyDishesSubmit()>
+                                <input type="button" class="btn btn-primary" value="保存" onClick="starFancyDishesSubmit()">
                                 <a href="${pageContext.request.contextPath }/backgroundHomepage.action" class="btn btn-primary">返回首页</a>
                             </div>
                         </form>

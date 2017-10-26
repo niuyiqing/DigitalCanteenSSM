@@ -45,7 +45,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 document.location.href=noddy.href;  
                         }  
                 },false);  
-        }  
+        }
+
+        function userQueryAll(){
+                document.userQueryForm.action="userQueryAll.action";
+                document.userQueryForm.submit();
+            }  
         </script> 
     </head>
   
@@ -63,8 +68,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <span class="burger-filling"></span>
                                     <span class="burger-bun-bot"></span>
                                 </div> --> 
-                                <input  type="text"  placeholder="请输入菜品名或档口名" id="queryName" name="queryName" style="background:rgba(255,255,255,0.8);width:70%;height:35px;color:#000">                  
-                                <input  type="button" value="查询"  class="btn btn-primary btn-wide" onclick="userQueryAll()">
+                                <input  type="text"  placeholder="请输入菜品名或档口名" id="queryName" name="queryName" style="background:rgba(255,255,255,0.1);width:70%;height:35px;color:#000">                  
+                                <input  type="button" value="查询"  class="btn btn-primary btn-wide" style="background:rgba(41, 193, 146,0.8);" onclick="userQueryAll()">
                             </div>                                                                          
                         </form>
 
@@ -79,28 +84,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </ol>
                                     <div class="carousel-inner" role="listbox">
                                         <div class="item active">
-                                            <img src="/upload/pic/${adList[0].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image" onload="DrawImage(this)"/>
+                                            <img src="/upload/pic/${adList[0].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image" />
                                         </div>
                                         <div class="item">
-                                            <img src="/upload/pic/${adList[1].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image" onload="DrawImage(this)"/>
+                                            <img src="/upload/pic/${adList[1].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image" />
                                         </div>
                                         <div class="item">
-                                            <img src="/upload/pic/${adList[2].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image" onload="DrawImage(this)"/>
+                                            <img src="/upload/pic/${adList[2].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image" />
                                         </div>
                                         <div class="item">
-                                            <img src="/upload/pic/${adList[3].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image" onload="DrawImage(this)"/>
+                                            <img src="/upload/pic/${adList[3].adPhoto }" alt="Bootstrap Touch Slider"  class="slide-image" />
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="newcustom" style="margin-top: 10px;">
-                                    <table  width=100%>                                                        
+                                    <table  width="100%">                                                        
                                         <tr>
                                             <td style='vertical-align: middle' >
-                                                <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="90%" style="border-radius:3%;">
+                                                <img src="/upload/pic/d1db30ad658c7fede5191874a2c57d2a.jpg" class="center-block"  width="90%" style="border-radius:3%;">
                                             </td>                                                           
                                             <td style='vertical-align: middle' >
-                                                <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="90%" style="border-radius:3%;">
+                                                <img src="/upload/pic/d1db30ad658c7fede5191874a2c57d2a.jpg" class="center-block"  width="90%" style="border-radius:3%;">
                                             </td>                                             
                                         </tr>
                                         <tr>                                                           
@@ -109,10 +114,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </tr>
                                         <tr>                          
                                             <td style='vertical-align: middle' onclick="location.href='starCanteensPage.action';">
-                                                <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="90%" style="border-radius:3%;">
+                                                <img src="/upload/pic/3.jpg" class="center-block"  width="90%" style="border-radius:3%;">
                                             </td>
                                             <td style='vertical-align: middle' >
-                                                <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="90%" style="border-radius:3%;">
+                                                <img src="/upload/pic/1.jpg" class="center-block"  width="90%" style="border-radius:3%;">
                                             </td>
                                         </tr>
                                         <tr>                          
@@ -219,20 +224,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <script type="text/javascript">
             $('#bootstrap-touch-slider').bsTouchSlider();
         </script>
-        <!-- 轮播图大小自适应 -->
-            <script type="text/javascript" src="js/jqthumb.js"></script>
-            <script>
-            function DrawImage(hotimg)
-            {
-               $(hotimg).jqthumb({
-               classname      : 'jqthumb',
-                        width          : '100%',
-                        height         : '200px',
-                        position       : { y: '50%', x: '50%'},
-                        zoom           : '1',
-                        method         : 'auto',
-               });
-            }
-            </script>
+        <!-- 轮播图大小自适应 
+             <script type="text/javascript" src="js/jqthumb.js"></script>
+             <script>
+             function DrawImage(hotimg)
+             {
+                $(hotimg).jqthumb({
+                classname      : 'jqthumb',
+                         width          : '100%',
+                         height         : '200px',
+                         position       : { y: '50%', x: '50%'},
+                         zoom           : '1',
+                         method         : 'auto',
+                });
+             }
+             </script>   -->
     </body>
 </html>
