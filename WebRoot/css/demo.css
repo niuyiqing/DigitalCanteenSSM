@@ -63,6 +63,7 @@ a:hover, a:focus {
 	width: 100%;
 	position: fixed;
 	z-index:999;
+	top: 0px;
 }
 
 .codrops-header h1 {
