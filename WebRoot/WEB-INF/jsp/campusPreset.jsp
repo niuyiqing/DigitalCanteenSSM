@@ -78,7 +78,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<input type="text" class="form-control" placeholder="预置校区名称" name="campusName" onKeydown="if(event.keyCode==13){return false;}"> 
 								</div>								
 							</div>
-						
 							<div class="form-group">
 								<div class="col-sm-2 col-sm-offset-5">
 									<!-- 此处按钮类型是button 提交动作放入了js函数中-->
@@ -100,7 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<table class="table table-striped table-bordered table-hover table-responsive text-center">
 							<thead>
 								<tr>
-									<th style='text-align: center;'>校区名称</th>
+									<th style='text-align: center;'>校区名称</th>							
 									<th style='text-align: center;'>操作</th>
 								</tr>
 							</thead>

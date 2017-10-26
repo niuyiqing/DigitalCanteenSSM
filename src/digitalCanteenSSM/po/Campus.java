@@ -1,9 +1,9 @@
 package digitalCanteenSSM.po;
 
 public class Campus {
-	private int    campusID   = 0;
-	private String campusName = "";
-	private String campusNote = "";
+	private int    campusID    = 0;
+	private String campusName  = "";
+	private String campusNote  = "";
 	
 	public int getCampusID() {
 		return campusID;
@@ -24,5 +24,4 @@ public class Campus {
 		this.campusNote = campusNote;
 	}
 
-	
 }

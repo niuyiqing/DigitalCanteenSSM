@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" action="insertCanteen.action" method="post">
+                        <form class="form-horizontal" role="form" action="insertCanteen.action" method="post" enctype="multipart/form-data">
                             <div class="form-group">                                                                
                                 <label class="col-sm-2 control-label">所属校区</label>
                                 <div class="col-sm-9">    
@@ -76,6 +76,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </div>                                
                             </div>
                             <div class="form-group">
+                                <label class="col-sm-2 control-label">图片上传</label>
+                                <div class="col-sm-9">
+                                    <input type="file" name="cantPhotoFile"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <div class="col-sm-2 col-sm-offset-5">
                                     <!-- 食堂添加按钮 -->
                                     <input type="submit" class="btn btn-primary" value="添加食堂">
@@ -97,6 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <th style='text-align: center;'>校区名称</th>
                                     <th style='text-align: center;'>食堂类型</th>
                                     <th style='text-align: center;'>食堂名称</th>
+                                    <th style='text-align: center;'>食堂图片</th>
                                     <th style='text-align: center;'>编辑</th>
                                 </tr>
                             </thead>
@@ -106,6 +113,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <td style='vertical-align: middle;text-align: center;'>${item.campusName }</td>
                                         <td style='vertical-align: middle;text-align: center;'>${item.cantTypeName }</td>
                                         <td style='vertical-align: middle;text-align: center;'>${item.cantName }</td>
+                                        <td style='vertical-align: middle;text-align: center;'>
+                                            <c:if test="${item.cantPhoto != null }">
+                                                <img src="/upload/pic/${item.cantPhoto }" class="center-block" height="100" width="120"/>
+                                            </c:if>
+                                        </td>
                                         <td style='vertical-align: middle;text-align: center;'>
                                             <div class="form-group btn-group btn-group-sm">
                                                 <a href="modifyCanteen.action?cantID=${item.cantID}" class="btn btn-info">修改</a>

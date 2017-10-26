@@ -49,6 +49,7 @@ public class DishManagementController {
 	private static final  String defaultPicturePath     = "default.jpg";
 	private static final  String defaultUserPicturePath = "user-default.jpg";
 	private static final  String defaultWndPicturePath  = "wnd-default.jpg";
+	private static final  String defaultCantPicturePath = "cant-default.jpg";
 	@Autowired
 	private WindowPresetService windowPresetService;
 	@Autowired
@@ -83,6 +84,10 @@ public class DishManagementController {
 	
 	public static String getWndDefaultpicturepath(){
 		return defaultWndPicturePath;
+	}
+	
+	public static String getCantDefaultpicturepath(){
+		return defaultCantPicturePath;
 	}
 
 	//菜品管理页面
