@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <p style="padding-top:7px;width:100%;height:100%;font-size:27px">实惠中餐</p>  
         </div>                                                                          
         <div >
-            <img src="/upload/pic/3.jpg" class="center-block" width="100%">
+            <img src="/upload/pic/ChineseCanteens.png" class="center-block" width="100%">
         </div>
         <div class="newcustom" style="margin-top: 10px;">
             <table width="100%" align="center">

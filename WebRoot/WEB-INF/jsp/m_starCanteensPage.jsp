@@ -50,16 +50,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	</head>
   
   	<body>
-  		<div class="codrops-header" style="background:rgba(0,0,0,0);">
+  		<!-- <div class="codrops-header" style="background:rgba(0,0,0,0);">
             <div class="back-container">
                 <button class="btn btn-link btn-lg">
                     <a style="color:#fff" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a>
                 </button>    
             </div>
             <p style="padding-top:7px;width:100%;height:100%;font-size:27px">名星食堂</p>  
-        </div>
+        </div> -->
         <div >
-        	<img src="/upload/pic/3.jpg" class="center-block" width="100%">
+        	<img src="/upload/pic/StarCanteens.png" class="center-block" width="100%">
         </div>
         <c:forEach items="${starCanteensList }" var="item">
         	<div class="newcustom" style="margin-top: 10px;">

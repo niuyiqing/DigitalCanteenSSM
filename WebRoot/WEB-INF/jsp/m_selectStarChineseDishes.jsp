@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <head>
         <base href="<%=basePath%>">
         
-        <title>人气风味菜品管理</title>
+        <title>人气中餐菜品管理</title>
         
         <meta http-equiv="pragma" content="no-cache" />
         <meta http-equiv="cache-control" content="no-cache" />
@@ -62,25 +62,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 checkbox.checked=true;
             }
 
-            function starFancyDishesSubmit(){
-                document.starFancyDishesForm.action = "saveStarFancyDishes.action";
-                jquerySubByFId('starFancyDishesForm', starFancyDishesSubmit_callback, null, "json");
+            function starChineseDishesSubmit(){
+                document.starChineseDishesForm.action = "saveStarChineseDishes.action";
+                jquerySubByFId('starChineseDishesForm', starChineseDishesSubmit_callback, null, "json");
             }
-            function starFancyDishesSubmit_callback(data){
+            function starChineseDishesSubmit_callback(data){
                 alert(data.resultInfo.message);
             }
 
             //搜索
             $(document).ready(function(){        
-                $("#searchin").click(function(){
-                    var txt=$("#search").val();
+            	$("#searchin").click(function(){
+            		var txt=$("#search").val();
 
-                    if($.trim(txt)!=""){    
-                        $("table tr:not('#theader')").hide().filter(":contains('"+txt+"')").show();
-                    }else{
-                        $("table tr:not('#theader')").css("background","#fff").show();
-                    }
-                });
+            		if($.trim(txt)!=""){	
+				        $("table tr:not('#theader')").hide().filter(":contains('"+txt+"')").show();
+				    }else{
+				        $("table tr:not('#theader')").css("background","#fff").show();
+				    }
+            	});
             });
         </script>
         <!-- iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 -->
@@ -97,24 +97,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 },false);  
         }  
         </script>
-    </head>
+  	</head>
   
-    <body>
+  	<body>
         <div class="codrops-header" style="background:#29C192;">
             <div class="back-container">
                 <button class="btn btn-link btn-lg" style="padding-top:4px">
                     <a style="color:#fff" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/backgroundHomepage.action"></a>
                 </button>    
             </div>
-            <p style="width:100%;height:100%;font-size:27px">人气风味菜品管理</p>  
+            <p style="width:100%;height:100%;font-size:27px">人气中餐菜品管理</p>  
         </div>
-        <form role="form" name="starFancyDishesForm" id="starFancyDishesForm" method="post" action="saveStarFancyDishes.action">
-            <div class=" newcustom" style="padding-top:63px;" >
+        <form role="form" name="starChineseDishesForm" id="starChineseDishesForm" method="post" action="saveStarChineseDishes.action">
+            <div class=" newcustom" style="padding-top:70px;" >
                 <div class="form-group">
-                    <div>
-                        <input type="text" name="search" id="search" style="width: 70%;height: 32px;color:black">
-                        <input type="button" class="btn btn-primary" value="搜索" name="searchin" id="searchin">
-                    </div>
+                	<div>
+    	         		<input type="text" name="search" id="search" style="width: 70%;height: 32px;color:black">
+	             		<input type="button" class="btn btn-primary" value="搜索" name="searchin" id="searchin">
+    	         	</div>
                 </div>
                 <table  class="table table-striped table-bordered table-condensed">
                     <thead>
@@ -124,17 +124,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${fancyDishesList }" var="item">
+                        <c:forEach items="${chineseDishesList }" var="item">
                             <tr align="center" style="color:black;font-size:15px">
-                                <td>
+                                <td >
                                     <input type="checkbox" name="dishIDList" id="${item.dishID }" value="${item.dishID }" />
                                 </td>
                                 <!-- 自动勾选已选为名星食堂的食堂 -->
                                 <c:choose >
-                                    <c:when test="${starFancyDishesList == null }">
+                                    <c:when test="${starChineseDishesList == null }">
                                     </c:when>
                                     <c:otherwise>
-                                        <c:forEach items="${starFancyDishesList }" var="itemstar">
+                                        <c:forEach items="${starChineseDishesList }" var="itemstar">
                                             <c:choose>
                                                 <c:when test="${itemstar.dishID == item.dishID }">
                                                     <script> checkBoxSelect("${item.dishID}");</script>     
@@ -143,15 +143,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </c:forEach>
                                     </c:otherwise>
                                 </c:choose>
-                                <td >${item.dishName }</td>
+                                <td>${item.dishName }</td>
                             </tr>
                         </c:forEach>
                     </tbody>
                 </table>
                 <div class="form-group" align="center">
-                    <input type="button" style="width:80%" class="btn btn-primary btn-wide" value="保存" onClick="starFancyDishesSubmit()">
+                    <input type="button" style="width:80%" class="btn btn-primary btn-wide" value="保存" onClick="starChineseDishesSubmit()">
                 </div>
             </div>
         </form>
-    </body>
+  	</body>
 </html>
