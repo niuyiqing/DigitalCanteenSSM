@@ -65,7 +65,7 @@
 									<h2 class="icon icon-renyuanguanli" style="padding: 1em 1em 1em 4.5em;font-size:17px;background:rgba(41,193,146,0.95)">推荐管理</h2>
 									<ul>
 										<li><a href="${pageContext.request.contextPath }/selectStarCanteens.action" data-ajax="false" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">名星食堂</a></li>
-										<li><a href="#" data-ajax="false" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">人气中餐</a></li>
+										<li><a href="${pageContext.request.contextPath }/selectStarChineseDishes.action" data-ajax="false" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">人气中餐</a></li>
 										<li><a href="${pageContext.request.contextPath }/selectStarFancyDishes.action" data-ajax="false" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">人气风味</a></li>
 									</ul>
 								</div>

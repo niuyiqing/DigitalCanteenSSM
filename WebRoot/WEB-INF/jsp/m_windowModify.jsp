@@ -163,6 +163,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <input type="text" placeholder="请在此输入档口备注"       name="wndNote" value="${windowItems.wndNote}" class="form-control input-sm">
       </div> 
       <br>
+      <div align="center">
+          <c:if test="${windowItems.wndPhoto != null }">
+              <img src="/upload/pic/${windowItems.wndPhoto }" height="80" width="80"/>
+          </c:if>
+          <br><br>
+          <input type="file" name="wndPhotoFile"/>
+      </div>
     	<!-- 档口添加按钮 -->
     	<div align="center"><input type="submit" value="保存" onClick="return check(windowUpdateForm)" class="btn btn-primary btn-wide" data-role="none"></div>
       </div>

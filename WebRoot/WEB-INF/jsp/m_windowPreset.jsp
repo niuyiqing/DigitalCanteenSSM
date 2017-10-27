@@ -143,7 +143,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div align="center" class="col-xs-12">
                                 <input type="text" placeholder="请输入档口备注"       name="wndNote" class="form-control input-sm">
                             </div>
-                        
+                            <br>
+                            <div align="center">
+                                <input type="file" name="wndPhotoFile"/>
+                            </div>
       	    <!-- 档口添加按钮 -->
           	                <div align="center" style="margin-top:6px">
                                 <input  type="submit" value="添加档口" onClick="return check(windowInsertForm)" class="btn btn-primary btn-wide" data-role="none">
@@ -157,18 +160,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 		           	 	<td>校区名称</td>
                 	               	    <td>食堂名称</td>
                 	               	    <td>档口名称</td>
+                                        <td>档口图片</td>
                 		                <td colspan="2">编辑</td>
                 		            </tr>
                                 </thead>
                         
             			        <c:forEach items="${pagehelper.list }" var="item" >
             			       	    <tr align="center" style="color:black;font-size:15px">
-                			       	 	<td >${item.campusName }</td>
-                			       	    <td>${item.cantName }</td>
-                			       	    <td>${item.wndName }</td>
-                			       	   	<!-- wndID=${item.wndID}& -->
-                			       	    <td><a href="modifyWindow.action?wndID=${item.wndID}&cantCampusID=${item.cantCampusID}" style="color:#66AFE9">修改</a></td>
-                			       	    <td><a href="deleteWindowById.action?wndID=${item.wndID}" style="color:#66AFE9">删除</a></td>
+                			       	 	<td style='vertical-align: middle;text-align: center;'>${item.campusName }</td>
+                			       	    <td style='vertical-align: middle;text-align: center;'>${item.cantName }</td>
+                			       	    <td style='vertical-align: middle;text-align: center;'>${item.wndName }</td>
+                                        <td >
+                                            <c:if test="${item.wndPhoto != null }">
+                                                <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="80" width="80"/>
+                                            </c:if>
+                                        </td>
+                			       	    <td style='vertical-align: middle;text-align: center;'><a href="modifyWindow.action?wndID=${item.wndID}&cantCampusID=${item.cantCampusID}" style="color:#66AFE9">修改</a></td>
+                			       	    <td style='vertical-align: middle;text-align: center;'><a href="deleteWindowById.action?wndID=${item.wndID}" style="color:#66AFE9">删除</a></td>
             			       	    </tr>
             			        </c:forEach>
         		            </table>

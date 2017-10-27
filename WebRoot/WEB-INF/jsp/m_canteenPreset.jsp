@@ -83,6 +83,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="form-group" >
           	  <div ><input type="text" placeholder="请输入预置食堂名称" name="cantName" class="form-control "> </div>
               <br>
+              <div>
+                <input type="file" name="cantPhotoFile"/>
+              </div>
           	  <div align="center"><input type="submit" value="添加食堂" class="btn btn-primary btn-wide" data-role="none"></div>
             </div>
           </div>
@@ -94,16 +97,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       		   	 	<td>校区名称</td>
       		   	 	<td>食堂类型</td>
       	        <td>食堂名称</td>
+                <td>食堂图片</td>
       		      <td colspan="2">编辑</td>
       		    </tr>
               </thead>
       			  <c:forEach items="${pagehelper.list }" var="item" >
       			  	<tr align="center" style="color:black;font-size:15px">
-      			  	 	<td>${item.campusName }</td>
-      			  	 	<td>${item.cantTypeName }</td>
-      			  	  <td>${item.cantName }</td>
-      			  	  <td><a href="modifyCanteen.action?cantID=${item.cantID}" style="color:#66AFE9">修改</a></td>
-      			  	  <td><a href="deleteCanteenById.action?cantID=${item.cantID}" style="color:#66AFE9">删除</a></td>
+      			  	 	<td style='vertical-align: middle;text-align: center;'>${item.campusName }</td>
+      			  	 	<td style='vertical-align: middle;text-align: center;'>${item.cantTypeName }</td>
+      			  	  <td style='vertical-align: middle;text-align: center;'>${item.cantName }</td>
+                  <td>
+                    <c:if test="${item.cantPhoto != null }">
+                      <img src="/upload/pic/${item.cantPhoto }" class="center-block" height="80" width="80"/>
+                    </c:if>
+                  </td>
+      			  	  <td style='vertical-align: middle;text-align: center;'><a href="modifyCanteen.action?cantID=${item.cantID}" style="color:#66AFE9">修改</a></td>
+      			  	  <td style='vertical-align: middle;text-align: center;'><a href="deleteCanteenById.action?cantID=${item.cantID}" style="color:#66AFE9">删除</a></td>
       			  	</tr>
       			  </c:forEach>
       		  </table>
@@ -140,7 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
                         <c:if test="${!pagehelper.isLastPage}">
                           <li>
-                            <a href="findAllCanteens.action?pageNum=${pagehelper.lastPage}&pageSize=${pagehelper.pageSize}">下一页</a>
+                            <a href="findAllCanteens.action?pageNum=${pagehelper.nextPage}&pageSize=${pagehelper.pageSize}">下一页</a>
                           </li>
                         </c:if>
                       </ul>
