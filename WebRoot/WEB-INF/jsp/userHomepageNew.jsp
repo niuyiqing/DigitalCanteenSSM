@@ -18,7 +18,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta name="format-detection" content="telephone=no">
-		
+		<meta name="apple-mobile-web-app-title" content="掌上食堂">
+        <link rel="apple-touch-icon-precomposed" href="http://10.141.114.134:8080/DigitalCanteenSSM/apple-touch-icon-52.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://10.138.194.111:8080/DigitalCanteenSSM/apple-touch-icon-72.png">
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://10.138.194.111:8080/DigitalCanteenSSM/apple-touch-icon-120.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://10.138.194.111:8080/DigitalCanteenSSM/apple-touch-icon-144.png">
         <script src="js/modernizr.custom.js"></script>
     	<script src="js/jquery-2.1.1.min.js"></script>
     	<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
@@ -97,7 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <td style='vertical-align: middle' onclick="location.href='fancyCanteensPage.action';">
                                                 <img src="/upload/pic/FancyCanteens.png" class="center-block"  width="90%" style="border-radius:3%;">
                                             </td>                                                           
-                                            <td style='vertical-align: middle' >
+                                            <td style='vertical-align: middle' onclick="location.href='chineseCanteensPage.action';">
                                                 <img src="/upload/pic/ChineseCanteens.png" class="center-block"  width="90%" style="border-radius:3%;">
                                             </td>                                             
                                         </tr>
@@ -154,7 +158,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <c:forEach items="${windowsList }" var="item">
                                                     <div id="view" class="item clearfix">                                                   
                                                         <div class="txt-item">
-                                                            <table width=100% onclick="location.href='userWindowContents.action?wndID=${item.wndID}';" >
+                                                            <table width="100%" onclick="location.href='userWindowContents.action?wndID=${item.wndID}';" >
                                                                 <tr style="height:30px">
                                                                     <td rowspan=3>
                                                                         <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="90" width="90"/>
