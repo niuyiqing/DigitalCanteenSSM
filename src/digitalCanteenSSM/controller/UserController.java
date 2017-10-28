@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import digitalCanteenSSM.po.Ad;
 import digitalCanteenSSM.po.Campus;
 import digitalCanteenSSM.po.CanteenItems;
+import digitalCanteenSSM.po.Detail;
 import digitalCanteenSSM.po.Dish;
 import digitalCanteenSSM.po.DishItems;
 import digitalCanteenSSM.po.MUserItems;
@@ -28,7 +29,9 @@ import digitalCanteenSSM.po.WindowItems;
 import digitalCanteenSSM.service.AdService;
 import digitalCanteenSSM.service.CampusPresetService;
 import digitalCanteenSSM.service.CanteenPresetService;
+import digitalCanteenSSM.service.DetailService;
 import digitalCanteenSSM.service.DishManagementService;
+import digitalCanteenSSM.service.RecordService;
 import digitalCanteenSSM.service.RoleService;
 import digitalCanteenSSM.service.UploadFileService;
 import digitalCanteenSSM.service.UserService;
@@ -56,6 +59,10 @@ public class UserController {
 	private RoleService roleService;
 	@Autowired
 	private AdService adService;
+	@Autowired
+	private DetailService detailService;
+	@Autowired
+	private RecordService recordService;
 	
 	@RequestMapping("/userRegisterPage")
 	public ModelAndView userRegisterPage() throws Exception{
@@ -143,7 +150,7 @@ public class UserController {
 		
 		//如果第一次进入这个函数，查询第一个校区的第一个食堂作为默认食堂
 		//以后则根据参数返回食堂和档口列表
-		if(campusID == null && cantID == null){	//第一次进入函数
+		if(campusID == null && cantID == null && supplyTime == null){	//第一次进入函数
 			
 			if(!campusList.isEmpty()){
 				
@@ -164,7 +171,8 @@ public class UserController {
 					}
 				}
 			}
-		}else if(campusID != null && cantID == null){	//有校区信息，查找该校区下的默认食堂及其档口信息
+		}else if(campusID != null && cantID == null && supplyTime == null){	//有校区信息，查找该校区下的默认食堂及其档口信息
+			
 			List<CanteenItems> canteenItemsList = canteenPresetService.findCanteenByCampus(campusID);
 			if(!canteenItemsList.isEmpty()){
 				Iterator<CanteenItems> iterator_canteenItems = canteenItemsList.iterator();
@@ -177,15 +185,8 @@ public class UserController {
 				modelAndView.addObject("canteenItemsList", canteenItemsList);
 			}
 			
-		}else if(campusID != null && cantID != null){	//有校区和食堂信息，返回该食堂档口信息
+		}else if(campusID == null && cantID != null && supplyTime == null){	//只有食堂信息，反推校区信息
 			
-			modelAndView.addObject("canteenItems", canteenPresetService.findCanteenById(cantID));
-			//将该食堂的档口列表传到用户首页
-			modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(cantID));
-			//查找校区下的食堂列表
-			modelAndView.addObject("canteenItemsList", canteenPresetService.findCanteenByCampus(canteenPresetService.findCanteenById(cantID).getCampusID()));
-			
-		}else{	//只有食堂信息，反推校区信息
 			//首先根据cantID在数据库中查找到相应食堂信息
 			//然后利用该食堂所属的校区编号查找该校区下所有食堂，传给用户首页
 			CanteenItems canteenItems = canteenPresetService.findCanteenById(cantID);
@@ -193,6 +194,20 @@ public class UserController {
 			//将该食堂的档口列表传到用户首页
 			modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(canteenItems.getCantID()));
 			modelAndView.addObject("canteenItemsList", canteenPresetService.findCanteenByCampus(canteenItems.getCampusID()));
+		
+		}else if(campusID == null && cantID != null && supplyTime != null){	//用户点击时间档
+			
+			//首先根据cantID在数据库中查找到相应食堂信息
+			//然后利用该食堂所属的校区编号查找该校区下所有食堂，传给用户首页
+			CanteenItems canteenItems = canteenPresetService.findCanteenById(cantID);
+			modelAndView.addObject("canteenItems", canteenItems);
+			//将该食堂所属校区的食堂列表传到用户页面
+			modelAndView.addObject("canteenItemsList", canteenPresetService.findCanteenByCampus(canteenItems.getCampusID()));
+			//将相应时间档的菜品传递到页面
+			Detail detail = new Detail();
+			detail.setDetailRecordID(recordService.findLatestRecordInCanteen(cantID).getRecordID());
+			detail.setDetailDishDateFlag(supplyTime);
+			modelAndView.addObject("dishesDetailList", detailService.findDetailByDateAndID(detail));
 		}
 		
 		modelAndView.setViewName("/WEB-INF/jsp/userHomepageNew.jsp");
