@@ -906,8 +906,8 @@ public class DishManagementController {
 		return modelAndView;
 	}
 	
-	//人气风味美食页面
-	@RequestMapping("/starFancyDishesPage")
+	//人气中餐美食页面
+	@RequestMapping("/starChineseDishesPage")
 	public ModelAndView starChineseDishesPage() throws Exception{
 		
 		ModelAndView modelAndView = new ModelAndView();
