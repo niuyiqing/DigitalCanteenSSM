@@ -23,9 +23,13 @@ import digitalCanteenSSM.exception.SubmitResultInfo;
 import digitalCanteenSSM.po.Campus;
 import digitalCanteenSSM.po.Canteen;
 import digitalCanteenSSM.po.CanteenItems;
+import digitalCanteenSSM.po.Detail;
 import digitalCanteenSSM.service.CampusPresetService;
 import digitalCanteenSSM.service.CanteenPresetService;
 import digitalCanteenSSM.service.CanteenTypePresetService;
+import digitalCanteenSSM.service.DetailService;
+import digitalCanteenSSM.service.DishManagementService;
+import digitalCanteenSSM.service.RecordService;
 import digitalCanteenSSM.service.UploadFileService;
 import digitalCanteenSSM.service.WindowPresetService;
 
@@ -42,6 +46,10 @@ public class CanteenPresetController {
 	private UploadFileService uploadFileService;
 	@Autowired
 	private WindowPresetService windowPresetService;
+	@Autowired
+	private RecordService recordService;
+	@Autowired
+	private DetailService detailService;
 	
 	//食堂预置页面
 	//添加食堂按钮与已添加食堂显示
@@ -247,8 +255,7 @@ public class CanteenPresetController {
 		
 		if (campusID == null && cantID == null){			
 			if(!campusList.isEmpty()){				
-				for (Campus campus : campusList){
-					
+				for (Campus campus : campusList){					
 					//读取校区下的风味食堂列表
 					List<CanteenItems> canteenItemsList = canteenPresetService.findFancyCanteensByCampus(campus.getCampusID());
 					
@@ -265,8 +272,7 @@ public class CanteenPresetController {
 						modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(canteenItems.getCantID()));
 						
 						break;
-					}
-					
+					}					
 				}				
 			}
 		}else if(campusID != null && cantID == null){	//点击校区按钮
@@ -299,6 +305,83 @@ public class CanteenPresetController {
 		}
 		
 		modelAndView.setViewName("/WEB-INF/jsp/m_fancyCanteensPage.jsp");
+		
+		return modelAndView;
+	}
+	
+	//中餐页面
+	@RequestMapping("/chineseCanteensPage")
+	public ModelAndView chineseCanteensPage(Integer campusID, Integer cantID, Integer supplyTime) throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		List<Campus> campusList = campusPresetService.findAllCampuses();		
+		modelAndView.addObject("campusList", campusList);
+		
+		if (campusID == null && cantID == null && supplyTime == null){	//从首页进入本页面
+			if(!campusList.isEmpty()){
+				for (Campus campus : campusList){
+					//读取校区下的中餐食堂列表
+					List<CanteenItems> canteenItemsList = canteenPresetService.findChineseCanteensByCampus(campus.getCampusID());
+					
+					if(!canteenItemsList.isEmpty()){
+						
+						Iterator<CanteenItems> iterator_canteenItems = canteenItemsList.iterator();
+						CanteenItems canteenItems = iterator_canteenItems.next();
+						
+						//将选中的第一个校区的第一个中餐食堂数据传到用户页面
+						modelAndView.addObject("canteenItems", canteenItems);
+						//将该校区下的中餐食堂列表传到用户页面
+						modelAndView.addObject("canteenItemsList", canteenItemsList);
+						//将该食堂的档口列表传到用户页面
+						modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(canteenItems.getCantID()));
+						
+						break;
+					}
+				}
+			}
+		}else if (campusID != null && cantID == null && supplyTime == null){	//点击校区按钮
+			//读取校区下的中餐食堂列表
+			List<CanteenItems> canteenItemsList = canteenPresetService.findChineseCanteensByCampus(campusID);
+			
+			if(!canteenItemsList.isEmpty()){
+				
+				Iterator<CanteenItems> iterator_canteenItems = canteenItemsList.iterator();
+				CanteenItems canteenItems = iterator_canteenItems.next();
+				
+				//将选中的第一个校区的第一个中餐食堂数据传到用户页面
+				modelAndView.addObject("canteenItems", canteenItems);
+				//将该校区下的中餐食堂列表传到用户页面
+				modelAndView.addObject("canteenItemsList", canteenItemsList);
+				//将该食堂的档口列表传到用户页面
+				modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(canteenItems.getCantID()));
+			}
+		}else if (campusID == null && cantID != null && supplyTime == null){	//点击食堂按钮
+			
+			//首先根据cantID在数据库中查找到相应中餐食堂信息
+			//然后利用该档口所属的校区编号查找该校区下所有食堂，传给用户页面
+			CanteenItems canteenItems = canteenPresetService.findCanteenById(cantID);
+			modelAndView.addObject("canteenItems", canteenItems);			
+			//将该食堂的档口列表传到用户页面
+			modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(canteenItems.getCantID()));
+			//将该食堂所属校区的中餐食堂列表传到用户页面
+			modelAndView.addObject("canteenItemsList", canteenPresetService.findChineseCanteensByCampus(canteenItems.getCampusID()));
+		
+		}else if (campusID == null && cantID != null && supplyTime != null){	//点击时间档按钮
+			//首先根据cantID在数据库中查找到相应中餐食堂信息
+			//然后利用该档口所属的校区编号查找该校区下所有食堂，传给用户页面
+			CanteenItems canteenItems = canteenPresetService.findCanteenById(cantID);
+			modelAndView.addObject("canteenItems", canteenItems);
+			//将该食堂所属校区的中餐食堂列表传到用户页面
+			modelAndView.addObject("canteenItemsList", canteenPresetService.findChineseCanteensByCampus(canteenItems.getCampusID()));
+			//将相应时间档的菜品传递到页面
+			Detail detail = new Detail();
+			detail.setDetailRecordID(recordService.findLatestRecordInCanteen(cantID).getRecordID());
+			detail.setDetailDishDateFlag(supplyTime);
+			modelAndView.addObject("dishesDetailList", detailService.findDetailByDateAndID(detail));
+		}
+		
+		modelAndView.setViewName("/WEB-INF/jsp/m_chineseCanteensPage.jsp");
 		
 		return modelAndView;
 	}
