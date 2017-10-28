@@ -86,10 +86,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <tr height="32px">
                                     <c:choose >
                                         <c:when test="${item.campusID eq canteenItems.cantCampusID}">
-                                            <td style='vertical-align: middle;text-align: center;font-size:1.5em;'><a style="color:white;" href="chineseCanteensPage.action?campusID=${item.campusID}"><span style="background-color:#f79076">${item.campusName }风味</span></a></td>
+                                            <td style='vertical-align: middle;text-align: center;font-size:1.5em;'><a style="color:white;" href="chineseCanteensPage.action?campusID=${item.campusID}"><span style="background-color:#f79076">${item.campusName }中餐</span></a></td>
                                         </c:when>
                                         <c:otherwise>
-                                            <td style='vertical-align: middle;text-align: center;font-size:1.5em;'><a href="chineseCanteensPage?campusID=${item.campusID}"><span>${item.campusName }中餐</span></a></td>
+                                            <td style='vertical-align: middle;text-align: center;font-size:1.5em;'><a href="chineseCanteensPage.action?campusID=${item.campusID}"><span>${item.campusName }中餐</span></a></td>
                                         </c:otherwise>
                                     </c:choose>
                                 </tr>
@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </table>
                     </td>
                     <td width="35%" style="margin: 0px;padding: 0px;">
-                        <table>
+                        <table onclick="location.href='starChineseDishesPage.action';">
                             <tr>
                                 <td style='vertical-align: middle' >
                                     <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" width="100%" style="border-radius:50%;">
@@ -117,10 +117,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <c:forEach items="${canteenItemsList }" var="item" >
                         <c:choose >
                             <c:when test="${item.cantID eq canteenItems.cantID}">
-                                <li><a style="color: black;" href="chineseCanteensPage?cantID=${item.cantID}"><span>${item.cantName }</span></a><li>
+                                <li><a style="color: black;" href="chineseCanteensPage.action?cantID=${item.cantID}"><span>${item.cantName }</span></a><li>
                             </c:when>
                             <c:otherwise>
-                                <li><a style="color: white;" href="chineseCanteensPage?cantID=${item.cantID}"><span>${item.cantName }</span></a><li>
+                                <li><a style="color: white;" href="chineseCanteensPage.action?cantID=${item.cantID}"><span>${item.cantName }</span></a><li>
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
@@ -129,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="row" style="padding:0 0px;"> 
                 <div class="form-group">                                                                       
                         <c:forEach items="${windowsList }" var="item">
-                                    <table width="100%" onclick="location.href='userWindowContents.action?wndID=${item.wndID}';" >
+                                    <table width="100%" onclick="location.href='userWindowContents.action?wndID=${item.wndID}';" style="color:black">
                                         <tr style="height:30px">
                                             <td rowspan=3>
                                                 <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="90" width="90"/>

@@ -158,7 +158,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <c:forEach items="${windowsList }" var="item">
                                                     <div id="view" class="item clearfix">                                                   
                                                         <div class="txt-item">
-                                                            <table width=100% onclick="location.href='userWindowContents.action?wndID=${item.wndID}';" >
+                                                            <table width="100%" onclick="location.href='userWindowContents.action?wndID=${item.wndID}';" >
                                                                 <tr style="height:30px">
                                                                     <td rowspan=3>
                                                                         <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="90" width="90"/>

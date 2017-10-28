@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </table>
                     </td>
                     <td width="35%" style="margin: 0px;padding: 0px;">
-                        <table>
+                        <table onclick="location.href='starFancyDishesPage.action';">
                             <tr>
                                 <td style='vertical-align: middle' >
                                     <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block"  width="100%" style="border-radius:50%;">
