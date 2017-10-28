@@ -69,26 +69,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div class="row" style="padding:0 0px;"> 
                                     <div class="form-group">
                                         <div class="item-wrap">
-                                            <c:forEach items="${dishDetailList }" var="item" >
+                                            <c:forEach items="${fancyDishesList }" var="item" >
                                                 <div class="item clearfix">
                                                     <div class="txt-item" style=" margin-right:0px; margin-left:5px;padding-top:5px">
                                                         <table  width="100%">                                                        
                                                             <tr>
                                                                 <td style='vertical-align: left;text-align: center;' rowspan=3>
-                                                                    <c:if test="${item.detailDishPhoto != null }">
-                                                                        <img src="/upload/pic/${item.detailDishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%;margin-left:20px;margin-right:-50px">
+                                                                    <c:if test="${item.dishPhoto != null }">
+                                                                        <img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%;margin-left:20px;margin-right:-50px">
                                                                     </c:if>
                                                                 </td>                                                           
-                                                                <td style='vertical-align: middle;font-size:1.5em;width:120px' >${item.detailDishName }</td>
-                                                                <td style='vertical-align: middle;'>${item.detailDishSale }</td>                                             
+                                                                <td style='vertical-align: middle;font-size:1.5em;width:120px' >${item.dishName }</td>
+                                                                <td style='vertical-align: middle;'>${item.dishSale }</td>                                             
                                                             </tr>
                                                             <tr>                                                           
-                                                                <td style='vertical-align: middle;font-size:1em'>[${item.detailWndName }]</td>
-                                                                <td style='vertical-align: middle;'>${item.detailDishDate } </td> 
+                                                                <td style='vertical-align: middle;font-size:1em'>[${item.wndName }]</td>
+                                                                <td style='vertical-align: middle;'>${item.dishDate } </td> 
                                                             </tr>
                                                             <tr>                          
-                                                                <td style='vertical-align: middle;color:#29C192;font-size:1.5em'>￥${item.detailDishPrice }</td>
-                                                                <td style='vertical-align: middle;'><fmt:formatDate value="${item.detailDishInDate}" pattern="yyyy-MM-dd" /></td>
+                                                                <td style='vertical-align: middle;color:#29C192;font-size:1.5em'>￥${item.dishPrice }</td>
+                                                                <td style='vertical-align: middle;'><fmt:formatDate value="${item.dishInDate}" pattern="yyyy-MM-dd" /></td>
                                                             </tr>
                                                         </table>
                                                     </div>

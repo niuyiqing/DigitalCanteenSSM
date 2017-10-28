@@ -862,35 +862,59 @@ public class DishManagementController {
 	}
 	
 	//后台保存人气中餐美食
-		@RequestMapping("/saveStarChineseDishes")
-		public @ResponseBody SubmitResultInfo saveStarChineseDishes(Integer[] dishIDList) throws Exception{
-			//传递给页面的参数
-			ResultInfo resultInfo = new ResultInfo();
-			resultInfo.setType(ResultInfo.TYPE_RESULT_SUCCESS);
-			
-			//清除之前保存的人气中餐美食标志
-			List<DishItems> starChineseDishesList = dishManagementService.findStarChineseDishes();
-			for(DishItems starItem : starChineseDishesList){
-				starItem.setStarDish(0);
-				dishManagementService.updateDish(starItem);
-			}
-			
-			//写入新的人气中餐美食
-			if(dishIDList != null){
-				DishItems starDish = new DishItems();
-				
-				for(Integer i : dishIDList){
-					starDish = dishManagementService.findDishById(i);
-					starDish.setStarDish(1);
-					
-					dishManagementService.updateDish(starDish);
-				}
-				resultInfo.setMessage("成功设定【" + dishIDList.length + "】个人气中餐美食");
-			}else{
-				resultInfo.setMessage("人气中餐美食列表已清空");
-			}
-			
-			SubmitResultInfo submitResultInfo = new SubmitResultInfo(resultInfo);		
-			return submitResultInfo;
+	@RequestMapping("/saveStarChineseDishes")
+	public @ResponseBody SubmitResultInfo saveStarChineseDishes(Integer[] dishIDList) throws Exception{
+		//传递给页面的参数
+		ResultInfo resultInfo = new ResultInfo();
+		resultInfo.setType(ResultInfo.TYPE_RESULT_SUCCESS);
+		
+		//清除之前保存的人气中餐美食标志
+		List<DishItems> starChineseDishesList = dishManagementService.findStarChineseDishes();
+		for(DishItems starItem : starChineseDishesList){
+			starItem.setStarDish(0);
+			dishManagementService.updateDish(starItem);
 		}
+		
+		//写入新的人气中餐美食
+		if(dishIDList != null){
+			DishItems starDish = new DishItems();
+			
+			for(Integer i : dishIDList){
+				starDish = dishManagementService.findDishById(i);
+				starDish.setStarDish(1);
+				
+				dishManagementService.updateDish(starDish);
+			}
+			resultInfo.setMessage("成功设定【" + dishIDList.length + "】个人气中餐美食");
+		}else{
+			resultInfo.setMessage("人气中餐美食列表已清空");
+		}
+		
+		SubmitResultInfo submitResultInfo = new SubmitResultInfo(resultInfo);		
+		return submitResultInfo;
+	}
+	
+	//人气风味美食页面
+	@RequestMapping("/starFancyDishesPage")
+	public ModelAndView starFancyDishesPage() throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("fancyDishesList", dishManagementService.findStarFancyDishes());
+		modelAndView.setViewName("/WEB-INF/jsp/m_starFancyDishesPage.jsp");
+		
+		return modelAndView;
+	}
+	
+	//人气风味美食页面
+	@RequestMapping("/starFancyDishesPage")
+	public ModelAndView starChineseDishesPage() throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("chineseDishesList", dishManagementService.findStarChineseDishes());
+		modelAndView.setViewName("/WEB-INF/jsp/m_starChineseDishesPage.jsp");
+		
+		return modelAndView;
+	}
 }
