@@ -94,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div class="newcustom" style="margin-top: 10px;">
                                     <table  width="100%">                                                        
                                         <tr>
-                                            <td style='vertical-align: middle' >
+                                            <td style='vertical-align: middle' onclick="location.href='fancyCanteensPage.action';">
                                                 <img src="/upload/pic/FancyCanteens.png" class="center-block"  width="90%" style="border-radius:3%;">
                                             </td>                                                           
                                             <td style='vertical-align: middle' >
