@@ -48,11 +48,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
     <body>
         <div class="codrops-header" style="background:rgba(0,0,0,0);" >
-            <!-- 返回按钮
+            
             <div class="back-container">
-                <button class="btn btn-link btn-lg" ><a style="color:#fff" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a></button>
-            </div> -->
-            <p style="padding-top:28px;width:100%;height:100%;font-size:22px;color:white">${windowItems.wndName }(${windowItems.campusName }&nbsp${windowItems.cantName })</p> 
+                <button class="btn btn-link btn-lg" ><a style="color:#fff" class="icon icon-fanhui" data-ajax="false" onclick="javascript:history.back(-1)"></a></button>
+            </div>
+            <p style="padding-top:8px;width:100%;height:100%;font-size:22px;color:white">${windowItems.wndName }(${windowItems.campusName }&nbsp${windowItems.cantName })</p> 
         </div>
     	<div >
             <img src="/upload/pic/3.jpg" class="center-block" width="100%">
