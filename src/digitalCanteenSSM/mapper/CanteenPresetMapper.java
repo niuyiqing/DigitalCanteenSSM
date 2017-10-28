@@ -12,11 +12,11 @@ public interface CanteenPresetMapper {
 	
 	public List<CanteenItems> findAllFancyCanteens() throws Exception;
 	
-	public List<CanteenItems> findFancyCanteensByCampus() throws Exception;
+	public List<CanteenItems> findFancyCanteensByCampus(int cantCampusID) throws Exception;
 	
 	public List<CanteenItems> findAllChineseCanteens() throws Exception;
 	
-	public List<CanteenItems> findChineseCanteensByCampus() throws Exception;
+	public List<CanteenItems> findChineseCanteensByCampus(int cantCampusID) throws Exception;
 	
 	public List<CanteenItems> findStarCanteens() throws Exception;
 	

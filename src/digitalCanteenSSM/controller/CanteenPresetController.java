@@ -1,6 +1,7 @@
 package digitalCanteenSSM.controller;
 
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,12 +20,14 @@ import com.github.pagehelper.PageInfo;
 
 import digitalCanteenSSM.exception.ResultInfo;
 import digitalCanteenSSM.exception.SubmitResultInfo;
+import digitalCanteenSSM.po.Campus;
 import digitalCanteenSSM.po.Canteen;
 import digitalCanteenSSM.po.CanteenItems;
 import digitalCanteenSSM.service.CampusPresetService;
 import digitalCanteenSSM.service.CanteenPresetService;
 import digitalCanteenSSM.service.CanteenTypePresetService;
 import digitalCanteenSSM.service.UploadFileService;
+import digitalCanteenSSM.service.WindowPresetService;
 
 @Controller
 public class CanteenPresetController {
@@ -37,6 +40,8 @@ public class CanteenPresetController {
 	private CanteenTypePresetService canteenTypePresetService;
 	@Autowired
 	private UploadFileService uploadFileService;
+	@Autowired
+	private WindowPresetService windowPresetService;
 	
 	//食堂预置页面
 	//添加食堂按钮与已添加食堂显示
@@ -222,10 +227,78 @@ public class CanteenPresetController {
 	//用户端名星食堂页面
 	@RequestMapping("/starCanteensPage")
 	public ModelAndView starCanteensPage() throws Exception{
+		
 		ModelAndView modelAndView = new ModelAndView();
 		
 		modelAndView.addObject("starCanteensList", canteenPresetService.findStarCanteens());
 		modelAndView.setViewName("/WEB-INF/jsp/m_starCanteensPage.jsp");
+		
+		return modelAndView;
+	}
+	
+	//特色风味食堂页面
+	@RequestMapping("/fancyCanteensPage")
+	public ModelAndView fancyCanteensPage(Integer campusID, Integer cantID) throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		List<Campus> campusList = campusPresetService.findAllCampuses();		
+		modelAndView.addObject("campusList", campusList);
+		
+		if (campusID == null && cantID == null){			
+			if(!campusList.isEmpty()){				
+				for (Campus campus : campusList){
+					
+					//读取校区下的风味食堂列表
+					List<CanteenItems> canteenItemsList = canteenPresetService.findFancyCanteensByCampus(campus.getCampusID());
+					
+					if(!canteenItemsList.isEmpty()){
+						
+						Iterator<CanteenItems> iterator_canteenItems = canteenItemsList.iterator();
+						CanteenItems canteenItems = iterator_canteenItems.next();
+						
+						//将选中的第一个校区的第一个风味食堂数据传到用户页面
+						modelAndView.addObject("canteenItems", canteenItems);
+						//将该校区下的风味食堂列表传到用户页面
+						modelAndView.addObject("canteenItemsList", canteenItemsList);
+						//将该食堂的档口列表传到用户页面
+						modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(canteenItems.getCantID()));
+						
+						break;
+					}
+					
+				}				
+			}
+		}else if(campusID != null && cantID == null){	//点击校区按钮
+			//读取校区下的风味食堂列表
+			List<CanteenItems> canteenItemsList = canteenPresetService.findFancyCanteensByCampus(campusID);
+			
+			if(!canteenItemsList.isEmpty()){
+				
+				Iterator<CanteenItems> iterator_canteenItems = canteenItemsList.iterator();
+				CanteenItems canteenItems = iterator_canteenItems.next();
+				
+				//将选中的第一个校区的第一个风味食堂数据传到用户页面
+				modelAndView.addObject("canteenItems", canteenItems);
+				//将该校区下的风味食堂列表传到用户页面
+				modelAndView.addObject("canteenItemsList", canteenItemsList);
+				//将该食堂的档口列表传到用户页面
+				modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(canteenItems.getCantID()));
+				
+			}
+		}else if(campusID == null && cantID != null){	//点击食堂按钮
+			
+			//首先根据cantID在数据库中查找到相应风味食堂信息
+			//然后利用该档口所属的校区编号查找该校区下所有档口，传给用户页面
+			CanteenItems canteenItems = canteenPresetService.findCanteenById(cantID);
+			modelAndView.addObject("canteenItems", canteenItems);			
+			//将该食堂的档口列表传到用户页面
+			modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(canteenItems.getCantID()));
+			//将该食堂所属校区的风味食堂列表传到用户页面
+			modelAndView.addObject("canteenItemsList", canteenPresetService.findFancyCanteensByCampus(canteenItems.getCampusID()));
+		}
+		
+		modelAndView.setViewName("/WEB-INF/jsp/m_fancyCanteensPage.jsp");
 		
 		return modelAndView;
 	}

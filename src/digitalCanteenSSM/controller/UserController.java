@@ -186,8 +186,8 @@ public class UserController {
 			modelAndView.addObject("canteenItemsList", canteenPresetService.findCanteenByCampus(canteenPresetService.findCanteenById(cantID).getCampusID()));
 			
 		}else{	//只有食堂信息，反推校区信息
-			//首先根据cantID在数据库中查找到相应档口信息
-			//然后利用该档口所属的校区编号查找该校区下所有档口，传给用户首页
+			//首先根据cantID在数据库中查找到相应食堂信息
+			//然后利用该食堂所属的校区编号查找该校区下所有食堂，传给用户首页
 			CanteenItems canteenItems = canteenPresetService.findCanteenById(cantID);
 			modelAndView.addObject("canteenItems", canteenItems);
 			//将该食堂的档口列表传到用户首页
