@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <p style="padding-top:7px;width:100%;height:100%;font-size:27px">特色风味</p>  
         </div>                                                                          
         <div >
-            <img src="/upload/pic/3.jpg" class="center-block" width="100%">
+            <img src="/upload/pic/FancyCanteens.png" class="center-block" width="100%">
         </div>
         <div class="newcustom" style="margin-top: 10px;">
             <table width="100%" align="center">
@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <c:forEach items="${windowsList }" var="item">
                             <div id="view" class="item clearfix">                                                   
                                 <div class="txt-item">
-                                    <table width=100% onclick="location.href='userWindowContents.action?wndID=${item.wndID}';" >
+                                    <table width="100%" onclick="location.href='userWindowContents.action?wndID=${item.wndID}';" >
                                         <tr style="height:30px">
                                             <td rowspan=3>
                                                 <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="90" width="90"/>

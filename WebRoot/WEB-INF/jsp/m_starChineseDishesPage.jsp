@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
     <head>
         <base href="<%=basePath%>">
-        <title>菜品录入详情</title>
+        <title>人气中餐美食</title>
         <meta http-equiv="pragma" content="no-cache" />
         <meta http-equiv="cache-control" content="no-cache" />
         <meta http-equiv="expires" content="0">
@@ -31,6 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <link rel="stylesheet" type="text/css" href="css/icons.css" />
         <link rel="stylesheet" type="text/css" href="css/component.css" />
         <link rel="stylesheet" type="text/css" href="css/leftDelete.css"  />
+        <link rel="stylesheet" type="text/css" href="css/footnav.css" />
         <!-- iOS Web APP中点击链接跳转到Safari 浏览器新标签页的问题 -->
         <script>  
         if(('standalone' in window.navigator)&&window.navigator.standalone){  
@@ -58,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a style="color:#fff" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/muserCanteenHostPage.action"></a>
                                 </button>    
                             </div>
-                            <p style="width:100%;height:100%;font-size:27px">菜品录入详情</p>  
+                            <p style="width:100%;height:100%;font-size:27px">人气中餐美食</p>  
                         </div>
         
         
@@ -101,6 +102,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="footnav">
+            <ul>
+                <li>
+                    <a href="userHomepage.action"><span>首页</span></a>
+                </li>
+                <li style="position:relative;">
+                    <span>附近</span>
+                </li>
+                <li>
+                    <span>订单</span>
+                </li>
+                <li>
+                    <span>我的</span>
+                </li>
+            </ul>
         </div>
     </body>
 </html>

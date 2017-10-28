@@ -57,19 +57,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <body>
     	<div class="container">
     		<div class="mp-pusher" id="mp-pusher">
-                <!-- 左侧导航栏 -->  
-                <%@ include file="publicjsp/userSetInfo.jsp" %>
                 <div class="scroller" style="background:#EEEEEE">
                     <div class="scroller-inner">
                         <form class="form-horizontal" role="form" name="userQueryForm" method="post">
                             <div class="codrops-header" style="background:rgba(0,0,0,0);top:18px" >
-                                <!-- <div id="trigger" class="burger-container" style="margin-bottom: -8px;">                    
-                                    <span class="burger-bun-top"></span>
-                                    <span class="burger-filling"></span>
-                                    <span class="burger-bun-bot"></span>
-                                </div> --> 
                                 <input  type="text"  placeholder="请输入菜品名或档口名" id="queryName" name="queryName" style="background:rgba(255,255,255,0.1);width:70%;height:35px;color:#000">                  
-                                <input  type="button" value="查询"  class="btn btn-primary btn-wide" style="background:rgba(41, 193, 146,0.8);" onclick="userQueryAll()">
+                                <input  type="button" value="搜索"  class="btn btn-primary btn-wide" style="background:rgba(41, 193, 146,0.8);font-size:18px" onclick="userQueryAll()">
                             </div>                                                                          
                         </form>
 
@@ -102,10 +95,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <table  width="100%">                                                        
                                         <tr>
                                             <td style='vertical-align: middle' >
-                                                <img src="/upload/pic/d1db30ad658c7fede5191874a2c57d2a.jpg" class="center-block"  width="90%" style="border-radius:3%;">
+                                                <img src="/upload/pic/FancyCanteens.png" class="center-block"  width="90%" style="border-radius:3%;">
                                             </td>                                                           
                                             <td style='vertical-align: middle' >
-                                                <img src="/upload/pic/d1db30ad658c7fede5191874a2c57d2a.jpg" class="center-block"  width="90%" style="border-radius:3%;">
+                                                <img src="/upload/pic/ChineseCanteens.png" class="center-block"  width="90%" style="border-radius:3%;">
                                             </td>                                             
                                         </tr>
                                         <tr>                                                           
@@ -114,10 +107,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </tr>
                                         <tr>                          
                                             <td style='vertical-align: middle' onclick="location.href='starCanteensPage.action';">
-                                                <img src="/upload/pic/3.jpg" class="center-block"  width="90%" style="border-radius:3%;">
+                                                <img src="/upload/pic/StarCanteens.png" class="center-block"  width="90%" style="border-radius:3%;">
                                             </td>
                                             <td style='vertical-align: middle' >
-                                                <img src="/upload/pic/1.jpg" class="center-block"  width="90%" style="border-radius:3%;">
+                                                <img src="/upload/pic/Restaurant.png" class="center-block"  width="90%" style="border-radius:3%;">
                                             </td>
                                         </tr>
                                         <tr>                          

@@ -84,6 +84,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="form-group" >
 		<input name="cantName" type="text" value="${canteenItems.cantName }" class="form-control ">
 		<br>
+		<div align="center">
+            <c:if test="${canteenItems.cantPhoto != null }">
+                <img src="/upload/pic/${canteenItems.cantPhoto }" height="80" width="80"/>
+            </c:if>
+            <br><br>
+            <input type="file" name="cantPhotoFile"/>
+        </div>
 		<div align="center"><input type="submit" value="保存" class="btn btn-primary btn-wide" data-role="none"></div>
 	</div>
   </form>
