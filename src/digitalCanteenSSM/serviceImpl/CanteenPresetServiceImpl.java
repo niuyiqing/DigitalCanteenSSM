@@ -29,8 +29,8 @@ public class CanteenPresetServiceImpl implements CanteenPresetService{
 	}
 	
 	@Override
-	public List<CanteenItems> findFancyCanteensByCampus() throws Exception{
-		return canteenPresetMapper.findFancyCanteensByCampus();
+	public List<CanteenItems> findFancyCanteensByCampus(int cantCampusID) throws Exception{
+		return canteenPresetMapper.findFancyCanteensByCampus(cantCampusID);
 	}
 	
 	@Override
@@ -39,8 +39,8 @@ public class CanteenPresetServiceImpl implements CanteenPresetService{
 	}
 	
 	@Override
-	public List<CanteenItems> findChineseCanteensByCampus() throws Exception{
-		return canteenPresetMapper.findChineseCanteensByCampus();
+	public List<CanteenItems> findChineseCanteensByCampus(int cantCampusID) throws Exception{
+		return canteenPresetMapper.findChineseCanteensByCampus(cantCampusID);
 	}
 	
 	@Override
