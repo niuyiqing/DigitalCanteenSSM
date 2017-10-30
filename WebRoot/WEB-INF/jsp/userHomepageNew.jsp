@@ -19,10 +19,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta name="format-detection" content="telephone=no">
 		<meta name="apple-mobile-web-app-title" content="理工餐饮">
-        <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-52.png">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72.png">
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76.png">
         <link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120.png">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144.png">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152.png">
+        <link rel="apple-touch-icon-precomposed" sizes="180x180" href="apple-touch-icon-180.png">
         <script src="js/modernizr.custom.js"></script>
     	<script src="js/jquery-2.1.1.min.js"></script>
     	<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
