@@ -50,14 +50,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	</head>
   
   	<body>
-  		<!-- <div class="codrops-header" style="background:rgba(0,0,0,0);">
+  		<div class="codrops-header" style="background:rgba(0,0,0,0);">
             <div class="back-container">
                 <button class="btn btn-link btn-lg">
-                    <a style="color:#fff" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a>
+                    <a style="color:black" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a>
                 </button>    
             </div>
-            <p style="padding-top:7px;width:100%;height:100%;font-size:27px">名星食堂</p>  
-        </div> -->
+            <p style="padding-top:7px;width:100%;height:100%;font-size:27px;color:black">名星食堂</p>  
+        </div>
         <div >
         	<img src="/upload/pic/StarCanteens.png" class="center-block" width="100%">
         </div>
@@ -73,6 +73,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	    </table>
         	</div>
         </c:forEach>
+        <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br> 
         <div class="footnav">
             <ul>
                 <li>
