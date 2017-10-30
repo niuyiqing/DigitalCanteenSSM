@@ -68,43 +68,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="newcustom" style="margin-top: 10px;">
             <table width="100%" align="center">
                 <tr>
-                    <td width="35%" style="margin: 0px;padding: 0px;">
+                    <td width="30%" style="margin: 0px;padding: 0px;">
                         <table>
                             <tr>
                                 <td style='vertical-align: middle' >
-                                    <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" width="100%" style="border-radius:50%;">
+                                    <img src="/upload/pic/chinesepage.png" class="center-block" width="80%" style="border-radius:50%;">
                                 </td>                                                                                                       
                             </tr>
                             <tr height="30px">
-                                <td style='vertical-align: middle;text-align: center;font-size:1.5em;color:black;'>实惠中餐</td>
+                                <td style='vertical-align: middle;text-align: center;font-size:20px;color:black;'>实惠中餐</td>
                             </tr>
                         </table>
                     </td>
-                    <td width="30%">
+                    <td width="40%">
                         <table width="100%">
                             <c:forEach items="${campusList }" var="item" >
                                 <tr height="32px">
                                     <c:choose >
                                         <c:when test="${item.campusID eq canteenItems.cantCampusID}">
-                                            <td style='vertical-align: middle;text-align: center;font-size:1.5em;'><a style="color:white;" href="chineseCanteensPage.action?campusID=${item.campusID}"><span style="background-color:#f79076">${item.campusName }中餐</span></a></td>
+                                            <td style='vertical-align: middle;text-align: center;font-size:20px;font-weight:500'><a style="color:white;" href="chineseCanteensPage.action?campusID=${item.campusID}"><span style="background-color:#f79076">${item.campusName }中餐</span></a></td>
                                         </c:when>
                                         <c:otherwise>
-                                            <td style='vertical-align: middle;text-align: center;font-size:1.5em;'><a href="chineseCanteensPage.action?campusID=${item.campusID}"><span>${item.campusName }中餐</span></a></td>
+                                            <td style='vertical-align: middle;text-align: center;font-size:20px;'><a href="chineseCanteensPage.action?campusID=${item.campusID}"><span>${item.campusName }中餐</span></a></td>
                                         </c:otherwise>
                                     </c:choose>
                                 </tr>
                             </c:forEach>
                         </table>
                     </td>
-                    <td width="35%" style="margin: 0px;padding: 0px;">
+                    <td width="30%" style="margin: 0px;padding: 0px;">
                         <table onclick="location.href='starChineseDishesPage.action';">
                             <tr>
                                 <td style='vertical-align: middle' >
-                                    <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" width="100%" style="border-radius:50%;">
+                                    <img src="/upload/pic/stardishes.png" class="center-block" width="80%" style="border-radius:10%;">
                                 </td>                                                                                                       
                             </tr>
                             <tr height="30px">
-                                <td style='vertical-align: middle;text-align: center;font-size:1.5em;color:black;'>人气美食排行</td>
+                                <td style='vertical-align: middle;text-align: center;font-size:20px;color:black;'>人气美食排行</td>
                             </tr>
                         </table>
                     </td>
@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <c:forEach items="${canteenItemsList }" var="item" >
                         <c:choose >
                             <c:when test="${item.cantID eq canteenItems.cantID}">
-                                <li><a style="color: black;" href="chineseCanteensPage.action?cantID=${item.cantID}"><span>${item.cantName }</span></a><li>
+                                <li><a style="color: black;font-weight:500" href="chineseCanteensPage.action?cantID=${item.cantID}"><span>${item.cantName }</span></a><li>
                             </c:when>
                             <c:otherwise>
                                 <li><a style="color: white;" href="chineseCanteensPage.action?cantID=${item.cantID}"><span>${item.cantName }</span></a><li>
@@ -128,10 +128,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <div class="timenav">
                 <ul >
-                    <li style="font-size:16px;width:25%;" ><a style="color: black;" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=1"><span>早餐</span></a><li>
-                    <li style="font-size:16px;width:25%;" ><a style="color: black;" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=2"><span>中餐</span></a><li>
-                    <li style="font-size:16px;width:25%;" ><a style="color: black;" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=3"><span>晚餐</span></a><li>
-                    <li style="font-size:16px;width:25%;" ><a style="color: black;" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span>全天</span></a><li>
+                    <c:choose >
+                        <c:when test="${1 eq supplyTime}">
+                            <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=1"><span>早餐</span></a><li>
+                        </c:when>
+                        <c:otherwise>
+                            <li style="font-size:16px;"><a style="color: black;" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=1"><span>早餐</span></a><li>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose >
+                        <c:when test="${2 eq supplyTime}">
+                            <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=2"><span>中餐</span></a><li>
+                        </c:when>
+                        <c:otherwise>
+                            <li style="font-size:16px;"><a style="color: black;" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=2"><span>中餐</span></a><li>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose >
+                        <c:when test="${3 eq supplyTime}">
+                            <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=3"><span>晚餐</span></a><li>
+                        </c:when>
+                        <c:otherwise>
+                            <li style="font-size:16px;"><a style="color: black;" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=3"><span>晚餐</span></a><li>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose >
+                        <c:when test="${4 eq supplyTime}">
+                            <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span>晚餐</span></a><li>
+                        </c:when>
+                        <c:otherwise>
+                            <li style="font-size:16px;"><a style="color: black;" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span>全天</span></a><li>
+                        </c:otherwise>
+                    </c:choose>
                 </ul>
             </div>
             <div class="row" style="padding:0 0px;"> 
