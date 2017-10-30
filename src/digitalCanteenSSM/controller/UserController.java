@@ -208,6 +208,7 @@ public class UserController {
 			detail.setDetailRecordID(recordService.findLatestRecordInCanteen(cantID).getRecordID());
 			detail.setDetailDishDateFlag(supplyTime);
 			modelAndView.addObject("dishesDetailList", detailService.findDetailByDateAndID(detail));
+			modelAndView.addObject("supplyTime", supplyTime);
 		}
 		
 		modelAndView.setViewName("/WEB-INF/jsp/userHomepageNew.jsp");
