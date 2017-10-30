@@ -19,10 +19,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta name="format-detection" content="telephone=no">
 		<meta name="apple-mobile-web-app-title" content="理工餐饮">
-        <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-52.png">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72.png">
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76.png">
         <link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120.png">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144.png">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152.png">
+        <link rel="apple-touch-icon-precomposed" sizes="180x180" href="apple-touch-icon-180.png">
+
         <script src="js/modernizr.custom.js"></script>
     	<script src="js/jquery-2.1.1.min.js"></script>
     	<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
@@ -129,7 +133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <c:forEach items="${campusList }" var="item" >
                                                 <c:choose >
                                                     <c:when test="${item.campusID eq canteenItems.cantCampusID}">
-                                                        <li ><a style="color: black;" href="userHomepage.action?campusID=${item.campusID}"><span>${item.campusName }</span></a><li>
+                                                        <li ><a style="color: black;font-weight:500" href="userHomepage.action?campusID=${item.campusID}"><span>${item.campusName }</span></a><li>
                                                     </c:when>
                                                     <c:otherwise>
                                                         <li ><a style="color:white;" href="userHomepage.action?campusID=${item.campusID}"><span>${item.campusName }</span></a><li>
@@ -143,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <c:forEach items="${canteenItemsList }" var="item" >
                                                 <c:choose >
                                                     <c:when test="${item.cantID eq canteenItems.cantID}">
-                                                        <li style="font-size:18px;"><a style="color: #f79076;" href="userHomepage.action?cantID=${item.cantID}">${item.cantName }</a><li>
+                                                        <li style="font-size:18px;"><a style="color: #f79076;font-weight:500" href="userHomepage.action?cantID=${item.cantID}">${item.cantName }</a><li>
                                                     </c:when>
                                                     <c:otherwise>
                                                         <li style="font-size:18px;"><a href="userHomepage.action?cantID=${item.cantID}">${item.cantName }</a><li>
@@ -154,10 +158,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                     <div class="timenav">
                                         <ul >
-                                            <li style="font-size:16px;width:25%;" ><a style="color: black;" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=1"><span>早餐</span></a><li>
-                                            <li style="font-size:16px;width:25%;" ><a style="color: black;" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=2"><span>中餐</span></a><li>
-                                            <li style="font-size:16px;width:25%;" ><a style="color: black;" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=3"><span>晚餐</span></a><li>
-                                            <li style="font-size:16px;width:25%;" ><a style="color: black;" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span>全天</span></a><li>
+                                            <c:choose >
+                                                <c:when test="${1 eq supplyTime}">
+                                                    <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=1"><span>早餐</span></a><li>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <li style="font-size:16px;"><a style="color: black;" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=1"><span>早餐</span></a><li>
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <c:choose >
+                                                <c:when test="${2 eq supplyTime}">
+                                                    <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=2"><span>中餐</span></a><li>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <li style="font-size:16px;"><a style="color: black;" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=2"><span>中餐</span></a><li>
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <c:choose >
+                                                <c:when test="${3 eq supplyTime}">
+                                                    <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=3"><span>晚餐</span></a><li>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <li style="font-size:16px;"><a style="color: black;" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=3"><span>晚餐</span></a><li>
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <c:choose >
+                                                <c:when test="${4 eq supplyTime}">
+                                                    <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span>晚餐</span></a><li>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <li style="font-size:16px;"><a style="color: black;" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span>全天</span></a><li>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </ul>
                                     </div>
                                     <div class="row" style="padding:0 0px;"> 

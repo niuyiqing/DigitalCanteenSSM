@@ -68,43 +68,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="newcustom" style="margin-top: 10px;">
             <table width="100%" align="center">
                 <tr>
-                    <td width="35%" style="margin: 0px;padding: 0px;">
+                    <td width="30%" style="margin: 0px;padding: 0px;">
                         <table>
                             <tr>
                                 <td style='vertical-align: middle;align: center' >
-                                    <img src="/upload/pic/2c553df2-9f0f-462a-bd34-b2e3979657cc.png" class="center-block"  width="100%"  style="border-radius:50%;">
+                                    <img src="/upload/pic/fancypage.png" class="center-block"  width="80%"  style="border-radius:50%;">
                                 </td>                                                                                                       
                             </tr>
                             <tr height="30px">
-                                <td style='vertical-align: middle;text-align: center;font-size:1.5em;color:black;'>特色风味</td>
+                                <td style='vertical-align: middle;text-align: center;font-size:20px;color:black;'>特色风味</td>
                             </tr>
                         </table>
                     </td>
-                    <td width="30%" >
+                    <td width="40%" >
                         <table width="100%">
                             <c:forEach items="${campusList }" var="item" >
                                 <tr height="32px">
                                     <c:choose >
                                         <c:when test="${item.campusID eq canteenItems.cantCampusID}">
-                                            <td style='vertical-align: middle;text-align: center;font-size:1.5em;'><a style="color:white;" href="fancyCanteensPage.action?campusID=${item.campusID}"><span style="background-color:#f79076">${item.campusName }风味</span></a></td>
+                                            <td style='vertical-align: middle;text-align: center;font-size:20px;font-weight:500'><a style="color:white;" href="fancyCanteensPage.action?campusID=${item.campusID}"><span style="background-color:#f79076">${item.campusName }风味</span></a></td>
                                         </c:when>
                                         <c:otherwise>
-                                            <td style='vertical-align: middle;text-align: center;font-size:1.5em;'><a href="fancyCanteensPage.action?campusID=${item.campusID}"><span>${item.campusName }风味</span></a></td>
+                                            <td style='vertical-align: middle;text-align: center;font-size:20px;'><a href="fancyCanteensPage.action?campusID=${item.campusID}"><span>${item.campusName }风味</span></a></td>
                                         </c:otherwise>
                                     </c:choose>
                                 </tr>
                             </c:forEach>
                         </table>
                     </td>
-                    <td width="35%" style="margin: 0px;padding: 0px;">
+                    <td width="30%" style="margin: 0px;padding: 0px;">
                         <table onclick="location.href='starFancyDishesPage.action';">
                             <tr>
                                 <td style='vertical-align: middle;align: center' >
-                                    <img src="/upload/pic/2c553df2-9f0f-462a-bd34-b2e3979657cc.png" class="center-block"  width="100%"  style="border-radius:50%;">
+                                    <img src="/upload/pic/stardishes.png" class="center-block"  width="80%"  style="border-radius:10%;">
                                 </td>                                                                                                       
                             </tr>
                             <tr height="30px">
-                                <td style='vertical-align: middle;text-align: center;font-size:1.5em;color:black;'>人气美食排行</td>
+                                <td style='vertical-align: middle;text-align: center;font-size:20px;color:black;'>人气美食</td>
                             </tr>
                         </table>
                     </td>
@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <c:forEach items="${canteenItemsList }" var="item" >
                         <c:choose >
                             <c:when test="${item.cantID eq canteenItems.cantID}">
-                                <li><a style="color: black;" href="fancyCanteensPage.action?cantID=${item.cantID}"><span>${item.cantName }</span></a><li>
+                                <li><a style="color: black;font-weight:500" href="fancyCanteensPage.action?cantID=${item.cantID}"><span>${item.cantName }</span></a><li>
                             </c:when>
                             <c:otherwise>
                                 <li><a style="color: white;" href="fancyCanteensPage.action?cantID=${item.cantID}"><span>${item.cantName }</span></a><li>
