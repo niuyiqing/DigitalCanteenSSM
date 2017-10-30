@@ -57,10 +57,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="codrops-header" style="background:rgba(0,0,0,0);" >
             <div class="back-container">
                 <button class="btn btn-link btn-lg">
-                    <a style="color:#fff" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a>
+                    <a style="color:black" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a>
                 </button>    
             </div>
-            <p style="padding-top:7px;width:100%;height:100%;font-size:27px">特色风味</p>  
+            <p style="padding-top:7px;width:100%;height:100%;font-size:27px;color:black">特色风味</p>  
         </div>                                                                          
         <div >
             <img src="/upload/pic/FancyCanteens.png" class="center-block" width="100%">
@@ -71,8 +71,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td width="35%" style="margin: 0px;padding: 0px;">
                         <table>
                             <tr>
-                                <td style='vertical-align: middle' >
-                                    <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block"  width="100%" style="border-radius:50%;">
+                                <td style='vertical-align: middle;align: center' >
+                                    <img src="/upload/pic/2c553df2-9f0f-462a-bd34-b2e3979657cc.png" class="center-block"  width="100%"  style="border-radius:50%;">
                                 </td>                                                                                                       
                             </tr>
                             <tr height="30px">
@@ -99,8 +99,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td width="35%" style="margin: 0px;padding: 0px;">
                         <table onclick="location.href='starFancyDishesPage.action';">
                             <tr>
-                                <td style='vertical-align: middle' >
-                                    <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block"  width="100%" style="border-radius:50%;">
+                                <td style='vertical-align: middle;align: center' >
+                                    <img src="/upload/pic/2c553df2-9f0f-462a-bd34-b2e3979657cc.png" class="center-block"  width="100%"  style="border-radius:50%;">
                                 </td>                                                                                                       
                             </tr>
                             <tr height="30px">
@@ -158,7 +158,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div style=" height: 1px; border-top: 1px solid #ddd;text-align: center;"></div>                                                        
                     </c:forEach>                                                                            
                 </div>  
-            </div> 
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>  
         </div>
         <div class="footnav">
             <ul>

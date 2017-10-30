@@ -97,6 +97,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </div>
                                     </div>  
                                 </div>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br> 
                             </form>
                         </div>
                     </div>
@@ -106,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="footnav">
             <ul>
                 <li>
-                    <a href="userHomepage.action"><span>首页</span></a>
+                    <a href="userHomepage.action" data-ajax="false"><span>首页</span></a>
                 </li>
                 <li style="position:relative;">
                     <span>附近</span>
