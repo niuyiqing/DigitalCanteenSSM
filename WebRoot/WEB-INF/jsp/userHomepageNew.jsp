@@ -19,10 +19,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta name="format-detection" content="telephone=no">
 		<meta name="apple-mobile-web-app-title" content="掌上食堂">
-        <link rel="apple-touch-icon-precomposed" href="http://10.141.114.134:8080/DigitalCanteenSSM/apple-touch-icon-52.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://10.138.194.111:8080/DigitalCanteenSSM/apple-touch-icon-72.png">
-        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://10.138.194.111:8080/DigitalCanteenSSM/apple-touch-icon-120.png">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://10.138.194.111:8080/DigitalCanteenSSM/apple-touch-icon-144.png">
+        <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-52.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72.png">
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144.png">
         <script src="js/modernizr.custom.js"></script>
     	<script src="js/jquery-2.1.1.min.js"></script>
     	<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
