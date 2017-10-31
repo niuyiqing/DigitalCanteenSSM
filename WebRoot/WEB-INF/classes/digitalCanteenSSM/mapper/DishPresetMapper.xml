@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findAllDishPreset" resultType="DishPreset">
 		SELECT * 
 		FROM ctdishpreset
-		ORDER BY DishPresetID DESC
+		ORDER BY CONVERT(DishPresetName using GBK) asc
 	</select>
 	
 	<!-- 根据DishPresetID查询该菜品预置信息 -->
