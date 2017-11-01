@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a style="color:#fff" class="icon icon-fanhui" data-ajax="false" onclick="javascript:history.back(-1)"></a>
                                 </button>    
                             </div>
-                            <p style="width:100%;height:100%;font-size:27px">人气中餐美食</p>  
+                            <p style="width:100%;height:100%;font-size:27px">人气美食</p>  
                         </div>
         
         
@@ -71,19 +71,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <div class="item-wrap">
                                             <c:forEach items="${chineseDishesList }" var="item" >
                                                 <div class="item clearfix">
-                                                    <div class="txt-item" style=" margin-right:0px; margin-left:5px;padding-top:5px">
+                                                    <div class="txt-item" style="margin-left:5px;padding-top:5px">
                                                         <table  width="100%">                                                        
                                                             <tr>
-                                                                <td style='vertical-align: left;text-align: center;' rowspan=3>
+                                                                <td style='vertical-align: left;text-align: center;width:24%' rowspan=3>
                                                                     <c:if test="${item.dishPhoto != null }">
-                                                                        <img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%;margin-left:20px;margin-right:-50px">
+                                                                        <img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%;margin-left:2px;margin-right:-50px">
                                                                     </c:if>
                                                                 </td>                                                           
-                                                                <td style='vertical-align: middle;font-size:1.5em;width:120px' >${item.dishName }</td>
-                                                                <td style='vertical-align: middle;'>${item.dishSale }</td>                                             
+                                                                <td style='vertical-align: middle;font-size:1.5em;width:40%' >${item.dishName }</td>
+                                                                <td style='vertical-align: middle;'>${item.dishTypeName }</td>                                             
                                                             </tr>
                                                             <tr>                                                           
-                                                                <td style='vertical-align: middle;font-size:1em'>[${item.wndName }]</td>
+                                                                <td style='vertical-align: middle;font-size:1em'>[${item.cantName },${item.wndName }]</td>
                                                                 <td style='vertical-align: middle;'>${item.dishDate } </td> 
                                                             </tr>
                                                             <tr>                          

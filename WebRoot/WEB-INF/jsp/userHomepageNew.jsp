@@ -128,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </table>
                                 </div>
                                 <div class="newcustom" style="margin-top: 10px;">    
-                                    <div class="campusnav">
+                                    <div class="campusnav" >
                                         <ul>
                                             <c:forEach items="${campusList }" var="item" >
                                                 <c:choose >
@@ -299,20 +299,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <script type="text/javascript">
             $('#bootstrap-touch-slider').bsTouchSlider();
         </script>
-        <!-- 轮播图大小自适应 
-             <script type="text/javascript" src="js/jqthumb.js"></script>
-             <script>
-             function DrawImage(hotimg)
-             {
-                $(hotimg).jqthumb({
-                classname      : 'jqthumb',
-                         width          : '100%',
-                         height         : '200px',
-                         position       : { y: '50%', x: '50%'},
-                         zoom           : '1',
-                         method         : 'auto',
-                });
-             }
-             </script>   -->
     </body>
 </html>
