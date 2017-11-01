@@ -54,14 +54,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </head>
   
     <body>
-        <div class="codrops-header" style="background:rgba(0,0,0,0);" >
+        <!-- <div class="codrops-header" style="background:rgba(0,0,0,0);" >
             <div class="back-container">
                 <button class="btn btn-link btn-lg">
                     <a style="color:black" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a>
                 </button>    
             </div>
             <p style="padding-top:7px;width:100%;height:100%;font-size:27px;color:black">特色风味</p>  
-        </div>                                                                          
+        </div> -->                                                                          
         <div >
             <img src="/upload/pic/FancyCanteens.png" class="center-block" width="100%">
         </div>
@@ -112,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </table>        
         </div>
         <div class="newcustom" style="margin-top: 10px;">
-            <div class="campusnav">
+            <!-- <div class="campusnav">
                 <ul>
                     <c:forEach items="${canteenItemsList }" var="item" >
                         <c:choose >
@@ -121,6 +121,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </c:when>
                             <c:otherwise>
                                 <li><a style="color: white;" href="fancyCanteensPage.action?cantID=${item.cantID}"><span>${item.cantName }</span></a><li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </ul>
+            </div> -->
+            <div style="position:relative;padding-top: 20px;background-color:#f79076">
+                <ul class="nav nav-pills">
+                    <c:forEach items="${canteenItemsList }" var="item" >
+                        <c:choose >
+                            <c:when test="${item.cantID eq canteenItems.cantID}">
+                                <li style="font-size:18px;"><a style="color:white;font-weight:500" href="fancyCanteensPage.action?cantID=${item.cantID}">${item.cantName }</a><li>
+                            </c:when>
+                            <c:otherwise>
+                                <li style="font-size:18px;"><a href="fancyCanteensPage.action?cantID=${item.cantID}">${item.cantName }</a><li>
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
@@ -184,7 +198,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <td style='vertical-align: middle;font-size:16px;'>${item.detailDishDate } </td> 
                                             </tr>
                                             <tr style="height:30px">                          
-                                                <td style='vertical-align: middle;color:#29C192;font-size:16px;'>￥${item.detailDishPrice }</td>
+                                                <td style='vertical-align: middle;color:#29C192;font-size:20px;'>￥${item.detailDishPrice }</td>
                                                 <td style='vertical-align: middle;'><fmt:formatDate value="${item.detailDishInDate}" pattern="yyyy-MM-dd" /></td>
                                             </tr>
                                         </table>
@@ -200,23 +214,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <td rowspan=3>
                                             <img src="/upload/pic/${wnditem.wndPhoto }" class="center-block" height="90" width="90"/>
                                         </td>
-                                        <td style="width:75%;padding-left:12px;font-size:18px;font-weight:500">
+                                        <td colspan="2" style="width:75%;padding-left:12px;font-size:18px;font-weight:500">
                                             <p class="name">${wnditem.wndName }</p>
                                         </td>
-                                        <td style="width:25%;font-size:16px">
-                                           <p class="name">${wnditem.wndAddr}</p>
-                                        </td>
                                     </tr>
                                     <tr style="height:30px">
-                                        <td style="padding-left:12px;font-size:16px">
+                                        <td style="padding-left:12px;color:#29C192;font-size:20px;width:30%">
                                             <p class="txt">￥${wnditem.wndPriceRange}</p>
                                         </td>
-                                        <td style="font-size:16px">
-                                            <p class="txt"> ${wnditem.wndSaleHours}营业</p>
+                                        <td style="font-size:16px;">
+                                            <p class="txt"> ${wnditem.wndSaleHours}</p>
                                         </td>
                                     </tr>
                                     <tr style="height:30px">
-                                        <td style="padding-left:12px;font-size:16px">
+                                        <td colspan="2" style="padding-left:12px;font-size:16px">
                                             <p class="txt">${wnditem.wndDescription}</p>
                                         </td>
                                     </tr>

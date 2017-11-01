@@ -79,15 +79,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                         <img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%;margin-left:2px;margin-right:-50px">
                                                                     </c:if>
                                                                 </td>                                                           
-                                                                <td style='vertical-align: middle;font-size:1.5em;width:40%' >${item.dishName }</td>
+                                                                <td style='vertical-align: middle;font-size:18px;font-weight:500;width:40%' >${item.dishName }</td>
                                                                 <td style='vertical-align: middle;'>${item.dishTypeName }</td>                                             
                                                             </tr>
                                                             <tr>                                                           
-                                                                <td style='vertical-align: middle;font-size:1em'>[${item.cantName },${item.wndName }]</td>
+                                                                <td style='vertical-align: middle;font-size:14px'>[${item.cantName },${item.wndName }]</td>
                                                                 <td style='vertical-align: middle;'>${item.dishDate } </td> 
                                                             </tr>
                                                             <tr>                          
-                                                                <td style='vertical-align: middle;color:#29C192;font-size:1.5em'>￥${item.dishPrice }</td>
+                                                                <td style='vertical-align: middle;color:#29C192;font-size:20px'>￥${item.dishPrice }</td>
                                                             </tr>
                                                         </table>
                                                     </div>

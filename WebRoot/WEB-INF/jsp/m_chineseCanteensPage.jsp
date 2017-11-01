@@ -54,14 +54,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </head>
   
     <body>
-        <div class="codrops-header" style="background:rgba(0,0,0,0);" >
+        <!-- <div class="codrops-header" style="background:rgba(0,0,0,0);" >
             <div class="back-container">
                 <button class="btn btn-link btn-lg">
                     <a style="color:black" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a>
                 </button>    
             </div>
             <p style="padding-top:7px;width:100%;height:100%;font-size:27px;color:black">实惠中餐</p>  
-        </div>                                                                          
+        </div> -->                                                                          
         <div >
             <img src="/upload/pic/ChineseCanteens.png" class="center-block" width="100%">
         </div>
@@ -112,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </table>        
         </div>
         <div class="newcustom" style="margin-top: 10px;">
-            <div class="campusnav">
+            <!-- <div class="campusnav">
                 <ul>
                     <c:forEach items="${canteenItemsList }" var="item" >
                         <c:choose >
@@ -125,12 +125,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </c:choose>
                     </c:forEach>
                 </ul>
+            </div> -->
+            <div style="position:relative;padding-top: 20px;background-color:#f79076">
+                <ul class="nav nav-pills">
+                    <c:forEach items="${canteenItemsList }" var="item" >
+                        <c:choose >
+                            <c:when test="${item.cantID eq canteenItems.cantID}">
+                                <li style="font-size:18px;"><a style="color: white;font-weight:500" href="chineseCanteensPage.action?cantID=${item.cantID}">${item.cantName }</a><li>
+                            </c:when>
+                            <c:otherwise>
+                                <li style="font-size:18px;"><a href="chineseCanteensPage.action?cantID=${item.cantID}">${item.cantName }</a><li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </ul>
             </div>
             <div class="timenav">
                 <ul >
                     <c:choose >
                         <c:when test="${1 eq supplyTime}">
-                            <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=1"><span>早餐</span></a><li>
+                            <li style="font-size:16px;"><a style="color: white;font-weight:500" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=1"><span style="background:#f79076">早餐</span></a><li>
                         </c:when>
                         <c:otherwise>
                             <li style="font-size:16px;"><a style="color: black;" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=1"><span>早餐</span></a><li>
@@ -138,7 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </c:choose>
                     <c:choose >
                         <c:when test="${2 eq supplyTime}">
-                            <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=2"><span>中餐</span></a><li>
+                            <li style="font-size:16px;"><a style="color: white;font-weight:500" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=2"><span style="background:#f79076">中餐</span></a><li>
                         </c:when>
                         <c:otherwise>
                             <li style="font-size:16px;"><a style="color: black;" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=2"><span>中餐</span></a><li>
@@ -146,7 +160,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </c:choose>
                     <c:choose >
                         <c:when test="${3 eq supplyTime}">
-                            <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=3"><span>晚餐</span></a><li>
+                            <li style="font-size:16px;"><a style="color: white;font-weight:500" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=3"><span style="background:#f79076">晚餐</span></a><li>
                         </c:when>
                         <c:otherwise>
                             <li style="font-size:16px;"><a style="color: black;" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=3"><span>晚餐</span></a><li>
@@ -154,7 +168,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </c:choose>
                     <c:choose >
                         <c:when test="${4 eq supplyTime}">
-                            <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span>全天</span></a><li>
+                            <li style="font-size:16px;"><a style="color: white;font-weight:500" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span style="background:#f79076">全天</span></a><li>
                         </c:when>
                         <c:otherwise>
                             <li style="font-size:16px;"><a style="color: black;" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span>全天</span></a><li>
@@ -200,23 +214,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <td rowspan=3>
                                             <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="90" width="90"/>
                                         </td>
-                                        <td style="width:75%;padding-left:12px;font-size:18px;font-weight:500">
+                                        <td colspan="2" style="width:75%;padding-left:12px;font-size:18px;font-weight:500">
                                             <p class="name">${item.wndName }</p>
-                                        </td>
-                                        <td style="width:25%;font-size:16px">
-                                           <p class="name">${item.wndAddr}</p>
                                         </td>
                                     </tr>
                                     <tr style="height:30px">
-                                        <td style="padding-left:12px;font-size:16px">
+                                        <td style="padding-left:12px;color:#29C192;font-size:20px;width:30%">
                                             <p class="txt">￥${item.wndPriceRange}</p>
                                         </td>
                                         <td style="font-size:16px">
-                                            <p class="txt"> ${item.wndSaleHours}营业</p>
+                                            <p class="txt"> ${item.wndSaleHours}</p>
                                         </td>
                                     </tr>
                                     <tr style="height:30px">
-                                        <td style="padding-left:12px;font-size:16px">
+                                        <td colspan="2" style="padding-left:12px;font-size:16px">
                                             <p class="txt">${item.wndDescription}</p>
                                         </td>
                                     </tr>
