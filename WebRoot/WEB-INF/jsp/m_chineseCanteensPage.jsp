@@ -68,11 +68,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="newcustom" style="margin-top: 10px;">
             <table width="100%" align="center">
                 <tr>
-                    <td width="30%" style="margin: 0px;padding: 0px;">
+                    <td width="37%" style="margin: 0px;padding: 0px;">
                         <table>
                             <tr>
                                 <td style='vertical-align: middle' >
-                                    <img src="/upload/pic/chinesepage.png" class="center-block" width="80%" style="border-radius:50%;">
+                                    <img src="/upload/pic/chinesepage.png" class="center-block" width="100%" style="border-radius:5%;">
                                 </td>                                                                                                       
                             </tr>
                             <tr height="30px">
@@ -80,13 +80,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </tr>
                         </table>
                     </td>
-                    <td width="40%">
+                    <td width="26%">
                         <table width="100%">
                             <c:forEach items="${campusList }" var="item" >
                                 <tr height="32px">
                                     <c:choose >
                                         <c:when test="${item.campusID eq canteenItems.cantCampusID}">
-                                            <td style='vertical-align: middle;text-align: center;font-size:20px;font-weight:500'><a style="color:white;" href="chineseCanteensPage.action?campusID=${item.campusID}"><span style="background-color:#f79076">${item.campusName }中餐</span></a></td>
+                                            <td style='vertical-align: middle;text-align: center;font-size:20px;font-weight:500'><a style="color:white;" href="chineseCanteensPage.action?campusID=${item.campusID}"><span style="background-color:#f79076;border-radius:5%">${item.campusName }中餐</span></a></td>
                                         </c:when>
                                         <c:otherwise>
                                             <td style='vertical-align: middle;text-align: center;font-size:20px;'><a href="chineseCanteensPage.action?campusID=${item.campusID}"><span>${item.campusName }中餐</span></a></td>
@@ -96,15 +96,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </c:forEach>
                         </table>
                     </td>
-                    <td width="30%" style="margin: 0px;padding: 0px;">
+                    <td width="37%" style="margin: 0px;padding: 0px;">
                         <table onclick="location.href='starChineseDishesPage.action';">
                             <tr>
                                 <td style='vertical-align: middle' >
-                                    <img src="/upload/pic/stardishes.png" class="center-block" width="80%" style="border-radius:10%;">
+                                    <img src="/upload/pic/stardishes.png" class="center-block" width="100%" style="border-radius:5%;">
                                 </td>                                                                                                       
                             </tr>
                             <tr height="30px">
-                                <td style='vertical-align: middle;text-align: center;font-size:20px;color:black;'>人气美食排行</td>
+                                <td style='vertical-align: middle;text-align: center;font-size:20px;color:black;'>人气美食</td>
                             </tr>
                         </table>
                     </td>
@@ -154,7 +154,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </c:choose>
                     <c:choose >
                         <c:when test="${4 eq supplyTime}">
-                            <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span>晚餐</span></a><li>
+                            <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span>全天</span></a><li>
                         </c:when>
                         <c:otherwise>
                             <li style="font-size:16px;"><a style="color: black;" href="chineseCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span>全天</span></a><li>
@@ -176,15 +176,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                         <img src="/upload/pic/${item.detailDishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%;margin-left:20px;margin-right:-50px">
                                                     </c:if>
                                                 </td>                                                           
-                                                <td style='vertical-align: middle;font-size:1.5em;width:120px' >${item.detailDishName}</td>
-                                                <td style='vertical-align: middle;'>${item.detailDishSale }</td>                                             
+                                                <td style='vertical-align: middle;font-size:18px;font-weight:500;width:120px' >${item.detailDishName}</td>
+                                                <td style='vertical-align: middle;'></td>                                             
                                             </tr>
                                             <tr style="height:30px">                                                           
-                                                <td style='vertical-align: middle;font-size:1em'>[${item.detailWndName }]</td>
-                                                <td style='vertical-align: middle;'>${item.detailDishDate } </td> 
+                                                <td style='vertical-align: middle;font-size:16px;'>[${item.detailWndName }]</td>
+                                                <td style='vertical-align: middle;font-size:16px;'>${item.detailDishDate } </td> 
                                             </tr>
                                             <tr style="height:30px">                          
-                                                <td style='vertical-align: middle;color:#29C192;font-size:1.5em'>￥${item.detailDishPrice }</td>
+                                                <td style='vertical-align: middle;color:#29C192;font-size:16px;'>￥${item.detailDishPrice }</td>
                                                 <td style='vertical-align: middle;'><fmt:formatDate value="${item.detailDishInDate}" pattern="yyyy-MM-dd" /></td>
                                             </tr>
                                         </table>
@@ -200,23 +200,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <td rowspan=3>
                                             <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="90" width="90"/>
                                         </td>
-                                        <td style="width:75%;padding-left:12px;font-size:1.5em;font-weight:500">
+                                        <td style="width:75%;padding-left:12px;font-size:18px;font-weight:500">
                                             <p class="name">${item.wndName }</p>
                                         </td>
-                                        <td style="width:25%">
+                                        <td style="width:25%;font-size:16px">
                                            <p class="name">${item.wndAddr}</p>
                                         </td>
                                     </tr>
                                     <tr style="height:30px">
-                                        <td style="padding-left:12px">
-                                            <p class="txt">￥${item.wndPriceRange}&nbsp &nbsp支持${item.wndPayment}</p>
+                                        <td style="padding-left:12px;font-size:16px">
+                                            <p class="txt">￥${item.wndPriceRange}</p>
                                         </td>
-                                        <td>
+                                        <td style="font-size:16px">
                                             <p class="txt"> ${item.wndSaleHours}营业</p>
                                         </td>
                                     </tr>
                                     <tr style="height:30px">
-                                        <td style="padding-left:12px">
+                                        <td style="padding-left:12px;font-size:16px">
                                             <p class="txt">${item.wndDescription}</p>
                                         </td>
                                     </tr>
