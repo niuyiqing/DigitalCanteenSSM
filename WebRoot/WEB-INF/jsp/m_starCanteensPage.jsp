@@ -56,10 +56,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <a style="color:black" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a>
                 </button>    
             </div>
-            <p style="padding-top:7px;width:100%;height:100%;font-size:27px;color:black">名星食堂</p>  
+            <p style="padding-top:7px;width:100%;height:100%;font-size:27px;color:black"></p>  
         </div>
         <div >
-        	<img src="/upload/pic/StarCanteens.png" class="center-block" width="100%">
+        	<img src="/upload/pic/starcanteen.png" class="center-block" width="100%">
         </div>
         <c:forEach items="${starCanteensList }" var="item">
         	<div class="newcustom" style="margin-top: 10px;">

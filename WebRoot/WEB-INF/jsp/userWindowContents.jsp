@@ -47,35 +47,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </head>
   
     <body>
-        <div class="codrops-header" style="background:rgba(0,0,0,0);" >
+        <div class="codrops-header" style="background:rgba(41, 193, 146,0.8);" >
             
             <div class="back-container">
-                <button class="btn btn-link btn-lg" ><a style="color:black" class="icon icon-fanhui" data-ajax="false" onclick="javascript:history.back(-1)"></a></button>
+                <button class="btn btn-link btn-lg" ><a style="color:white" class="icon icon-fanhui" data-ajax="false" onclick="javascript:history.back(-1)"></a></button>
             </div>
-            <p style="padding-top:8px;width:100%;height:100%;font-size:22px;color:black">${windowItems.wndName }(${windowItems.campusName }&nbsp${windowItems.cantName })</p> 
+            <p style="padding-top:8px;width:100%;height:100%;font-size:22px;">${windowItems.wndName }(${windowItems.campusName }&nbsp${windowItems.cantName })</p> 
         </div>
+        <div style="padding-top:63px">
     	<div >
-            <img src="/upload/pic/3.jpg" class="center-block" width="100%">
+            <img src="/upload/pic/${windowItems.wndPhoto }" class="center-block" width="100%">
         </div>
-        <!-- 
-        <div class="row" style="color:white;background:#29C192;padding:16px 0px 16px 0px;font-size: 1.5rem;margin-top:65px">
-            <div class="col-xs-3" style="padding-right:0px;text-align:center;border-right:solid 1px white">
-                <a style="color:white;" data-ajax="false" href="${pageContext.request.contextPath }/userWindowContents.action?wndID=${windowItems.wndID}">菜品</a>
-            </div>
-            <div class="col-xs-5" style="padding-right:0px;text-align:center;border-right:solid 1px white">
-                <a style="color:white;" data-ajax="false" href="${pageContext.request.contextPath }/findAllCommentInWindow.action?wndID=${windowItems.wndID}">评价(<fmt:formatNumber value="${windowItems.wndScore}" pattern="#.00" type="number"/>分)</a>
-            </div>
-            <div class="col-xs-4" style="padding-right:0px;text-align:center">
-                <a style="color:white;" data-ajax="false" href="addCommentInWindow.action?wndID=${windowItems.wndID}">我要评价</a>
-            </div>
-        </div> -->
-
-        <div class="item-wrap">
+        <div class="item-wrap" style="margin-top: 10px;">
     	    <form role="form" name="dishForm" enctype="multipart/form-data">
 			    <input name="dishID" type="hidden" value="${dishItems.dishID }">								
 			   	    <c:forEach items="${dishItemsList }" var="item" >
                     <div id="view" class="item clearfix">
-                        <div class="txt-item" style="padding-top:0px">
+                        <div class="txt-item" style="padding-top:0px;margin-left:0px">
                             <table width="70%">
     	                        <tr>    							 		
     	            	           	<td style='vertical-align: middle;text-align: center;' rowspan=3 width="30%">
@@ -104,6 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <br>
             <br>
             <br> 
+        </div>
         </div>
         <div class="footnav">
             <ul>
