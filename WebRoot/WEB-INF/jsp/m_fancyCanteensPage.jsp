@@ -126,37 +126,105 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </c:forEach>
                 </ul>
             </div>
+            <div class="timenav">
+                <ul >
+                    <c:choose >
+                        <c:when test="${1 eq supplyTime}">
+                            <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="fancyCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=1"><span>早餐</span></a><li>
+                        </c:when>
+                        <c:otherwise>
+                            <li style="font-size:16px;"><a style="color: black;" href="fancyCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=1"><span>早餐</span></a><li>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose >
+                        <c:when test="${2 eq supplyTime}">
+                            <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="fancyCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=2"><span>中餐</span></a><li>
+                        </c:when>
+                        <c:otherwise>
+                            <li style="font-size:16px;"><a style="color: black;" href="fancyCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=2"><span>中餐</span></a><li>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose >
+                        <c:when test="${3 eq supplyTime}">
+                            <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="fancyCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=3"><span>晚餐</span></a><li>
+                        </c:when>
+                        <c:otherwise>
+                            <li style="font-size:16px;"><a style="color: black;" href="fancyCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=3"><span>晚餐</span></a><li>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose >
+                        <c:when test="${4 eq supplyTime}">
+                            <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="fancyCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span>全天</span></a><li>
+                        </c:when>
+                        <c:otherwise>
+                            <li style="font-size:16px;"><a style="color: black;" href="fancyCanteensPage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span>全天</span></a><li>
+                        </c:otherwise>
+                    </c:choose>
+                </ul>
+            </div>
             <div class="row" style="padding:0 0px;"> 
-                <div class="form-group">                                                                       
-                    <c:forEach items="${windowsList }" var="wnditem">                                                  
-                        <table width="100%" onclick="location.href='userWindowContents.action?wndID=${wnditem.wndID}';" style="color:black">
-                            <tr style="height:30px">
-                                <td rowspan=3>
-                                    <img src="/upload/pic/${wnditem.wndPhoto }" class="center-block" height="90" width="90"/>
-                                </td>
-                                <td style="width:75%;padding-left:12px;font-size:1.5em;font-weight:500">
-                                    <p class="name">${wnditem.wndName }</p>
-                                </td>
-                                <td style="width:25%">
-                                   <p class="name">${wnditem.wndAddr}</p>
-                                </td>
-                            </tr>
-                            <tr style="height:30px">
-                                <td style="padding-left:12px">
-                                    <p class="txt">￥${wnditem.wndPriceRange}&nbsp &nbsp支持${wnditem.wndPayment}</p>
-                                </td>
-                                <td>
-                                    <p class="txt"> ${wnditem.wndSaleHours}营业</p>
-                                </td>
-                            </tr>
-                            <tr style="height:30px">
-                                <td style="padding-left:12px">
-                                    <p class="txt">${wnditem.wndDescription}</p>
-                                </td>
-                            </tr>
-                        </table>
-                        <div style=" height: 1px; border-top: 1px solid #ddd;text-align: center;"></div>                                                        
-                    </c:forEach>                                                                            
+                <div class="form-group">
+                    <c:choose>
+                        <c:when test="${supplyTime!=null }">
+                            <c:forEach items="${dishesDetailList }" var="item" >
+                                <div class="item clearfix">
+                                    <div class="txt-item" style=" margin-right:0px; margin-left:5px;padding-top:5px">
+                                        <table  width="100%" style="color:black">                                                        
+                                            <tr style="height:30px">
+                                                <td style='vertical-align: left;text-align: center;' rowspan=3>
+                                                    <c:if test="${item.detailDishPhoto != null }">
+                                                        <img src="/upload/pic/${item.detailDishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%;margin-left:20px;margin-right:-50px">
+                                                    </c:if>
+                                                </td>                                                           
+                                                <td style='vertical-align: middle;font-size:18px;font-weight:500;width:120px' >${item.detailDishName}</td>
+                                                <td style='vertical-align: middle;'></td>                                             
+                                            </tr>
+                                            <tr style="height:30px">                                                           
+                                                <td style='vertical-align: middle;font-size:16px;'>[${item.detailWndName }]</td>
+                                                <td style='vertical-align: middle;font-size:16px;'>${item.detailDishDate } </td> 
+                                            </tr>
+                                            <tr style="height:30px">                          
+                                                <td style='vertical-align: middle;color:#29C192;font-size:16px;'>￥${item.detailDishPrice }</td>
+                                                <td style='vertical-align: middle;'><fmt:formatDate value="${item.detailDishInDate}" pattern="yyyy-MM-dd" /></td>
+                                            </tr>
+                                        </table>
+                                        <div style=" height: 1px; border-top: 1px solid #ddd;text-align: center;"></div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>                                                                       
+                            <c:forEach items="${windowsList }" var="wnditem">                                                  
+                                <table width="100%" onclick="location.href='userWindowContents.action?wndID=${wnditem.wndID}';" style="color:black">
+                                    <tr style="height:30px">
+                                        <td rowspan=3>
+                                            <img src="/upload/pic/${wnditem.wndPhoto }" class="center-block" height="90" width="90"/>
+                                        </td>
+                                        <td style="width:75%;padding-left:12px;font-size:18px;font-weight:500">
+                                            <p class="name">${wnditem.wndName }</p>
+                                        </td>
+                                        <td style="width:25%;font-size:16px">
+                                           <p class="name">${wnditem.wndAddr}</p>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:30px">
+                                        <td style="padding-left:12px;font-size:16px">
+                                            <p class="txt">￥${wnditem.wndPriceRange}</p>
+                                        </td>
+                                        <td style="font-size:16px">
+                                            <p class="txt"> ${wnditem.wndSaleHours}营业</p>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:30px">
+                                        <td style="padding-left:12px;font-size:16px">
+                                            <p class="txt">${wnditem.wndDescription}</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div style=" height: 1px; border-top: 1px solid #ddd;text-align: center;"></div>                                                        
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>                                                                            
                 </div>  
             </div>
             <br>

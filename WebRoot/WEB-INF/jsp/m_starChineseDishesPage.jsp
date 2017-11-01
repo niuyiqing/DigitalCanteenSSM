@@ -88,7 +88,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                             </tr>
                                                             <tr>                          
                                                                 <td style='vertical-align: middle;color:#29C192;font-size:1.5em'>￥${item.dishPrice }</td>
-                                                                <td style='vertical-align: middle;'><fmt:formatDate value="${item.dishInDate}" pattern="yyyy-MM-dd" /></td>
                                                             </tr>
                                                         </table>
                                                     </div>

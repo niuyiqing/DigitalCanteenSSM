@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    <input name="dishID" type="hidden" value="${dishItems.dishID }">								
 			   	    <c:forEach items="${dishItemsList }" var="item" >
                     <div id="view" class="item clearfix">
-                        <div class="txt-item" style="padding-top:0px">
+                        <div class="txt-item" style="padding-top:0px;margin-left:0px">
                             <table width="70%">
     	                        <tr>    							 		
     	            	           	<td style='vertical-align: middle;text-align: center;' rowspan=3 width="30%">
