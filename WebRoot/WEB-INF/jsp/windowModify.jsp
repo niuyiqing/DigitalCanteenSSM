@@ -116,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	                    	        <select name="wndCantID" class="form-control" >
 	                      	        	<c:forEach items="${canteenItemsInCampus }" var="item" >
 	                      	        		<c:choose>
-	                   		        	        <c:when test="${wndCantID == item.cantID }">
+	                   		        	        <c:when test="${windowItems.wndCantID == item.cantID }">
 	                   		        	            <option value="${windowItems.cantID }" selected="selected">${windowItems.cantName }</option>
 	                   		        	        </c:when>
 	                   		        	        <c:otherwise>
