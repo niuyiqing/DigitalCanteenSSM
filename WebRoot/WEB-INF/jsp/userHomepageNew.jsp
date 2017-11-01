@@ -26,7 +26,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144.png">
         <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152.png">
         <link rel="apple-touch-icon-precomposed" sizes="180x180" href="apple-touch-icon-180.png">
-
         <script src="js/modernizr.custom.js"></script>
     	<script src="js/jquery-2.1.1.min.js"></script>
     	<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
