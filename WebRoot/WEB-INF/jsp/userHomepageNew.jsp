@@ -244,7 +244,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                                 <p class="txt">￥${item.wndPriceRange}</p>
                                                                             </td>
                                                                             <td style="font-size:16px">
-                                                                                <p class="txt"> ${item.wndSaleHours}营业</p>
+                                                                                <p class="txt"> ${item.wndSaleHours}</p>
                                                                             </td>
                                                                         </tr>
                                                                         <tr style="height:30px">
