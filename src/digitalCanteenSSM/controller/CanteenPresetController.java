@@ -246,14 +246,14 @@ public class CanteenPresetController {
 	
 	//特色风味食堂页面
 	@RequestMapping("/fancyCanteensPage")
-	public ModelAndView fancyCanteensPage(Integer campusID, Integer cantID) throws Exception{
+	public ModelAndView fancyCanteensPage(Integer campusID, Integer cantID, Integer supplyTime) throws Exception{
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
 		List<Campus> campusList = campusPresetService.findAllCampuses();		
 		modelAndView.addObject("campusList", campusList);
 		
-		if (campusID == null && cantID == null){			
+		if (campusID == null && cantID == null && supplyTime == null){			
 			if(!campusList.isEmpty()){				
 				for (Campus campus : campusList){					
 					//读取校区下的风味食堂列表
@@ -275,7 +275,7 @@ public class CanteenPresetController {
 					}					
 				}				
 			}
-		}else if(campusID != null && cantID == null){	//点击校区按钮
+		}else if(campusID != null && cantID == null && supplyTime == null){	//点击校区按钮
 			//读取校区下的风味食堂列表
 			List<CanteenItems> canteenItemsList = canteenPresetService.findFancyCanteensByCampus(campusID);
 			
@@ -292,7 +292,7 @@ public class CanteenPresetController {
 				modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(canteenItems.getCantID()));
 				
 			}
-		}else if(campusID == null && cantID != null){	//点击食堂按钮
+		}else if(campusID == null && cantID != null && supplyTime == null){	//点击食堂按钮
 			
 			//首先根据cantID在数据库中查找到相应风味食堂信息
 			//然后利用该档口所属的校区编号查找该校区下所有档口，传给用户页面
@@ -302,6 +302,20 @@ public class CanteenPresetController {
 			modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(canteenItems.getCantID()));
 			//将该食堂所属校区的风味食堂列表传到用户页面
 			modelAndView.addObject("canteenItemsList", canteenPresetService.findFancyCanteensByCampus(canteenItems.getCampusID()));
+		
+		}else if(campusID == null && cantID != null && supplyTime != null){	//点击时间档
+			//首先根据cantID在数据库中查找到相应风味食堂信息
+			//然后利用该档口所属的校区编号查找该校区下所有风味食堂，传给用户页面
+			CanteenItems canteenItems = canteenPresetService.findCanteenById(cantID);
+			modelAndView.addObject("canteenItems", canteenItems);
+			//将该食堂所属校区的风味食堂列表传到用户页面
+			modelAndView.addObject("canteenItemsList", canteenPresetService.findFancyCanteensByCampus(canteenItems.getCampusID()));
+			//将相应时间档的菜品传递到页面
+			Detail detail = new Detail();
+			detail.setDetailRecordID(recordService.findLatestRecordInCanteen(cantID).getRecordID());
+			detail.setDetailDishDateFlag(supplyTime);
+			modelAndView.addObject("dishesDetailList", detailService.findDetailByDateAndID(detail));
+			modelAndView.addObject("supplyTime", supplyTime);
 		}
 		
 		modelAndView.setViewName("/WEB-INF/jsp/m_fancyCanteensPage.jsp");
