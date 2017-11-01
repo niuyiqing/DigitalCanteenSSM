@@ -50,14 +50,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	</head>
   
   	<body>
-  		<div class="codrops-header" style="background:rgba(0,0,0,0);">
+  		<!-- <div class="codrops-header" style="background:rgba(0,0,0,0);">
             <div class="back-container">
                 <button class="btn btn-link btn-lg">
                     <a style="color:black" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a>
                 </button>    
             </div>
             <p style="padding-top:7px;width:100%;height:100%;font-size:27px;color:black"></p>  
-        </div>
+        </div> -->
         <div >
         	<img src="/upload/pic/starcanteen.png" class="center-block" width="100%">
         </div>
@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<div class="newcustom" style="margin-top: 10px;">
         	    <table onclick="location.href='userHomepage.action?cantID=${item.cantID}';" width=100%>
         	        <tr>
-        	        	<td style='vertical-align: middle;text-align: center;font-size:1.5em;color:black;width:20%'>${item.cantName }</td>
+        	        	<td style='vertical-align: middle;text-align: center;font-size:20px;color:black;width:20%'>${item.cantName }</td>
         	            <td style='vertical-align: middle;width:50%' >
         	                <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="160" style="border-radius:3%;">
         	            </td>                                                                                                       

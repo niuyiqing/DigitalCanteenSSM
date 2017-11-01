@@ -68,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="scroller-inner">
                         <form class="form-horizontal" role="form" name="userQueryForm" method="post">
                             <div class="codrops-header" style="background:rgba(0,0,0,0);top:18px" >
-                                <input  type="text"  placeholder="请输入菜品名或档口名" id="queryName" name="queryName" style="background:rgba(255,255,255,0.1);width:70%;height:35px;color:#000">                  
+                                <input  type="text"  placeholder="请输入菜品名或档口名" id="queryName" name="queryName" style="background:rgba(255,255,255,0.1);width:70%;height:35px;color:#000;font-size:20px">                  
                                 <input  type="button" value="搜索"  class="btn btn-primary btn-wide" style="background:rgba(41, 193, 146,0.8);font-size:18px" onclick="userQueryAll()">
                             </div>                                                                          
                         </form>
@@ -109,8 +109,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             </td>                                             
                                         </tr>
                                         <tr>                                                           
-                                            <td style='vertical-align: middle;text-align: center;font-size:1.5em' height="30px">特色风味</td>
-                                            <td style='vertical-align: middle;text-align: center;font-size:1.5em' height="30px">实惠中餐</td>
+                                            <td style='vertical-align: middle;text-align: center;font-size:18px' height="30px">特色风味</td>
+                                            <td style='vertical-align: middle;text-align: center;font-size:18px' height="30px">实惠中餐</td>
                                         </tr>
                                         <tr>                          
                                             <td style='vertical-align: middle' onclick="location.href='starCanteensPage.action';">
@@ -121,8 +121,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             </td>
                                         </tr>
                                         <tr>                          
-                                            <td style='vertical-align: middle;text-align: center;font-size:1.5em' height="30px">名星食堂</td>
-                                            <td style='vertical-align: middle;text-align: center;font-size:1.5em' height="30px">莘子苑酒店推荐</td>
+                                            <td style='vertical-align: middle;text-align: center;font-size:18px' height="30px">名星食堂</td>
+                                            <td style='vertical-align: middle;text-align: center;font-size:18px' height="30px">莘子苑酒店推荐</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -141,12 +141,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             </c:forEach>
                                         </ul>
                                     </div>
-                                    <div style="position:relative;height:70px;padding-top: 20px;">
+                                    <div style="position:relative;padding-top: 20px;">
                                         <ul class="nav nav-pills">
                                             <c:forEach items="${canteenItemsList }" var="item" >
                                                 <c:choose >
                                                     <c:when test="${item.cantID eq canteenItems.cantID}">
-                                                        <li style="font-size:18px;"><a style="color: #f79076;font-weight:500" href="userHomepage.action?cantID=${item.cantID}">${item.cantName }</a><li>
+                                                        <li style="font-size:18px;"><a style="color: white;font-weight:500" href="userHomepage.action?cantID=${item.cantID}"><span style="background:#f79076">${item.cantName }<span></a><li>
                                                     </c:when>
                                                     <c:otherwise>
                                                         <li style="font-size:18px;"><a href="userHomepage.action?cantID=${item.cantID}">${item.cantName }</a><li>
@@ -159,7 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <ul >
                                             <c:choose >
                                                 <c:when test="${1 eq supplyTime}">
-                                                    <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=1"><span>早餐</span></a><li>
+                                                    <li style="font-size:16px;"><a style="color: white;font-weight:500" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=1"><span style="background:#f79076">早餐</span></a><li>
                                                 </c:when>
                                                 <c:otherwise>
                                                     <li style="font-size:16px;"><a style="color: black;" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=1"><span>早餐</span></a><li>
@@ -167,7 +167,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             </c:choose>
                                             <c:choose >
                                                 <c:when test="${2 eq supplyTime}">
-                                                    <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=2"><span>中餐</span></a><li>
+                                                    <li style="font-size:16px;"><a style="color: white;font-weight:500" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=2"><span style="background:#f79076">中餐</span></a><li>
                                                 </c:when>
                                                 <c:otherwise>
                                                     <li style="font-size:16px;"><a style="color: black;" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=2"><span>中餐</span></a><li>
@@ -175,7 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             </c:choose>
                                             <c:choose >
                                                 <c:when test="${3 eq supplyTime}">
-                                                    <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=3"><span>晚餐</span></a><li>
+                                                    <li style="font-size:16px;"><a style="color: white;font-weight:500" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=3"><span style="background:#f79076">晚餐</span></a><li>
                                                 </c:when>
                                                 <c:otherwise>
                                                     <li style="font-size:16px;"><a style="color: black;" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=3"><span>晚餐</span></a><li>
@@ -183,7 +183,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             </c:choose>
                                             <c:choose >
                                                 <c:when test="${4 eq supplyTime}">
-                                                    <li style="font-size:16px;"><a style="color: #f79076;font-weight:500" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span>晚餐</span></a><li>
+                                                    <li style="font-size:16px;"><a style="color: white;font-weight:500" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span style="background:#f79076">全天</span></a><li>
                                                 </c:when>
                                                 <c:otherwise>
                                                     <li style="font-size:16px;"><a style="color: black;" href="userHomepage.action?cantID=${canteenItems.cantID}&supplyTime=4"><span>全天</span></a><li>
@@ -214,7 +214,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                             <td style='vertical-align: middle;font-size:16px;'>${item.detailDishDate } </td> 
                                                                         </tr>
                                                                         <tr style="height:30px">                          
-                                                                            <td style='vertical-align: middle;color:#29C192;font-size:16px;'>￥${item.detailDishPrice }</td>
+                                                                            <td style='vertical-align: middle;color:#29C192;font-size:20px;'>￥${item.detailDishPrice }</td>
                                                                             <td style='vertical-align: middle;font-size:16px;'><fmt:formatDate value="${item.detailDishInDate}" pattern="yyyy-MM-dd" /></td>
                                                                         </tr>
                                                                     </table>
@@ -240,7 +240,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                             </td>
                                                                         </tr>
                                                                         <tr style="height:30px">
-                                                                            <td style="padding-left:12px;font-size:16px">
+                                                                            <td style="padding-left:12px;color:#29C192;font-size:20px">
                                                                                 <p class="txt">￥${item.wndPriceRange}</p>
                                                                             </td>
                                                                             <td style="font-size:16px">
