@@ -63,12 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			       	<div class="scroller-inner">	                	
 			        	<form class="form-horizontal" role="form" name="userQueryForm" method="post">
 				        	<div class="codrops-header" style="background:rgba(0,0,0,0);top:18px" >
-				    		    <!-- <div class="back-container" style="padding-top:6px;margin-bottom:-5px;">
-                                    <button class="btn btn-link btn-lg" style="padding-top: 4px;">
-                                        <a style="color:#fff" class="icon icon-fanhui" data-ajax="false" href="${pageContext.request.contextPath }/userHomepage.action"></a>
-                                    </button>    
-                                </div> -->
-				    		    <input  type="text"  placeholder="请输入菜品名或档口名" id="queryName" name="queryName" style="background:rgba(255,255,255,0.1);width:70%;height:35px;color:#000">	    		    
+				    		    <input  type="text"  placeholder="请输入菜品名或档口名" id="queryName" name="queryName" style="background:rgba(255,255,255,0.1);width:70%;height:35px;color:#000;font-size:20px">	    		    
 				    		    <input  type="button" value="查询"  class="btn btn-primary btn-wide" style="background:rgba(41, 193, 146,0.8);" onclick="userQueryAll()">
 				    		</div>
                             <div >
@@ -84,54 +79,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					                <input name="dishID" type="hidden" value="${dishItems.dishID }">		                
         	                        <div class="row" style="padding:0 0px;"> 
     	                                <div class="form-group">
-    	                                        <p style="height:30px;padding-top:14px;padding-left:3px;background:#f79076">菜名的搜索结果:</p>
+    	                                        <p style="height:30px;padding-top:14px;padding-left:3px;background:#f79076;font-size:18px">菜名的搜索结果:</p>
     	                                        <c:forEach items="${dishItemsList }"  var="item">
-        				                	    		    <table  width=100% >					
+        				                	    		    <table  width="100%" >					
         				                	    		        <tr style="height:30px">					 				                	    		        
-        				                	    		            <td style='vertical-align: left;text-align: center;min-width: 100px;' rowspan=3>
+        				                	    		            <td style='vertical-align: left;text-align: center;' rowspan=3>
                 				                	    				<c:if test="${item.dishPhoto != null }">
                 				                	       				    <img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%"/>
                 				                	       				</c:if>
         				                   	    				    </td>						               	    			 	
-        				                	    			   	    <td style='vertical-align: middle;text-align: center;font-size:1.5em; font-weight:500;width: 100%;'>${item.dishName }</td>
-        				                	    			   	    <td style='vertical-align: left;min-width: 100px;'>${item.dishTypeName }</td>						                	   	
+        				                	    			   	    <td style='vertical-align: middle;text-align: center;font-size:18px; font-weight:500;width: 100%;'>${item.dishName }</td>
+        				                	    			   	    <td style='vertical-align: left;min-width: 100px;font-size:14px'>${item.dishTypeName }</td>						                	   	
         				                	    			    </tr>
         				                	    			    <tr style="height:30px">							               	    		   
-    				                	    			   	        <td style='vertical-align: middle;text-align: center;font-size:1em; width: 100%;'>[${item.cantName },${item.wndName }]</td>
-    				                	    			   	        <td style='vertical-align: left;min-width: 100px;'>${item.dishDate } ${item.dishSale }</td> 
+    				                	    			   	        <td style='vertical-align: middle;text-align: center;font-size:14px; width: 70%;'>[${item.wndName }]</td>
+    				                	    			   	        <td style='vertical-align: left;font-size:14px;width: 20%;'>${item.dishDate } </td> 
     				                	    			        </tr>
     				                	    			        <tr style="height:30px">						  
-    				                	    			   	        <td style='vertical-align: middle;text-align: center;color:#29C192;font-size:1.5em; width: 100%;'>￥${item.dishPrice }</td>
-    				                	    			   	        <td style='vertical-align: middle;min-width: 100px;'>${item.campusName }/${item.cantName }</td>     
+    				                	    			   	        <td style='vertical-align: middle;text-align: center;color:#29C192;font-size:20px; width: 100%;'>￥${item.dishPrice }</td>
+    				                	    			   	        <td style='vertical-align: middle;font-size:14px;'> ${item.campusName } ${item.cantName }</td>     
     				                	    			        </tr>
     				                	    			    </table>
                                                             <div style=" height: 1px; border-top: 1px solid #ddd;text-align: center;"></div>
     				                	        </c:forEach>
     				                	        <br>
-    				                	        <p style="height:30px;padding-top:14px;padding-left:3px;background:#f79076">档口名的搜索结果:</p>
+    				                	        <p style="height:30px;padding-top:14px;padding-left:3px;background:#f79076;font-size:18px">档口名的搜索结果:</p>
     				                	        <c:forEach items="${windowItemsList }" var="item">
 										                    <table width="100%" onclick="location.href='userWindowContents.action?wndID=${item.wndID}';" >
                                                                 <tr style="height:30px">
-                                                                    <td  rowspan=3 >
+                                                                    <td  rowspan="3" style="width:28% ">
                                                                         <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="80" width="80" style="border-radius:5%;margin-left:5px"/>
                                                                     </td>
-                                                                    <td style="padding-left:12px;font-size:1.5em;font-weight:500">
+                                                                    <td style="padding-left:12px;font-size:18px;font-weight:500;width:42%">
                                                                         <p>${item.wndName }</p>
                                                                     </td>
-                                                                    <td style="width:25%">
+                                                                    <td style="width:25%;font-size:14px;width:30%">
                                                                         <p>${item.campusName }/${item.cantName }</p>
                                                                     </td>
                                                                 </tr>
                                                                 <tr style="height:30px">
-                                                                    <td>
-                                                                        <p>￥${item.wndPriceRange}&nbsp &nbsp支持${item.wndPayment}</p>
+                                                                    <td style="font-size:20px;color:#29C192;">
+                                                                        <p>￥${item.wndPriceRange}</p>
                                                                     </td>
-                                                                    <td>
-                                                                        <p> ${item.wndSaleHours}营业</p>
+                                                                    <td style="font-size:14px;">
+                                                                        <p> ${item.wndSaleHours}</p>
                                                                     </td>
                                                                 </tr>
                                                                 <tr style="height:30px">
-                                                                    <td style="padding-left:12px">
+                                                                    <td style="padding-left:12px;font-size:14px;">
                                                                         <p>${item.wndDescription}</p>
                                                                     </td>
                                                                 </tr>
