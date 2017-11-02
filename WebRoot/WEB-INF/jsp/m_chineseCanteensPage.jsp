@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <p style="padding-top:7px;width:100%;height:100%;font-size:27px;color:black">实惠中餐</p>  
         </div> -->                                                                          
         <div >
-            <img src="/upload/pic/ChineseCanteens.png" class="center-block" width="100%">
+            <img src="/upload/pic/ChineseCanteenpage.png" class="center-block" width="100%">
         </div>
         <div class="newcustom" style="margin-top: 10px;">
             <table width="100%" align="center">
@@ -86,10 +86,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <tr height="32px">
                                     <c:choose >
                                         <c:when test="${item.campusID eq canteenItems.cantCampusID}">
-                                            <td style='vertical-align: middle;text-align: center;font-size:20px;font-weight:500'><a style="color:white;" href="chineseCanteensPage.action?campusID=${item.campusID}"><span style="background-color:#f79076;border-radius:5%">${item.campusName }中餐</span></a></td>
+                                            <c:choose >
+                                                <c:when test="${'马区' == item.campusName}">
+                                                    <td style='vertical-align: middle;text-align: center;font-size:20px;font-weight:500'><a style="color:white;" href="chineseCanteensPage.action?campusID=${item.campusID}"><span style="background-color:#f79076;border-radius:5%">南&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    湖</span></a></td>
+                                                </c:when>
+                                                <c:when test="${'余区' == item.campusName}">
+                                                    <td style='vertical-align: middle;text-align: center;font-size:20px;font-weight:500'><a style="color:white;" href="chineseCanteensPage.action?campusID=${item.campusID}"><span style="background-color:#f79076;border-radius:5%">鉴&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   湖</span></a></td>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <td style='vertical-align: middle;text-align: center;font-size:20px;font-weight:500'><a style="color:white;" href="chineseCanteensPage.action?campusID=${item.campusID}"><span style="background-color:#f79076;border-radius:5%">${item.campusName }中餐</span></a></td>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </c:when>
                                         <c:otherwise>
-                                            <td style='vertical-align: middle;text-align: center;font-size:20px;'><a href="chineseCanteensPage.action?campusID=${item.campusID}"><span>${item.campusName }中餐</span></a></td>
+                                            <c:choose >
+                                                <c:when test="${'马区' == item.campusName}">
+                                                    <td style='vertical-align: middle;text-align: center;font-size:20px;'><a href="chineseCanteensPage.action?campusID=${item.campusID}"><span>南&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    湖</span></a></td>
+                                                </c:when>
+                                                <c:when test="${'余区' == item.campusName}">
+                                                    <td style='vertical-align: middle;text-align: center;font-size:20px;'><a href="chineseCanteensPage.action?campusID=${item.campusID}"><span>鉴&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    湖</span></a></td>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <td style='vertical-align: middle;text-align: center;font-size:20px;'><a href="chineseCanteensPage.action?campusID=${item.campusID}"><span>${item.campusName }中餐</span></a></td>
+                                                </c:otherwise>
+                                            </c:choose>
+                                            
                                         </c:otherwise>
                                     </c:choose>
                                 </tr>

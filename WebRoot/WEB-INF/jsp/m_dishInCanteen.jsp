@@ -76,14 +76,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				        </div> 								
             	        <div class="container-fluid" style="color:#000;padding:0 0;">
                             <div class="newcustom" style="margin-top:69px;">
-                                <div class="row" style="padding:16px 0px 16px 0px;font-size: 1.2rem">
-                					<div class="col-xs-4" style="padding-right:0px">
-                				   		<label >所属校区：</label>${muserItems.campusName}
+                                <div class="row" style="padding:16px 0px 16px 0px;font-size:16px">
+                					<div class="col-xs-3" style="padding-right:0px">
+                				   		<!-- <label >校区：</label> -->${muserItems.campusName}
                 				   	</div>
-                				   	<div class="col-xs-4" style="padding-right:0px">
-                				   		<label >所属食堂：</label>${muserItems.cantName}
+                				   	<div class="col-xs-3" style="padding-right:0px">
+                				   		<!-- <label >食堂：</label> -->${muserItems.cantName}
                 				   	</div>
-                				   	<div class="col-xs-4" style="padding-right:0px">
+                				   	<div class="col-xs-6" style="padding-right:0px">
                 				   		<label >管理员：</label>${muserItems.muserName}
                 				   	</div>
                 				</div>
@@ -97,24 +97,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	                                    <c:forEach items="${pagehelper.list }" var="item">
         	                                        <div class="item clearfix">   				                	    		
             				                	    		    <div class="txt-item" style=" margin-right:0px; margin-left:5px;padding-top:5px">
-            				                	    		        <table  width=100% onclick="location.href='modifyDish.action?dishID=${item.dishID}&dishWndID=${item.wndID}&wndCantID=${item.cantID}';">							               	    		   
+            				                	    		        <table  width="100%" onclick="location.href='modifyDish.action?dishID=${item.dishID}&dishWndID=${item.wndID}&wndCantID=${item.cantID}';">							               	    		   
             				                	    			        <tr>					 				                	    				
-            				                	    			            <td style='vertical-align: left;text-align: center;min-width: 100px;' rowspan=3>
+            				                	    			            <td style='vertical-align: left;text-align: center;width:85px;' rowspan="3">
                     				                	    				   	<c:if test="${item.dishPhoto != null }">
                     				                	       						<img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%"/>
                     				                	       					</c:if>
             				                   	    				        </td>						               	    			 	
-            				                	    			   	        <td style='vertical-align: middle;text-align: center;font-size:1.2em; width: 100%;' >${item.dishName }</td>
-            				                	    			   	        <td style='vertical-align: left;min-width: 100px;'>${item.dishTypeName }</td>						                	   	
+            				                	    			   	        <td style='vertical-align: middle;font-size:18px;font-weight:500; width:50%;' >${item.dishName }</td>
+            				                	    			   	        <td style='vertical-align: left;font-size:16px;'>${item.dishTypeName }</td>						                	   	
             				                	    			        </tr>
             				                	    			        <tr>							               	    		   
-            				                	    			   	        <td style='vertical-align: middle;text-align: center;font-size:0.8em; width: 100%;'>[${item.wndName }]</td>
-            				                	    			   	        <td style='vertical-align: left;min-width: 100px;'>${item.dishDate } ${item.dishSale }</td> 
+            				                	    			   	        <td style='vertical-align: middle;font-size:16px;'>[${item.wndName }]</td>
+            				                	    			   	        <td style='vertical-align: left;font-size:16px;'>${item.dishDate }</td> 
             				                	    			        </tr>
             				                	    			        <tr>						  
-            				                	    			   	        <td style='vertical-align: middle;text-align: center;color:#29C192;font-size:1.5em; width: 100%;'>￥${item.dishPrice }</td>
-            				                	    			   	        <td style='vertical-align: middle;min-width: 100px;'><fmt:formatDate value="${item.dishInDate}" pattern="yyyy-MM-dd" /></td>
-            				                	    			   	         
+            				                	    			   	        <td style='vertical-align: middle;color:#29C192;font-size:20px;' colspan="2">￥${item.dishPrice }</td>
             				                	    			        </tr>
             				                	    			    </table>
             				                	    		    </div>
@@ -123,8 +121,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         				                	    </c:forEach>       				                                         					 	
         							        </div>
         				                </div>  
-        				            </div> 
-                                    
+        				            </div>                                    
                                     <div>
                                         <div class="message">
                                             <p class="text-center" style="color:#272822">
