@@ -115,7 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <td style='vertical-align: middle;text-align: center;'>${item.cantName }</td>
                                         <td style='vertical-align: middle;text-align: center;'>
                                             <c:if test="${item.cantPhoto != null }">
-                                                <img src="/upload/pic/${item.cantPhoto }" class="center-block" height="100" width="120"/>
+                                                <img src="/upload/pic/${item.cantPhoto }" class="center-block" height="80" width="100"/>
                                             </c:if>
                                         </td>
                                         <td style='vertical-align: middle;text-align: center;'>
