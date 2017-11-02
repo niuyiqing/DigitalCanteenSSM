@@ -103,6 +103,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE ctrecord.RecordID = #{recordID}	
 	</select>
 	
+	<!-- 查找食堂最新的已经通过审核（花样食堂需审核）的的记录表 -->
 	<select id="findLatestRecordInCanteen" parameterType="Integer" resultType="Record">
 		SELECT * 
 		FROM ctrecord 
