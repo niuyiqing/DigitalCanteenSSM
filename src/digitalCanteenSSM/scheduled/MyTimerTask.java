@@ -35,6 +35,8 @@ public class MyTimerTask {
 	@Scheduled(cron="59 59 23  * * ? ") 
     public void myTask() throws ParseException{
 		
+		//去掉花样食堂每天自动复制记录表的功能
+		/*
 		SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");  
 		String dateString=simpleDateFormat.format(new Date());
 		Date date=simpleDateFormat.parse(dateString);
@@ -63,7 +65,7 @@ public class MyTimerTask {
 				record.setRecordDate(date);
 				record.setRecordSubmitState("已提交");
 				record.setReplenishFlag(0);
-				record.setRecordCheck(0);
+				record.setRecordCheck(0);	//0:花样食堂审核通过
 				
 				//到数据库中用食堂和日期信息查询今日是否已经生成过记录表，
 				//如果没有生成，则生成一个新表；否则跳转到修改页面
@@ -101,6 +103,8 @@ public class MyTimerTask {
 			e.printStackTrace();
 		}
 		
-		 
+	*/	 
+		return;
     }  
+    
 }
