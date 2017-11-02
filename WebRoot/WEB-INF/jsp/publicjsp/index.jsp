@@ -13,9 +13,6 @@
 									<h2 class="icon icon-caipinguanli" style="padding: 1em 1em 1em 4.5em;font-size:17px; background:rgba(41,193,146,0.95)">菜品管理</h2>
 									<ul>
 										<li >
-											<a  href="${pageContext.request.contextPath }/recordExportToExcel.action" data-ajax="false" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">菜品导出</a>
-										</li>
-										<li >
 											<a  href="${pageContext.request.contextPath }/dishImportCheck.action" data-ajax="false" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">录入审核</a>									
 										</li>
 										<li >

@@ -196,14 +196,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div> 
 				    	<div class="container-fluid" style="color:#000;padding:0 0; ">	
 				    		<div class="newcustom" style="margin-top:69px;<!-- padding-left:5% -->">
-			    				<div class="row" style="padding-top:16px;font-size: 1.2rem">
-			 						<div class="col-xs-4" style="padding-right:0px">
-								   		<label>所属校区：</label>${muserItems.campusName}
+			    				<div class="row" style="padding-top:16px;font-size: 16px">
+			 						<div class="col-xs-3" style="padding-right:0px">
+								   		<!-- <label>所属校区：</label> -->${muserItems.campusName}
 								   	</div>
-								   	<div class="col-xs-4" style="padding-right:0px">
-								   		<label>所属食堂：</label>${muserItems.cantName}
+								   	<div class="col-xs-3" style="padding-right:0px">
+								   		<!-- <label>所属食堂：</label> -->${muserItems.cantName}
 								   	</div>
-								   	<div class="col-xs-4" style="padding-right:0px">
+								   	<div class="col-xs-6" style="padding-right:0px">
 								   		<label>管理员：</label>${muserItems.muserName}
 								   	</div>
 								</div>
@@ -216,11 +216,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    	                <input type="hidden" name = "muserSubmitDate" >
 				    	                <div class="row" style="padding-top:16px">
 					    	                <div class="form-group" >
-					    	                    <div class="col-xs-3" style="padding-top:12px;padding-right:0px;font-size: 1.3rem">
-					    	                     <b>导入记录：</b>
+					    	                    <div class="col-xs-3" style="padding-top:12px;padding-right:0px;font-size:14px">
+					    	                     导入记录：
 					    	                    </div>
-					    	                    <div class="col-xs-6" >
-					    	                        <input name ="recordDate" class="Wdate" type="text" onClick="WdatePicker()" style="border:1px solid #ccc;border-radius:5px;-webkit-appearance: none;"> 
+					    	                    <div class="col-xs-6">
+					    	                        <input name ="recordDate" class="Wdate" type="text" onClick="WdatePicker()" style="border:1px solid #ccc;border-radius:5px;-webkit-appearance: none;width:100%"> 
 					    	                    </div>
 					    	                	<div class="col-xs-3" >
 					    	                	    <input type="button" class="btn btn-primary" value="导入" onClick="getDishInImportDate()"> 
@@ -229,7 +229,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    	            	    </div>
 				    	            	<div style="padding-top:10px;padding-left:8px;font-size:1.3rem">
 				    	            	    <p class="help-block">通过选择日期来导入某一天的菜品录入记录</p>
-				    	            	    <!-- replenishFlag此处用于标记页面是属于录入、补录还是修改页面 -->
     	                					<input type="hidden" name="replenishFlag" value="0"></input>
 				    	            	</div>
 				    	            	<div class="row" style="padding-top:16px">
@@ -244,7 +243,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						                        	</select>
 					    	                	</div>
 					    	                	<div class="col-xs-6">
-					    	                		<input type="text" name="search" id="search" style="height:34px">
+					    	                		<input type="text" name="search" id="search" style="height:34px;width:100%;font-size:16px">
 						                			
 					    	                	</div>
 					    	                	<div class="col-xs-3">
@@ -280,22 +279,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										                	    						</c:forEach>
 										                	    					</c:otherwise>
 										                	    				</c:choose>	
-										                	    				<td style='vertical-align: left;text-align: center;' rowspan=3>
+										                	    				<td style='vertical-align: left;text-align: center;width:85px' rowspan=3>
 										                	    				   	<c:if test="${item.dishPhoto != null }">
-										                	       						<img src="/upload/pic/${item.dishPhoto }" class="center-block" height="100" width="100" style="border-radius:5%"/>
+										                	       						<img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%"/>
 										                	       					</c:if>
 										                   	    				</td>						               	    		 	
-										                	    			   	<td style='vertical-align: middle;font-size:1.2em' colspan=2>${item.dishName }</td>
-										                	    			   	<td style='vertical-align: middle;'>${item.dishTypeName }</td>						                	   	
+										                	    			   	<td style='vertical-align: middle;font-size:18px;font-weight:500;width:40%;'>${item.dishName }</td>
+										                	    			   	<td style='vertical-align: middle;font-size:16px;'>${item.dishTypeName }</td>						                	   	
 										                	    			</tr>
 										                	    			<tr>							               	    		   
-										                	    			   	<td style='vertical-align: middle;font-size:0.8em' colspan=2>[${item.wndName }]</td>
-										                	    			   	<td style='vertical-align: middle;'>${item.dishDate } ${item.dishSale }</td> 
+										                	    			   	<td style='vertical-align: middle;font-size:16px;'>[${item.wndName }]</td>
+										                	    			   	<td style='vertical-align: middle;font-size:16px;'>${item.dishDate } </td> 
 										                	    			</tr>
 										                	    			<tr>						  
-										                	    			   	<td style='vertical-align: middle;color:#29C192;font-size:1.5em' colspan=2>￥${item.dishPrice }</td>
-										                	    			   	<td style='vertical-align: middle;'><fmt:formatDate value="${item.dishInDate}" pattern="yyyy-MM-dd" /></td>
-										                	    			   	
+										                	    			   	<td style='vertical-align: middle;color:#29C192;font-size:20px' colspan=2>￥${item.dishPrice }</td>
 									                	    				</tr>
 								                	    				</table>
 								                	    			</div>

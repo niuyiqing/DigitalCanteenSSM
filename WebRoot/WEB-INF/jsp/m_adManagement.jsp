@@ -90,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<form id="adManagementForm" name="adManagementForm" class="form-horizontal" role="form" method="post" enctype="multipart/form-data">								
 							<div class="form-group">
                                 <div align="center">
-                                	<label class="control-label" style="color:black">推送图片上传</label>
+                                	<label class="control-label" style="color:black;font-size:14px">推送图片上传</label>
                                     <input type="file" name="adPhotoFile"/>
                                 </div>
 							</div>
