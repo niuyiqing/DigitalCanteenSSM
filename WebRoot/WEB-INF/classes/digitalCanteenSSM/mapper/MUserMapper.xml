@@ -89,14 +89,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		GROUP BY MUserCantID
 	</select>
 	
+	<!-- 查找花样食堂管理员账号 -->
 	<select id="findMUserStyle"  resultType="MUserItems">
 		SELECT * 
-		FROM ctmuser,ctcant,ctcampus,ctrole
+		FROM ctmuser,ctcant,ctcanttype,ctcampus,ctrole
 		WHERE ctmuser.MUserCantID = ctcant.CantID AND 
 			  ctmuser.MUserCampusID = ctcampus.CampusID AND
 			  ctmuser.MUserRoleID = ctrole.RoleID AND
-			  ctcant.CantTypeID = 4 AND
-			  ctmuser.MUserRoleID = 3
+			  ctcant.CantTypeID = ctcanttype.CantTypeID AND
+              ctcanttype.CantTypeName = '自营食堂' AND
+			  ctmuser.MUserRoleID = ctrole.RoleID AND
+              ctrole.RoleName = 'canteen'
 		ORDER BY RoleID, CampusID, CantID
 	</select>
 </mapper>

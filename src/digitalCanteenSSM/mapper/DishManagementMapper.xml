@@ -126,7 +126,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE   ctdish.DishWndID = ctwnd.WndID and  
         		ctwnd.WndCantID = ctcant.cantID and 
         		ctcant.CantCampusID=ctcampus.campusID and
-        		ctdish.DishTypeID=ctdishtype.DishTypeID and
+        		ctdish.DishTypeID=ctdishtype.DishTypeID
 		ORDER BY CampusID ,CantID,WndID,DishID DESC
 	</select>
 	

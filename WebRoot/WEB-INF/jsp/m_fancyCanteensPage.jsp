@@ -86,10 +86,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <tr height="32px">
                                     <c:choose >
                                         <c:when test="${item.campusID eq canteenItems.cantCampusID}">
-                                            <td style='vertical-align: middle;text-align: center;font-size:20px;font-weight:500'><a style="color:white;" href="fancyCanteensPage.action?campusID=${item.campusID}"><span style="background-color:#f79076;border-radius:5%">${item.campusName }风味</span></a></td>
+                                            <td style='vertical-align: middle;text-align: center;font-size:20px;font-weight:500'><a style="color:white;" href="fancyCanteensPage.action?campusID=${item.campusID}"><span style="background-color:#f79076;border-radius:5%">${item.campusName }</span></a></td>
                                         </c:when>
                                         <c:otherwise>
-                                            <td style='vertical-align: middle;text-align: center;font-size:20px;'><a href="fancyCanteensPage.action?campusID=${item.campusID}"><span>${item.campusName }风味</span></a></td>
+                                            <td style='vertical-align: middle;text-align: center;font-size:20px;'><a href="fancyCanteensPage.action?campusID=${item.campusID}"><span>${item.campusName }</span></a></td>
                                         </c:otherwise>
                                     </c:choose>
                                 </tr>
