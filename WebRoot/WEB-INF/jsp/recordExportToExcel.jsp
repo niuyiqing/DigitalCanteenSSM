@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
     <meta charset="utf-8">
-    <title>outputExcel</title>
+    <title>导出记录</title>
     <meta name="viewport" content="width=device-width, 
                                      initial-scale=0.3, 
                                      maximum-scale=1.0, 

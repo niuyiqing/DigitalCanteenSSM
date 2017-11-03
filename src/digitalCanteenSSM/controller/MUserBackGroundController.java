@@ -434,6 +434,7 @@ public class MUserBackgroundController {
 		for(Record record:recordList){
 			recordItemsList.addAll(detailService.findRecordAndDetailDish(record.getRecordID()));
 		}
+		
 		dishExportToExcelService.writeExcel(recordItemsList, canteenList, response, timeInFileName);
 	}
 	
