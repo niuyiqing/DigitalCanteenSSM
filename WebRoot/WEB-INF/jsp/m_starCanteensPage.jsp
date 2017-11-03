@@ -74,11 +74,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	</div>
         </c:forEach>
         <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br> 
+        <br>
+        <br>
+        <br>
+        <br>
+        <br> 
         <div class="footnav">
             <ul>
                 <li>
