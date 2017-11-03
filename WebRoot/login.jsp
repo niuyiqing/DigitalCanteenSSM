@@ -77,15 +77,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<div>${message_login}</div>
           <div class="htmleaf-container">
             <div class="wrapper">
+              <div style="position: relative;top: 10%;">
+                <img src="/upload/pic/login.png" class="center-block" width="60%">
+              </div>
               <div class="container">
-                <h1>Welcome</h1>        
+                <!-- <h1>Welcome</h1> -->        
     	          <form action="${pageContext.request.contextPath}/login.action" id="myForm" method="post">
                   <input type="text" placeholder="用户名" name="userName" id="userName" value="<%=userName%>">
                   <input type="password" placeholder="密码" name="password" value="<%=password%>">
                   
-                  <div class="holder">                    
+                  <!-- <div class="holder">                    
                       记住密码<input type="checkbox" value="y" name="isLogin" id="checkbox-10-2"  /><label for="checkbox-10-2"></label>                    
-                  </div> 
+                  </div> --> 
                   
                   <button type="submit" id="login-button">登录</button>
                   <br/><br/>
@@ -104,6 +107,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <li></li>
                 <li></li>
               </ul>
+            </div>
+            <div style="position: fixed;bottom: 5%;text-align: center;width: 100%;">
+              <h3 style="color:black">建设单位:集团信息化建设工作办公室</h3>
             </div>
           </div>
   <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
