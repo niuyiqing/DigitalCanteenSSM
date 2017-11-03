@@ -54,15 +54,6 @@
                     
   				</ul>
   			</li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <FONT style="FONT-FAMILY:黑体">操作日志</FONT>
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="${pageContext.request.contextPath }/loginfo.action">日志查看</a></li>
-                </ul>
-            </li>
 
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -75,6 +66,18 @@
                     <li><a href="${pageContext.request.contextPath }/selectStarChineseDishes.action">人气中餐</a></li>
                     <li class="divider"></li>
                     <li><a href="${pageContext.request.contextPath }/selectStarFancyDishes.action">人气风味</a></li>
+                    <li class="divider"></li>
+                    <li><a href="${pageContext.request.contextPath }/selectStarShenziyuanDishes.action">莘子苑推荐</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <FONT style="FONT-FAMILY:黑体">操作日志</FONT>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="${pageContext.request.contextPath }/loginfo.action">日志查看</a></li>
                 </ul>
             </li>
 

@@ -103,5 +103,20 @@ public class DishManagementServiceImpl implements DishManagementService {
 		
 		return dishManagementMapper.findDishInCanteenAndDate(dishItems);
 	}
+	
+	@Override
+	public List<DishItems> findAllDishesInShenziyuan() throws Exception{
+		return dishManagementMapper.findAllDishesInShenziyuan();
+	}
+	
+	@Override
+	public List<DishItems> findStarDishesInShenziyuan() throws Exception{
+		return dishManagementMapper.findStarDishesInShenziyuan();
+	}
+	
+	@Override
+	public List<DishItems> findNonStarDishesInShenziyuan() throws Exception{
+		return dishManagementMapper.findNonStarDishesInShenziyuan();
+	}
 
 }

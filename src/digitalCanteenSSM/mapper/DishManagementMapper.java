@@ -37,4 +37,10 @@ public interface DishManagementMapper {
 	public void deleteDishById(Dish dish) throws Exception;
 	
 	public List<DishItems> findDishInCanteenAndDate(DishItems dishItems) throws Exception;
+	
+	public List<DishItems> findAllDishesInShenziyuan() throws Exception;
+	
+	public List<DishItems> findStarDishesInShenziyuan() throws Exception;
+	
+	public List<DishItems> findNonStarDishesInShenziyuan() throws Exception;
 }

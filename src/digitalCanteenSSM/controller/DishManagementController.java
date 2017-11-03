@@ -917,4 +917,69 @@ public class DishManagementController {
 		
 		return modelAndView;
 	}
+	
+	//后台设置莘子苑酒店推荐菜
+	@RequestMapping("/selectStarShenziyuanDishes")
+	public ModelAndView selectStarShenziyuanDishes(HttpSession session) throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("shenziyuanDishesList", dishManagementService.findAllDishesInShenziyuan());
+		modelAndView.addObject("starShenziyuanDishesList", dishManagementService.findStarDishesInShenziyuan());
+		
+		if(session.getAttribute("ua").equals("pc")){
+			modelAndView.setViewName("/WEB-INF/jsp/selectStarShenziyuanDishes.jsp");
+		}else{
+			modelAndView.setViewName("/WEB-INF/jsp/m_selectStarShenziyuanDishes.jsp");
+		}
+		
+		return modelAndView;
+	}
+	
+	//后台保存莘子苑推荐菜
+	@RequestMapping("/saveStarShenziyuanDishes")
+	public @ResponseBody SubmitResultInfo saveStarShenziyuanDishes(Integer[] dishIDList) throws Exception{
+		
+		ResultInfo resultInfo = new ResultInfo();
+		resultInfo.setType(ResultInfo.TYPE_RESULT_SUCCESS);
+		
+		//清除之前保存的莘子苑酒店推荐菜标志
+		List<DishItems> starShenziyuanDishesList = dishManagementService.findStarDishesInShenziyuan();
+		for(DishItems starItem : starShenziyuanDishesList){
+			starItem.setStarDish(0);
+			dishManagementService.updateDish(starItem);
+		}
+		
+		//写入新的莘子苑酒店推荐菜
+		if(dishIDList != null){
+			DishItems starDish = new DishItems();
+			
+			for(Integer i : dishIDList){
+				starDish = dishManagementService.findDishById(i);
+				starDish.setStarDish(1);
+				
+				dishManagementService.updateDish(starDish);
+			}
+			resultInfo.setMessage("成功设定【" + dishIDList.length + "】个莘子苑酒店推荐菜");
+		}else{
+			resultInfo.setMessage("莘子苑酒店推荐菜列表已清空");
+		}
+		
+		SubmitResultInfo submitResultInfo = new SubmitResultInfo(resultInfo);		
+		return submitResultInfo;
+	}
+	
+	//莘子苑页面
+	@RequestMapping("/shenziyuanPage")
+	public ModelAndView shenziyuanPage() throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("starShenziyuanDishesList", dishManagementService.findStarDishesInShenziyuan());
+		modelAndView.addObject("nonStarShenziyuanDishesList", dishManagementService.findNonStarDishesInShenziyuan());
+		
+		modelAndView.setViewName("/WEB-INF/jsp/m_shenziyuanPage.jsp");
+		
+		return modelAndView;
+	}
 }
