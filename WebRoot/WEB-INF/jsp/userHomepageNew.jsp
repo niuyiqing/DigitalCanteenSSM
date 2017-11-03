@@ -116,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <td style='vertical-align: middle' onclick="location.href='starCanteensPage.action';">
                                                 <img src="/upload/pic/StarCanteens.png" class="center-block"  width="90%" style="border-radius:3%;">
                                             </td>
-                                            <td style='vertical-align: middle' >
+                                            <td style='vertical-align: middle' onclick="location.href='shenziyuanPage.action';">
                                                 <img src="/upload/pic/Restaurant.png" class="center-block"  width="90%" style="border-radius:3%;">
                                             </td>
                                         </tr>
