@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					                <input name="dishID" type="hidden" value="${dishItems.dishID }">		                
         	                        <div class="row" style="padding:0 0px;"> 
     	                                <div class="form-group">
-    	                                        <p style="height:30px;padding-top:14px;padding-left:3px;background:#f79076;font-size:18px">菜名的搜索结果:</p>
+    	                                        <p style="height:30px;padding-top:14px;padding-left:3px;background:#f79076;font-size:18px;color:white">菜名的搜索结果:</p>
     	                                        <c:forEach items="${dishItemsList }"  var="item">
         				                	    		    <table  width="100%" >					
         				                	    		        <tr style="height:30px">					 				                	    		        
@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                             <div style=" height: 1px; border-top: 1px solid #ddd;text-align: center;"></div>
     				                	        </c:forEach>
     				                	        <br>
-    				                	        <p style="height:30px;padding-top:14px;padding-left:3px;background:#f79076;font-size:18px">档口名的搜索结果:</p>
+    				                	        <p style="height:30px;padding-top:14px;padding-left:3px;background:#f79076;font-size:18px;color:white">档口名的搜索结果:</p>
     				                	        <c:forEach items="${windowItemsList }" var="item">
 										                    <table width="100%" onclick="location.href='userWindowContents.action?wndID=${item.wndID}';" >
                                                                 <tr style="height:30px">

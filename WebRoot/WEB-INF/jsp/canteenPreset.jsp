@@ -18,7 +18,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                              user-scalable=true">
         <meta http-equiv="pragma" content="no-cache">
         <meta http-equiv="cache-control" content="no-cache">
-        <meta http-equiv="expires" content="0">    
+        <meta http-equiv="expires" content="0">
+            
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <!--自定义-->      
         <link rel="stylesheet" href="css/my-custom.css">
@@ -29,7 +30,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <script src="js/jquery-1.10.1.min.js"></script>       
         
         <!--bootstrap-->    
-        <script src="js/bootstrap.min.js"></script>  
+        <script src="js/bootstrap.min.js"></script>
+         
     </head>
     
     <body>
@@ -170,5 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>  
             </div>
         </div>
+
+
     </body>
 </html>
