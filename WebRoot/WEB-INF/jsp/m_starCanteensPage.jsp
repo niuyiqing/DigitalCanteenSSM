@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	        <tr>
         	        	<td style='vertical-align: middle;text-align: center;font-size:20px;color:black;width:20%'>${item.cantName }</td>
         	            <td style='vertical-align: middle;width:50%' >
-        	                <img src="/upload/pic/3e13ffb4-e5df-43e8-8794-172e475398b2.jpg" class="center-block" height="100" width="160" style="border-radius:3%;">
+        	                <img src="/upload/pic/${item.cantPhoto }" class="center-block" height="100" width="160" style="border-radius:3%;">
         	            </td>                                                                                                       
         	        </tr>
         	    </table>
