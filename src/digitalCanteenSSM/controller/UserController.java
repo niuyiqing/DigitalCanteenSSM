@@ -225,7 +225,13 @@ public class UserController {
 		WindowItems windowItems = windowPresetService.findWindowById(wndID);
 		/*List<DishItems> dishItemsList = dishManagementService.findDishesInWindow(wndID);*/
 		modelAndView.addObject("windowItems",windowPresetService.findWindowById(wndID));
-		modelAndView.addObject("dishItemsList",dishManagementService.findDishesInWindow(wndID));
+		
+		Detail detail = new Detail();
+		detail.setDetailRecordID(recordService.findLatestRecordInCanteen(windowPresetService.findWindowById(wndID).getCantID()).getRecordID());
+		detail.setDetailWndID(wndID);
+		List<Detail> detailList = detailService.findDetailInWndByRecordID(detail);		
+		modelAndView.addObject("detailList", detailList);
+		
 		modelAndView.setViewName("/WEB-INF/jsp/userWindowContents.jsp");
 		
 		return modelAndView;

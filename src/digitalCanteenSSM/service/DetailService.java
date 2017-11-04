@@ -33,4 +33,6 @@ public interface DetailService {
 	public void takeDetailsOnShelfByDishID(Integer dishID) throws Exception;
 
 	public List<Detail> findDetailByDateAndID(Detail detail) throws Exception;
+	
+	public List<Detail> findDetailInWndByRecordID(Detail detail) throws Exception;
 }

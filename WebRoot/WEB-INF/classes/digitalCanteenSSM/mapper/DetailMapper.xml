@@ -34,6 +34,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and ctdetail.DetailDishDateFlag = #{detailDishDateFlag } 	
 	</select>
 	
+	<!-- 查找某个档口下录入的菜品 -->
+	<select id="findDetailInWndByRecordID" parameterType="Detail" resultType="Detail">
+		SELECT * 
+		FROM ctdetail
+		WHERE ctdetail.DetailRecordID = #{detailRecordID} and
+			  ctdetail.DetailWndID = #{detailWndID}
+	</select>
+	
 	<!-- 通过dishID查找和此菜品关联的detail -->
 	<select id="findDetailByDishID" parameterType="Integer" resultType="Detail">
 		SELECT *

@@ -188,20 +188,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div class="col-sm-9">
                                     <select name="dishDate" class="form-control">
                                         <c:choose>
-                                            <c:when test="${dishItems.dishDate == '早上'}">
-                                                <option value="早上" selected="selected">早上</option>
-                                                <option value="中午">中午</option>
-                                                <option value="晚上">晚上</option>
+                                            <c:when test="${dishItems.dishDate == '早餐'}">
+                                                <option value="早餐" selected="selected">早餐</option>
+                                                <option value="正餐">正餐</option>
+                                                <option value="全天供应">全天供应</option>
                                             </c:when>
-                                            <c:when test="${dishItems.dishDate == '中午'}">
-                                                <option value="早上">早上</option>
-                                                <option value="中午" selected="selected">中午</option>
-                                                <option value="晚上">晚上</option>
+                                            <c:when test="${dishItems.dishDate == '正餐'}">
+                                                <option value="早餐">早餐</option>
+                                                <option value="正餐" selected="selected">正餐</option>
+                                                <option value="全天供应">全天供应</option>
                                             </c:when>
                                             <c:otherwise>
-                                                <option value="早上">早上</option>
-                                                <option value="中午">中午</option>
-                                                <option value="晚上" selected="selected">晚上</option>
+                                                <option value="早餐">早餐</option>
+                                                <option value="正餐">正餐</option>
+                                                <option value="全天供应" selected="selected">全天供应</option>
                                             </c:otherwise>
                                         </c:choose>
                                     </select> 

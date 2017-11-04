@@ -61,25 +61,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="item-wrap" style="margin-top: 10px;">
     	    <form role="form" name="dishForm" enctype="multipart/form-data">
 			    <input name="dishID" type="hidden" value="${dishItems.dishID }">								
-			   	    <c:forEach items="${dishItemsList }" var="item" >
+			   	    <c:forEach items="${detailList }" var="item" >
                     <div id="view" class="item clearfix">
                         <div class="txt-item" style="padding-top:0px;margin-left:0px">
                             <table width="70%">
     	                        <tr>    							 		
     	            	           	<td style='vertical-align: middle;text-align: center;' rowspan="3" width="30%">
-    	                             	<c:if test="${item.dishPhoto != null }">												   	
-    			           	           		<img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%"/>
+    	                             	<c:if test="${item.detailDishPhoto != null }">												   	
+    			           	           		<img src="/upload/pic/${item.detailDishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%"/>
     			           	           	</c:if>
     		      	      	        </td>
-                                    <td style='vertical-align: middle;text-align: left;font-size:1.5em;padding-left:12px;padding-top:3px' colspan=2>${item.dishName }</td>
+                                    <td style='vertical-align: middle;text-align: left;font-size:1.5em;padding-left:12px;padding-top:3px' colspan=2>${item.detailDishName }</td>
     	                        </tr>
                                 <tr>
-                                    <td style='vertical-align: middle;text-align: left;padding-left:12px' width="30%">${item.dishSale }</td>
-                                    <td style='vertical-align: middle;text-align: center;' width="30%">${item.dishDate }</td>
+                                    <td style='vertical-align: middle;text-align: left;padding-left:12px' width="30%">${item.detailDishSale }</td>
+                                    <td style='vertical-align: middle;text-align: center;' width="30%">${item.detailDishDate }</td>
                                 </tr>
                                 <tr>
-                                    <td style='vertical-align: middle;text-align: left;color:#29C192;font-size:1.5em;padding-left:12px'>￥${item.dishPrice }</td>
-                                    <td style='vertical-align: middle;text-align: center;'>${item.dishTypeName }</td>
+                                    <td style='vertical-align: middle;text-align: left;color:#29C192;font-size:1.5em;padding-left:12px'>￥${item.detailDishPrice }</td>
+                                    <td style='vertical-align: middle;text-align: center;'>${item.detailDishSale }</td>
                                 </tr>
                             </table>
                         </div>

@@ -118,8 +118,7 @@ public class DishManagementController {
 		String pageNum = request.getParameter("pageNum");
 		String pageSize = request.getParameter("pageSize");
 		int num = 1;
-		//菜品信息带有图片，所以一页只放五个元素
-		int size = 5;
+		int size = 10;
 		if (pageNum != null && !"".equals(pageNum)) {
 			num = Integer.parseInt(pageNum);
 		}

@@ -85,6 +85,11 @@ public class DetailServiceImpl implements DetailService{
 		
 		return detailMapper.findDetailByDateAndID(detail);
 	}	
+	
+	@Override
+	public List<Detail> findDetailInWndByRecordID(Detail detail) throws Exception{
+		return detailMapper.findDetailInWndByRecordID(detail);
+	}
 }
 
 
