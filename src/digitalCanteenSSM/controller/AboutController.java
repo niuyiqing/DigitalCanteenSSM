@@ -8,9 +8,20 @@ import org.springframework.web.servlet.ModelAndView;
 public class AboutController {
 	@RequestMapping("/aboutPage")
 	public ModelAndView aboutPage() throws Exception{
+		
 		ModelAndView modelAndView = new ModelAndView();
 		
 		modelAndView.setViewName("/WEB-INF/jsp/m_aboutPage.jsp");
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping("/sharePage")
+	public ModelAndView sharePage()throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.setViewName("/WEB-INF/jsp/m_sharePage.jsp");
 		
 		return modelAndView;
 	}
