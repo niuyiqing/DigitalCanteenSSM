@@ -200,7 +200,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                             <div class="item clearfix">
                                                                 <div class="txt-item" style=" margin-right:0px; margin-left:5px;padding-top:5px">
                                                                     <table  width="100%">                                                        
-                                                                        <tr style="height:30px">
+                                                                        <tr style="height:30px"> 
                                                                             <td style='vertical-align: left;text-align: center;' rowspan=3>
                                                                                 <c:if test="${item.detailDishPhoto != null }">
                                                                                     <img src="/upload/pic/${item.detailDishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%;margin-left:20px;margin-right:-50px">
@@ -278,7 +278,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <a href="userHomepage.action"><span>首页</span></a>
                 </li>
                 <li style="position:relative;">
-                    <span>附近</span>
+                    <a href="aboutPage.action"><span>关于</span></a>
                 </li>
                 <li>
                     <span>订单</span>
