@@ -118,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">档口图片：</label>
+                                    <label class="col-sm-2 control-label">档口图片</label>
                                     <div class="col-sm-9">
                                         <input type="file" name="wndPhotoFile"/>
                                     </div>
@@ -202,7 +202,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <td style='vertical-align: middle;text-align: center;'>${item.wndName }</td>
                                         <td style='vertical-align: middle;text-align: center;'>
                                             <c:if test="${item.wndPhoto != null }">
-                                                <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="100" width="120"/>
+                                                <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="80" width="100"/>
                                             </c:if>
                                         </td>
                                         <td style='vertical-align: middle;text-align: center;'>${item.wndAddr}</td>

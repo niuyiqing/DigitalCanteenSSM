@@ -44,6 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="panel-body">
     					<form class="form-horizontal" role="form" name="updateCanteen" method="post" action="modifyCanteenSave.action" enctype="multipart/form-data">
     						<input name="cantID" type="hidden" value="${canteenItems.cantID }">
+                            <input name="starCant" type="hidden" value="${canteenItems.starCant }">
     						<div class="form-group">                                                                   
                                 <label class="col-sm-2 control-label">食堂所属校区</label>
                                 <div class="col-sm-9">    
