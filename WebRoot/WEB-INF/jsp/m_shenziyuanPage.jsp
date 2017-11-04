@@ -64,12 +64,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             			<c:forEach items="${starShenziyuanDishesList }"  var="item">
         	    		    <table  width="100%" >					
         	    		        <tr style="height:50px">					 				                	    		        
-        	    		            <td style='vertical-align: middle;width:50%' rowspan=2>
+        	    		            <td style='vertical-align: middle;width:30%' rowspan=2>
                 	    				<c:if test="${item.dishPhoto != null }">
-                	       				    <img src="/upload/pic/${item.dishPhoto }" class="center-block" height="100" width="160" style="border-radius:3%"/>
+                	       				    <img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="128" style="border-radius:3%"/>
                 	       				</c:if>
            	    				    </td>						               	    			 	
-        	    			   	    <td style='vertical-align: middle;text-align: left;font-size:18px; font-weight:500;color:black;width: 35%;'>${item.dishName }</td>        	    			   	    						                	   	
+        	    			   	    <td style='vertical-align: middle;text-align: left;font-size:18px; font-weight:500;color:black;width: 55%;'>${item.dishName }</td>        	    			   	    						                	   	
         	    			    </tr>
 	         	    			<tr style="height:50px">						  
 	         	    			    <td style='vertical-align: middle;text-align: left;color:#29C192;font-size:20px;'>￥${item.dishPrice }</td>
@@ -84,12 +84,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		         	<c:forEach items="${nonStarShenziyuanDishesList }"  var="item">
             	    		<table  width="100%" >					
         	    		        <tr style="height:50px">					 				                	    		        
-        	    		            <td style='vertical-align: middle;width:50%' rowspan=2>
+        	    		            <td style='vertical-align: middle;width:30%' rowspan=2>
                 	    				<c:if test="${item.dishPhoto != null }">
-                	       				    <img src="/upload/pic/${item.dishPhoto }" class="center-block" height="100" width="160" style="border-radius:3%"/>
+                	       				    <img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="128" style="border-radius:3%"/>
                 	       				</c:if>
            	    				    </td>						               	    			 	
-        	    			   	    <td style='vertical-align: middle;text-align: left;font-size:18px; font-weight:500;color:black;width: 35%;'>${item.dishName }</td>        	    			   	    						                	   	
+        	    			   	    <td style='vertical-align: middle;text-align: left;font-size:18px; font-weight:500;color:black;width: 55%;'>${item.dishName }</td>        	    			   	    						                	   	
         	    			    </tr>
 	         	    			<tr style="height:50px">						  
 	         	    			    <td style='vertical-align: middle;text-align: left;color:#29C192;font-size:20px;'>￥${item.dishPrice }</td>
