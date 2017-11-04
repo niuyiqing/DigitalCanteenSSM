@@ -67,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    		    <input  type="button" value="查询"  class="btn btn-primary btn-wide" style="background:rgba(41, 193, 146,0.8);" onclick="userQueryAll()">
 				    		</div>
                             <div >
-                                <img src="/upload/pic/3.jpg" class="center-block" width="100%">
+                                <img src="/upload/pic/search.png" class="center-block" width="100%">
                             </div>		    		    													
 						</form>			   		   			   			
 			   			<!-- 所属校区，所属试探，食堂下的档口 --> 		
@@ -151,16 +151,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="footnav">
             <ul>
                 <li>
-                    <a href="userHomepage.action"><span>首页</span></a>
-                </li>
-                <li style="position:relative;">
-                    <span>附近</span>
+                    <a data-ajax="false" href="userHomepage.action"><span>首页</span></a>
                 </li>
                 <li>
                     <span>订单</span>
                 </li>
                 <li>
                     <span>我的</span>
+                </li>
+                <li style="position:relative;">
+                    <a data-ajax="false" href="aboutPage.action"><span>关于</span></a>
                 </li>
             </ul>
         </div>
