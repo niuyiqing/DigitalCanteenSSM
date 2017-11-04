@@ -224,8 +224,13 @@ public class DishManagementController {
 				
 		Record record = new Record();
 		record.setRecordID(recordID);
-		record.setRecordCheck(recordCheck);
-		recordService.updateRecordCheck(record);		
+		
+		if(recordCheck == 0){	//同意
+			record.setRecordCheck(recordCheck);
+			recordService.updateRecordCheck(record);
+		}else{
+			recordService.deleteRecord(record);
+		}
 		
 		return "forward:dishImportCheck.action";
 	}
