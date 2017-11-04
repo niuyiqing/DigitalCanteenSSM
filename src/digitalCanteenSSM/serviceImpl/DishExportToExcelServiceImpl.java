@@ -28,7 +28,8 @@ import digitalCanteenSSM.service.DishExportToExcelService;
 public class DishExportToExcelServiceImpl implements DishExportToExcelService{
 
 	@Override
-	public void writeExcel(List<RecordItems> recordItemsList,List<CanteenItems> canteenList,HttpServletResponse res, String timeInFileName) throws IOException, ParseException {
+	public void writeExcel(List<RecordItems> recordItemsList, List<CanteenItems> canteenList,
+			HttpServletResponse res, String timeInFileName) throws IOException, ParseException {
 		// TODO Auto-generated method stub
 		// 1.创建一个workbook，对应一个Excel文件
         HSSFWorkbook workBook = new HSSFWorkbook();
@@ -60,26 +61,30 @@ public class DishExportToExcelServiceImpl implements DishExportToExcelService{
             cell.setCellStyle(style);
             
             cell = row.createCell(1);
-            cell.setCellValue("记录日期");
+            cell.setCellValue("档口名称");
             cell.setCellStyle(style);
             
             cell = row.createCell(2);
-            cell.setCellValue("操作人");
+            cell.setCellValue("记录日期");
             cell.setCellStyle(style);
             
             cell = row.createCell(3);
-            cell.setCellValue("菜品名");
+            cell.setCellValue("操作人");
             cell.setCellStyle(style);
             
             cell = row.createCell(4);
-            cell.setCellValue("菜品价格");
+            cell.setCellValue("菜品名");
             cell.setCellStyle(style);
             
             cell = row.createCell(5);
-            cell.setCellValue("菜品时间档");
+            cell.setCellValue("菜品价格");
             cell.setCellStyle(style);
             
             cell = row.createCell(6);
+            cell.setCellValue("菜品时间档");
+            cell.setCellStyle(style);
+            
+            cell = row.createCell(7);
             cell.setCellValue("是否留样");
             cell.setCellStyle(style);
             
@@ -91,12 +96,13 @@ public class DishExportToExcelServiceImpl implements DishExportToExcelService{
             		row = sheet.createRow((int) j + 1);  
             		j++;
                     row.createCell(0).setCellValue(recordItems.getRecordCantName());
-                    row.createCell(1).setCellValue(formatter.format(recordItems.getRecordDate()));
-                    row.createCell(2).setCellValue(recordItems.getRecordMUserName());
-                    row.createCell(3).setCellValue(recordItems.getDetailDishName());
-                    row.createCell(4).setCellValue(recordItems.getDetailDishPrice());
-                    row.createCell(5).setCellValue(recordItems.getDetailDishDate());
-                    row.createCell(6).setCellValue(recordItems.getDetailDishKeep());
+                    row.createCell(1).setCellValue(recordItems.getDetailWndName());
+                    row.createCell(2).setCellValue(formatter.format(recordItems.getRecordDate()));
+                    row.createCell(3).setCellValue(recordItems.getRecordMUserName());
+                    row.createCell(4).setCellValue(recordItems.getDetailDishName());
+                    row.createCell(5).setCellValue(recordItems.getDetailDishPrice());
+                    row.createCell(6).setCellValue(recordItems.getDetailDishDate());
+                    row.createCell(7).setCellValue(recordItems.getDetailDishKeep());
             	}
             }
         }       

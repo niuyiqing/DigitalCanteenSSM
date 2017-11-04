@@ -12,45 +12,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<head>
     	<base href="<%=basePath%>">   	
     	<title>登录</title>
-		  <meta http-equiv="pragma" content="no-cache" />
-      <meta http-equiv="cache-control" content="no-cache" />
-      <meta http-equiv="expires" content="0">   
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui" />
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-      <meta name="format-detection" content="telephone=no">
-      <meta name="apple-mobile-web-app-title" content="掌上食堂">
-      <link rel="apple-touch-icon-precomposed" href="http://10.141.114.134:8080/DigitalCanteenSSM/apple-touch-icon-52.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://10.141.114.134:8080/DigitalCanteenSSM/apple-touch-icon-72.png">
-      <link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://10.141.114.134:8080/DigitalCanteenSSM/apple-touch-icon-120.png">
-      <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://10.141.114.134:8080/DigitalCanteenSSM/apple-touch-icon-144.png">
-      <link rel="stylesheet" type="text/css" href="css/dtfknormalize.css"/>
-      <link rel="stylesheet" type="text/css" href="css/dtfkdefault.css">
-      <link rel="stylesheet" type="text/css" href="css/dtfkstyles.css">
-      <link rel="stylesheet" type="text/css" href="css/inserthtml.com.radios.css">
-      <script src="js/modernizr.js"></script>
-      <script>  
-      if(('standalone' in window.navigator)&&window.navigator.standalone){  
-              var noddy,remotes=false;  
-              document.addEventListener('click',function(event){  
-                      noddy=event.target;  
-                      while(noddy.nodeName!=='A'&&noddy.nodeName!=='HTML') noddy=noddy.parentNode;  
-                      if('href' in noddy&&noddy.href.indexOf('http')!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){  
-                              event.preventDefault();  
-                              document.location.href=noddy.href;  
-                      }  
-              },false);  
-      }  
-      </script>
+		<meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="expires" content="0">   
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-mobile-web-app-title" content="理工餐饮管理">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="manager-icon-57.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="manager-icon-72.png">
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="manager-icon-76.png">
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="manager-icon-120.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="manager-icon-144.png">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="manager-icon-152.png">
+        <link rel="apple-touch-icon-precomposed" sizes="180x180" href="manager-icon-180.png">
+        <link rel="stylesheet" type="text/css" href="css/dtfknormalize.css"/>
+        <link rel="stylesheet" type="text/css" href="css/dtfkdefault.css">
+        <link rel="stylesheet" type="text/css" href="css/dtfkstyles.css">
+        <link rel="stylesheet" type="text/css" href="css/inserthtml.com.radios.css">
+        <script src="js/modernizr.js"></script>
+        <script>  
+        if(('standalone' in window.navigator)&&window.navigator.standalone){  
+                var noddy,remotes=false;  
+                document.addEventListener('click',function(event){  
+                        noddy=event.target;  
+                        while(noddy.nodeName!=='A'&&noddy.nodeName!=='HTML') noddy=noddy.parentNode;  
+                        if('href' in noddy&&noddy.href.indexOf('http')!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){  
+                                event.preventDefault();  
+                                document.location.href=noddy.href;  
+                        }  
+                },false);  
+        }  
+        </script>
         <script>
      
-           window.onload= function(){
-           if(!($('#userName').val()=="")){
-            document.getElementById('myForm').submit();
+        window.onload= function(){
+        if(!($('#userName').val()=="")){
+         document.getElementById('myForm').submit();
           }        
-            }
+        }
         </script>
     <%
      String userName = "";

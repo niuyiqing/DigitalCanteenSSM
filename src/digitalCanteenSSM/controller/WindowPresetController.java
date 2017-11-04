@@ -53,7 +53,7 @@ public class WindowPresetController {
 		String pageNum = request.getParameter("pageNum");
 		String pageSize = request.getParameter("pageSize");
 		int num = 1;
-		int size = 5;
+		int size = 10;
 		if (pageNum != null && !"".equals(pageNum)) {
 			num = Integer.parseInt(pageNum);
 		}

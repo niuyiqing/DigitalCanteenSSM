@@ -77,7 +77,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY CantID	DESC
 		-->
 		
-		SELECT ctcant.*, ctcanttype.CantTypeName
+		SELECT ctcant.*, ctcanttype.CantTypeName, ctcampus.CampusName
 		FROM ctcant, ctcampus, ctcanttype
 		WHERE ctcant.CantCampusID= #{cantCampusID} and 
         ctcant.CantCampusID = ctcampus.CampusID and 

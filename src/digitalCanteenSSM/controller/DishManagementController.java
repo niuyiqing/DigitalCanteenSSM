@@ -28,7 +28,7 @@ import digitalCanteenSSM.po.DishItems;
 import digitalCanteenSSM.po.Log;
 import digitalCanteenSSM.po.MUserItems;
 import digitalCanteenSSM.po.Record;
-import digitalCanteenSSM.service.CampusPresetService;
+//import digitalCanteenSSM.service.CampusPresetService;
 import digitalCanteenSSM.service.CanteenPresetService;
 import digitalCanteenSSM.service.DetailService;
 import digitalCanteenSSM.service.DishManagementService;
@@ -36,7 +36,7 @@ import digitalCanteenSSM.service.DishPresetService;
 import digitalCanteenSSM.service.DishTypePresetService;
 import digitalCanteenSSM.service.LogService;
 import digitalCanteenSSM.service.RecordService;
-import digitalCanteenSSM.service.UploadFileService;
+//import digitalCanteenSSM.service.UploadFileService;
 import digitalCanteenSSM.service.WindowPresetService;
 
 @Controller
@@ -64,8 +64,8 @@ public class DishManagementController {
 	private DetailService detailService;
 	@Autowired
 	private LogService logService;
-	@Autowired
-	private CampusPresetService campusPresetService;
+	//@Autowired
+	//private CampusPresetService campusPresetService;
 	@Autowired
 	private CanteenPresetService canteenPresetService;
 	

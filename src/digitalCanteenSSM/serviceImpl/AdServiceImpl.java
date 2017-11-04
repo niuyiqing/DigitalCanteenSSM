@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import digitalCanteenSSM.mapper.AdMapper;
+/*
 import digitalCanteenSSM.mapper.DishManagementMapper;
+*/
 import digitalCanteenSSM.po.Ad;
 import digitalCanteenSSM.service.AdService;
 

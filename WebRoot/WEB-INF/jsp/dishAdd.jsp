@@ -47,6 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		dishPresetList：所有菜品信息列表
         		dishName：菜品select标签的选择值
         	*/
+            /*
         	function getDish(objValue){
         		var objForm = document.forms["dishInsertForm"];
         		if(objValue == ""){
@@ -56,9 +57,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         			objForm.dishName.options.length = 0;
         			
 	    		var optionObj = document.createElement("option");
-        			optionObj.text = "请选择菜品";
-                    optionObj.value = "0";
-                    objForm.dishName.add(optionObj);
+        			//optionObj.text = "请选择菜品";
+                    //optionObj.value = "0";
+                    //objForm.dishName.add(optionObj);
                     
         			<c:forEach items="${dishPresetList }" var="item" >
  	     				var optionObj = document.createElement("option");
@@ -68,6 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    			</c:forEach>
         		}
         	}
+            */
 	    	
         	function check(form){
             	if(form.cantCampusID.value == ""){
@@ -84,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	}
             	if(form.wndName.value == ""){
             		alert("请填写菜品名称！");
-            		form.wndName.focus();
+            		form.dishName.focus();
             		return false;
             	}
             }
@@ -140,8 +142,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <label class="col-sm-2 control-label">菜品名称</label>
                                 <div class="col-sm-9">
                                     <!-- 选择菜品  -->
-                                    <select name="dishName" class="form-control" disabled="disabled">
+                                    <select name="dishName" class="form-control">
                                         <option value="">请选择菜品</option>
+                                        <c:forEach items="${dishPresetList }" var="item" >
+                                            <option value="${item.dishPresetName}">${item.dishPresetName}</option>
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>
@@ -164,8 +169,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <label class="col-sm-2 control-label">菜品留样</label>
                                 <div class="col-sm-9">
                                     <select name="dishKeep" class="form-control">
-                                        <option value="否" selected="selected">否</option>
-                                        <option value="是">是</option>            
+                                        <option value="否">否</option>
+                                        <option value="是" selected="selected">是</option>            
                                     </select>
                                 </div>
                             </div> 
@@ -181,8 +186,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <label class="col-sm-2 control-label">销售时间</label>
                                 <div class="col-sm-9">
                                     <select name="dishDate" class="form-control">
-                                        <option value="早餐" selected="selected">早餐</option>
-                                        <option value="正餐">正餐</option>
+                                        <option value="早餐">早餐</option>
+                                        <option value="正餐" selected="selected">正餐</option>
                                         <option value="全天供应">全天供应</option>
                                     </select>
                                 </div>

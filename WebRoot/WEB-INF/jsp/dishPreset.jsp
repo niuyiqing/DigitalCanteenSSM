@@ -91,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						    		    <td style='vertical-align: middle;text-align: center;'>${item.dishPresetName }</td>
 						    		    <td style='vertical-align: middle;text-align: center;'>
 						    		    	<c:if test="${item.dishPresetPhoto != null }">
-	                		    				<img src="/upload/pic/${item.dishPresetPhoto }" class="center-block" height="100" width="120"/>
+	                		    				<img src="/upload/pic/${item.dishPresetPhoto }" class="center-block" height="80" width="100"/>
 	                		    			</c:if>
 						    		    </td>
 						    		    <td style='vertical-align: middle;text-align: center;'>						    		    	
