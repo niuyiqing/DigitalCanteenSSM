@@ -275,16 +275,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="footnav">
             <ul>
                 <li>
-                    <a href="userHomepage.action"><span>首页</span></a>
-                </li>
-                <li style="position:relative;">
-                    <a href="aboutPage.action"><span>关于</span></a>
+                    <a data-ajax="false" href="userHomepage.action"><span>首页</span></a>
                 </li>
                 <li>
                     <span>订单</span>
                 </li>
                 <li>
                     <span>我的</span>
+                </li>
+                <li style="position:relative;">
+                    <a data-ajax="false" href="aboutPage.action"><span>关于</span></a>
                 </li>
             </ul>
         </div>

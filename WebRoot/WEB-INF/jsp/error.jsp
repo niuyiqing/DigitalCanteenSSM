@@ -25,7 +25,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <h1>未知错误</h1><br>
-    <a href="login.action">跳回主页面</a>
+    <div style="position: absolute;top: 15%;width:100%">
+    <h3>系统遇到未知错误，请返回</h3><br><br><br><br>
+    <a onclick="javascript:history.back(-1)">返回上一页</a>
+    </div>
   </body>
 </html>
