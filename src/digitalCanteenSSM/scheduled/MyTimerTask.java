@@ -1,36 +1,42 @@
 package digitalCanteenSSM.scheduled;
 
 import java.text.ParseException;
+/*
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+*/
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
+/*
 import digitalCanteenSSM.exception.ResultInfo;
 import digitalCanteenSSM.po.Detail;
 import digitalCanteenSSM.po.Log;
 import digitalCanteenSSM.po.MUserItems;
 import digitalCanteenSSM.po.Record;
+
 import digitalCanteenSSM.service.DetailService;
+
 import digitalCanteenSSM.service.LogService;
+
 import digitalCanteenSSM.service.MUserService;
 import digitalCanteenSSM.service.RecordService;
+*/
 
 @Component
 public class MyTimerTask {
 	
-	@Autowired
-	private MUserService mUserService;
+	//@Autowired
+	//private MUserService mUserService;
 	
-	@Autowired
-	private RecordService recordService;
+	//@Autowired
+	//private RecordService recordService;
 	
-	@Autowired
-	private DetailService detailService;
+	//@Autowired
+	//private DetailService detailService;
 	
 	@Scheduled(cron="59 59 23  * * ? ") 
     public void myTask() throws ParseException{

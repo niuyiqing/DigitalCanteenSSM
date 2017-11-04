@@ -36,7 +36,7 @@ import digitalCanteenSSM.service.RoleService;
 import digitalCanteenSSM.service.UploadFileService;
 import digitalCanteenSSM.service.UserService;
 import digitalCanteenSSM.service.WindowPresetService;
-import digitalCanteenSSM.util.CheckMobile;
+//import digitalCanteenSSM.util.CheckMobile;
 
 @Controller
 public class UserController {

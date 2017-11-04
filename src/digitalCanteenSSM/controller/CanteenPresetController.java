@@ -28,7 +28,7 @@ import digitalCanteenSSM.service.CampusPresetService;
 import digitalCanteenSSM.service.CanteenPresetService;
 import digitalCanteenSSM.service.CanteenTypePresetService;
 import digitalCanteenSSM.service.DetailService;
-import digitalCanteenSSM.service.DishManagementService;
+//import digitalCanteenSSM.service.DishManagementService;
 import digitalCanteenSSM.service.RecordService;
 import digitalCanteenSSM.service.UploadFileService;
 import digitalCanteenSSM.service.WindowPresetService;

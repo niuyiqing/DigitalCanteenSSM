@@ -6,14 +6,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import digitalCanteenSSM.mapper.DishManagementMapper;
 import digitalCanteenSSM.mapper.UserMapper;
+/*
+import digitalCanteenSSM.mapper.DishManagementMapper;
 import digitalCanteenSSM.mapper.WindowPresetMapper;
 import digitalCanteenSSM.po.Dish;
+import digitalCanteenSSM.po.Window;
+*/
 import digitalCanteenSSM.po.DishItems;
 import digitalCanteenSSM.po.User;
 import digitalCanteenSSM.po.UserItems;
-import digitalCanteenSSM.po.Window;
 import digitalCanteenSSM.po.WindowItems;
 import digitalCanteenSSM.service.UserService;
 
