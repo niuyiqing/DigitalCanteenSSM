@@ -18,28 +18,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 		<meta name="format-detection" content="telephone=no">
 		<link rel="stylesheet" href="css/m_bootstrap.min.css"/>
-		<link rel="stylesheet" type="text/css" href="css/footnav.css" />
-        <script>
-            function getversion(){
-                alert("本应用信息图片归武汉理工大学后勤集团总公司所有");
-
-            }
-        </script>
+        <link rel="stylesheet" type="text/css" href="css/footnav.css" />
 	</head>
 
 	<body>
-		<div style="position: absolute;top: 5%;width:100%"><h3>关于武汉理工餐饮信息系统</h3></div>
-		<div style="position: absolute;top: 15%;">
-            <img src="/upload/pic/abouticon.png" class="center-block" width="40%">
-            <div><h3>版本号：v1.0</h3></div>
-            <br>
-            <br>
-            <br>
-            <ul>
-            	<li style="height:50px;font-size:20px"><a href="sharePage.action">分享应用</a></li>
-            	<li style="height:50px;font-size:20px" onclick="getversion()">版权信息</li>
-            	<li style="height:50px;font-size:20px"><a href="sharePage.action">联系我们</a></li>
-            </ul>
+		<div style="position: absolute;top: 15%;width:100%">
+            <h3>武汉理工后勤公众号</h3>
+            <img src="/upload/pic/qrcode.png" class="center-block" width="50%">
         </div>
         <div class="footnav">
             <ul>
@@ -57,6 +42,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
             </ul>
         </div>
-
 	</body>
 </html>
