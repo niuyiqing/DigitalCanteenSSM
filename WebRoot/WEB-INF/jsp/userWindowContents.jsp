@@ -74,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <td style='vertical-align: middle;text-align: left;font-size:1.5em;padding-left:12px;padding-top:3px' colspan=2>${item.detailDishName }</td>
     	                        </tr>
                                 <tr>
-                                    <td style='vertical-align: middle;text-align: left;padding-left:12px' width="30%">${item.detailDishSale }</td>
+                                    <td style='vertical-align: middle;text-align: left;padding-left:12px' width="30%">  </td>
                                     <td style='vertical-align: middle;text-align: center;' width="30%">${item.detailDishDate }</td>
                                 </tr>
                                 <tr>
