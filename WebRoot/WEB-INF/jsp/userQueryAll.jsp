@@ -88,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 				                	       				    <img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%"/>
                 				                	       				</c:if>
         				                   	    				    </td>						               	    			 	
-        				                	    			   	    <td style='vertical-align: middle;text-align: center;font-size:18px; font-weight:500;width: 100%;'>${item.dishName }</td>
+        				                	    			   	    <td style='vertical-align: middle;line-height: 18px;text-align: center;font-size:18px; font-weight:500;width: 100%;'>${item.dishName }</td>
         				                	    			   	    <td style='vertical-align: left;min-width: 100px;font-size:14px'>${item.dishTypeName }</td>						                	   	
         				                	    			    </tr>
         				                	    			    <tr style="height:30px">							               	    		   
@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				                	    			        </tr>
     				                	    			        <tr style="height:30px">						  
     				                	    			   	        <td style='vertical-align: middle;text-align: center;color:#29C192;font-size:20px; width: 100%;'>￥${item.dishPrice }</td>
-    				                	    			   	        <td style='vertical-align: middle;font-size:14px;'> ${item.campusName } ${item.cantName }</td>     
+    				                	    			   	        <td style='vertical-align: middle;line-height: 14px;font-size:14px;'> ${item.campusName } ${item.cantName }</td>     
     				                	    			        </tr>
     				                	    			    </table>
                                                             <div style=" height: 1px; border-top: 1px solid #ddd;text-align: center;"></div>
@@ -110,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                     <td  rowspan="3" style="width:28% ">
                                                                         <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="80" width="80" style="border-radius:5%;margin-left:5px"/>
                                                                     </td>
-                                                                    <td style="padding-left:12px;font-size:18px;font-weight:500;width:42%">
+                                                                    <td style="line-height: 18px;font-size:18px;font-weight:500;width:42%">
                                                                         <p>${item.wndName }</p>
                                                                     </td>
                                                                     <td style="width:25%;font-size:14px;width:30%">

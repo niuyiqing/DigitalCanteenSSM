@@ -195,24 +195,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <c:when test="${supplyTime!=null }">
                             <c:forEach items="${dishesDetailList }" var="item" >
                                 <div class="item clearfix">
-                                    <div class="txt-item" style=" margin-right:0px; margin-left:5px;padding-top:5px">
+                                    <div class="txt-item" style="margin-left:5px;padding-top:5px">
                                         <table  width="100%" style="color:black">                                                        
-                                            <tr style="height:30px">
-                                                <td style='vertical-align: left;text-align: center;' rowspan=3>
+                                            <tr style="height:40px"> 
+                                                <td style='vertical-align: left;text-align: center;width:27%' rowspan=3>
                                                     <c:if test="${item.detailDishPhoto != null }">
-                                                        <img src="/upload/pic/${item.detailDishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%;margin-left:20px;margin-right:-50px">
+                                                        <img src="/upload/pic/${item.detailDishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%;margin-left:2px;margin-right:-50px">
                                                     </c:if>
                                                 </td>                                                           
-                                                <td style='vertical-align: middle;font-size:18px;font-weight:500;width:120px' >${item.detailDishName}</td>
+                                                <td style='vertical-align: middle;line-height: 18px;font-size:18px;font-weight:500;width:45%' >${item.detailDishName}</td>
                                                 <td style='vertical-align: middle;'></td>                                             
                                             </tr>
                                             <tr style="height:30px">                                                           
-                                                <td style='vertical-align: middle;font-size:16px;'>[${item.detailWndName }]</td>
-                                                <td style='vertical-align: middle;font-size:16px;'>${item.detailDishDate } </td> 
+                                                <td style='vertical-align: middle;line-height: 14px;font-size:14px;'>[${item.detailWndName }]</td>
+                                                <td style='vertical-align: middle;font-size:14px;'>${item.detailDishDate } </td> 
                                             </tr>
-                                            <tr style="height:30px">                          
-                                                <td style='vertical-align: middle;color:#29C192;font-size:20px;'>￥${item.detailDishPrice }</td>
-                                                <td style='vertical-align: middle;'><fmt:formatDate value="${item.detailDishInDate}" pattern="yyyy-MM-dd" /></td>
+                                            <tr style="height:20px">                          
+                                                <td style='vertical-align: middle;color:#29C192;font-size:18px;'>￥${item.detailDishPrice }</td>
+                                                <td style='vertical-align: middle;font-size:16px;'><fmt:formatDate value="${item.detailDishInDate}" pattern="yyyy-MM-dd" /></td>
                                             </tr>
                                         </table>
                                         <div style=" height: 1px; border-top: 1px solid #ddd;text-align: center;"></div>
@@ -232,7 +232,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </td>
                                     </tr>
                                     <tr style="height:30px">
-                                        <td style="padding-left:12px;color:#29C192;font-size:20px;width:30%">
+                                        <td style="padding-left:12px;color:#29C192;font-size:20px;width:35%">
                                             <p class="txt">￥${wnditem.wndPriceRange}</p>
                                         </td>
                                         <td style="font-size:16px;">
