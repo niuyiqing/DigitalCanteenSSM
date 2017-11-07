@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="back-container">
                 <button class="btn btn-link btn-lg" ><a style="color:white" class="icon icon-fanhui" data-ajax="false" onclick="javascript:history.back(-1)"></a></button>
             </div>
-            <p style="padding-top:8px;width:100%;height:100%;font-size:22px;">${windowItems.wndName }(${windowItems.campusName }&nbsp${windowItems.cantName })</p> 
+            <p style="padding-top:8px;width:100%;height:100%;font-size:1.6rem;">${windowItems.wndName }(${windowItems.campusName }&nbsp${windowItems.cantName })</p> 
         </div>
         <div style="padding-top:63px">
     	<div >
@@ -71,15 +71,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			           	           		<img src="/upload/pic/${item.detailDishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%"/>
     			           	           	</c:if>
     		      	      	        </td>
-                                    <td style='vertical-align: middle;text-align: left;font-size:1.5em;padding-left:12px;padding-top:3px' colspan=2>${item.detailDishName }</td>
+                                    <td style='vertical-align: middle;text-align: left;font-size:18px;font-weight:500;padding-left:12px;padding-top:3px' colspan=2>${item.detailDishName }</td>
     	                        </tr>
                                 <tr>
-                                    <td style='vertical-align: middle;text-align: left;padding-left:12px' width="30%">  </td>
+                                    <td style='vertical-align: middle;text-align: left;padding-left:12px' width="30%">${item.detailDishSale }  </td>
                                     <td style='vertical-align: middle;text-align: center;' width="30%">${item.detailDishDate }</td>
                                 </tr>
                                 <tr>
-                                    <td style='vertical-align: middle;text-align: left;color:#29C192;font-size:1.5em;padding-left:12px'>￥${item.detailDishPrice }</td>
-                                    <td style='vertical-align: middle;text-align: center;'>${item.detailDishSale }</td>
+                                    <td style='vertical-align: middle;text-align: left;color:#29C192;font-size:1.5em;padding-left:12px' colspan=2>￥${item.detailDishPrice }</td>
                                 </tr>
                             </table>
                         </div>

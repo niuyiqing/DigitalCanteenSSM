@@ -21,13 +21,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/m_bootstrap.min.css">
   </head>
   
   <body>
     <div style="position: absolute;top: 15%;width:100%">
-    <h3>系统遇到未知错误，请返回</h3><br><br><br><br>
-    <a onclick="javascript:history.back(-1)">返回上一页</a>
+      <h3>系统遇到未知错误，请返回</h3>
+    </div>
+    <div style="position: absolute;top: 25%;width:100%">
+      <h3><a onclick="javascript:history.back(-1)">返回上一页</a></h3>
     </div>
   </body>
 </html>

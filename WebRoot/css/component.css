@@ -322,7 +322,7 @@ html, body, .container, .scroller {
 	position: relative;
     height: 24px;
     width: 30px;
-    left: 14px;
+    left: 0px;
     top: 10px;   
 }
 
