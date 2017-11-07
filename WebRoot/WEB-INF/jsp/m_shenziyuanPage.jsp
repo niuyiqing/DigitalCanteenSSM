@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	       				    <img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="128" style="border-radius:3%"/>
                 	       				</c:if>
            	    				    </td>						               	    			 	
-        	    			   	    <td style='vertical-align: middle;text-align: left;font-size:18px; font-weight:500;color:black;width: 55%;'>${item.dishName }</td>        	    			   	    						                	   	
+        	    			   	    <td colspan="2"style='vertical-align: middle;text-align: left;font-size:18px; font-weight:500;color:black;width: 55%;line-height: 18px;'>${item.dishName }</td>        	    			   	    						                	   	
         	    			    </tr>
 	         	    			<tr style="height:50px">						  
 	         	    			    <td style='vertical-align: middle;text-align: left;color:#29C192;font-size:20px;'>￥${item.dishPrice }</td>
@@ -89,7 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	       				    <img src="/upload/pic/${item.dishPhoto }" class="center-block" height="80" width="128" style="border-radius:3%"/>
                 	       				</c:if>
            	    				    </td>						               	    			 	
-        	    			   	    <td style='vertical-align: middle;text-align: left;font-size:18px; font-weight:500;color:black;width: 55%;'>${item.dishName }</td>        	    			   	    						                	   	
+        	    			   	    <td colspan="2" style='vertical-align: middle;text-align: left;font-size:18px; font-weight:500;color:black;width: 55%;line-height: 18px;'>${item.dishName }</td>        	    			   	    						                	   	
         	    			    </tr>
 	         	    			<tr style="height:50px">						  
 	         	    			    <td style='vertical-align: middle;text-align: left;color:#29C192;font-size:20px;'>￥${item.dishPrice }</td>
