@@ -267,4 +267,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 ctdish.StarDish = 0
 		ORDER BY WndID, DishID DESC
 	</select>
+	
+	<!-- 修改某名称的已上架菜品的图片名，第一个参数是图片路径名称，第二个参数是菜品名 -->
+	<select id="changeDishPhotoByName" >
+		UPDATE ctdish
+		SET ctdish.DishPhoto = #{0}
+		WHERE ctdish.DishName = #{1}
+	</select>
 </mapper>
