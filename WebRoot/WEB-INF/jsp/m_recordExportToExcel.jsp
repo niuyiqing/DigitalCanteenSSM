@@ -164,7 +164,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <ul class="pagination">
                                         <c:if test="${!pagehelper.isFirstPage}"> 
                                         	<li>
-                                                <a href="findRecordInCampus.action?campusID=${campusID}&pageNum=${pagehelper.firstPage}&pageSize=${pagehelper.pageSize}">首页</a>
+                                                <a href="findRecordInCampus.action?campusID=${campusID}&pageNum=1&pageSize=${pagehelper.pageSize}">首页</a>
                                             </li>                                       
                                             <li>
                                                 <a href="findRecordInCampus.action?campusID=${campusID}&pageNum=${pagehelper.prePage}&pageSize=${pagehelper.pageSize}">上一页</a>
@@ -192,7 +192,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <a href="findRecordInCampus.action?campusID=${campusID}&pageNum=${pagehelper.nextPage}&pageSize=${pagehelper.pageSize}">下一页</a>
                                             </li>
                                             <li>
-                                                <a href="findRecordInCampus.action?campusID=${campusID}&pageNum=${pagehelper.lastPage}&pageSize=${pagehelper.pageSize}">尾页</a>
+                                                <a href="findRecordInCampus.action?campusID=${campusID}&pageNum=${pagehelper.pages}&pageSize=${pagehelper.pageSize}">尾页</a>
                                             </li>
                                         </c:if>
                                     </ul>

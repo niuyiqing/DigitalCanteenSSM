@@ -137,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <ul class="pagination">
                                         <c:if test="${!pagehelper.isFirstPage}">                                        
                                             <li>
-                                                <a href="muserBackground.action?recordCantID=${canteenItems.cantID}&pageNum=${pagehelper.firstPage}&pageSize=${pagehelper.pageSize}">首页</a>
+                                                <a href="muserBackground.action?recordCantID=${canteenItems.cantID}&pageNum=1&pageSize=${pagehelper.pageSize}">首页</a>
                                             </li>
                                             <li>
                                                 <a href="muserBackground.action?recordCantID=${canteenItems.cantID}&pageNum=${pagehelper.prePage}&pageSize=${pagehelper.pageSize}">上一页</a>
@@ -165,7 +165,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <a href="muserBackground.action?recordCantID=${canteenItems.cantID}&pageNum=${pagehelper.nextPage}&pageSize=${pagehelper.pageSize}">下一页</a>
                                             </li>
                                             <li>
-                                                <a href="muserBackground.action?recordCantID=${canteenItems.cantID}&pageNum=${pagehelper.lastPage}&pageSize=${pagehelper.pageSize}">尾页</a>
+                                                <a href="muserBackground.action?recordCantID=${canteenItems.cantID}&pageNum=${pagehelper.pages}&pageSize=${pagehelper.pageSize}">尾页</a>
                                             </li>
                                         </c:if>
                                     </ul>

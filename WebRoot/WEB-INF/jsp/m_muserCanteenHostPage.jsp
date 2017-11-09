@@ -174,7 +174,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <ul class="pagination">
                                         <c:if test="${!pagehelper.isFirstPage}">                                        
                                             <li>
-                                                <a data-ajax="false" href="muserCanteenHostPage.action?pageNum=${pagehelper.firstPage}&pageSize=${pagehelper.pageSize}">首页</a>
+                                                <a data-ajax="false" href="muserCanteenHostPage.action?pageNum=1&pageSize=${pagehelper.pageSize}">首页</a>
                                             </li>
                                             <li>
                                                 <a data-ajax="false" href="muserCanteenHostPage.action?pageNum=${pagehelper.prePage}&pageSize=${pagehelper.pageSize}">上一页</a>
@@ -202,7 +202,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <a data-ajax="false" href="muserCanteenHostPage.action?pageNum=${pagehelper.nextPage}&pageSize=${pagehelper.pageSize}">下一页</a>
                                             </li>
                                             <li>
-                                                <a data-ajax="false" href="muserCanteenHostPage.action?pageNum=${pagehelper.lastPage}&pageSize=${pagehelper.pageSize}">尾页</a>
+                                                <a data-ajax="false" href="muserCanteenHostPage.action?pageNum=${pagehelper.pages}&pageSize=${pagehelper.pageSize}">尾页</a>
                                             </li>
                                         </c:if>
                                     </ul>
