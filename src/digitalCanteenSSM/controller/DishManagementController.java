@@ -43,7 +43,7 @@ import digitalCanteenSSM.service.WindowPresetService;
 public class DishManagementController {
 
 	//图片实际存放路径，Tomcat虚拟路径定为/upload/pic，在页面dishManagement.jsp中使用到虚拟路径
-	private static final  String picturePath = "E:\\webproject\\upload\\picture\\";
+	private static final  String picturePath = "D:\\webproject\\upload\\picture\\";
 	
 	//默认图片设置
 	private static final  String defaultPicturePath     = "default.jpg";

@@ -41,7 +41,7 @@ import digitalCanteenSSM.service.WindowPresetService;
 @Controller
 public class UserController {
 
-	private static final  String picturePath = "E:\\webproject\\upload\\picture\\";
+	private static final  String picturePath = "D:\\webproject\\upload\\picture\\";
 	
 	@Autowired
 	private CampusPresetService campusPresetService;
