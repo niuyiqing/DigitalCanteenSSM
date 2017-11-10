@@ -107,13 +107,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				                	        <c:forEach items="${windowItemsList }" var="item">
 										                    <table width="100%" onclick="location.href='userWindowContents.action?wndID=${item.wndID}';" >
                                                                 <tr style="height:30px">
-                                                                    <td  rowspan="3" style="width:28% ">
-                                                                        <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="80" width="80" style="border-radius:5%;margin-left:5px"/>
+                                                                    <td  rowspan="2" style="width:28% ">
+                                                                        <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="40" width="80" style="border-radius:5%;margin-left:5px"/>
                                                                     </td>
                                                                     <td style="line-height: 18px;font-size:18px;font-weight:500;width:42%">
                                                                         <p>${item.wndName }</p>
                                                                     </td>
-                                                                    <td style="width:25%;font-size:14px;width:30%">
+                                                                    <td style="width:25%;line-height: 14px;font-size:14px;width:30%">
                                                                         <p>${item.campusName }/${item.cantName }</p>
                                                                     </td>
                                                                 </tr>
@@ -125,11 +125,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                         <p> ${item.wndSaleHours}</p>
                                                                     </td>
                                                                 </tr>
-                                                                <tr style="height:30px">
+                                                                <!-- <tr style="height:30px">
                                                                     <td style="padding-left:12px;font-size:14px;">
                                                                         <p>${item.wndDescription}</p>
                                                                     </td>
-                                                                </tr>
+                                                                </tr> -->
                                                             </table>
 													        <div style=" height: 1px; border-top: 1px solid #ddd;text-align: center;"></div>
 							                	</c:forEach> 
