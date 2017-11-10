@@ -498,6 +498,11 @@ public class DishManagementController {
 			resultInfo.setType(ResultInfo.TYPE_RESULT_SUCCESS);
 			resultInfo.setRecordID(record.getRecordID());
 			
+			//导入时需要把detail设定为今日时间
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			String dateString=simpleDateFormat.format(new Date());
+			Date date=simpleDateFormat.parse(dateString);
+			
 			//用户从之前的记录导入时，在后台就将记录保存好。步骤如下：
 			//1.读取要导入日期的所有detail
 			//2.(如果存在)清除录入当日已录入的所有detail
@@ -506,6 +511,7 @@ public class DishManagementController {
 			detailService.deleteDetailDishByRecordId(record.getRecordID());
 			for(Detail detail:detailList){
 				detail.setDetailRecordID(record.getRecordID());
+				detail.setDetailDishInDate(date);
 				detailService.insertDetail(detail);
 			}
 		}else{
