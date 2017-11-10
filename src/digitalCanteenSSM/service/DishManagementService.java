@@ -43,4 +43,6 @@ public interface DishManagementService {
 	
 	public List<DishItems> findNonStarDishesInShenziyuan() throws Exception;
 	
+	public void changeDishPhotoByName(String dishPhoto, String dishName) throws Exception;
+	
 }
