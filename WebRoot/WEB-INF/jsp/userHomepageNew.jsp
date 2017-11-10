@@ -229,8 +229,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                 <div class="txt-item">
                                                                     <table width="100%" onclick="location.href='userWindowContents.action?wndID=${item.wndID}';" >
                                                                         <tr style="height:30px">
-                                                                            <td rowspan=3>
-                                                                                <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="90" width="90"/>
+                                                                            <td rowspan=2>
+                                                                                <img src="/upload/pic/${item.wndPhoto }" class="center-block" height="45" width="90"/>
                                                                             </td>
                                                                             <td colspan="2" style="width:75%;padding-left:12px;font-size:18px;font-weight:500">
                                                                                 <p class="name">${item.wndName }</p>
@@ -244,11 +244,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                                 <p class="txt"> ${item.wndSaleHours}</p>
                                                                             </td>
                                                                         </tr>
-                                                                        <tr style="height:30px">
+                                                                        <!-- <tr style="height:30px">
                                                                             <td colspan="2" style="padding-left:12px;font-size:16px">
                                                                                 <p class="txt">${item.wndDescription}</p>
                                                                             </td>
-                                                                        </tr>
+                                                                        </tr> -->
                                                                     </table>
                                                                     <div style=" height: 1px; border-top: 1px solid #ddd;text-align: center;"></div>
                                                                 </div>                                                          
