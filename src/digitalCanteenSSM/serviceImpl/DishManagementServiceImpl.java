@@ -118,5 +118,10 @@ public class DishManagementServiceImpl implements DishManagementService {
 	public List<DishItems> findNonStarDishesInShenziyuan() throws Exception{
 		return dishManagementMapper.findNonStarDishesInShenziyuan();
 	}
+	
+	@Override
+	public void changeDishPhotoByName(String dishPhoto, String dishName) throws Exception{
+		dishManagementMapper.changeDishPhotoByName(dishPhoto, dishName);
+	}
 
 }

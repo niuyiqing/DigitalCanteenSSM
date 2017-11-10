@@ -17,6 +17,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 import digitalCanteenSSM.po.DishPreset;
+import digitalCanteenSSM.service.DishManagementService;
 import digitalCanteenSSM.service.DishPresetService;
 import digitalCanteenSSM.service.UploadFileService;
 
@@ -27,6 +28,8 @@ public class DishPresetController {
 	private DishPresetService dishPresetService;
 	@Autowired
 	private UploadFileService uploadFileService;
+	@Autowired
+	private DishManagementService dishManagementService;
 	
 	//菜品预置页面
 	//添加预置菜品按钮与已添加预置菜品显示
@@ -109,6 +112,10 @@ public class DishPresetController {
 			//未改变图片则用原来的
 			if( dishphoto != null){
 				dishPreset.setDishPresetPhoto(dishphoto);
+				
+				//后台修改了预置菜品的图片，需要同时修改食堂已上架菜品的图片
+				//本函数前一个参数是图片路径，后一个参数是菜品名称
+				dishManagementService.changeDishPhotoByName(dishphoto, dishPreset.getDishPresetName());
 			}else{
 				dishPreset.setDishPresetPhoto(dishPresetService.findDishPresetById(dishPreset.getDishPresetID()).getDishPresetPhoto());
 			}
