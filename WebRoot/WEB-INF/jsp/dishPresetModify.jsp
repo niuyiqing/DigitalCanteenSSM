@@ -30,6 +30,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
         <!--bootstrap-->    
         <script src="js/bootstrap.min.js"></script>
+
+        <!-- jQuery支撑 -->
+        <script src="js/jquery.form.js"></script>
+	    <script src="js/custom.jquery.form.js"></script>
+	    <script src="js/jquery.validate.js"></script>
+
+        <script>
+        	function dishPresetModifySubmit(){
+        		jquerySubByFId('updateDishPreset', dishPresetModifySubmit_callback, null, "json");
+        	}
+
+        	function dishPresetModifySubmit_callback(data){
+        		if(data.resultInfo.type == '1'){	//没有重复
+
+        			alert(data.resultInfo.message);
+        			window.location.href = "dishPreset.action";
+
+        		}else if(data.resultInfo.type == '0'){	//有重复
+
+        			alert(data.resultInfo.message);
+
+        		}
+        	}
+        </script>
 	</head>
 	  
 	<body>
@@ -43,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 
 					<div class="panel-body">
-						<form class="form-horizontal" role="form" name="updateDishPreset" method="post" action="modifyDishPresetSave.action" enctype="multipart/form-data">
+						<form class="form-horizontal" role="form" id="updateDishPreset" name="updateDishPreset" method="post" action="modifyDishPresetSave.action" enctype="multipart/form-data">
 							<div class="form-group">
 								<input name="dishPresetID" type="hidden" value="${dishPreset.dishPresetID }">							
 								<label class="col-sm-2 control-label">菜品名称：</label>
@@ -63,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="form-group">
 								<div class="col-sm-2 col-sm-offset-5">
-									<input type="submit" class="btn btn-primary" value="保存">
+									<input type="button" class="btn btn-primary" value="保存" onClick=dishPresetModifySubmit()>
 								</div>
 							</div>
 						</form>

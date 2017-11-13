@@ -31,6 +31,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
         <!--bootstrap-->    
         <script src="js/bootstrap.min.js"></script>
+
+        <!-- jQuery支撑 -->
+        <script src="js/jquery.form.js"></script>
+	    <script src="js/custom.jquery.form.js"></script>
+	    <script src="js/jquery.validate.js"></script>
+
+        <script>
+        	function dishPresetSubmit(){
+        		jquerySubByFId('dishPresetForm', dishPresetSubmit_callback , null, "json");
+        	}
+
+        	function dishPresetSubmit_callback(data){
+        		if(data.resultInfo.type == '1'){	//没有重复
+
+        			alert(data.resultInfo.message);
+        			window.location.href = "dishPreset.action";
+
+        		}else if(data.resultInfo.type == '0'){	//有重复
+
+        			alert(data.resultInfo.message);
+
+        		}
+        	}
+        </script>
     </head>
     
     <body>
@@ -45,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 					<div class="panel-body">
 						
-						<form class="form-horizontal" role="form" action="insertDishPreset.action" method="post" enctype="multipart/form-data">
+						<form class="form-horizontal" id="dishPresetForm" role="form" action="insertDishPreset.action" method="post" enctype="multipart/form-data">
 							<div class="form-group">																	
 								<label class="col-sm-2 control-label">菜品名称：</label>
 								<div class="col-sm-9">	
@@ -61,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="form-group">
 								<div class="col-sm-2 col-sm-offset-5">
-									<input type="submit" class="btn btn-primary" value="添加预置菜品">
+									<input type="button" class="btn btn-primary" value="添加预置菜品" onClick=dishPresetSubmit()>
 								</div>
 							</div>
 						</form>

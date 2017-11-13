@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,6 +17,8 @@ import com.github.miemiedev.mybatis.paginator.domain.Order;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
+import digitalCanteenSSM.exception.ResultInfo;
+import digitalCanteenSSM.exception.SubmitResultInfo;
 import digitalCanteenSSM.po.DishPreset;
 import digitalCanteenSSM.service.DishManagementService;
 import digitalCanteenSSM.service.DishPresetService;
@@ -103,12 +106,18 @@ public class DishPresetController {
 	
 	//修改预置菜品：修改之后保存并跳转到预置菜品页面
 	@RequestMapping ("/modifyDishPresetSave")	
-	public String modifyDishPresetSave(DishPreset dishPreset, MultipartFile dishPhotoFile) throws Exception{
+	public @ResponseBody SubmitResultInfo modifyDishPresetSave(DishPreset dishPreset, MultipartFile dishPhotoFile) throws Exception{
+		
+		ResultInfo resultInfo = new ResultInfo();
 		
 		if(dishPresetService.findDishPresetByName(dishPreset.getDishPresetName()) == null || 
 		   dishPresetService.findDishPresetByName(dishPreset.getDishPresetName()).getDishPresetID() == dishPreset.getDishPresetID()){
 			
-			String dishphoto=uploadFileService.uploadFile(dishPhotoFile, DishManagementController.getPicturepath());
+			String dishphoto = null;
+			if(dishPhotoFile != null){
+				dishphoto = uploadFileService.uploadFile(dishPhotoFile, DishManagementController.getPicturepath());
+			}
+			
 			//未改变图片则用原来的
 			if( dishphoto != null){
 				dishPreset.setDishPresetPhoto(dishphoto);
@@ -121,9 +130,19 @@ public class DishPresetController {
 			}
 			
 			dishPresetService.updateDishPreset(dishPreset);
-		}		
+			
+			resultInfo.setMessage("修改成功！");
+			resultInfo.setType(ResultInfo.TYPE_RESULT_SUCCESS);
+			
+		}else{
+			
+			resultInfo.setMessage("已有同名菜品！");
+			resultInfo.setType(ResultInfo.TYPE_RESULT_FAIL);
+			
+		}
 		
-		return "forward:dishPreset.action";
+		SubmitResultInfo submitResultInfo = new SubmitResultInfo(resultInfo);		
+		return submitResultInfo;
 	}
 		
 	//通过预置菜品ID删除校区信息
@@ -143,10 +162,19 @@ public class DishPresetController {
 	
 	//添加新的预置菜品
 	@RequestMapping("/insertDishPreset")
-	public String insertDishPreset(DishPreset dishPreset, MultipartFile dishPhotoFile) throws Exception{
+	public @ResponseBody SubmitResultInfo insertDishPreset(DishPreset dishPreset, MultipartFile dishPhotoFile) throws Exception{
+		
+		ResultInfo resultInfo = new ResultInfo();
 		
 		if(findDishPresetByName(dishPreset.getDishPresetName()) == null){
-			String dishphoto = uploadFileService.uploadFile(dishPhotoFile, DishManagementController.getPicturepath());
+			
+			//修改成jquerySubByFId方式提交后，用户不选择图片时dishPhotoFile会是null
+			//此时要做处理
+			String dishphoto = null;
+			if(dishPhotoFile != null){
+				dishphoto = uploadFileService.uploadFile(dishPhotoFile, DishManagementController.getPicturepath());
+			}
+			
 			//未输入图片则使用默认的
 			if( dishphoto== null){
 				dishPreset.setDishPresetPhoto(DishManagementController.getDefaultpicturepath());
@@ -155,9 +183,16 @@ public class DishPresetController {
 				dishPreset.setDishPresetPhoto(dishphoto);
 			}
 			dishPresetService.insertDishPreset(dishPreset);
+			
+			resultInfo.setMessage("预置菜品成功！");
+			resultInfo.setType(ResultInfo.TYPE_RESULT_SUCCESS);
+		}else{
+			resultInfo.setMessage("已有同名菜品！");
+			resultInfo.setType(ResultInfo.TYPE_RESULT_FAIL);
 		}
 		
-		return "forward:dishPreset.action";
+		SubmitResultInfo submitResultInfo = new SubmitResultInfo(resultInfo);		
+		return submitResultInfo;
 	}
 
 	
