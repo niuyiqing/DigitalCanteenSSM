@@ -194,6 +194,22 @@ public class DishPresetController {
 		SubmitResultInfo submitResultInfo = new SubmitResultInfo(resultInfo);		
 		return submitResultInfo;
 	}
+	
+	@RequestMapping("/searchDishPreset")
+	public ModelAndView searchDishPreset(String dishPresetName) throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		if(dishPresetName != null){
+			
+			modelAndView.addObject("dishPresetItemsList", dishPresetService.findDishPresetByFuzzyName(dishPresetName));
+		}
+		
+		modelAndView.setViewName("/WEB-INF/jsp/searchDishPreset.jsp");
+		
+		return modelAndView;
+		
+	}
 
 	
 }

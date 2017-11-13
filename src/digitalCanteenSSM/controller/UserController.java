@@ -282,8 +282,8 @@ public class UserController {
 			dishItemsList = userService.findDishByFuzzyName(queryName);
 			windowItemsList = userService.findWindowByFuzzyName(queryName);			
 		}	
-		modelAndView.addObject("dishItemsList",dishItemsList);
-		modelAndView.addObject("windowItemsList",windowItemsList);
+		modelAndView.addObject("dishItemsList", dishItemsList);
+		modelAndView.addObject("windowItemsList", windowItemsList);
 		
 		modelAndView.setViewName("/WEB-INF/jsp/userQueryAll.jsp");
 		

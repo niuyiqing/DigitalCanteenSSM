@@ -100,6 +100,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 
 					<div class="panel-body">
+						<a href="searchDishPreset.action" class="btn btn-primary">搜索预置菜品</a>
+                    	<br><br>
 						<!-- 列举所有已录入的预置菜品 --> 
 						<table class="table table-striped table-bordered table-hover table-responsive text-center">
 							<thead>
