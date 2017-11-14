@@ -84,6 +84,14 @@ public class WindowPresetController {
 		return modelAndView;
 	}
 	
+	@RequestMapping("/manageWindows")
+	public ModelAndView manageWindows() throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		return modelAndView;
+	}
+	
 	//通过档口ID查找档口信息
 	@RequestMapping ("/findWindowById")
 	public WindowItems findWindowById(Integer wndID) throws Exception{

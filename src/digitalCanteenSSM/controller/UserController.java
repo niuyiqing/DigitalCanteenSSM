@@ -161,12 +161,19 @@ public class UserController {
 					if(!canteenItemsList.isEmpty()){
 						Iterator<CanteenItems> iterator_canteenItems = canteenItemsList.iterator();
 						CanteenItems canteenItems = iterator_canteenItems.next();
+						//添加中餐食堂标志
+						if(canteenItems.getCantTypeName() == "中餐食堂"){
+							modelAndView.addObject("isChineseCanteen", 1);
+						}else{
+							modelAndView.addObject("isChineseCanteen", 0);
+						}
 						//将选中的第一个校区的第一个食堂数据传到用户首页
 						modelAndView.addObject("canteenItems", canteenItems);
 						//将该食堂的档口列表传到用户首页
 						modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(canteenItems.getCantID()));
 						//将该校区下的食堂列表传到用户首页
-						modelAndView.addObject("canteenItemsList", canteenItemsList);
+						modelAndView.addObject("canteenItemsList", canteenItemsList);						
+						
 						break;
 					}
 				}
@@ -177,6 +184,12 @@ public class UserController {
 			if(!canteenItemsList.isEmpty()){
 				Iterator<CanteenItems> iterator_canteenItems = canteenItemsList.iterator();
 				CanteenItems canteenItems = iterator_canteenItems.next();
+				//添加中餐食堂标志
+				if(canteenItems.getCantTypeName() == "中餐食堂"){
+					modelAndView.addObject("isChineseCanteen", 1);
+				}else{
+					modelAndView.addObject("isChineseCanteen", 0);
+				}
 				//将该校区的第一个食堂数据传到用户首页
 				modelAndView.addObject("canteenItems", canteenItems);
 				//将该食堂的档口列表传到用户首页
@@ -191,6 +204,12 @@ public class UserController {
 			//然后利用该食堂所属的校区编号查找该校区下所有食堂，传给用户首页
 			CanteenItems canteenItems = canteenPresetService.findCanteenById(cantID);
 			modelAndView.addObject("canteenItems", canteenItems);
+			//添加中餐食堂标志
+			if(canteenItems.getCantTypeName() == "中餐食堂"){
+				modelAndView.addObject("isChineseCanteen", 1);
+			}else{
+				modelAndView.addObject("isChineseCanteen", 0);
+			}
 			//将该食堂的档口列表传到用户首页
 			modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(canteenItems.getCantID()));
 			modelAndView.addObject("canteenItemsList", canteenPresetService.findCanteenByCampus(canteenItems.getCampusID()));
@@ -201,6 +220,12 @@ public class UserController {
 			//然后利用该食堂所属的校区编号查找该校区下所有食堂，传给用户首页
 			CanteenItems canteenItems = canteenPresetService.findCanteenById(cantID);
 			modelAndView.addObject("canteenItems", canteenItems);
+			//添加中餐食堂标志
+			if(canteenItems.getCantTypeName() == "中餐食堂"){
+				modelAndView.addObject("isChineseCanteen", 1);
+			}else{
+				modelAndView.addObject("isChineseCanteen", 0);
+			}
 			//将该食堂所属校区的食堂列表传到用户页面
 			modelAndView.addObject("canteenItemsList", canteenPresetService.findCanteenByCampus(canteenItems.getCampusID()));
 			//将相应时间档的菜品传递到页面
