@@ -11,6 +11,8 @@ public interface DishPresetMapper {
 	public DishPreset findDishPresetById(DishPreset dishPreset) throws Exception;
 	
 	public DishPreset findDishPresetByName(String dishPresetName) throws Exception;
+	
+	public List<DishPreset> findDishPresetByFuzzyName(String dishPresetName) throws Exception;
 
 	public DishPreset findDishPresetById(Integer dishPresetID) throws Exception;
 	

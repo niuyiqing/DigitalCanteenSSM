@@ -39,6 +39,12 @@ public  class DishPresetServiceImpl implements DishPresetService{
 		
 		return dishPresetMapper.findDishPresetByName(dishPresetName);
 	}
+	
+	@Override
+	public List<DishPreset> findDishPresetByFuzzyName(String dishPresetName) throws Exception{
+		
+		return dishPresetMapper.findDishPresetByFuzzyName(dishPresetName);
+	}
 
 	@Override
 	public DishPreset findDishPresetById(Integer dishPresetID) throws Exception {
