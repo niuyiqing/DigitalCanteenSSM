@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findDishPresetById"  parameterType="Integer" resultType="DishPreset">
 		SELECT * 
 		FROM ctdishpreset
-		WHERE ctdishpreset.DishPresetID=#{dishPresetID}		
+		WHERE ctdishpreset.DishPresetID=#{dishPresetID}	
 	</select>
 
 	<!-- 根据DishPresetName查询预置菜品信息 -->
@@ -27,12 +27,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE ctdishpreset.DishPresetName=#{dishPresetName} 
 	</select>
 	
+	<!-- 根据菜品名模糊查询预置菜品 -->
+	<select id="findDishPresetByFuzzyName" parameterType="String" resultType="DishPreset">
+		SELECT * 
+		FROM ctdishpreset
+		WHERE ctdishpreset.DishPresetName like CONCAT(CONCAT('%', #{dishPresetName}),'%')
+	</select>
+	
 	<!-- 根据DishPresetID更新菜品预置信息 -->
 	<select id="updateDishPreset"  parameterType="DishPreset">
 		UPDATE ctdishpreset 
 		SET ctdishpreset.DishPresetName=#{ dishPresetName},
 			ctdishpreset.DishPresetPhoto=#{ dishPresetPhoto}
-		WHERE ctdishpreset.DishPresetID=#{ dishPresetID};		
+		WHERE ctdishpreset.DishPresetID=#{ dishPresetID};
 	</select>
 	
 	

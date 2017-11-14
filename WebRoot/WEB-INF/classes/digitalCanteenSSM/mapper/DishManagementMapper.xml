@@ -146,6 +146,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE ctdish.DishName=#{dishName} and ctdish.DishWndID=#{dishWndID}		
 	</select>
 	
+	<!-- 根据菜品名模糊查询菜品 -->
+	<select id="findDishByFuzzyName" parameterType="String" resultType="Dish">
+		SELECT * 
+		FROM ctdish
+		WHERE ctdish.DishName like CONCAT(CONCAT('%', #{dishPresetName}),'%')
+	</select>
+	
 	<!-- 查询一个档口下的所有菜品 -->
 	<select id="findDishesInWindow" parameterType="Integer" resultType="DishItems">
 		SELECT ctdish.*, ctwnd.wndID,ctwnd.wndName,

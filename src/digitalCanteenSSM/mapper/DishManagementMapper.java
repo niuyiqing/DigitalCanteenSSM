@@ -16,6 +16,8 @@ public interface DishManagementMapper {
 	
 	public DishItems findDishByName(DishItems dishItems) throws Exception;
 	
+	public List<DishItems> findDishByFuzzyName(String dishPresetName) throws Exception;
+	
 	public List<DishItems> findDishesInFancyCanteens() throws Exception;
 	
 	public List<DishItems> findStarFancyDishes() throws Exception;

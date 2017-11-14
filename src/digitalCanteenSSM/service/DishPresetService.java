@@ -10,6 +10,8 @@ public interface DishPresetService {
 	
 	public DishPreset findDishPresetByName(String dishPresetName) throws Exception;
 	
+	public List<DishPreset> findDishPresetByFuzzyName(String dishPresetName) throws Exception;
+	
 	public DishPreset findDishPresetById(Integer dishPresetID) throws Exception;
 	
 	public void deleteDishPresetById(Integer dishPresetID) throws Exception;

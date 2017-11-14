@@ -51,7 +51,8 @@
   					<li><a href="${pageContext.request.contextPath }/windowPreset.action">预置档口</a></li>
   					<li class="divider"></li>
   					<li><a href="${pageContext.request.contextPath }/dishPreset.action">预置菜品</a></li>
-                    
+                    <li class="divider"></li>
+                    <li><a href="${pageContext.request.contextPath }/searchDishPreset.action">预置菜品搜索</a></li>                    
   				</ul>
   			</li>
 
