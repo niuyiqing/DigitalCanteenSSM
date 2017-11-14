@@ -30,9 +30,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			
 	<!-- 查询一个食堂下的所有档口 -->
 	<select id="findWindowsInCanteen" parameterType="Integer" resultType="WindowItems">
+		<!-- 
 		SELECT * 
 		FROM ctwnd 
 		WHERE ctwnd.WndCantID=#{cantID}
+		 -->
+		SELECT ctwnd.*,ctcant.cantID,ctcant.CantName, ctcant.cantCampusID,ctcampus.campusID,ctcampus.CampusName 
+		FROM ctwnd, ctcant, ctcampus
+		WHERE ctwnd.WndCantID=#{cantID} and ctwnd.WndCantID = ctcant.cantID and ctcant.CantCampusID = ctcampus.campusID
+		
 	</select>
 	
 	<!-- 根据WndID更新档口信息 -->
