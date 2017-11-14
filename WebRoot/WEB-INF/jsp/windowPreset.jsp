@@ -177,6 +177,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
 
                     <div class="panel-body">
+                        <a href="manageWindows.action" class="btn btn-primary">按食堂搜索档口</a>
+                        <br><br>
                         <table class="table table-striped table-bordered table-hover table-responsive text-center">
                             <thead>
                                 <tr>

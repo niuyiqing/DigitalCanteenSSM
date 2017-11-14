@@ -85,9 +85,22 @@ public class WindowPresetController {
 	}
 	
 	@RequestMapping("/manageWindows")
-	public ModelAndView manageWindows() throws Exception{
+	public ModelAndView manageWindows(Integer wndCantID) throws Exception{
 		
 		ModelAndView modelAndView = new ModelAndView();
+		
+		if(wndCantID != null){
+			
+			modelAndView.addObject("windowsList", windowPresetService.findWindowsInCanteen(wndCantID));
+			
+			modelAndView.addObject("canteenItems", canteenPresetService.findCanteenById(wndCantID));
+			
+		}
+		
+		modelAndView.addObject("campusList", campusPresetService.findAllCampuses());
+		modelAndView.addObject("canteenItemsList",canteenPresetService.findAllCanteens());
+		
+		modelAndView.setViewName("/WEB-INF/jsp/manageWindows.jsp");
 		
 		return modelAndView;
 	}
