@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -212,7 +213,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             </tr>
                                             <tr style="height:20px">                          
                                                 <td style='vertical-align: middle;color:#29C192;font-size:18px;'>￥${item.detailDishPrice }</td>
-                                                <td style='vertical-align: middle;font-size:16px;'><fmt:formatDate value="${item.detailDishInDate}" pattern="yyyy-MM-dd" /></td>
+                                                <td style='vertical-align: middle;font-size:12px;'><fmt:formatDate value="${item.detailDishInDate}" pattern="yyyy.MM.dd" />更新</td>
                                             </tr>
                                         </table>
                                         <div style=" height: 1px; border-top: 1px solid #ddd;text-align: center;"></div>
