@@ -56,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 根据CanteenID查询该食堂信息 -->
 	<select id="findCanteenById"  parameterType="int" resultType="CanteenItems">
-		SELECT ctcant.*, ctcanttype.CantTypeName, ctcampus.CampusName 
+		SELECT * 
 		FROM ctcant,ctcampus,ctcanttype
 		WHERE ctcant.CantID=#{cantID} and ctcant.cantCampusID = ctcampus.campusID and ctcant.CantTypeID=ctcanttype.CantTypeID		
 	</select>
