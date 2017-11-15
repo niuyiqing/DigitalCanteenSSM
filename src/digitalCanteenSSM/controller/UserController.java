@@ -162,7 +162,7 @@ public class UserController {
 						Iterator<CanteenItems> iterator_canteenItems = canteenItemsList.iterator();
 						CanteenItems canteenItems = iterator_canteenItems.next();
 						//添加中餐食堂标志
-						if(canteenItems.getCantTypeName() == "中餐食堂"){
+						if(canteenItems.getCantTypeName() == "自营食堂"){
 							modelAndView.addObject("isChineseCanteen", 1);
 						}else{
 							modelAndView.addObject("isChineseCanteen", 0);
@@ -185,7 +185,7 @@ public class UserController {
 				Iterator<CanteenItems> iterator_canteenItems = canteenItemsList.iterator();
 				CanteenItems canteenItems = iterator_canteenItems.next();
 				//添加中餐食堂标志
-				if(canteenItems.getCantTypeName() == "中餐食堂"){
+				if(canteenItems.getCantTypeName() == "自营食堂"){
 					modelAndView.addObject("isChineseCanteen", 1);
 				}else{
 					modelAndView.addObject("isChineseCanteen", 0);
@@ -205,7 +205,7 @@ public class UserController {
 			CanteenItems canteenItems = canteenPresetService.findCanteenById(cantID);
 			modelAndView.addObject("canteenItems", canteenItems);
 			//添加中餐食堂标志
-			if(canteenItems.getCantTypeName() == "中餐食堂"){
+			if(canteenItems.getCantTypeName() == "自营食堂"){
 				modelAndView.addObject("isChineseCanteen", 1);
 			}else{
 				modelAndView.addObject("isChineseCanteen", 0);
@@ -221,7 +221,7 @@ public class UserController {
 			CanteenItems canteenItems = canteenPresetService.findCanteenById(cantID);
 			modelAndView.addObject("canteenItems", canteenItems);
 			//添加中餐食堂标志
-			if(canteenItems.getCantTypeName() == "中餐食堂"){
+			if(canteenItems.getCantTypeName() == "自营食堂"){
 				modelAndView.addObject("isChineseCanteen", 1);
 			}else{
 				modelAndView.addObject("isChineseCanteen", 0);
