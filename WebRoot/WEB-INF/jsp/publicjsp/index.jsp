@@ -41,7 +41,8 @@
 							            <li><a data-ajax="false" href="${pageContext.request.contextPath }/campusPreset.action" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">预置校区</a></li>
 							  		    <li><a data-ajax="false" href="${pageContext.request.contextPath }/canteenPreset.action" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">预置食堂</a></li>			          		
 							  	        <li><a data-ajax="false" href="${pageContext.request.contextPath }/windowPreset.action" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">预置档口</a></li>	  		 
-							  		    <li><a data-ajax="false" href="${pageContext.request.contextPath }/dishPreset.action" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">预置菜品</a></li>	 
+							  		    <li><a data-ajax="false" href="${pageContext.request.contextPath }/dishPreset.action" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">预置菜品</a></li>
+							  		    <!-- <li><a data-ajax="false" href="${pageContext.request.contextPath }/searchDishPreset.action" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">预置菜品搜索</a></li> --> 
 									</ul>
 								</div>
 							</li>
