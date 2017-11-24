@@ -148,6 +148,27 @@ public class DishManagementController {
 		
 		return modelAndView;
 	}
+	
+	//搜索食堂已上架菜品
+	@RequestMapping("/searchDishInCanteen")
+	public ModelAndView searchDishInCanteen(String dishName, HttpSession session) throws Exception{
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		MUserItems muserItems = (MUserItems)session.getAttribute("muserItems");
+		
+		if(dishName != null){
+			modelAndView.addObject("dishItems", dishManagementService.findDishInCanteenByFuzzyName(dishName, muserItems.getCantID()));
+		}
+		
+		if(session.getAttribute("ua").equals("pc")){
+			modelAndView.setViewName("/WEB-INF/jsp/searchDishInCanteen.jsp");
+		}else{
+			modelAndView.setViewName("/WEB-INF/jsp/m_searchDishInCanteen.jsp");
+		}
+		
+		return modelAndView;
+	}
 		
 	//查找该管理员所属校区下所有菜品
 	@RequestMapping ("/findDishInCampus")
