@@ -29,6 +29,7 @@ import digitalCanteenSSM.po.WindowItems;
 import digitalCanteenSSM.service.AdService;
 import digitalCanteenSSM.service.CampusPresetService;
 import digitalCanteenSSM.service.CanteenPresetService;
+import digitalCanteenSSM.service.ClickCountService;
 import digitalCanteenSSM.service.DetailService;
 import digitalCanteenSSM.service.DishManagementService;
 import digitalCanteenSSM.service.RecordService;
@@ -63,6 +64,8 @@ public class UserController {
 	private DetailService detailService;
 	@Autowired
 	private RecordService recordService;
+	@Autowired
+	private ClickCountService clickCountService;
 	
 	@RequestMapping("/userRegisterPage")
 	public ModelAndView userRegisterPage() throws Exception{
@@ -146,11 +149,16 @@ public class UserController {
 		List<Campus> campusList = campusPresetService.findAllCampuses();
 		
 		modelAndView.addObject("campusList", campusList);
-		modelAndView.addObject("adList", adService.findAllAd());
+		modelAndView.addObject("adList", adService.findAllAd());		
+		
 		
 		//如果第一次进入这个函数，查询第一个校区的第一个食堂作为默认食堂
 		//以后则根据参数返回食堂和档口列表
 		if(campusID == null && cantID == null && supplyTime == null){	//第一次进入函数
+			
+			Integer clickCount = clickCountService.getClickCount();
+			clickCount = clickCount + 1;
+			clickCountService.updateClickCount(clickCount);
 			
 			if(!campusList.isEmpty()){
 				
