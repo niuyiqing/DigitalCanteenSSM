@@ -56,6 +56,8 @@
   					<li><a href="${pageContext.request.contextPath }/addDish.action">菜品上架</a></li>
   					<li class="divider"></li>
                     <li><a href="${pageContext.request.contextPath }/findDishInCanteen.action">查看已有菜品</a></li>
+                    <li class="divider"></li>
+                    <li><a href="${pageContext.request.contextPath }/searchDishInCanteen.action">搜索已有菜品</a></li>
   				</ul>
   			</li>
         </ul>

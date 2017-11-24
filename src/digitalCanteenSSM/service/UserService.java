@@ -2,11 +2,9 @@ package digitalCanteenSSM.service;
 
 import java.util.List;
 
-import digitalCanteenSSM.po.Dish;
 import digitalCanteenSSM.po.DishItems;
 import digitalCanteenSSM.po.User;
 import digitalCanteenSSM.po.UserItems;
-import digitalCanteenSSM.po.Window;
 import digitalCanteenSSM.po.WindowItems;
 
 public interface UserService {

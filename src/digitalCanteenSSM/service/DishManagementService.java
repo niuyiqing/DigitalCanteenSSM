@@ -29,6 +29,8 @@ public interface DishManagementService {
 	
 	public List<DishItems> findDishByFuzzyName(String dishPresetName) throws Exception;
 	
+	public List<DishItems> findDishInCanteenByFuzzyName(String dishName, Integer cantID) throws Exception;
+	
 	public List<DishItems> findDishesInWindow(Integer wndID) throws Exception;
 	
 	public void updateDish(DishItems dishItems) throws Exception;

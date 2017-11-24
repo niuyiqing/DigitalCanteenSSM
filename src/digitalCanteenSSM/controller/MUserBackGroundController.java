@@ -35,6 +35,7 @@ import digitalCanteenSSM.po.RecordItems;
 import digitalCanteenSSM.po.Role;
 import digitalCanteenSSM.service.CampusPresetService;
 import digitalCanteenSSM.service.CanteenPresetService;
+import digitalCanteenSSM.service.ClickCountService;
 import digitalCanteenSSM.service.DetailService;
 import digitalCanteenSSM.service.DishExportToExcelService;
 import digitalCanteenSSM.service.LogService;
@@ -63,6 +64,8 @@ public class MUserBackgroundController {
 	private DetailService detailService;
 	@Autowired
 	private LogService logService;
+	@Autowired
+	private ClickCountService clickCountService;
 	
 	@RequestMapping("/backgroundHomepage")
 	public String backgroundHomepage(HttpSession session) throws Exception{
@@ -127,6 +130,8 @@ public class MUserBackgroundController {
 		modelAndView.addObject("canteenItemsList", canteenPresetService.findAllCanteens());	
 		modelAndView.addObject("RecordItemsList", recordService.findRecordByDate(rc));
 		modelAndView.addObject("pagehelper", pagehelper);
+		//传递点击量到后台首页
+		modelAndView.addObject("clickCount", clickCountService.getClickCount());
 		
 		if(session.getAttribute("ua").equals("pc")){
 			modelAndView.setViewName("/WEB-INF/jsp/muserBackground.jsp");

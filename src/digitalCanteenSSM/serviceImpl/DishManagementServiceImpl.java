@@ -84,6 +84,12 @@ public class DishManagementServiceImpl implements DishManagementService {
 		
 		return dishManagementMapper.findDishByFuzzyName(dishPresetName);
 	}
+	
+	@Override
+	public List<DishItems> findDishInCanteenByFuzzyName(String dishName, Integer cantID) throws Exception{
+		
+		return dishManagementMapper.findDishInCanteenByFuzzyName(dishName, cantID);
+	}
 
 	@Override
 	public DishItems findDishById(Integer dishID) throws Exception {
