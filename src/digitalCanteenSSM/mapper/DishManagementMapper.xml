@@ -147,10 +147,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 根据菜品名模糊查询菜品 -->
-	<select id="findDishByFuzzyName" parameterType="String" resultType="Dish">
+	<select id="findDishByFuzzyName" parameterType="String" resultType="DishItems">
 		SELECT * 
 		FROM ctdish
 		WHERE ctdish.DishName like CONCAT(CONCAT('%', #{dishPresetName}),'%')
+	</select>
+	
+	<!-- 根据菜品名模糊查询【食堂内】的菜品(第一个参数为名称字符串，第二个参数为食堂ID)-->
+	<select id="findDishInCanteenByFuzzyName" resultType="DishItems">
+		SELECT *, ctcant.cantID, ctdishtype.dishTypeName
+		FROM ctdish, ctwnd, ctcant, ctdishtype
+		WHERE 
+		ctdish.DishName like CONCAT(CONCAT('%', #{0}),'%') and 
+		ctdish.DishTypeID = ctdishtype.DishTypeID and
+		ctdish.DishWndID = ctwnd.WndID and
+		ctwnd.WndCantID = ctcant.CantID and
+		ctcant.CantID = #{1}
 	</select>
 	
 	<!-- 查询一个档口下的所有菜品 -->
