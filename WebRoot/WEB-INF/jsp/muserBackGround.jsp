@@ -173,6 +173,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </div>
 		    		    </div>
 		    		</div>
+		    		<div style="width:80%;position: fixed;bottom: 0;text-align:center">
+		    			<h4>师生端访问量：${clickCount }</h4>
+		    		</div>
 		    	</div>
 	    	</div>
 	    </div>

@@ -45,7 +45,8 @@
 						<h2 class="icon icon-caipinguanli" style="padding: 1em 1em 1em 4.5em;font-size:17px;background:rgba(41,193,146,0.95)">菜品管理</h2>
 						<ul>
 							<li><a class="icon icon-shangjia" data-ajax="false" href="${pageContext.request.contextPath }/addDish.action" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">菜品上架</a></li>                               
-				            <li><a class="icon icon-caipin" data-ajax="false" href="${pageContext.request.contextPath }/findDishInCanteen.action" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">查看已有菜品</a></li>	 
+				            <li><a class="icon icon-caipin" data-ajax="false" href="${pageContext.request.contextPath }/findDishInCanteen.action" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">查看已有菜品</a></li>
+				            <li><a class="icon icon-caipin" data-ajax="false" href="${pageContext.request.contextPath }/searchDishInCanteen.action" style="padding: 1em 1em 1em 4.5em;font-weight:300;font-size:15px;color:#484848">搜索已有菜品</a></li>	 
 						</ul>
 					</div>
 				</li>

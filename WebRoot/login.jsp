@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div class="htmleaf-container">
             <div class="wrapper">
               <div style="position: relative;top: 10%;">
-                <img src="/upload/pic/login.png" class="center-block" width="60%">
+                <img src="/upload/pic/login.png" class="center-block" width="40%">
               </div>
               <div class="container">
                 <!-- <h1>Welcome</h1> -->        
