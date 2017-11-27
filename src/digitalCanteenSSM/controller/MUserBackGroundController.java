@@ -100,7 +100,7 @@ public class MUserBackgroundController {
 		String pageSize = request.getParameter("pageSize");
 		
 		int num = 1;
-		int size = 10;
+		int size = 6;
 		if (pageNum != null && !"".equals(pageNum)) {
 			num = Integer.parseInt(pageNum);
 		}
