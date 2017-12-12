@@ -212,7 +212,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <td style='vertical-align: middle;font-size:14px;'>${item.detailDishDate } </td> 
                                             </tr>
                                             <tr style="height:20px">                          
-                                                <td style='vertical-align: middle;color:#29C192;font-size:18px;'>￥${item.detailDishPrice }</td>
+                                                <!-- <td style='vertical-align: middle;color:#29C192;font-size:18px;'>￥${item.detailDishPrice }</td> -->
                                                 <td style='vertical-align: middle;font-size:12px;'><fmt:formatDate value="${item.detailDishInDate}" pattern="yyyy.MM.dd" />更新</td>
                                             </tr>
                                         </table>
@@ -233,12 +233,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </td>
                                     </tr>
                                     <tr style="height:30px">
-                                        <td style="padding-left:12px;color:#29C192;font-size:20px;width:35%">
-                                            <p class="txt">￥${item.wndPriceRange}</p>
-                                        </td>
-                                        <td style="font-size:16px">
+                                        <td style="font-size:16px;padding-left:12px;">
                                             <p class="txt"> ${item.wndSaleHours}</p>
                                         </td>
+                                        <!-- <td style="padding-left:12px;color:#29C192;font-size:20px;width:35%">
+                                            <p class="txt">￥${item.wndPriceRange}</p>
+                                        </td> -->
                                     </tr>
                                     <!-- <tr style="height:30px">
                                         <td colspan="2" style="padding-left:12px;font-size:16px">

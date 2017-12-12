@@ -72,9 +72,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	    			   	    <td colspan="2"style='vertical-align: middle;text-align: left;font-size:18px; font-weight:500;color:black;width: 55%;line-height: 18px;'>${item.dishName }</td>        	    			   	    						                	   	
         	    			    </tr>
 	         	    			<tr style="height:50px">						  
-	         	    			    <td style='vertical-align: middle;text-align: left;color:#29C192;font-size:20px;'>￥${item.dishPrice }</td>
+	         	    			    
 	         	    			    <!-- <td style='vertical-align: middle;color:black;font-size:14px;'>${item.dishDate } </td> -->
-	         	    			    <td style='vertical-align: middle;text-align: center;font-size:14px;color:black;width:15%'>${item.dishTypeName }</td>    
+	         	    			    <td style='vertical-align: middle;text-align: center;font-size:14px;color:black;width:15%'>${item.dishTypeName }</td>
+                                    <td style='vertical-align: middle;text-align: left;color:#29C192;font-size:20px;'><!-- ￥${item.dishPrice } --></td>    
 	         	    			</tr>
 	         	    		</table>
                             <div style=" height: 1px; border-top: 1px solid #ddd;text-align: center;"></div>
@@ -92,9 +93,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	    			   	    <td colspan="2" style='vertical-align: middle;text-align: left;font-size:18px; font-weight:500;color:black;width: 55%;line-height: 18px;'>${item.dishName }</td>        	    			   	    						                	   	
         	    			    </tr>
 	         	    			<tr style="height:50px">						  
-	         	    			    <td style='vertical-align: middle;text-align: left;color:#29C192;font-size:20px;'>￥${item.dishPrice }</td>
+	         	    			    
 	         	    			    <!-- <td style='vertical-align: middle;color:black;font-size:14px;'>${item.dishDate } </td> -->
-	         	    			    <td style='vertical-align: middle;text-align: center;font-size:14px;color:black;width:15%'>${item.dishTypeName }</td>    
+	         	    			    <td style='vertical-align: middle;text-align: center;font-size:14px;color:black;width:15%'>${item.dishTypeName }</td>
+                                    <td style='vertical-align: middle;text-align: left;color:#29C192;font-size:20px;'><!-- ￥${item.dishPrice } --></td>    
 	         	    			</tr>
 	         	    		</table>
                                 <div style=" height: 1px; border-top: 1px solid #ddd;text-align: center;"></div>

@@ -206,14 +206,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <td style='vertical-align: middle;line-height: 18px;font-size:18px;font-weight:500;width:45%' >${item.detailDishName}</td>
                                                 <td style='vertical-align: middle;'></td>                                             
                                             </tr>
-                                            <tr style="height:30px">                                                           
+                                            <tr style="height:40px">                                                           
                                                 <td style='vertical-align: middle;line-height: 14px;font-size:14px;'>[${item.detailWndName }]</td>
                                                 <td style='vertical-align: middle;font-size:14px;'>${item.detailDishDate } </td> 
                                             </tr>
-                                            <tr style="height:20px">                          
+                                            <!-- <tr style="height:20px">                          
                                                 <td style='vertical-align: middle;color:#29C192;font-size:18px;'>￥${item.detailDishPrice }</td>
                                                 <td style='vertical-align: middle;font-size:16px;'><fmt:formatDate value="${item.detailDishInDate}" pattern="yyyy-MM-dd" /></td>
-                                            </tr>
+                                            </tr> -->
                                         </table>
                                         <div style=" height: 1px; border-top: 1px solid #ddd;text-align: center;"></div>
                                     </div>
@@ -232,12 +232,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         </td>
                                     </tr>
                                     <tr style="height:30px">
-                                        <td style="padding-left:12px;color:#29C192;font-size:20px;width:35%">
-                                            <p class="txt">￥${wnditem.wndPriceRange}</p>
-                                        </td>
-                                        <td style="font-size:16px;">
+                                        <td style="font-size:16px;padding-left:12px;">
                                             <p class="txt"> ${wnditem.wndSaleHours}</p>
                                         </td>
+                                        <!-- <td style="padding-left:12px;color:#29C192;font-size:20px;width:35%">
+                                            <p class="txt">￥${wnditem.wndPriceRange}</p>
+                                        </td> -->
                                     </tr>
                                     <!-- <tr style="height:30px">
                                         <td colspan="2" style="padding-left:12px;font-size:16px">
