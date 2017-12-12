@@ -202,7 +202,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                 <div class="txt-item" style="margin-left:5px;padding-top:5px">
                                                                     <table  width="100%">                                                        
                                                                         <tr style="height:40px"> 
-                                                                            <td style='vertical-align: left;text-align: center;width:27%' rowspan=3>
+                                                                            <td style='vertical-align: left;text-align: center;width:27%' rowspan=2>
                                                                                 <c:if test="${item.detailDishPhoto != null }">
                                                                                     <img src="/upload/pic/${item.detailDishPhoto }" class="center-block" height="80" width="80" style="border-radius:5%;margin-left:2px;margin-right:-50px">
                                                                                 </c:if>
@@ -210,11 +210,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                             <td style='vertical-align: middle;line-height: 18px;font-size:18px;font-weight:500;width:45%' >${item.detailDishName}</td>
                                                                             <td style='vertical-align: middle;'></td>                                             
                                                                         </tr>
-                                                                        <tr style="height:30px">                                                           
+                                                                        <tr style="height:40px">                                                           
                                                                             <td style='vertical-align: middle;line-height: 14px;font-size:14px;'>[${item.detailWndName }]</td>
                                                                             <td style='vertical-align: middle;font-size:14px;'>${item.detailDishDate } </td> 
                                                                         </tr>
-                                                                        <tr style="height:20px">                          
+                                                                        <!-- <tr style="height:20px">                          
                                                                             <td style='vertical-align: middle;color:#29C192;font-size:18px;'>￥${item.detailDishPrice }</td>
                                                                             <c:choose >
                                                                                 <c:when test="${1 eq isChineseCanteen}">
@@ -224,8 +224,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                                     <td style='vertical-align: middle;font-size:12px;'></td>
                                                                                 </c:otherwise>
                                                                             </c:choose>
-                                                                            
-                                                                        </tr>
+                                                                        </tr> -->
                                                                     </table>
                                                                     <div style=" height: 1px; border-top: 1px solid #ddd;text-align: center;"></div>
                                                                 </div>
@@ -246,12 +245,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                                             </td>
                                                                         </tr>
                                                                         <tr style="height:30px">
-                                                                            <td style="padding-left:12px;color:#29C192;font-size:20px;width:35%">
-                                                                                <p class="txt">￥${item.wndPriceRange}</p>
-                                                                            </td>
-                                                                            <td style="font-size:16px">
+                                                                            <td style="font-size:16px;padding-left:12px;">
                                                                                 <p class="txt"> ${item.wndSaleHours}</p>
                                                                             </td>
+                                                                            <!-- <td style="padding-left:12px;color:#29C192;font-size:20px;width:35%">
+                                                                                <p class="txt">￥${item.wndPriceRange}</p>
+                                                                            </td> -->
                                                                         </tr>
                                                                         <!-- <tr style="height:30px">
                                                                             <td colspan="2" style="padding-left:12px;font-size:16px">
